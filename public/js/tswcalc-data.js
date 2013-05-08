@@ -1,7 +1,8 @@
 template_data = {
     slots: [{
         id_prefix: 'weapon',
-        name: 'Weapon'
+        name: 'Weapon',
+        is_weapon: true
     }, {
         id_prefix: 'head',
         name: 'Head Talisman'
