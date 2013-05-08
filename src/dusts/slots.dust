@@ -1,36 +1,45 @@
 
 {#slots}
           <div id="{id_prefix}-slot" class="slot">
-            <h5>{name} (QL: 1 2 3 4 5)</h5>
-            <div id="{id_prefix}-glyphs">
-              <table class="table glyphs">
+            <h5>{name}</h5>
+            <strong>Role: </strong>
+            <select id="{id_prefix}-role" class="select-role">
+              <option value="none" selected="true">None</option>
+              <option value="dps">DPS</option>
+              <option value="tank">Tank</option>
+              <option value="healer">Healer</option>
+            </select>
+            <br/>
+            {>qlbuttons id_suffix=""/}
+            <div>
+              <table id="{id_prefix}-glyphs" class="table table-glyphs">
               <tr><td>Primary Glyph</td>
-              <td><select>
-                <option selected="true">None</option>
-                <option>Critical Rating</option>
-                <option>Critical Power</option>
-                <option>Penetration Rating</option>
-                <option>Hit Rating</option>
-                <option>Block Rating</option>
-                <option>Defense Rating</option>
-                <option>Physical Protection</option>
-                <option>Magical Protection</option>
+              <td><select id="{id_prefix}-primary-glyph" class="select-glyph">
+                <option value="none" selected="true">None</option>
+                <option value="critical-rating">Critical Rating</option>
+                <option value="critical-power">Critical Power</option>
+                <option value="penetration-rating">Penetration Rating</option>
+                <option value="hit-rating">Hit Rating</option>
+                <option value="block-rating">Block Rating</option>
+                <option value="defense-rating">Defense Rating</option>
+                <option value="physical-protection">Physical Protection</option>
+                <option value="magical-protection">Magical Protection</option>
               </select></td>
-              <td>QL: 1 2 3 4 5</td></tr>
+              <td>{>qlbuttons id_suffix="-primary-glyph"/}</td><td>0</td></tr>
             
               <tr><td>Secondary Glyph</td>
-              <td><select>
-                <option selected="true">None</option>
-                <option>Critical Rating</option>
-                <option>Critical Power</option>
-                <option>Penetration Rating</option>
-                <option>Hit Rating</option>
-                <option>Block Rating</option>
-                <option>Defense Rating</option>
-                <option>Physical Protection</option>
-                <option>Magical Protection</option>
+              <td><select id="{id_prefix}-secondary-glyph" class="select-glyph">
+                <option value="none" selected="true">None</option>
+                <option value="critical-rating">Critical Rating</option>
+                <option value="critical-power">Critical Power</option>
+                <option value="penetration-rating">Penetration Rating</option>
+                <option value="hit-rating">Hit Rating</option>
+                <option value="block-rating">Block Rating</option>
+                <option value="defense-rating">Defense Rating</option>
+                <option value="physical-protection">Physical Protection</option>
+                <option value="magical-protection">Magical Protection</option>
               </select></td>
-              <td>QL: 1 2 3 4 5</td></tr>
+              <td>{>qlbuttons id_suffix="-secondary-glyph"/}</td><td>0</td></tr>
               </table>
             </div>
           </div>  

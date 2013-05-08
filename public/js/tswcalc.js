@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
     render_container(data);
 
     function render_container(data) {

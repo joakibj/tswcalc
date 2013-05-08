@@ -1,0 +1,10 @@
+
+<strong>QL:</strong>
+<div id="{id_prefix}{id_suffix}-ql" class="btn-group qlbuttons">
+  <button class="btn btn-mini btn-danger">0</button>
+  <button class="btn btn-mini btn-danger">1</button>
+  <button class="btn btn-mini btn-danger">2</button>
+  <button class="btn btn-mini btn-danger">3</button>
+  <button class="btn btn-mini btn-danger">4</button>
+  <button class="btn btn-mini btn-danger">5</button>
+</div>

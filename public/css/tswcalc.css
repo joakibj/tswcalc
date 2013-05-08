@@ -2,3 +2,29 @@ body {
   padding-top: 10px;
   padding-bottom: 20px;
 }
+
+.table-glyphs {
+
+}
+
+.table-glyphs td {
+    font-size: 12px;
+    padding: 0px;
+}
+
+.select-glyph {
+    font-size: 12px;
+    width: auto;
+    height:auto;
+}
+
+.select-role {
+    font-size: 12px;
+    width: auto;
+    height:auto;
+}
+
+.qlbuttons {
+    margin-left: 5px;
+    padding: 2px;
+}
