@@ -2,14 +2,17 @@
 {#slots}
           <div id="{id_prefix}-slot" class="slot">
             <h5>{name}</h5>
-            <strong>Role: </strong>
-            <select id="{id_prefix}-role" class="select-role">
-              <option value="none" selected="true">None</option>
-              <option value="dps">DPS</option>
-              <option value="tank">Tank</option>
-              <option value="healer">Healer</option>
-            </select>
-            <br/>
+            {^is_weapon}
+              <strong>Role: </strong>
+              
+              <select id="{id_prefix}-role" class="select-role">
+                <option value="none" selected="true">None</option>
+                <option value="dps">DPS</option>
+                <option value="tank">Tank</option>
+                <option value="healer">Healer</option>
+              </select>
+              <br/>
+            {/is_weapon}
             {>qlbuttons id_suffix=""/}
             <div>
               <table id="{id_prefix}-glyphs" class="table table-glyphs">
