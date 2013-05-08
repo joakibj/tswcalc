@@ -12,6 +12,15 @@ body {
     padding: 0px;
 }
 
+.table-stats {
+
+}
+
+.table-stats td {
+    font-size: 12px;
+    padding: 0px;   
+}
+
 .select-glyph {
     font-size: 12px;
     width: auto;

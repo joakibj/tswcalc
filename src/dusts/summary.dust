@@ -1,46 +1,46 @@
-
+        <div id="summary">
           <h4>Summary</h4>
           <div id="table-primary">
-            <table class="table">
+            <table class="table table-stats">
               <thead>
                 <th>Primary Stat</th>
                 <th>Value</th>
               </thead>
               <tbody>
-                <tr><td>Hitpoints</td><td>0</td></tr>
-                <tr><td>Attack Rating</td><td>0</td></tr>
-                <tr><td>Heal Rating</td><td>0</td></tr>
+                <tr><td id="stat-hitpoints">Hitpoints</td><td>0</td></tr>
+                <tr><td id="stat-attack-rating">Attack Rating</td><td>0</td></tr>
+                <tr><td id="stat-heal-rating">Heal Rating</td><td>0</td></tr>
               </tbody>
             </table>
           </div>
           <hr/>
           <div id="table-offensive">
-            <table class="table">
+            <table class="table table-stats">
               <thead>
                 <th>Offensive Stat</th>
                 <th>Value</th>
               </thead>
               <tbody>
-                <tr><td>Critical Rating</td><td>0</td></tr>
-                <tr><td>Critical Power</td><td>0</td></tr>
-                <tr><td>Penetration Rating</td><td>0</td></tr>
-                <tr><td>Hit Rating</td><td>0</td></tr>
+                <tr><td id="stat-critical-rating">Critical Rating</td><td>0</td></tr>
+                <tr><td id="stat-critical-power">Critical Power</td><td>0</td></tr>
+                <tr><td id="stat-penetration-rating">Penetration Rating</td><td>0</td></tr>
+                <tr><td id="stat-hit-rating">Hit Rating</td><td>0</td></tr>
               </tbody>
             </table>
           </div>
           <hr/>
           <div id="table-defensive">
-            <table class="table">
+            <table class="table table-stats">
               <thead>
                 <th>Defensive Stat</th>
                 <th>Value</th>
               </thead>
               <tbody>
-                <tr><td>Block Rating</td><td>0</td></tr>
-                <tr><td>Defense Rating</td><td>0</td></tr>
-                <tr><td>Physical Protection</td><td>0</td></tr>
-                <tr><td>Magical Protection</td><td>0</td></tr>
+                <tr><td id="stat-block-rating">Block Rating</td><td>0</td></tr>
+                <tr><td id="stat-defense-rating">Defense Rating</td><td>0</td></tr>
+                <tr><td id="stat-physical-rating">Physical Protection</td><td>0</td></tr>
+                <tr><td id="stat-magical-rating">Magical Protection</td><td>0</td></tr>
               </tbody>
             </table>
           </div>
-          
+        </div>
