@@ -16,7 +16,7 @@
             {>qlbuttons id_suffix=""/}
             <div>
               <table id="{id_prefix}-glyphs" class="table table-glyphs">
-              <tr><td>Primary Glyph</td>
+              <tr><td>Primary Stat</td>
               <td><select id="{id_prefix}-primary-glyph" class="select-glyph">
                 <option value="none" selected="true">None</option>
                 <option value="critical-rating">Critical Rating</option>
@@ -30,7 +30,7 @@
               </select></td>
               <td>{>qlbuttons id_suffix="-primary-glyph"/}</td><td>0</td></tr>
             
-              <tr><td>Secondary Glyph</td>
+              <tr><td>Secondary Stat</td>
               <td><select id="{id_prefix}-secondary-glyph" class="select-glyph">
                 <option value="none" selected="true">None</option>
                 <option value="critical-rating">Critical Rating</option>
