@@ -8,20 +8,29 @@ var output_path = "./public/js/dusts/"; // directory where the compiled .js file
 var fs = require('fs');
 var dust = require('dustjs-linkedin');
 var watch = require('watch');
+var path = require('path');
 
-function compile_dust(path, curr, prev) {
-  fs.readFile(path, function(err, data) {
+function compile_dust(filename, curr, prev) {
+  fs.readFile(filename, function(err, data) {
     if (err) throw err;
 
-    var filename = path.split("\\").reverse()[0].replace(".dust", "");
-    var filepath = output_path + filename + ".js";
-    var compiled = dust.compile(new String(data), filename);
+    var basename = path.basename(filename, '.dust');
+    var filepath = output_path + basename + ".js";
+    var compiled = dust.compile(new String(data), basename);
 
     fs.writeFile(filepath, compiled, function(err) {
       if (err) throw err;
       console.log('Saved ' + filepath);
     });
   });
+}
+
+console.log("Recompiling dusts...");
+files = fs.readdirSync(input_path);
+for(var i = 0; i < files.length; i++) {
+  filename = input_path + files[i];
+  console.log("recompile: " + filename);
+  compile_dust(filename, null, null);
 }
 
 watch.createMonitor(input_path, function (monitor) {
