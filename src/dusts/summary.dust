@@ -1,0 +1,46 @@
+
+          <h4>Summary</h4>
+          <div id="table-primary">
+            <table class="table">
+              <thead>
+                <th>Primary Stat</th>
+                <th>Value</th>
+              </thead>
+              <tbody>
+                <tr><td>Hitpoints</td><td>0</td></tr>
+                <tr><td>Attack Rating</td><td>0</td></tr>
+                <tr><td>Heal Rating</td><td>0</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <hr/>
+          <div id="table-offensive">
+            <table class="table">
+              <thead>
+                <th>Offensive Stat</th>
+                <th>Value</th>
+              </thead>
+              <tbody>
+                <tr><td>Critical Rating</td><td>0</td></tr>
+                <tr><td>Critical Power</td><td>0</td></tr>
+                <tr><td>Penetration Rating</td><td>0</td></tr>
+                <tr><td>Hit Rating</td><td>0</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <hr/>
+          <div id="table-defensive">
+            <table class="table">
+              <thead>
+                <th>Defensive Stat</th>
+                <th>Value</th>
+              </thead>
+              <tbody>
+                <tr><td>Block Rating</td><td>0</td></tr>
+                <tr><td>Defense Rating</td><td>0</td></tr>
+                <tr><td>Physical Protection</td><td>0</td></tr>
+                <tr><td>Magical Protection</td><td>0</td></tr>
+              </tbody>
+            </table>
+          </div>
+          

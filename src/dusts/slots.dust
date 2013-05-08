@@ -1,0 +1,36 @@
+
+{#slots}
+<div id="{id_prefix}-slot" class="slot">
+            <h5>{name}</h5>
+            Quality Level (QL): 1 2 3 4 5
+            <div id="{id_prefix}-glyphs" class="glyphs">
+              Primary Glyph: QL: 1 2 3 4 5
+              <select>
+                <option selected="true">None</option>
+                <option>Critical Rating</option>
+                <option>Critical Power</option>
+                <option>Penetration Rating</option>
+                <option>Hit Rating</option>
+                <option>Block Rating</option>
+                <option>Defense Rating</option>
+                <option>Physical Protection</option>
+                <option>Magical Protection</option>
+              </select>
+              <br/>
+              Secondary Glyph: QL: 1 2 3 4 5
+              <select>
+                <option selected="true">None</option>
+                <option>Critical Rating</option>
+                <option>Critical Power</option>
+                <option>Penetration Rating</option>
+                <option>Hit Rating</option>
+                <option>Block Rating</option>
+                <option>Defense Rating</option>
+                <option>Physical Protection</option>
+                <option>Magical Protection</option>
+              </select>
+            </div>
+          </div>  
+{:else}
+  <p>No slots found (Bug)!</p>
+{/slots}
