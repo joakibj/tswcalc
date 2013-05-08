@@ -1,7 +1,7 @@
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
           <li class="active"><a href="#">Calculator</a></li>
-          <li><a href="#">Github</a></li>
+          <li><a href="https://github.com/joakibj/tswcalc">Github</a></li>
         </ul>
         <h3 class="muted">tswcalc</h3>
       </div>
