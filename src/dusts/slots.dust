@@ -1,11 +1,11 @@
 
 {#slots}
-<div id="{id_prefix}-slot" class="slot">
-            <h5>{name}</h5>
-            Quality Level (QL): 1 2 3 4 5
-            <div id="{id_prefix}-glyphs" class="glyphs">
-              Primary Glyph: QL: 1 2 3 4 5
-              <select>
+          <div id="{id_prefix}-slot" class="slot">
+            <h5>{name} (QL: 1 2 3 4 5)</h5>
+            <div id="{id_prefix}-glyphs">
+              <table class="table glyphs">
+              <tr><td>Primary Glyph</td>
+              <td><select>
                 <option selected="true">None</option>
                 <option>Critical Rating</option>
                 <option>Critical Power</option>
@@ -15,10 +15,11 @@
                 <option>Defense Rating</option>
                 <option>Physical Protection</option>
                 <option>Magical Protection</option>
-              </select>
-              <br/>
-              Secondary Glyph: QL: 1 2 3 4 5
-              <select>
+              </select></td>
+              <td>QL: 1 2 3 4 5</td></tr>
+            
+              <tr><td>Secondary Glyph</td>
+              <td><select>
                 <option selected="true">None</option>
                 <option>Critical Rating</option>
                 <option>Critical Power</option>
@@ -28,7 +29,9 @@
                 <option>Defense Rating</option>
                 <option>Physical Protection</option>
                 <option>Magical Protection</option>
-              </select>
+              </select></td>
+              <td>QL: 1 2 3 4 5</td></tr>
+              </table>
             </div>
           </div>  
 {:else}
