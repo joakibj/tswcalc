@@ -27,6 +27,7 @@
                 <option value="hit-rating">Hit Rating</option>
                 <option value="block-rating">Block Rating</option>
                 <option value="defense-rating">Defense Rating</option>
+                <option value="evade-rating">Evade Rating</option>
                 <option value="physical-protection">Physical Protection</option>
                 <option value="magical-protection">Magical Protection</option>
               </select></td>
@@ -41,6 +42,7 @@
                 <option value="hit-rating">Hit Rating</option>
                 <option value="block-rating">Block Rating</option>
                 <option value="defense-rating">Defense Rating</option>
+                <option value="evade-rating">Evade Rating</option>
                 <option value="physical-protection">Physical Protection</option>
                 <option value="magical-protection">Magical Protection</option>
               </select></td>

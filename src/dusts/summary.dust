@@ -38,6 +38,7 @@
               <tbody>
                 <tr><td>Block Rating</td><td id="stat-block-rating">0</td></tr>
                 <tr><td>Defense Rating</td><td id="stat-defense-rating">0</td></tr>
+                <tr><td>Evade Rating</td><td id="stat-evade-rating">0</td></tr>
                 <tr><td>Physical Protection</td><td id="stat-physical-rating">0</td></tr>
                 <tr><td>Magical Protection</td><td id="stat-magical-rating">0</td></tr>
               </tbody>
