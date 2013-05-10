@@ -12,6 +12,11 @@ body {
     padding: 0px;
 }
 
+.table-slots td {
+    font-size: 12px;
+    padding: 0px;   
+}
+
 .table-stats {
 
 }
@@ -31,6 +36,12 @@ body {
     font-size: 12px;
     width: auto;
     height:auto;
+}
+
+.select-ql {
+    font-size: 12px;
+    width: auto;
+    height:auto;   
 }
 
 .qlbuttons {

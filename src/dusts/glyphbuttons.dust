@@ -1,4 +1,3 @@
-<strong>Distribution:</strong>
 <div id="{id_prefix}{id_suffix}-dist" class="btn-group glyphbuttons">
   <button id="{id_prefix}{id_suffix}-dist-btn0" class="btn btn-mini btn-danger">0</button>
   <button id="{id_prefix}{id_suffix}-dist-btn1" class="btn btn-mini btn-danger">1</button>

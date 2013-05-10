@@ -1,11 +1,11 @@
 $(document).ready(function() {
 
-    render_container(template_data);
-    start_buttonHandlers();
+    renderContainer(template_data);
+    startHandlers();
     $('#summary').scrollToFixed();
 });
 
-function render_container(data) {
+function renderContainer(data) {
     dust.render("container", template_data,
 
     function(err, out) {
@@ -16,10 +16,12 @@ function render_container(data) {
     });
 }
 
-function start_buttonHandlers() {
+function startHandlers() {
     for (var i = 0; i < template_data.slots.length; i++) {
-        var handler = new ButtonHandler(template_data.slots[i].id_prefix);
-        handler.initiate();
+        var buttonHandler = new ButtonHandler(template_data.slots[i].id_prefix);
+        buttonHandler.initiate();
+        var selectHandler = new SelectHandler(template_data.slots[i].id_prefix);
+        selectHandler.initiate();
     }
 }
 
@@ -28,15 +30,13 @@ function updatePrimaryStats() {
     sumAttackRating = 0;
     sumHealRating = 0;
     for (var i = 0; i < template_data.slots.length; i++) {
-        var role = $('#' + template_data.slots[i].id_prefix + '-role option:selected');
-        var ql = $('#' + template_data.slots[i].id_prefix + '-ql > button.btn.active')[0].innerHTML;
-        selectedValue = role.attr('value');
-        console.log(ql);
-        if (selectedValue == 'dps') {
+        var role = $('#' + template_data.slots[i].id_prefix + '-role option:selected').attr('value');
+        var ql = $('#' + template_data.slots[i].id_prefix + '-ql option:selected').attr('value');
+        if (role == 'dps') {
             sumAttackRating += custom_gear_data[template_data.slots[i].group].heal_dps['ql' + (ql)].rating;
-        } else if (selectedValue == 'healer') {
+        } else if (role == 'healer') {
             sumHealRating += custom_gear_data[template_data.slots[i].group].heal_dps['ql' + (ql)].rating;
-        } else if (selectedValue == 'tank') {
+        } else if (role == 'tank') {
             sumHitPoints += custom_gear_data[template_data.slots[i].group].tank['ql' + (ql)].hitpoints;
         }
     }
@@ -45,22 +45,29 @@ function updatePrimaryStats() {
     $('#stat-heal-rating').text(sumHealRating);
 }
 
+function SelectHandler(slotId) {
+    var slotId = slotId;
+    var self = this;
+
+    this.initiate = function() {
+        this.addListenersToQlSelect(slotId, '');
+        this.addListenersToQlSelect(slotId, '-glyph');
+    };
+
+    this.addListenersToQlSelect = function(id_prefix, id_suffix) {
+        $('#' + id_prefix + id_suffix + '-ql').change(function() {
+            updatePrimaryStats();
+        });
+    };
+}
+
 function ButtonHandler(slotId) {
     var slotId = slotId;
     var self = this;
 
     this.initiate = function() {
-        this.addListenersToSlotQlButtons(slotId);
         this.addListenersToGlyphDistButtons(slotId, 'primary-glyph');
         this.addListenersToGlyphDistButtons(slotId, 'secondary-glyph');
-    };
-
-    this.addListenersToSlotQlButtons = function(id_prefix) {
-        self.onlyActiveButton('#' + slotId + '-ql-btn0');
-        buttons = $('#' + id_prefix + '-ql > button.btn').on('click', function(event) {
-            self.onlyActiveButton('#' + this.id);
-            updatePrimaryStats();
-        });
     };
 
     this.addListenersToGlyphDistButtons = function(id_prefix, glyph) {
@@ -73,7 +80,7 @@ function ButtonHandler(slotId) {
     };
 
     this.balanceGlyphDist = function(button, glyph) {
-        otherActiveButton = $('#' + slotId + '-'+self.getInverseGlyphStat(glyph)+'-dist > button.btn.active');
+        otherActiveButton = $('#' + slotId + '-' + self.getInverseGlyphStat(glyph) + '-dist > button.btn.active');
         self.balanceGlyphDistOverflow(button, otherActiveButton[0]);
     }
 

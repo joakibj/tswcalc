@@ -1,20 +1,23 @@
 
 {#slots}
           <div id="{id_prefix}-slot" class="slot">
-            <h5 class="slot">{name}</h5> ({>qlbuttons id_suffix=""/})
+            <h5 class="slot">{name}</h5> 
+            <table class="table table-slots">
             {^is_weapon}
-              <br/>
-              <strong>Role: </strong>
-              
+              <tr><td>
+              <strong>Role: </strong></td><td>
               <select id="{id_prefix}-role" class="select-role">
                 <option value="none" selected="true">None</option>
                 <option value="dps">DPS</option>
                 <option value="tank">Tank</option>
                 <option value="healer">Healer</option>
-              </select>
+              </select></td></tr>
             {/is_weapon}
+            <tr><td><strong>QL:</strong></td><td>{>qlselect id_suffix=""/}</td></tr>
+            </table>
             <div>
               <table id="{id_prefix}-glyphs" class="table table-glyphs">
+              <tr><td><strong>Glyph QL</strong></td><td>{>qlselect id_suffix="-glyph"/}</td></tr>
               <tr><td>Glyph Primary Stat</td>
               <td><select id="{id_prefix}-primary-glyph" class="select-glyph">
                 <option value="none" selected="true">None</option>
@@ -27,7 +30,7 @@
                 <option value="physical-protection">Physical Protection</option>
                 <option value="magical-protection">Magical Protection</option>
               </select></td>
-              <td>{>glyphbuttons id_suffix="-primary-glyph"/}</td><td>0</td></tr>
+              <td><strong>Distribution:</strong> {>glyphbuttons id_suffix="-primary-glyph"/}</td><td>0</td></tr>
             
               <tr><td>Glyph Secondary Stat</td>
               <td><select id="{id_prefix}-secondary-glyph" class="select-glyph">
@@ -41,7 +44,7 @@
                 <option value="physical-protection">Physical Protection</option>
                 <option value="magical-protection">Magical Protection</option>
               </select></td>
-              <td>{>glyphbuttons id_suffix="-secondary-glyph"/}</td><td>0</td></tr>
+              <td><strong>Distribution:</strong> {>glyphbuttons id_suffix="-secondary-glyph"/}</td><td>0</td></tr>
               </table>
             </div>
           </div>  
