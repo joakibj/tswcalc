@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
     renderContainer(template_data);
     startHandlers();
     $('#summary').scrollToFixed();
@@ -8,12 +7,12 @@ $(document).ready(function() {
 function renderContainer(data) {
     dust.render("container", template_data,
 
-    function(err, out) {
-        if (err) {
-            console.log(err);
-        }
-        $('.container').html(out);
-    });
+        function(err, out) {
+            if (err) {
+                console.log(err);
+            }
+            $('.container').html(out);
+        });
 }
 
 function startHandlers() {
@@ -50,8 +49,15 @@ function SelectHandler(slotId) {
     var self = this;
 
     this.initiate = function() {
-        this.addListenersToQlSelect(slotId, '');
-        this.addListenersToQlSelect(slotId, '-glyph');
+        self.addListenersToRoleSelect(slotId);
+        self.addListenersToQlSelect(slotId, '');
+        self.addListenersToQlSelect(slotId, '-glyph');
+    };
+
+    this.addListenersToRoleSelect = function(id_prefix) {
+        $('#' + id_prefix +'-role').change(function() {
+            updatePrimaryStats();
+        });
     };
 
     this.addListenersToQlSelect = function(id_prefix, id_suffix) {
