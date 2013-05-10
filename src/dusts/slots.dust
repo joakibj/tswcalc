@@ -1,8 +1,9 @@
 
 {#slots}
           <div id="{id_prefix}-slot" class="slot">
-            <h5>{name}</h5>
+            <h5 class="slot">{name}</h5> ({>qlbuttons id_suffix=""/})
             {^is_weapon}
+              <br/>
               <strong>Role: </strong>
               
               <select id="{id_prefix}-role" class="select-role">
@@ -11,12 +12,10 @@
                 <option value="tank">Tank</option>
                 <option value="healer">Healer</option>
               </select>
-              <br/>
             {/is_weapon}
-            {>qlbuttons id_suffix=""/}
             <div>
               <table id="{id_prefix}-glyphs" class="table table-glyphs">
-              <tr><td>Primary Stat</td>
+              <tr><td>Glyph Primary Stat</td>
               <td><select id="{id_prefix}-primary-glyph" class="select-glyph">
                 <option value="none" selected="true">None</option>
                 <option value="critical-rating">Critical Rating</option>
@@ -28,9 +27,9 @@
                 <option value="physical-protection">Physical Protection</option>
                 <option value="magical-protection">Magical Protection</option>
               </select></td>
-              <td>{>qlbuttons id_suffix="-primary-glyph"/}</td><td>0</td></tr>
+              <td>{>glyphbuttons id_suffix="-primary-glyph"/}</td><td>0</td></tr>
             
-              <tr><td>Secondary Stat</td>
+              <tr><td>Glyph Secondary Stat</td>
               <td><select id="{id_prefix}-secondary-glyph" class="select-glyph">
                 <option value="none" selected="true">None</option>
                 <option value="critical-rating">Critical Rating</option>
@@ -42,7 +41,7 @@
                 <option value="physical-protection">Physical Protection</option>
                 <option value="magical-protection">Magical Protection</option>
               </select></td>
-              <td>{>qlbuttons id_suffix="-secondary-glyph"/}</td><td>0</td></tr>
+              <td>{>glyphbuttons id_suffix="-secondary-glyph"/}</td><td>0</td></tr>
               </table>
             </div>
           </div>  
