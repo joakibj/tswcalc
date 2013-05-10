@@ -38,6 +38,11 @@ body {
     padding: 2px;
 }
 
+.glyphbuttons {
+    margin-left: 5px;
+    padding: 2px;
+}
+
 .slot {
     display: inline;
 }

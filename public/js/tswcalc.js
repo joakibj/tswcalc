@@ -51,8 +51,8 @@ function ButtonHandler(slotId) {
 
     this.initiate = function() {
         this.addListenersToSlotQlButtons(slotId);
-        this.addListenersToGlyphQlButtons(slotId, 'primary-glyph');
-        this.addListenersToGlyphQlButtons(slotId, 'secondary-glyph');
+        this.addListenersToGlyphDistButtons(slotId, 'primary-glyph');
+        this.addListenersToGlyphDistButtons(slotId, 'secondary-glyph');
     };
 
     this.addListenersToSlotQlButtons = function(id_prefix) {
@@ -63,36 +63,28 @@ function ButtonHandler(slotId) {
         });
     };
 
-    this.addListenersToGlyphQlButtons = function(id_prefix, glyph) {
-        self.onlyActiveButton('#' + slotId + '-primary-glyph-ql-btn0');
-        self.onlyActiveButton('#' + slotId + '-secondary-glyph-ql-btn0');
-        buttons = $('#' + id_prefix + '-' + glyph + '-ql > button.btn').on('click', function(event) {
+    this.addListenersToGlyphDistButtons = function(id_prefix, glyph) {
+        self.onlyActiveButton('#' + slotId + '-primary-glyph-dist-btn0');
+        self.onlyActiveButton('#' + slotId + '-secondary-glyph-dist-btn0');
+        buttons = $('#' + id_prefix + '-' + glyph + '-dist > button.btn').on('click', function(event) {
             self.onlyActiveButton('#' + this.id);
-            self.balanceGlyphQl(this, glyph);
+            self.balanceGlyphDist(this, glyph);
         });
     };
 
-    //TODO: Refactor this! Also: Bugs.
-    this.balanceGlyphQl = function(button, glyph) {
-        if (glyph == 'primary-glyph') {
-            primaryGlyphQl = parseInt(button.innerHTML);
-            activeSecondaryGlyph = $('#' + slotId + '-secondary-glyph-ql > button.btn.active');
-            if ($(activeSecondaryGlyph).length > 0) {
-                secondaryGlyphQl = parseInt(activeSecondaryGlyph[0].innerHTML);
-                if (primaryGlyphQl + secondaryGlyphQl > 5) {
-                    oneLowerQlId = activeSecondaryGlyph[0].id.substring(0, activeSecondaryGlyph[0].id.length - 1) + (secondaryGlyphQl - (primaryGlyphQl + secondaryGlyphQl - 5));
-                    self.onlyActiveButton('#' + oneLowerQlId);
-                }
-            }
-        } else {
-            secondaryGlyphQl = parseInt(button.innerHTML);
-            activePrimaryGlyph = $('#' + slotId + '-primary-glyph-ql > button.btn.active');
-            if ($(activePrimaryGlyph).length > 0) {
-                primaryGlyphQl = parseInt(activePrimaryGlyph[0].innerHTML);
-                if (primaryGlyphQl + secondaryGlyphQl > 5) {
-                    oneLowerQlId = activePrimaryGlyph[0].id.substring(0, activePrimaryGlyph[0].id.length - 1) + +(secondaryGlyphQl - (primaryGlyphQl + secondaryGlyphQl - 5));
-                    self.onlyActiveButton('#' + oneLowerQlId);
-                }
+    this.balanceGlyphDist = function(button, glyph) {
+        otherActiveButton = $('#' + slotId + '-'+self.getInverseGlyphStat(glyph)+'-dist > button.btn.active');
+        self.balanceGlyphDistOverflow(button, otherActiveButton[0]);
+    }
+
+    this.balanceGlyphDistOverflow = function(clickedButton, otherButton) {
+        if (otherButton != null) {
+            clickedDist = parseInt(clickedButton.innerHTML);
+            otherDist = parseInt(otherButton.innerHTML);
+            sumBothDist = clickedDist + otherDist;
+            if ((sumBothDist) > 4) {
+                otherDistLoweredByOne = otherButton.id.substring(0, otherButton.id.length - 1) + (otherDist - (sumBothDist - 4));
+                self.onlyActiveButton('#' + otherDistLoweredByOne);
             }
         }
     }
@@ -103,4 +95,8 @@ function ButtonHandler(slotId) {
         $(id).addClass('active');
         $(id).addClass('btn-success');
     };
+
+    this.getInverseGlyphStat = function(glyph) {
+        return glyph == 'primary-glyph' ? 'secondary-glyph' : 'primary-glyph';
+    }
 }
