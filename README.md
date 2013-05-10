@@ -18,13 +18,18 @@ To build, you need:
 node.js comes included with `npm`, the node package manager.
 
 Then run:
+
     npm install linkedin-dustjs
+
     npm install watch
+
 
 Create the directory: `./public/js/dusts/`
 
 Build the *.dust templates by running: 
-    node duster.js`
+
+    node duster.js
+
 
 This will monitor changes to the .dust templates and compile them.
 
