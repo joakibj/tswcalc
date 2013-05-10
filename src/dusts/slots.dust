@@ -31,7 +31,8 @@
                 <option value="physical-protection">Physical Protection</option>
                 <option value="magical-protection">Magical Protection</option>
               </select></td>
-              <td><strong>Distribution:</strong> {>glyphbuttons id_suffix="-primary-glyph"/}</td><td>0</td></tr>
+              <td><strong>Distribution:</strong> {>glyphbuttons id_suffix="-primary-glyph"/}</td>
+              <td id="{id_prefix}-primary-glyph-value" class="statvalue">0</td></tr>
             
               <tr><td>Glyph Secondary Stat</td>
               <td><select id="{id_prefix}-secondary-glyph" class="select-glyph">
@@ -46,7 +47,8 @@
                 <option value="physical-protection">Physical Protection</option>
                 <option value="magical-protection">Magical Protection</option>
               </select></td>
-              <td><strong>Distribution:</strong> {>glyphbuttons id_suffix="-secondary-glyph"/}</td><td>0</td></tr>
+              <td><strong>Distribution:</strong> {>glyphbuttons id_suffix="-secondary-glyph"/}</td>
+              <td id="{id_prefix}-secondary-glyph-value" class="statvalue">0</td></tr>
               </table>
             </div>
           </div>  

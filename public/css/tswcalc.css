@@ -17,6 +17,12 @@ body {
     padding: 0px;   
 }
 
+.statvalue {
+    font-weight: bold;
+    color: green;
+    min-width: 50px;
+}
+
 .table-stats {
 
 }

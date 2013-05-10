@@ -7,12 +7,12 @@ $(document).ready(function() {
 function renderContainer(data) {
     dust.render("container", template_data,
 
-        function(err, out) {
-            if (err) {
-                console.log(err);
-            }
-            $('.container').html(out);
-        });
+    function(err, out) {
+        if (err) {
+            console.log(err);
+        }
+        $('.container').html(out);
+    });
 }
 
 function startHandlers() {
@@ -44,6 +44,56 @@ function updatePrimaryStats() {
     $('#stat-heal-rating').text(sumHealRating);
 }
 
+function updateOffensiveDefensiveStats() {
+    sums = {
+        'critical-rating': 0,
+        'critical-power': 0,
+        'penetration-rating': 0,
+        'hit-rating': 0,
+        'block-rating': 0,
+        'defense-rating': 0,
+        'evade-rating': 0,
+        'physical-protection': 0,
+        'magical-protection': 0
+    };
+    for (var i = 0; i < template_data.slots.length; i++) {
+        var glyphQl = $('#' + template_data.slots[i].id_prefix + '-glyph-ql option:selected').attr('value');
+        var primaryGlyph = $('#' + template_data.slots[i].id_prefix + '-primary-glyph option:selected').attr('value');
+        var secondaryGlyph = $('#' + template_data.slots[i].id_prefix + '-secondary-glyph option:selected').attr('value');
+
+        if (primaryGlyph != "none" || secondaryGlyph != "none") {
+            var primaryDist = $('#' + template_data.slots[i].id_prefix + '-primary-glyph-dist > button.btn.active')[0].innerHTML;
+            var secondaryDist = $('#' + template_data.slots[i].id_prefix + '-secondary-glyph-dist > button.btn.active')[0].innerHTML;
+
+            if (primaryDist != null || secondaryDist != null) {
+                var primaryValue = 0;
+                var secondaryValue = 0;
+                if (primaryGlyph != "none") {
+                    primaryValue = glyph_data.stat[primaryGlyph].ql[glyphQl].slot[template_data.slots[i].group].dist[primaryDist];
+                    sums[primaryGlyph] += primaryValue;
+                    $('#' + template_data.slots[i].id_prefix + '-primary-glyph-value').html('+' + primaryValue);
+                }
+                if (secondaryGlyph != "none") {
+                    secondaryValue = glyph_data.stat[secondaryGlyph].ql[glyphQl].slot[template_data.slots[i].group].dist[secondaryDist];
+                    sums[secondaryGlyph] += secondaryValue;
+                    $('#' + template_data.slots[i].id_prefix + '-secondary-glyph-value').html('+' + secondaryValue);
+                }
+
+            }
+        }
+    }
+    console.log(sums);
+    for (var stat in sums) {
+        if (sums.hasOwnProperty(stat)) {
+            if (sums[stat] > 0) {
+                $('#stat-' + stat).html('+' + sums[stat]);
+            } else {
+                $('#stat-' + stat).html("0");
+            }
+        }
+    }
+};
+
 function SelectHandler(slotId) {
     var slotId = slotId;
     var self = this;
@@ -51,11 +101,13 @@ function SelectHandler(slotId) {
     this.initiate = function() {
         self.addListenersToRoleSelect(slotId);
         self.addListenersToQlSelect(slotId, '');
-        self.addListenersToQlSelect(slotId, '-glyph');
+        self.addListenersToGlyphSelect(slotId, 'glyph-ql');
+        self.addListenersToGlyphSelect(slotId, 'primary-glyph');
+        self.addListenersToGlyphSelect(slotId, 'secondary-glyph');
     };
 
     this.addListenersToRoleSelect = function(id_prefix) {
-        $('#' + id_prefix +'-role').change(function() {
+        $('#' + id_prefix + '-role').change(function() {
             updatePrimaryStats();
         });
     };
@@ -63,6 +115,12 @@ function SelectHandler(slotId) {
     this.addListenersToQlSelect = function(id_prefix, id_suffix) {
         $('#' + id_prefix + id_suffix + '-ql').change(function() {
             updatePrimaryStats();
+        });
+    };
+
+    this.addListenersToGlyphSelect = function(id_prefix, id_suffix) {
+        $('#' + id_prefix + '-' + id_suffix).change(function() {
+            updateOffensiveDefensiveStats();
         });
     };
 }
@@ -82,6 +140,7 @@ function ButtonHandler(slotId) {
         buttons = $('#' + id_prefix + '-' + glyph + '-dist > button.btn').on('click', function(event) {
             self.onlyActiveButton('#' + this.id);
             self.balanceGlyphDist(this, glyph);
+            updateOffensiveDefensiveStats();
         });
     };
 
