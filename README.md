@@ -43,4 +43,4 @@ Open index.html to view.
 
 License
 -------
-TODO
+Please refer to the LICENSE file.
