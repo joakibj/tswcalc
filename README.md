@@ -9,29 +9,30 @@ tswcalc can be found at: TODO
 
 Building
 --------
-tswcalc uses dustjs (linkedin-dustjs fork) as a client-side template engine.
+tswcalc uses [grunt](http://gruntjs.com/) to build and dustjs (linkedin-dustjs fork) as a client-side template engine.
 
-To build, you need:
-* node.js
+The tools needed to build are:
+* [node.js](http://nodejs.org/)
 * npm
+* grunt
 
 node.js comes included with `npm`, the node package manager.
 
 Then run:
 
-    npm install linkedin-dustjs
+    npm install
 
-    npm install watch
+This should install the `node` dependencies that tswcalc needs.
 
+Build tswcalc by running:
 
-Create the directory: `./public/js/dusts/`
+    grunt
 
-Build the *.dust templates by running: 
+When developing, use:
+    
+    grunt watch
 
-    node duster.js
-
-
-This will monitor changes to the .dust templates and compile them.
+This will monitor changes to files in the `src` folder, compile (if needed), concatenate and uglify them.
 
 Open index.html to view.
 
