@@ -21,13 +21,10 @@ module.exports = function(grunt) {
     },
     concat: {
       options: {
-        // define a string to put between each file in the concatenated output
         separator: ';'
       },
       dist: {
-        // the files to concatenate
         src: ['dist/templates/dusts/*.js', 'src/javascript/<%= pkg.name %>.js'],
-        // the location of the resulting JS file
         dest: 'dist/js/<%= pkg.name %>.js'
       }
     },
