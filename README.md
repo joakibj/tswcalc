@@ -21,11 +21,13 @@ The tools needed to build are:
 
 node.js comes included with `npm`, the node package manager.
 
-Then run:
+Install grunt globally:
+
+    npm install -g grunt-cli
+
+Install tswcalc dependencies, defined in `package.json`:
 
     npm install
-
-This should install the `node` dependencies that tswcalc needs, defined in `package.json`.
 
 Build tswcalc by running:
 
