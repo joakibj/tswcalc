@@ -1,2 +1,4 @@
-public/js/dusts
+dist
+public/js/tswcalc.min.js
+public/js/tswcalc-data.min.js
 node_modules
