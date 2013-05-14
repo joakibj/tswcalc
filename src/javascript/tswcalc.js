@@ -27,6 +27,7 @@ function resetButton() {
 
 function resetSlot(slotId) {
     $('#' + slotId + '-ql').val('10.0');
+    $('#' + slotId + '-role').val('none');
     $('#' + slotId + '-glyph-ql').val('10.0');
     $('#' + slotId + '-primary-glyph').val('none');
     $('#' + slotId + '-secondary-glyph').val('none');
