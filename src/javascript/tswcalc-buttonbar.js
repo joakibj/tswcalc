@@ -15,8 +15,7 @@ function ButtonBar() {
             for (var i = 0; i < template_data.slots.length; i++) {
                 self.setRoleOnSlot(role, template_data.slots[i].id_prefix);
             }
-            summary.updatePrimaryStats();
-            summary.updateOffensiveDefensiveStats();
+            summary.updateAllStats();
         });
     };
 
@@ -31,8 +30,7 @@ function ButtonBar() {
                 self.setQlOnSlot(ql, template_data.slots[i].id_prefix);
                 self.setGlyphQlOnSlot(ql, template_data.slots[i].id_prefix);
             }
-            summary.updatePrimaryStats();
-            summary.updateOffensiveDefensiveStats();
+            summary.updateAllStats();
         });
     }
 
@@ -50,8 +48,7 @@ function ButtonBar() {
             for (var i = 0; i < template_data.slots.length; i++) {
                 self.resetAllInput(template_data.slots[i].id_prefix);
             }
-            summary.updatePrimaryStats();
-            summary.updateOffensiveDefensiveStats();
+            summary.updateAllStats();
         });
     };
 

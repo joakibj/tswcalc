@@ -1,5 +1,21 @@
 function Summary() {
     var self = this;
+    var sums = {
+        'critical-rating': 0,
+        'critical-power': 0,
+        'penetration-rating': 0,
+        'hit-rating': 0,
+        'block-rating': 0,
+        'defense-rating': 0,
+        'evade-rating': 0,
+        'physical-protection': 0,
+        'magical-protection': 0
+    };
+
+    this.updateAllStats = function() {
+        self.updatePrimaryStats();
+        self.updateOffensiveDefensiveStats();
+    };
 
     this.updatePrimaryStats = function() {
         var sumHitPoints = 0;
@@ -22,17 +38,6 @@ function Summary() {
     }
 
     this.updateOffensiveDefensiveStats = function() {
-        var sums = {
-            'critical-rating': 0,
-            'critical-power': 0,
-            'penetration-rating': 0,
-            'hit-rating': 0,
-            'block-rating': 0,
-            'defense-rating': 0,
-            'evade-rating': 0,
-            'physical-protection': 0,
-            'magical-protection': 0
-        };
         for (var i = 0; i < template_data.slots.length; i++) {
             var glyphQl = $('#' + template_data.slots[i].id_prefix + '-glyph-ql option:selected').attr('value');
             var primaryGlyph = $('#' + template_data.slots[i].id_prefix + '-primary-glyph option:selected').attr('value');
@@ -47,14 +52,14 @@ function Summary() {
                     var secondaryValue = 0;
                     if (primaryGlyph != "none") {
                         primaryValue = glyph_data.stat[primaryGlyph].ql[glyphQl].slot[template_data.slots[i].group].dist[primaryDist];
-                        sums[primaryGlyph] += primaryValue;
+                        self.sums[primaryGlyph] += primaryValue;
                         $('#' + template_data.slots[i].id_prefix + '-primary-glyph-value').html('+' + primaryValue);
                     } else {
                         $('#' + template_data.slots[i].id_prefix + '-primary-glyph-value').html('0');
                     }
                     if (secondaryGlyph != "none") {
                         secondaryValue = glyph_data.stat[secondaryGlyph].ql[glyphQl].slot[template_data.slots[i].group].dist[secondaryDist];
-                        sums[secondaryGlyph] += secondaryValue;
+                        self.sums[secondaryGlyph] += secondaryValue;
                         $('#' + template_data.slots[i].id_prefix + '-secondary-glyph-value').html('+' + secondaryValue);
                     } else {
                         $('#' + template_data.slots[i].id_prefix + '-secondary-glyph-value').html('0');
@@ -66,11 +71,11 @@ function Summary() {
                 $('#' + template_data.slots[i].id_prefix + '-secondary-glyph-value').html('0');
             }
         }
-        console.log(sums);
-        for (var stat in sums) {
-            if (sums.hasOwnProperty(stat)) {
-                if (sums[stat] > 0) {
-                    $('#stat-' + stat).html('+' + sums[stat]);
+        console.log(self.sums);
+        for (var stat in self.sums) {
+            if (self.sums.hasOwnProperty(stat)) {
+                if (self.sums[stat] > 0) {
+                    $('#stat-' + stat).html('+' + self.sums[stat]);
                 } else {
                     $('#stat-' + stat).html("0");
                 }
