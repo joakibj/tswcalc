@@ -5,7 +5,7 @@ $(document).ready(function() {
 });
 
 function renderContainer(data) {
-    dust.render("container", template_data,
+    dust.render('container', template_data,
 
     function(err, out) {
         if (err) {
