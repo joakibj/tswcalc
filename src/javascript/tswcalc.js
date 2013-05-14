@@ -36,17 +36,34 @@ function resetSlot(slotId) {
 };
 
 function addAllRoleListenerToButton(role) {
-  $('#btn-all-'+role).on('click', function(event) {
+    $('#btn-all-' + role).on('click', function(event) {
         for (var i = 0; i < template_data.slots.length; i++) {
             setRole(template_data.slots[i].id_prefix, role);
         }
         updatePrimaryStats();
         updateOffensiveDefensiveStats();
-    });  
+    });
+};
+
+function addAllQlListenerToButton(ql) {
+    qlid = ql.replace('.', '-');
+    $('#btn-all-' + qlid).on('click', function(event) {
+        for (var i = 0; i < template_data.slots.length; i++) {
+            setQl(template_data.slots[i].id_prefix, ql);
+        }
+        updatePrimaryStats();
+        updateOffensiveDefensiveStats();
+    });
+}
+
+function setQl(slotId, ql) {
+    $('#' + slotId + '-ql').val(ql);
+    $('#' + slotId + '-glyph-ql').val(ql);
+    $('#' + slotId + '-primary-glyph-dist-btn4').trigger('click');
 };
 
 function setRole(slotId, role) {
-    $('#'+slotId+'-role').val(role);
+    $('#' + slotId + '-role').val(role);
 };
 
 function startHandlers() {
@@ -60,6 +77,8 @@ function startHandlers() {
     addAllRoleListenerToButton('dps');
     addAllRoleListenerToButton('healer');
     addAllRoleListenerToButton('tank');
+    addAllQlListenerToButton('10.4');
+    addAllQlListenerToButton('10.5');
 }
 
 function updatePrimaryStats() {
