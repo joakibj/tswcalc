@@ -24,7 +24,7 @@ module.exports = function(grunt) {
         separator: ';'
       },
       dist: {
-        src: ['dist/templates/dusts/*.js', 'src/javascript/<%= pkg.name %>.js'],
+        src: ['dist/templates/dusts/*.js', 'src/javascript/<%= pkg.name %>*.js'],
         dest: 'dist/js/<%= pkg.name %>.js'
       }
     },
