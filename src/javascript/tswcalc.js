@@ -34,6 +34,20 @@ function resetSlot(slotId) {
     $('#' + slotId + '-secondary-glyph-dist-btn0').trigger('click');
 };
 
+function addAllRoleListenerToButton(role) {
+  $('#btn-all-'+role).on('click', function(event) {
+        for (var i = 0; i < template_data.slots.length; i++) {
+            setRole(template_data.slots[i].id_prefix, role);
+        }
+        updatePrimaryStats();
+        updateOffensiveDefensiveStats();
+    });  
+};
+
+function setRole(slotId, role) {
+    $('#'+slotId+'-role').val(role);
+};
+
 function startHandlers() {
     for (var i = 0; i < template_data.slots.length; i++) {
         var buttonHandler = new ButtonHandler(template_data.slots[i].id_prefix);
@@ -42,6 +56,9 @@ function startHandlers() {
         selectHandler.initiate();
     }
     resetButton();
+    addAllRoleListenerToButton('dps');
+    addAllRoleListenerToButton('healer');
+    addAllRoleListenerToButton('tank');
 }
 
 function updatePrimaryStats() {
