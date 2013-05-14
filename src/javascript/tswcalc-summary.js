@@ -1,6 +1,5 @@
 function Summary() {
-    var self = this;
-    var sums = {
+    this.sums = {
         'critical-rating': 0,
         'critical-power': 0,
         'penetration-rating': 0,
@@ -11,6 +10,7 @@ function Summary() {
         'physical-protection': 0,
         'magical-protection': 0
     };
+    self = this;
 
     this.updateAllStats = function() {
         self.updatePrimaryStats();
