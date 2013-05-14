@@ -71,7 +71,10 @@ function Summary() {
                 $('#' + template_data.slots[i].id_prefix + '-secondary-glyph-value').html('0');
             }
         }
-        console.log(self.sums);
+        self.updateStats();
+    };
+
+    this.updateStats = function() {
         for (var stat in self.sums) {
             if (self.sums.hasOwnProperty(stat)) {
                 if (self.sums[stat] > 0) {
