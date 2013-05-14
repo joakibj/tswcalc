@@ -15,6 +15,25 @@ function renderContainer(data) {
     });
 }
 
+function resetButton() {
+    $('#btn-reset').on('click', function(event) {
+        for (var i = 0; i < template_data.slots.length; i++) {
+            resetSlot(template_data.slots[i].id_prefix);
+        }
+        updatePrimaryStats();
+        updateOffensiveDefensiveStats();
+    });
+};
+
+function resetSlot(slotId) {
+    $('#' + slotId + '-ql').val('10.0');
+    $('#' + slotId + '-glyph-ql').val('10.0');
+    $('#' + slotId + '-primary-glyph').val('none');
+    $('#' + slotId + '-secondary-glyph').val('none');
+    $('#' + slotId + '-primary-glyph-dist-btn0').trigger('click');
+    $('#' + slotId + '-secondary-glyph-dist-btn0').trigger('click');
+};
+
 function startHandlers() {
     for (var i = 0; i < template_data.slots.length; i++) {
         var buttonHandler = new ButtonHandler(template_data.slots[i].id_prefix);
@@ -22,6 +41,7 @@ function startHandlers() {
         var selectHandler = new SelectHandler(template_data.slots[i].id_prefix);
         selectHandler.initiate();
     }
+    resetButton();
 }
 
 function updatePrimaryStats() {
@@ -72,14 +92,21 @@ function updateOffensiveDefensiveStats() {
                     primaryValue = glyph_data.stat[primaryGlyph].ql[glyphQl].slot[template_data.slots[i].group].dist[primaryDist];
                     sums[primaryGlyph] += primaryValue;
                     $('#' + template_data.slots[i].id_prefix + '-primary-glyph-value').html('+' + primaryValue);
+                } else {
+                    $('#' + template_data.slots[i].id_prefix + '-primary-glyph-value').html('0');
                 }
                 if (secondaryGlyph != "none") {
                     secondaryValue = glyph_data.stat[secondaryGlyph].ql[glyphQl].slot[template_data.slots[i].group].dist[secondaryDist];
                     sums[secondaryGlyph] += secondaryValue;
                     $('#' + template_data.slots[i].id_prefix + '-secondary-glyph-value').html('+' + secondaryValue);
+                } else {
+                    $('#' + template_data.slots[i].id_prefix + '-secondary-glyph-value').html('0');
                 }
 
             }
+        } else {
+            $('#' + template_data.slots[i].id_prefix + '-primary-glyph-value').html('0');
+            $('#' + template_data.slots[i].id_prefix + '-secondary-glyph-value').html('0');
         }
     }
     console.log(sums);
