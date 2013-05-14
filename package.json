@@ -1,6 +1,6 @@
 {
   "name": "tswcalc",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A living glyph/gear calculator for TSW",
   "devDependencies": {
     "grunt": "~0.4.1",
