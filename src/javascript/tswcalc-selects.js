@@ -12,19 +12,19 @@ function SelectHandler(slotId) {
 
     this.addListenersToRoleSelect = function(id_prefix) {
         $('#' + id_prefix + '-role').change(function() {
-            updatePrimaryStats();
+            summary.updatePrimaryStats();
         });
     };
 
     this.addListenersToQlSelect = function(id_prefix, id_suffix) {
         $('#' + id_prefix + id_suffix + '-ql').change(function() {
-            updatePrimaryStats();
+            summary.updatePrimaryStats();
         });
     };
 
     this.addListenersToGlyphSelect = function(id_prefix, id_suffix) {
         $('#' + id_prefix + '-' + id_suffix).change(function() {
-            updateOffensiveDefensiveStats();
+            summary.updateOffensiveDefensiveStats();
         });
     };
 }

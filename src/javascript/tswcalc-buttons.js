@@ -13,7 +13,7 @@ function DistributionButtonHandler(slotId) {
         $('#' + id_prefix + '-' + glyph + '-dist > button.btn').on('click', function(event) {
             self.onlyActiveButton('#' + this.id);
             self.balanceGlyphDist(this, glyph);
-            updateOffensiveDefensiveStats();
+            summary.updateOffensiveDefensiveStats();
         });
     };
 

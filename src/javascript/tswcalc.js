@@ -1,6 +1,7 @@
 var buttonHandler = {};
 var selectHandler = {};
 var buttonBar = 0;
+var summary = 0;
 
 $(document).ready(function() {
     renderContainer(template_data);
@@ -25,6 +26,7 @@ function startHandlers() {
         startSelectHandler(template_data.slots[i].id_prefix);
     }
     startButtonBar();
+    startSummary();
 }
 
 function startDistributionButtonHandler(slotId) {
@@ -40,4 +42,8 @@ function startSelectHandler(slotId) {
 function startButtonBar() {
     buttonBar = new ButtonBar();
     buttonBar.initiate();
+};
+
+function startSummary() {
+    summary = new Summary();
 };
