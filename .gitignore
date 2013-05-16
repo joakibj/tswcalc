@@ -1,4 +1,3 @@
 dist
-public/js/tswcalc.min.js
-public/js/tswcalc-data.min.js
+build
 node_modules

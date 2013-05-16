@@ -3,13 +3,16 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    dirs: {
+      src: 'src/javascript'
+    },
     dust: {
       default: {
         files: [{
           expand: true,
           cwd: 'src/templates/dusts/',
           src: ['*.dust'],
-          dest: 'dist/templates/dusts/',
+          dest: 'build/templates/dusts/',
           ext: '.js'
         }],
         options: {
@@ -23,9 +26,64 @@ module.exports = function(grunt) {
       options: {
         separator: ';'
       },
+      build: {
+        src: [
+          'build/templates/dusts/*.js',
+          '<%= dirs.src %>/tswcalc.js',
+          '<%= dirs.src %>/tswcalc-summary.js',
+          '<%= dirs.src %>/tswcalc-selects.js',
+          '<%= dirs.src %>/tswcalc-buttons.js',
+          '<%= dirs.src %>/tswcalc-buttonbar.js'],
+        dest: 'build/assets/javascripts/<%= pkg.name %>.js'
+      }
+    },
+    replace: {
+      develop: {
+        options: {
+          variables: {
+            'mainscript': '<%= pkg.name %>.js',
+            'datascript': '<%= pkg.name %>-data.js'
+          }
+        },
+        files: [{
+          src: ['public/index.html'],
+          dest: 'build/index.html'
+        }]
+      },
       dist: {
-        src: ['dist/templates/dusts/*.js', 'src/javascript/<%= pkg.name %>*.js'],
-        dest: 'dist/js/<%= pkg.name %>.js'
+        options: {
+          variables: {
+            'mainscript': '<%= pkg.name %>.min.js',
+            'datascript': '<%= pkg.name %>-data.min.js'
+          }
+        },
+        files: [{
+          src: ['public/index.html'],
+          dest: 'dist/index.html'
+        }]
+      }
+    },
+    copy: {
+      develop: {
+        files: [{
+          expand: true,
+          cwd: 'public/',
+          src: ['assets/**/*'],
+          dest: 'build/'
+        }, {
+          expand: true,
+          cwd: 'src/javascript/',
+          src: ['tswcalc-data.js'],
+          dest: 'build/assets/javascripts/'
+        }]
+      },
+      dist: {
+        files: [{
+          expand: true,
+          cwd: 'public/',
+          src: ['assets/**/*'],
+          dest: 'dist/'
+        }]
       }
     },
     uglify: {
@@ -34,19 +92,19 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'public/js/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>'],
-          'public/js/<%= pkg.name %>-data.min.js': ['src/javascript/<%= pkg.name %>-data.js']
+          'dist/assets/javascripts/<%= pkg.name %>.min.js': ['<%= concat.build.dest %>'],
+          'dist/assets/javascripts/<%= pkg.name %>-data.min.js': ['src/javascript/<%= pkg.name %>-data.js']
         }
       }
     },
     watch: {
       dust: {
         files: ['src/templates/dusts/*.dust'],
-        tasks: ['dust', 'concat', 'uglify']
+        tasks: ['default']
       },
       javascript: {
         files: ['src/javascript/*.js'],
-        tasks: ['concat', 'uglify']
+        tasks: ['default']
       }
     }
   });
@@ -55,7 +113,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-replace');
 
-  grunt.registerTask('default', ['dust', 'concat', 'uglify']);
-
+  grunt.registerTask('default', ['dust', 'concat', 'replace:develop', 'copy:develop']);
+  grunt.registerTask('dist', ['dust', 'concat', 'uglify', 'replace:dist', 'copy:dist']);
 };
