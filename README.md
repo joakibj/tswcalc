@@ -9,7 +9,7 @@ distributions.
 
 tswcalc can be found at: http://joakibj.github.io/tswcalc
 
-Building
+Installing
 --------
 tswcalc uses [grunt](http://gruntjs.com/) to build. 
 It uses dustjs (linkedin-dustjs fork) as a client-side template engine.
@@ -29,6 +29,8 @@ Install tswcalc dependencies, defined in `package.json`:
 
     npm install
 
+Building
+--------
 Build tswcalc by running:
 
     grunt
@@ -37,7 +39,11 @@ When developing, use:
     
     grunt watch
 
-This will monitor changes to files in the `src` folder, compile (if needed), concatenate and uglify them.
+This will monitor changes to files in the `src` folder, compile (if needed) and concatenate them.
+
+To create a distribution in the `dist` folder: 
+
+    grunt dist
 
 Open index.html to view.
 
