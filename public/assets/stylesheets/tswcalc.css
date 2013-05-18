@@ -63,3 +63,7 @@ body {
 .slot {
     display: inline;
 }
+
+#export-textarea {
+  resize: none;
+}

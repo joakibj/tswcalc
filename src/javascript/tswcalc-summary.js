@@ -7,7 +7,7 @@ function Summary() {
     };
 
     this.updatePrimaryStats = function() {
-        var sumHitPoints = 0;
+        var sumHitPoints = 1970;
         var sumAttackRating = 0;
         var sumHealRating = 0;
         for (var i = 0; i < template_data.slots.length; i++) {
@@ -35,8 +35,8 @@ function Summary() {
             'block-rating': 0,
             'defense-rating': 0,
             'evade-rating': 0,
-            'physical-protection': 0,
-            'magical-protection': 0
+            'physical-protection': 249,
+            'magical-protection': 249
         };
 
         for (var i = 0; i < template_data.slots.length; i++) {

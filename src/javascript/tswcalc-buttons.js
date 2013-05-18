@@ -18,9 +18,13 @@ function DistributionButtonHandler(slotId) {
     };
 
     this.balanceGlyphDist = function(button, glyph) {
-        otherActiveButton = $('#' + slotId + '-' + self.getInverseGlyphStat(glyph) + '-dist > button.btn.active');
-        self.balanceGlyphDistOverflow(button, otherActiveButton[0]);
+        otherActiveButton = self.getActiveDist(slotId, self.getInverseGlyphStat(glyph));
+        self.balanceGlyphDistOverflow(button, otherActiveButton);
     }
+
+    this.getActiveDist = function(slotId, glyph) {
+        return $('#' + slotId + '-' + glyph + '-dist > button.btn.active')[0];
+    };
 
     this.balanceGlyphDistOverflow = function(clickedButton, otherButton) {
         if (otherButton != null) {
