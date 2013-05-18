@@ -53,7 +53,7 @@ function Export() {
             if (val == null || val == 'none') {
                 val = 0;
             }
-            slotState += self.stripQL(val);
+            slotState += self.stripContent(val);
             slotState += ',';
         }
         slotState += buttonHandler[slotId].getActiveDist(slotId, 'primary-glyph').innerHTML + ',';
@@ -61,10 +61,14 @@ function Export() {
         return slotState;
     };
 
-    this.stripQL = function(val) {
-        var pattern = /\d+\.\d/;
-        if (val != 0 && val.match(pattern)) {
+    this.stripContent = function(val) {
+        var qlpattern = /\d+\.\d/;
+        if (val != 0 && val.match(qlpattern)) {
             return val.split('.')[1];
+        } else if ($.inArray(val, Object.keys(stat_mapping.to_num)) != -1) {
+            return stat_mapping.to_num[val];
+        } else if ($.inArray(val, Object.keys(role_mapping.to_num)) != -1) {
+            return role_mapping.to_num[val];
         } else {
             return val;
         }

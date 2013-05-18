@@ -1,3 +1,43 @@
+stat_mapping = {
+    to_num: {
+        'critical-rating': 0,
+        'critical-power': 1,
+        'penetration-rating': 2,
+        'hit-rating': 3,
+        'block-rating': 4,
+        'defense-rating': 5,
+        'evade-rating': 6,
+        'physical-protection': 7,
+        'magical-protection': 8
+    },
+
+    to_stat: {
+        0: 'critical-rating',
+        1: 'critical-power',
+        2: 'penetration-rating',
+        3: 'hit-rating',
+        4: 'block-rating',
+        5: 'defense-rating',
+        6: 'evade-rating',
+        7: 'physical-protection',
+        8: 'magical-protection'
+    }
+}
+
+role_mapping = {
+    to_num: {
+        'tank' : 0,
+        'healer' : 1,
+        'dps' : 2
+    },
+
+    to_stat: {
+        0 : 'tank',
+        1 : 'healer',
+        2 : 'dps'
+    }
+}
+
 template_data = {
     slots: [{
         id_prefix: 'weapon',
