@@ -8,6 +8,7 @@ var importModule = 0;
 $(document).ready(function() {
     renderContainer(template_data);
 
+    addHash();
     startSubModules();
     checkIfExported();
 
@@ -27,7 +28,7 @@ function renderContainer(data) {
 
 function checkIfExported() {
     var vars = $.getUrlVars();
-    if(!$.isEmptyObject(vars)) {
+    if(!$.isEmptyObject(vars) && Object.keys(vars).length == 8) {
         importModule.start(vars);
     }
 };
@@ -41,6 +42,12 @@ function startSubModules() {
     startSummary();
     startExportModule();
     startImportModule();
+};
+
+function addHash() {
+    if(location.hash == '') {
+        location.hash = ' ';
+    }
 };
 
 function startDistributionButtonHandler(slotId) {
