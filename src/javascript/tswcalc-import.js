@@ -2,7 +2,6 @@ function Import() {
     var self = this;
 
     this.start = function(vars) {
-        console.log(vars);
         for (var slotId in vars) {
             if (vars.hasOwnProperty(slotId)) {
                 splitVars = vars[slotId].split(',');
