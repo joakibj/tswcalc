@@ -31,7 +31,7 @@ function Export() {
     this.startExportUrl = function() {
         var slotStates = this.collectAllSlotStates();
         console.log(slotStates);
-        $('#export-textarea').html(window.location.href + '?calc=' + slotStates);
+        $('#export-textarea').html(window.location.href + slotStates);
     };
 
     this.collectAllSlotStates = function() {
