@@ -26,7 +26,10 @@ function renderContainer(data) {
 };
 
 function checkIfExported() {
-    importModule.start();
+    var vars = $.getUrlVars();
+    if(!$.isEmptyObject(vars)) {
+        importModule.start(vars);
+    }
 };
 
 function startSubModules() {
