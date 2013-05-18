@@ -38,19 +38,35 @@ function Export() {
         var slotStates = '';
         for (var i = 0; i < template_data.slots.length; i++) {
             slotStates += this.collectSlotState(template_data.slots[i].id_prefix);
+            if (i < (template_data.slots.length - 1)) {
+                slotStates += '&';
+            }
         }
         return slotStates;
     };
 
     this.collectSlotState = function(slotId) {
-        var slotState = '';
+        var slotState = slotId + '=';
         var suffixes = ['-ql', '-role', '-glyph-ql', '-primary-glyph', '-secondary-glyph'];
         for (var i = 0; i < suffixes.length; i++) {
-            slotState += slotId + suffixes[i] + '=' + $('#' + slotId + suffixes[i]).val();
+            var val = $('#' + slotId + suffixes[i]).val();
+            if (val == null || val == 'none') {
+                val = 0;
+            }
+            slotState += self.stripQL(val);
             if (i < (suffixes.length - 1)) {
-                slotState += '&';
+                slotState += ',';
             }
         }
         return slotState;
+    };
+
+    this.stripQL = function(val) {
+        var pattern = /\d+\.\d/;
+        if (val != 0 && val.match(pattern)) {
+            return val.split('.')[1];
+        } else {
+            return val;
+        }
     };
 };
