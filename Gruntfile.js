@@ -33,7 +33,9 @@ module.exports = function(grunt) {
           '<%= dirs.src %>/tswcalc-summary.js',
           '<%= dirs.src %>/tswcalc-selects.js',
           '<%= dirs.src %>/tswcalc-buttons.js',
-          '<%= dirs.src %>/tswcalc-buttonbar.js'],
+          '<%= dirs.src %>/tswcalc-buttonbar.js',
+          '<%= dirs.src %>/tswcalc-export.js',
+          '<%= dirs.src %>/tswcalc-import.js'],
         dest: 'build/assets/javascripts/<%= pkg.name %>.js'
       }
     },
