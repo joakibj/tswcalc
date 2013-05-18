@@ -54,10 +54,10 @@ function Export() {
                 val = 0;
             }
             slotState += self.stripQL(val);
-            if (i < (suffixes.length - 1)) {
-                slotState += ',';
-            }
+            slotState += ',';
         }
+        slotState += buttonHandler[slotId].getActiveDist(slotId, 'primary-glyph').innerHTML + ',';
+        slotState += buttonHandler[slotId].getActiveDist(slotId, 'secondary-glyph').innerHTML;
         return slotState;
     };
 
