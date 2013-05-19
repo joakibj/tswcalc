@@ -30,8 +30,7 @@ function Export() {
 
     this.startExportUrl = function() {
         var slotStates = this.collectAllSlotStates();
-        console.log(slotStates);
-        $('#export-textarea').html(window.location.href + slotStates);
+        $('#export-textarea').html(location.origin + location.pathname + '#' + slotStates);
     };
 
     this.collectAllSlotStates = function() {
