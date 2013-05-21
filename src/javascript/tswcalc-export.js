@@ -1,9 +1,10 @@
 function Export() {
     var self = this;
-    var exportType = null;
-    var slotStates = null;
+    var exportType = 0;
+    var slotState = 0;
 
     this.initiate = function() {
+        this.slotState = {};
         $('a.export').on('click', function(event) {
             self.exportType = $(event.target).attr('data');
             self.startExport();
@@ -57,17 +58,24 @@ function Export() {
                 slotStates += '&';
             }
         }
+        console.log(this.slotState);
         return slotStates;
     };
 
     this.collectSlotState = function(slotId) {
+        this.slotState[slotId] = {
+            ql: self.stripContent($('#' + slotId + '-ql').val()),
+            role: self.stripContent($('#' + slotId + '-role').val()),
+            glyph_ql: self.stripContent($('#' + slotId + '-glyph-ql').val()),
+            primary_glyph: self.stripContent($('#' + slotId + '-primary-glyph').val()),
+            secondary_glyph: self.stripContent($('#' + slotId + '-secondary-glyph').val()),
+            primary_dist: buttonHandler[slotId].getActiveDist(slotId, 'primary-glyph').innerHTML,
+            secondary_dist: buttonHandler[slotId].getActiveDist(slotId, 'secondary-glyph').innerHTML
+        };
         var slotState = slotId + '=';
         var suffixes = ['-ql', '-role', '-glyph-ql', '-primary-glyph', '-secondary-glyph'];
         for (var i = 0; i < suffixes.length; i++) {
             var val = $('#' + slotId + suffixes[i]).val();
-            if (val == null || val == 'none') {
-                val = 0;
-            }
             slotState += self.stripContent(val);
             slotState += ',';
         }
@@ -77,6 +85,10 @@ function Export() {
     };
 
     this.stripContent = function(val) {
+        if (val == null || val == 'none') {
+            val = 0;
+        }
+
         var qlpattern = /\d+\.\d/;
         if (val != 0 && val.match(qlpattern)) {
             return val.split('.')[1];
