@@ -11,7 +11,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'src/templates/dusts/',
-          src: ['*.dust'],
+          src: ['**/*.dust'],
           dest: 'build/templates/dusts/',
           ext: '.js'
         }],
@@ -28,7 +28,7 @@ module.exports = function(grunt) {
       },
       build: {
         src: [
-          'build/templates/dusts/*.js',
+          'build/templates/dusts/**/*.js',
           '<%= dirs.src %>/tswcalc.js',
           '<%= dirs.src %>/tswcalc-summary.js',
           '<%= dirs.src %>/tswcalc-selects.js',
@@ -101,7 +101,7 @@ module.exports = function(grunt) {
     },
     watch: {
       dust: {
-        files: ['src/templates/dusts/*.dust'],
+        files: ['src/templates/dusts/**/*.dust'],
         tasks: ['default']
       },
       javascript: {

@@ -1,6 +1,7 @@
 function Export() {
     var self = this;
     var exportType = null;
+    var slotStates = null;
 
     this.initiate = function() {
         $('a.export').on('click', function(event) {
@@ -23,8 +24,10 @@ function Export() {
     };
 
     this.startExport = function() {
-        if (self.exportType == "url") {
+        if (this.exportType == "url") {
             this.startExportUrl();
+        } else if (this.exportType == "bbcode") {
+            this.startExportBBCode();
         }
     };
 
@@ -32,6 +35,18 @@ function Export() {
         var slotStates = this.collectAllSlotStates();
         console.log(slotStates);
         $('#export-textarea').html(window.location.href + slotStates);
+    };
+
+    this.startExportBBCode = function() {
+        console.log("export");
+        dust.render('export\bbcode', slotStates,
+
+        function(err, out) {
+            if (err) {
+                console.log(err);
+            }
+            $('#export-textarea').html(out);
+        });
     };
 
     this.collectAllSlotStates = function() {
