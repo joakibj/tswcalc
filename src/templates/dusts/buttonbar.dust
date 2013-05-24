@@ -17,6 +17,7 @@
   </a>
   <ul class="dropdown-menu">
     <li><a class="export" href="#open-export-modal" data="url" data-toggle="modal">URL</a></li>
+    <li><a class="export" href="#open-export-modal" data="bbcode" data-toggle="modal">BBCode</a></li>
   </ul>
 </div>
 
@@ -28,7 +29,7 @@
   <div class="modal-body">
     Copy this and share:
     <br/>
-    <textarea id="export-textarea" wrap="off" rows="1"></textarea>
+    <textarea id="export-textarea" class="field span12" wrap="off" rows="10"></textarea>
   </div>
 
 </div>

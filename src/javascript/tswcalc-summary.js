@@ -2,11 +2,20 @@ function Summary() {
     self = this;
 
     this.updateAllStats = function() {
-        self.updatePrimaryStats();
-        self.updateOffensiveDefensiveStats();
+        primarySums = self.updatePrimaryStats();
+        offensiveDefensiveSums = self.updateOffensiveDefensiveStats();
+        return {
+            primary: primarySums,
+            offensive_defensive: offensiveDefensiveSums
+        };
     };
 
     this.updatePrimaryStats = function() {
+        var sums = {
+            'hitpoints': 1970,
+            'attack-rating': 0,
+            'heal-rating': 0
+        };
         var sumHitPoints = 1970;
         var sumAttackRating = 0;
         var sumHealRating = 0;
@@ -14,16 +23,18 @@ function Summary() {
             var role = $('#' + template_data.slots[i].id_prefix + '-role option:selected').attr('value');
             var ql = $('#' + template_data.slots[i].id_prefix + '-ql option:selected').attr('value');
             if (role == 'dps') {
-                sumAttackRating += custom_gear_data[template_data.slots[i].group].heal_dps['ql' + (ql)].rating;
+                sums['attack-rating'] += custom_gear_data[template_data.slots[i].group].heal_dps['ql' + (ql)].rating;
             } else if (role == 'healer') {
-                sumHealRating += custom_gear_data[template_data.slots[i].group].heal_dps['ql' + (ql)].rating;
+                sums['heal-rating'] += custom_gear_data[template_data.slots[i].group].heal_dps['ql' + (ql)].rating;
             } else if (role == 'tank') {
-                sumHitPoints += custom_gear_data[template_data.slots[i].group].tank['ql' + (ql)].hitpoints;
+                sums['hitpoints'] += custom_gear_data[template_data.slots[i].group].tank['ql' + (ql)].hitpoints;
             }
         }
-        $('#stat-hitpoints').text(sumHitPoints);
-        $('#stat-attack-rating').text(sumAttackRating);
-        $('#stat-heal-rating').text(sumHealRating);
+        $('#stat-hitpoints').text(sums['hitpoints']);
+        $('#stat-attack-rating').text(sums['attack-rating']);
+        $('#stat-heal-rating').text(sums['heal-rating']);
+
+        return sums;
     }
 
     this.updateOffensiveDefensiveStats = function() {
@@ -73,6 +84,7 @@ function Summary() {
             }
         }
         self.updateStats(sums);
+        return sums;
     };
 
     this.updateStats = function(sums) {

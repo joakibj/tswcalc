@@ -77,3 +77,8 @@ function startExportModule() {
 function startImportModule() {
     importModule = new Import();
 };
+
+function capitalise(string)
+{
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
