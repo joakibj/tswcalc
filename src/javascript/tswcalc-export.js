@@ -35,7 +35,7 @@ function Export() {
     this.startExportUrl = function() {
         this.collectAllSlotStates();
         url = this.createExportUrl();
-        $('#export-textarea').html(window.location.href + url);
+        $('#export-textarea').html(location.origin + location.pathname + '#' + url);
     };
 
     this.createExportUrl = function() {
