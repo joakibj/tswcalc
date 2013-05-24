@@ -14,33 +14,49 @@ function Export() {
             $('#export-textarea').focus();
         });
 
-        $("#export-textarea").focus(function() {
+        $('#export-textarea').focus(function() {
             $(this).select();
 
             $(this).mouseup(function() {
-                $(this).unbind("mouseup");
+                $(this).unbind('mouseup');
                 return false;
             });
         });
     };
 
     this.startExport = function() {
-        if (this.exportType == "url") {
+        if (this.exportType == 'url') {
             this.startExportUrl();
-        } else if (this.exportType == "bbcode") {
+        } else if (this.exportType == 'bbcode') {
             this.startExportBBCode();
         }
     };
 
     this.startExportUrl = function() {
-        var slotStates = this.collectAllSlotStates();
-        console.log(slotStates);
-        $('#export-textarea').html(window.location.href + slotStates);
+        this.collectAllSlotStates();
+        url = this.createExportUrl();
+        $('#export-textarea').html(window.location.href + url);
+    };
+
+    this.createExportUrl = function() {
+        var url = '';
+        for (var i = 0; i < template_data.slots.length; i++) {
+            url += this.createSlotUrl(template_data.slots[i].id_prefix);
+            if (i < (template_data.slots.length - 1)) {
+                url += '&';
+            }
+        }
+        return url;
+    };
+
+    this.createSlotUrl = function(slotName) {
+        var slot = this.slotState[slotName];
+        return slotName + '=' + slot.ql + ',' + slot.role + ',' + slot.glyph_ql + ',' + slot.primary_glyph + ',' + slot.secondary_glyph +
+            ',' + slot.primary_dist + ',' + slot.secondary_dist;
     };
 
     this.startExportBBCode = function() {
-        console.log("export");
-        dust.render('export\bbcode', slotStates,
+        dust.render('export\bbcode', this.slotStates,
 
         function(err, out) {
             if (err) {
@@ -51,15 +67,9 @@ function Export() {
     };
 
     this.collectAllSlotStates = function() {
-        var slotStates = '';
         for (var i = 0; i < template_data.slots.length; i++) {
-            slotStates += this.collectSlotState(template_data.slots[i].id_prefix);
-            if (i < (template_data.slots.length - 1)) {
-                slotStates += '&';
-            }
+            this.collectSlotState(template_data.slots[i].id_prefix);
         }
-        console.log(this.slotState);
-        return slotStates;
     };
 
     this.collectSlotState = function(slotId) {
@@ -72,16 +82,6 @@ function Export() {
             primary_dist: buttonHandler[slotId].getActiveDist(slotId, 'primary-glyph').innerHTML,
             secondary_dist: buttonHandler[slotId].getActiveDist(slotId, 'secondary-glyph').innerHTML
         };
-        var slotState = slotId + '=';
-        var suffixes = ['-ql', '-role', '-glyph-ql', '-primary-glyph', '-secondary-glyph'];
-        for (var i = 0; i < suffixes.length; i++) {
-            var val = $('#' + slotId + suffixes[i]).val();
-            slotState += self.stripContent(val);
-            slotState += ',';
-        }
-        slotState += buttonHandler[slotId].getActiveDist(slotId, 'primary-glyph').innerHTML + ',';
-        slotState += buttonHandler[slotId].getActiveDist(slotId, 'secondary-glyph').innerHTML;
-        return slotState;
     };
 
     this.stripContent = function(val) {
