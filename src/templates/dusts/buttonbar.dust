@@ -29,7 +29,7 @@
   <div class="modal-body">
     Copy this and share:
     <br/>
-    <textarea id="export-textarea" wrap="off" rows="1"></textarea>
+    <textarea id="export-textarea" class="field span12" wrap="off" rows="10"></textarea>
   </div>
 
 </div>

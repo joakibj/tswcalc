@@ -1,14 +1,33 @@
-[size=3]Configuration Output[/size]{~n}
+[size=3]Configuration Output[/size]{~n}{~n}
 
-[size=2]Summary[/size]{~n}
-Summary
-{~n}
-
-[size=2]Gear report[/size]{~n}
+[size=2]Summary[/size]{~n}{~n}
+{#summary}
+    {#primary}
+    [b]Primary stats[/b]{~n}
+    [indent]Hitpoints: [b]{hitpoints}[/b][/indent]{~n}
+    [indent]Attack Rating: [b]{attack-rating}[/b][/indent]{~n}
+    [indent]Heal Rating: [b]{heal-rating}[/b][/indent]{~n}
+    {/primary}
+    {#offensive_defensive}
+    [b]Offensive stats[/b]{~n}
+    [indent]Critical Rating: [b][color=green]{critical-rating}[/color][/b][/indent]{~n}
+    [indent]Critical Power: [b][color=green]{critical-power}[/color][/b][/indent]{~n}
+    [indent]Penetration Rating: [b][color=green]{penetration-rating}[/color][/b][/indent]{~n}
+    [indent]Hit Rating: [b][color=green]{hit-rating}[/color][/b][/indent]{~n}
+    [b]Defensive stats[/b]{~n}
+    [indent]Block Rating: [b][color=green]{block-rating}[/color][/b][/indent]{~n}
+    [indent]Defense Rating: [b][color=green]{defense-rating}[/color][/b][/indent]{~n}
+    [indent]Evade Rating: [b][color=green]{evade-rating}[/color][/b][/indent]{~n}
+    [indent]Physical Protection: [b][color=green]{physical-protection}[/color][/b][/indent]{~n}
+    [indent]Magical Protection: [b][color=green]{magical-protection}[/color][/b][/indent]{~n}
+    {/offensive_defensive}
+{/summary}
+{~n}{~n}
+[size=2]Gear report[/size]{~n}{~n}
 {#slotState}
-[b]{name} (QL [color=purple]10.{ql}[/color] {role})[/b] {?stat_type}[b][color=green]+{stat_value}[/color][/b] {stat_type}{/stat_type}
-[indent]Glyph (QL [color=purple]10.{glyph_ql}[/color]): 
-{?primary_glyph}{primary_glyph} [b][color=green]+{primary_value}[/color][/b] ({primary_dist}/4){/primary_glyph}
-{?secondary_glyph} , {secondary_glyph} [b][color=green]+{secondary_value}[/color][/b] ({secondary_dist}/4){/secondary_glyph}
-[/indent]{~n}
+    [b]{name} (QL [color=purple]10.{ql}[/color]{?role} {role}{/role})[/b] {?stat_type}[b][color=green]+{stat_value}[/color][/b] {stat_type}{/stat_type}{~n}
+    [indent]Glyph (QL [color=purple]10.{glyph_ql}[/color]): 
+    {?primary_glyph}{primary_glyph} [b][color=green]+{primary_value}[/color][/b] ({primary_dist}/4){/primary_glyph}
+    {?secondary_glyph} , {secondary_glyph} [b][color=green]+{secondary_value}[/color][/b] ({secondary_dist}/4){/secondary_glyph}
+    [/indent]{~n}
 {/slotState}

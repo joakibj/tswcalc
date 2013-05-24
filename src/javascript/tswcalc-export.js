@@ -35,6 +35,7 @@ function Export() {
     this.startExportUrl = function() {
         this.collectAllSlotStates();
         url = this.createExportUrl();
+        $('#export-textarea').attr('rows', '1');
         $('#export-textarea').html(location.origin + location.pathname + '#' + url);
     };
 
@@ -57,15 +58,16 @@ function Export() {
 
     this.startExportBBCode = function() {
         this.collectAllSlotStates();
-        console.log(this.slotState);
         dust.render('export\bbcode', {
-            slotState: this.dustSlotState()
+            slotState: this.dustSlotState(),
+            summary: summary.updateAllStats
         },
 
         function(err, out) {
             if (err) {
                 console.log(err);
             }
+            $('#export-textarea').attr('rows', '10');
             $('#export-textarea').html(out);
         });
     };
@@ -95,16 +97,15 @@ function Export() {
                 statValue = custom_gear_data[group].heal_dps['ql10.' + curState.ql].rating;
             } else if(role == 'tank') {
                 statType = 'Hitpoints';
-                statValue = custom_gear_data[group].tank['ql10.' + curState.ql].rating;
+                statValue = custom_gear_data[group].tank['ql10.' + curState.ql].hitpoints;
             } else {
                 statType = ''; //Weapon Power
                 statValue = 0;
             }
 
-            custom_gear_data[group];
             var state = {
                 name: capitalise(slot),
-                role: capitalise(role),
+                role: this.blankIfNone(capitalise(role)),
                 ql: curState.ql,
                 stat_type: statType,
                 stat_value: statValue,
@@ -118,7 +119,6 @@ function Export() {
             };
             states.push(state);
         }
-        console.log(states);
         return states;
     };
 
@@ -127,6 +127,16 @@ function Export() {
             return '';
         }
         return str;
+    };
+
+    this.blankIfZero = function(sums) {
+        for (var primary in sums.primary) {
+            if (sums.primary.hasOwnProperty(primary)) {
+                if(sums.primary[primary]) {
+                    sums.primary[primary] = '';
+                }
+            }
+        }
     };
 
     this.collectAllSlotStates = function() {
