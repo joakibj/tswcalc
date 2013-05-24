@@ -5,7 +5,9 @@
     {#primary}
     [b]Primary stats[/b]{~n}
     [indent]Hitpoints: [b]{hitpoints}[/b][/indent]{~n}
+    [indent]Combat Power: [b]{combat-power}[/b][/indent]{~n}
     [indent]Attack Rating: [b]{attack-rating}[/b][/indent]{~n}
+    [indent]Weapon Power: [b]{weapon-power}[/b][/indent]{~n}
     [indent]Heal Rating: [b]{heal-rating}[/b][/indent]{~n}
     {/primary}
     {#offensive_defensive}

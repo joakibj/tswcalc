@@ -95,12 +95,12 @@ function Export() {
             } else if (role == 'dps') {
                 statType = 'Attack Rating';
                 statValue = custom_gear_data[group].heal_dps['ql10.' + curState.ql].rating;
-            } else if(role == 'tank') {
+            } else if (role == 'tank') {
                 statType = 'Hitpoints';
                 statValue = custom_gear_data[group].tank['ql10.' + curState.ql].hitpoints;
-            } else {
-                statType = ''; //Weapon Power
-                statValue = 0;
+            } else if (template_data.slots[i].is_weapon) {
+                statType = 'Weapon Power'; //Weapon Power
+                statValue = custom_gear_data[group]['10.' + curState.ql].weapon_power;
             }
 
             var state = {
@@ -132,7 +132,7 @@ function Export() {
     this.blankIfZero = function(sums) {
         for (var primary in sums.primary) {
             if (sums.primary.hasOwnProperty(primary)) {
-                if(sums.primary[primary]) {
+                if (sums.primary[primary]) {
                     sums.primary[primary] = '';
                 }
             }
