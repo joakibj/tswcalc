@@ -56,7 +56,11 @@ function Export() {
     };
 
     this.startExportBBCode = function() {
-        dust.render('export\bbcode', this.slotStates,
+        this.collectAllSlotStates();
+        console.log(this.slotState);
+        dust.render('export\bbcode', {
+            slotState: this.dustSlotState()
+        },
 
         function(err, out) {
             if (err) {
@@ -64,6 +68,26 @@ function Export() {
             }
             $('#export-textarea').html(out);
         });
+    };
+
+    this.dustSlotState = function() {
+        var states = [];
+        for (var i = 0; i < template_data.slots.length; i++) {
+            var slot = template_data.slots[i].id_prefix;
+            var state = {
+                name: capitalise(slot),
+                role: capitalise(role_mapping.to_stat[this.slotState[slot].role]),
+                ql: this.slotState[slot].ql,
+                glyph_ql: this.slotState[slot].glyph_ql,
+                primary_glyph: capitalise(stat_mapping.to_stat[this.slotState[slot].primary_glyph]),
+                secondary_glyph: capitalise(stat_mapping.to_stat[this.slotState[slot].secondary_glyph]),
+                primary_dist: this.slotState[slot].primary_dist,
+                secondary_dist: this.slotState[slot].secondary_dist
+            };
+            states.push(state);
+        }
+        console.log(states);
+        return states;
     };
 
     this.collectAllSlotStates = function() {
