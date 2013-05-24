@@ -12,13 +12,12 @@ function Summary() {
 
     this.updatePrimaryStats = function() {
         var sums = {
+            'combat-power' : 0,
+            'weapon-power' : 75,
             'hitpoints': 1970,
             'attack-rating': 0,
             'heal-rating': 0
         };
-        var sumHitPoints = 1970;
-        var sumAttackRating = 0;
-        var sumHealRating = 0;
         for (var i = 0; i < template_data.slots.length; i++) {
             var role = $('#' + template_data.slots[i].id_prefix + '-role option:selected').attr('value');
             var ql = $('#' + template_data.slots[i].id_prefix + '-ql option:selected').attr('value');
@@ -28,14 +27,23 @@ function Summary() {
                 sums['heal-rating'] += custom_gear_data[template_data.slots[i].group].heal_dps['ql' + (ql)].rating;
             } else if (role == 'tank') {
                 sums['hitpoints'] += custom_gear_data[template_data.slots[i].group].tank['ql' + (ql)].hitpoints;
+            } else if(typeof role == 'undefined' && template_data.slots[i].is_weapon) {
+                sums['weapon-power'] = custom_gear_data[template_data.slots[i].group][ql].weapon_power;
             }
         }
+        sums['combat-power'] = this.calculateCombatPower(sums['attack-rating'], sums['weapon-power']);
+        $('#stat-combat-power').text(sums['combat-power']);
+        $('#stat-weapon-power').text(sums['weapon-power']);
         $('#stat-hitpoints').text(sums['hitpoints']);
         $('#stat-attack-rating').text(sums['attack-rating']);
         $('#stat-heal-rating').text(sums['heal-rating']);
 
         return sums;
     }
+
+    this.calculateCombatPower = function(attack_rating, weapon_power) {
+        return Math.round((375 - (600 / (Math.pow(Math.E, (attack_rating / 1400)) + 1))) * (1 + (weapon_power / 375)));
+    };
 
     this.updateOffensiveDefensiveStats = function() {
         var sums = {

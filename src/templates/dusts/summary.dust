@@ -8,7 +8,9 @@
               </thead>
               <tbody>
                 <tr><td>Hitpoints</td><td id="stat-hitpoints" class="statvalue">1970</td></tr>
+                <tr><td>Combat Power</td><td id="stat-combat-power" class="statvalue">0</td></tr>
                 <tr><td>Attack Rating</td><td id="stat-attack-rating" class="statvalue">0</td></tr>
+                <tr><td>Weapon Power</td><td id="stat-weapon-power" class="statvalue">0</td></tr>
                 <tr><td>Heal Rating</td><td id="stat-heal-rating" class="statvalue">0</td></tr>
               </tbody>
             </table>
