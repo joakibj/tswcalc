@@ -74,20 +74,59 @@ function Export() {
         var states = [];
         for (var i = 0; i < template_data.slots.length; i++) {
             var slot = template_data.slots[i].id_prefix;
+            var group = template_data.slots[i].group;
+            var curState = this.slotState[slot];
+            var role = role_mapping.to_stat[curState.role];
+            var primaryValue = 0;
+            if (curState.primary_glyph != 0) {
+                primaryValue = glyph_data.stat[stat_mapping.to_stat[curState.primary_glyph]].ql['10.' + curState.glyph_ql].slot[group].dist[curState.primary_dist];
+            }
+            var secondaryValue = 0;
+            if (curState.secondary_glyph != 0) {
+                secondaryValue = glyph_data.stat[stat_mapping.to_stat[curState.secondary_glyph]].ql['10.' + curState.glyph_ql].slot[group].dist[curState.secondary_dist];
+            }
+            var statType = 0;
+            var statValue = 0;
+            if (role == 'healer') {
+                statType = 'Heal Rating';
+                statValue = custom_gear_data[group].heal_dps['ql10.' + curState.ql].rating;
+            } else if (role == 'dps') {
+                statType = 'Attack Rating';
+                statValue = custom_gear_data[group].heal_dps['ql10.' + curState.ql].rating;
+            } else if(role == 'tank') {
+                statType = 'Hitpoints';
+                statValue = custom_gear_data[group].tank['ql10.' + curState.ql].rating;
+            } else {
+                statType = ''; //Weapon Power
+                statValue = 0;
+            }
+
+            custom_gear_data[group];
             var state = {
                 name: capitalise(slot),
-                role: capitalise(role_mapping.to_stat[this.slotState[slot].role]),
-                ql: this.slotState[slot].ql,
-                glyph_ql: this.slotState[slot].glyph_ql,
-                primary_glyph: capitalise(stat_mapping.to_stat[this.slotState[slot].primary_glyph]),
-                secondary_glyph: capitalise(stat_mapping.to_stat[this.slotState[slot].secondary_glyph]),
-                primary_dist: this.slotState[slot].primary_dist,
-                secondary_dist: this.slotState[slot].secondary_dist
+                role: capitalise(role),
+                ql: curState.ql,
+                stat_type: statType,
+                stat_value: statValue,
+                glyph_ql: curState.glyph_ql,
+                primary_glyph: this.blankIfNone(capitalise(stat_mapping.to_stat[curState.primary_glyph])),
+                primary_dist: curState.primary_dist,
+                primary_value: primaryValue,
+                secondary_glyph: this.blankIfNone(capitalise(stat_mapping.to_stat[curState.secondary_glyph])),
+                secondary_dist: curState.secondary_dist,
+                secondary_value: secondaryValue
             };
             states.push(state);
         }
         console.log(states);
         return states;
+    };
+
+    this.blankIfNone = function(str) {
+        if (str == 'None') {
+            return '';
+        }
+        return str;
     };
 
     this.collectAllSlotStates = function() {

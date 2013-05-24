@@ -1,4 +1,14 @@
-[size=3]Gear report[/size]{~n}
+[size=3]Configuration Output[/size]{~n}
+
+[size=2]Summary[/size]{~n}
+Summary
+{~n}
+
+[size=2]Gear report[/size]{~n}
 {#slotState}
-{name}
+[b]{name} (QL [color=purple]10.{ql}[/color] {role})[/b] {?stat_type}[b][color=green]+{stat_value}[/color][/b] {stat_type}{/stat_type}
+[indent]Glyph (QL [color=purple]10.{glyph_ql}[/color]): 
+{?primary_glyph}{primary_glyph} [b][color=green]+{primary_value}[/color][/b] ({primary_dist}/4){/primary_glyph}
+{?secondary_glyph} , {secondary_glyph} [b][color=green]+{secondary_value}[/color][/b] ({secondary_dist}/4){/secondary_glyph}
+[/indent]{~n}
 {/slotState}
