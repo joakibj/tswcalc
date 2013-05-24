@@ -98,7 +98,7 @@ custom_gear_data = {
         '10.5': {
             weapon_power: 457
         }
-    }
+    },
     "head": {
         heal_dps: {
             'ql10.0': {
