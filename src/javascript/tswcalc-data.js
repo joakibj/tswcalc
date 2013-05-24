@@ -79,6 +79,26 @@ template_data = {
 }
 
 custom_gear_data = {
+    "weapon": {
+        '10.0': {
+            weapon_power: 398
+        },
+        '10.1': {
+            weapon_power: 411
+        },
+        '10.2': {
+            weapon_power: 423
+        },
+        '10.3': {
+            weapon_power: 434
+        },
+        '10.4': {
+            weapon_power: 446
+        },
+        '10.5': {
+            weapon_power: 457
+        }
+    }
     "head": {
         heal_dps: {
             'ql10.0': {
