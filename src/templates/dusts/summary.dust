@@ -23,8 +23,10 @@
                 <th>Value</th>
               </thead>
               <tbody>
-                <tr><td>Critical Rating</td><td id="stat-critical-rating" class="statvalue">0</td></tr>
-                <tr><td>Critical Power</td><td id="stat-critical-power" class="statvalue">0</td></tr>
+                <tr><td>Critical Rating</td><td id="stat-critical-rating" class="statvalue">0 %</td></tr>
+                <tr><td>Critical Chance %</td><td id="stat-critical-chance" class="statvalue">0</td></tr>
+                <tr><td>Critical Power Rating</td><td id="stat-critical-power" class="statvalue">0</td></tr>
+                <tr><td>Critical Power</td><td id="stat-critical-power-percentage" class="statvalue">0 %</td></tr>
                 <tr><td>Penetration Rating</td><td id="stat-penetration-rating" class="statvalue">0</td></tr>
                 <tr><td>Hit Rating</td><td id="stat-hit-rating" class="statvalue">0</td></tr>
               </tbody>

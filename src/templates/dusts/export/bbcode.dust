@@ -13,7 +13,9 @@
     {#offensive_defensive}
     [b]Offensive stats[/b]{~n}
     [indent]Critical Rating: [b][color=green]{critical-rating}[/color][/b][/indent]{~n}
-    [indent]Critical Power: [b][color=green]{critical-power}[/color][/b][/indent]{~n}
+    [indent]Critical Chance: [b][color=green]{critical-chance} %[/color][/b][/indent]{~n}
+    [indent]Critical Power Rating: [b][color=green]{critical-power}[/color][/b][/indent]{~n}
+    [indent]Critical Power: [b][color=green]{critical-power-percentage} %[/color][/b][/indent]{~n}
     [indent]Penetration Rating: [b][color=green]{penetration-rating}[/color][/b][/indent]{~n}
     [indent]Hit Rating: [b][color=green]{hit-rating}[/color][/b][/indent]{~n}
     [b]Defensive stats[/b]{~n}
