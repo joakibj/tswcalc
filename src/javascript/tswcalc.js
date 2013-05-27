@@ -7,13 +7,20 @@ var importModule = 0;
 
 $(document).ready(function() {
     renderContainer(template_data);
-
     addHash();
+
     startSubModules();
+
+    triggerReset();
+
     checkIfExported();
 
     $('#summary').scrollToFixed();
 });
+
+function triggerReset() {
+    $('#btn-reset').trigger('click');
+};
 
 function renderContainer(data) {
     dust.render('container', template_data,
@@ -28,7 +35,7 @@ function renderContainer(data) {
 
 function checkIfExported() {
     var vars = $.getUrlVars();
-    if(!$.isEmptyObject(vars) && Object.keys(vars).length == 8) {
+    if (!$.isEmptyObject(vars) && Object.keys(vars).length == 8) {
         importModule.start(vars);
     }
 };
@@ -45,7 +52,7 @@ function startSubModules() {
 };
 
 function addHash() {
-    if(location.hash == '') {
+    if (location.hash == '') {
         location.hash = ' ';
     }
 };
@@ -78,7 +85,6 @@ function startImportModule() {
     importModule = new Import();
 };
 
-function capitalise(string)
-{
+function capitalise(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
