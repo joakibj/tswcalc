@@ -55,6 +55,7 @@ function Summary() {
             'attack-rating': 0,
             'heal-rating': 0
         };
+        this.updateCosts();
         for (var i = 0; i < template_data.slots.length; i++) {
             var role = $('#' + template_data.slots[i].id_prefix + '-role option:selected').attr('value');
             var ql = $('#' + template_data.slots[i].id_prefix + '-ql option:selected').attr('value');
@@ -91,6 +92,7 @@ function Summary() {
             'magical-protection': 249
         };
 
+        this.updateCosts();
         for (var i = 0; i < template_data.slots.length; i++) {
             var glyphQl = $('#' + template_data.slots[i].id_prefix + '-glyph-ql option:selected').attr('value');
             var primaryGlyph = $('#' + template_data.slots[i].id_prefix + '-primary-glyph option:selected').attr('value');
