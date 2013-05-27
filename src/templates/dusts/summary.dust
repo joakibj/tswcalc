@@ -1,6 +1,11 @@
         <div id="summary">
           <h4>Summary</h4>
           <div id="table-primary">
+            <div class="row-fluid">
+              <span class="span4">Black Bullion: <span id="bb-cost">0</span></span>
+              <span class="span4">Criterion: <span id="cu-cost">0</span></span>
+              <span class="span4">Astral Fuse: <span id="af-cost">0</span></span>
+            </div>
             <table class="table table-stats">
               <thead>
                 <th>Primary Stat</th>
