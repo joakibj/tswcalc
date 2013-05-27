@@ -2,12 +2,38 @@ function Summary() {
     self = this;
 
     this.updateAllStats = function() {
+        this.updateCosts();
         primarySums = self.updatePrimaryStats();
         offensiveDefensiveSums = self.updateOffensiveDefensiveStats();
         return {
             primary: primarySums,
             offensive_defensive: offensiveDefensiveSums
         };
+    };
+
+    this.updateCosts = function() {
+        var blackBullions = 0;
+        var criterionUpgrades = 0;
+        var astralFuses = 0;
+        for (var i = 0; i < template_data.slots.length; i++) {
+            var ql = $('#' + template_data.slots[i].id_prefix + '-ql option:selected').attr('value');
+            var glyphQl = $('#' + template_data.slots[i].id_prefix + '-glyph-ql option:selected').attr('value');
+            blackBullions += bb_costs['glyph'][glyphQl].cost;
+            if(template_data.slots[i].group == 'weapon') {
+                blackBullions += bb_costs['weapon'][ql].cost;
+            } else {
+                blackBullions += bb_costs['talisman'][ql].cost;
+            }
+            if(ql == '10.5') {
+                criterionUpgrades++;
+            }
+            if(glyphQl == '10.5') {
+                astralFuses++;
+            }
+        }
+        $('#bb-cost').html(blackBullions);
+        $('#cu-cost').html(criterionUpgrades);
+        $('#af-cost').html(astralFuses);
     };
 
     this.updatePrimaryStats = function() {
@@ -29,6 +55,7 @@ function Summary() {
             'attack-rating': 0,
             'heal-rating': 0
         };
+        this.updateCosts();
         for (var i = 0; i < template_data.slots.length; i++) {
             var role = $('#' + template_data.slots[i].id_prefix + '-role option:selected').attr('value');
             var ql = $('#' + template_data.slots[i].id_prefix + '-ql option:selected').attr('value');
@@ -65,6 +92,7 @@ function Summary() {
             'magical-protection': 249
         };
 
+        this.updateCosts();
         for (var i = 0; i < template_data.slots.length; i++) {
             var glyphQl = $('#' + template_data.slots[i].id_prefix + '-glyph-ql option:selected').attr('value');
             var primaryGlyph = $('#' + template_data.slots[i].id_prefix + '-primary-glyph option:selected').attr('value');
@@ -117,7 +145,6 @@ function Summary() {
             if (sums.hasOwnProperty(stat)) {
                 if (sums[stat] > 0) {
                     if (stat == 'critical-power-percentage' || stat == 'critical-chance') {
-                        console.log(sums[stat]);
                         $('#stat-' + stat).html(sums[stat].toString().substring(0, 4) + " %");
                     } else {
                         $('#stat-' + stat).html('+' + sums[stat]);

@@ -9,6 +9,7 @@ $(document).ready(function() {
     renderContainer(template_data);
     addHash();
 
+    activateToolTips();
     startSubModules();
 
     triggerReset();
@@ -20,6 +21,23 @@ $(document).ready(function() {
 
 function triggerReset() {
     $('#btn-reset').trigger('click');
+};
+
+function activateToolTips() {
+    $('.cost-tooltip').tooltip({
+        placement: function(context, source) {
+            var position = $(source).position();
+            if (position.top < 50) {
+                return 'bottom';
+            } else {
+                return 'top';
+            }
+        }
+    });
+    $('.cost-tooltip').on('click', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+    });
 };
 
 function renderContainer(data) {
