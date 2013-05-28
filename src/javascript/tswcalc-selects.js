@@ -32,8 +32,8 @@ function SelectHandler(slotId) {
         });
     };
 
-    this.addListenersToQlSelect = function(id_suffix) {
-        $('#' + slotId + id_suffix + '-ql').change(function() {
+    this.addListenersToQlSelect = function() {
+        $('#' + slotId + '-ql').change(function() {
             summary.updatePrimaryStats();
         });
     };
