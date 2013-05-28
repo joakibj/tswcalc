@@ -10,6 +10,22 @@ function SelectHandler(slotId) {
         self.addListenersToGlyphSelect(slotId, 'secondary-glyph');
     };
 
+    this.getRole = function() {
+        return $('#' + slotId + '-role option:selected').attr('value');
+    };
+
+    this.getQl = function() {
+        return $('#' + slotId + '-ql option:selected').attr('value');
+    };
+
+    this.getGlyphQl = function() {
+        return $('#' + slotId + '-glyph-ql option:selected').attr('value');
+    };
+
+    this.getGlyph = function(primary_or_secondary) {
+        return $('#' + slotId + '-' + primary_or_secondary + '-glyph option:selected').attr('value');
+    };
+
     this.addListenersToRoleSelect = function(id_prefix) {
         $('#' + id_prefix + '-role').change(function() {
             summary.updatePrimaryStats();

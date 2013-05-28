@@ -16,8 +16,8 @@ function Summary() {
         var criterionUpgrades = 0;
         var astralFuses = 0;
         for (var i = 0; i < template_data.slots.length; i++) {
-            var ql = $('#' + template_data.slots[i].id_prefix + '-ql option:selected').attr('value');
-            var glyphQl = $('#' + template_data.slots[i].id_prefix + '-glyph-ql option:selected').attr('value');
+            var ql = selectHandler[template_data.slots[i].id_prefix].getQl();
+            var glyphQl = selectHandler[template_data.slots[i].id_prefix].getGlyphQl();
             blackBullions += bb_costs['glyph'][glyphQl].cost;
             if(template_data.slots[i].group == 'weapon') {
                 blackBullions += bb_costs['weapon'][ql].cost;
@@ -57,8 +57,8 @@ function Summary() {
         };
         this.updateCosts();
         for (var i = 0; i < template_data.slots.length; i++) {
-            var role = $('#' + template_data.slots[i].id_prefix + '-role option:selected').attr('value');
-            var ql = $('#' + template_data.slots[i].id_prefix + '-ql option:selected').attr('value');
+            var role = selectHandler[template_data.slots[i].id_prefix].getRole();
+            var ql = selectHandler[template_data.slots[i].id_prefix].getQl();
             if (role == 'dps') {
                 sums['attack-rating'] += custom_gear_data[template_data.slots[i].group].heal_dps['ql' + (ql)].rating;
             } else if (role == 'healer') {
@@ -94,9 +94,9 @@ function Summary() {
 
         this.updateCosts();
         for (var i = 0; i < template_data.slots.length; i++) {
-            var glyphQl = $('#' + template_data.slots[i].id_prefix + '-glyph-ql option:selected').attr('value');
-            var primaryGlyph = $('#' + template_data.slots[i].id_prefix + '-primary-glyph option:selected').attr('value');
-            var secondaryGlyph = $('#' + template_data.slots[i].id_prefix + '-secondary-glyph option:selected').attr('value');
+            var glyphQl = selectHandler[template_data.slots[i].id_prefix].getGlyphQl();
+            var primaryGlyph = selectHandler[template_data.slots[i].id_prefix].getGlyph('primary');
+            var secondaryGlyph = selectHandler[template_data.slots[i].id_prefix].getGlyph('secondary');
 
             if (primaryGlyph != "none" || secondaryGlyph != "none") {
                 var primaryDist = $('#' + template_data.slots[i].id_prefix + '-primary-glyph-dist > button.btn.active')[0].innerHTML;
