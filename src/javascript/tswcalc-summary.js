@@ -47,6 +47,7 @@ function Summary() {
                 this.updateOnePrimaryStat(stat, sums[stat]);
             }
         }
+        this.updateCosts();
     };
 
     this.updateOnePrimaryStat = function(stat, value) {
@@ -88,6 +89,7 @@ function Summary() {
 
         this.updateGlyphValues();
         this.updateStats(sums);
+        this.updateCosts();
     };
 
     this.collectOffensiveDefensiveStats = function() {
