@@ -21,6 +21,10 @@ body {
     min-width: 50px;
 }
 
+.statname {
+    width: 200px;
+}
+
 .table-stats td {
     font-size: 12px;
     padding: 0px;   
@@ -48,7 +52,11 @@ select {
     padding: 2px;
 }
 
-.slot {
+div .slot {
+    margin-bottom: 15px;
+}
+
+.slot h4 {
     display: inline;
 }
 
