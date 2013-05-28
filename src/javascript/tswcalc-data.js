@@ -43,101 +43,633 @@ role_mapping = {
 
 template_data = {
     slots: [{
-        id_prefix: 'weapon',
-        name: 'Weapon',
-        is_weapon: true,
-        group: 'weapon'
-    }, {
-        id_prefix: 'head',
-        name: 'Head Talisman',
-        group: 'head'
-    }, {
-        id_prefix: 'ring',
-        name: 'Ring Talisman',
-        group: 'major'
-    }, {
-        id_prefix: 'neck',
-        name: 'Neck Talisman',
-        group: 'major'
-    }, {
-        id_prefix: 'wrist',
-        name: 'Wrist Talisman',
-        group: 'major'
-    }, {
-        id_prefix: 'luck',
-        name: 'Luck Talisman',
-        group: 'minor'
-    }, {
-        id_prefix: 'waist',
-        name: 'Waist Talisman',
-        group: 'minor'
-    }, {
-        id_prefix: 'occult',
-        name: 'Occult Talisman',
-        group: 'minor'
-    }]
+            id_prefix: 'weapon',
+            name: 'Weapon',
+            is_weapon: true,
+            group: 'weapon'
+        }, {
+            id_prefix: 'head',
+            name: 'Head Talisman',
+            group: 'head'
+        }, {
+            id_prefix: 'ring',
+            name: 'Ring Talisman',
+            group: 'major'
+        }, {
+            id_prefix: 'neck',
+            name: 'Neck Talisman',
+            group: 'major'
+        }, {
+            id_prefix: 'wrist',
+            name: 'Wrist Talisman',
+            group: 'major'
+        }, {
+            id_prefix: 'luck',
+            name: 'Luck Talisman',
+            group: 'minor'
+        }, {
+            id_prefix: 'waist',
+            name: 'Waist Talisman',
+            group: 'minor'
+        }, {
+            id_prefix: 'occult',
+            name: 'Occult Talisman',
+            group: 'minor'
+        }
+    ]
+}
+
+signet_data = {
+    'weapon': [{
+            description: 'When you hit a target you have a 10% chance to gain a damage increase of %d for 5 seconds.',
+            cooldown: '11',
+            quality: {
+                epic: 7,
+                elite: 14,
+                normal: 21
+            },
+            id: 0,
+            name: 'Abuse'
+        }, {
+            description: 'When you hit a weakened target you have a 15% chance to gain %d damage increase for 6 seconds.',
+            cooldown: '10',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 1,
+            name: 'Aggression'
+        }, {
+            description: 'When you penetrate a target you have a 33% chance to make your target take %d more damage from further penetrating hits for 7 seconds.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 2,
+            name: 'Breaching'
+        }, {
+            description: 'When you hit a target you have a 10% chance to make your next %d hits never miss.',
+            cooldown: '10',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 3,
+            name: 'Castigation'
+        }, {
+            description: 'Your hinder effects last %d longer.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 4,
+            name: 'Detainment'
+        }, {
+            description: 'When you achieve 10 hits you gain %d damage increase for 6 seconds.',
+            cooldown: '6',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 5,
+            name: 'Fury'
+        }, {
+            description: 'When you critically hit a target you gain a critical damage increase of %d for 15 seconds.',
+            cooldown: '15',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 6,
+            name: 'Laceration'
+        }, {
+            description: 'When you hit an impaired target you gain increased damage of %d per stack for 5 seconds, up to 3 stacks.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 7,
+            name: 'Obedience'
+        }, {
+            description: 'When you hit an afflicted target, you have a 20% chance to hit them for an additional %d damage.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 8,
+            name: 'Opportunism'
+        }, {
+            description: 'When you hit a target you have a 10% chance to hit them for an additional %d damage.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 9,
+            name: 'Sadism'
+        }, {
+            description: 'When you heal a target there is a 20% chance they will gain a barrier that absorbs %d and lasts 10 seconds.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 10,
+            name: 'Benediction'
+        }, {
+            description: 'When you critically hit a target you gain a barrier that absorbs %d and last 10 seconds.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 11,
+            name: 'Valour'
+        }, {
+            description: 'Delight   When you hit a weakened target you have a 5% chance to be healed for %d every 2 seconds for 8 seconds.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 12,
+            name: 'Cruel'
+        }, {
+            description: 'When you hinder a target you are healed for %d',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 13,
+            name: 'Extrication'
+        }, {
+            description: 'When you impair a target you are healed for %d every 2 for 6 seconds.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 14,
+            name: 'Interdiction'
+        }, {
+            description: 'When you heal a target below 50% health they are healed for %d every 2 seconds for 8 seconds.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 15,
+            name: 'Temperance'
+        }
+    ],
+    'head': [{
+            description: 'Your Affliction effects deal %d more damage.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 16,
+            name: 'Corruption'
+        }, {
+            description: 'When you are glanced you gain a %d Defense Rating for 8 seconds.',
+            cooldown: '10',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 17,
+            name: 'Discipline'
+        }, {
+            description: 'When you block you gain a %d block chance for 4 seconds.',
+            cooldown: '10',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 18,
+            name: 'Order'
+        }, {
+            description: 'When you are glanced you gain magical and physical protection of %d per stack for 4 seconds, up to 3 stacks.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 19,
+            name: 'Reinforcement'
+        }, {
+            description: 'When you block you gain %d block rating per stack for 4 seconds, up to 3 stacks.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 20,
+            name: 'Resilience'
+        }
+    ],
+    'minor': [{
+            description: 'Your Strike attacks do an additional %d damage.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 24,
+            name: 'Assassination'
+        }, {
+            description: 'Your Blast attacks do an additional %d damage.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 25,
+            name: 'Barrage'
+        }, {
+            description: 'Your Focus attacks do an additional %d damage.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 26,
+            name: 'Cleaving'
+        }, {
+            description: 'Your Chaos attacks do an additional %d damage.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 27,
+            name: 'Distortion'
+        }, {
+            description: 'Your Assault Rifle attacks do an additional %d damage.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 28,
+            name: 'Execution'
+        }, {
+            description: 'Your Elemental attacks doing an additional %d damage.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 29,
+            name: 'Flux'
+        }, {
+            description: 'Your Pistol attacks do an additional %d damage.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 30,
+            name: 'Liquidation'
+        }, {
+            description: 'Your Frenzy attacks do an additional %d damage',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 31,
+            name: 'Rage'
+        }, {
+            description: 'Your Chain attacks do an additional %d damage.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 32,
+            name: 'Recursion'
+        }, {
+            description: 'Your Fist attacks do an additional %d damage.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 33,
+            name: 'Serration'
+        }, {
+            description: 'Your Shotgun attacks do an additional %d damage.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 34,
+            name: 'Shards'
+        }, {
+            description: 'Your Hammer attacks do an additional %d damage.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 35,
+            name: 'Shattering'
+        }, {
+            description: 'Your Burst attacks do an additional %d damage.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 36,
+            name: 'Storms'
+        }, {
+            description: 'Your Blade attacks do an additional %d damage.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 37,
+            name: 'Swords'
+        }, {
+            description: 'Your Blood attacks do an additional %d damage.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 38,
+            name: 'Tomes'
+        }, {
+            description: 'When your health is below 50% the next 5 hits against you do %d less damage.',
+            cooldown: '12',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 39,
+            name: 'Ablation'
+        }, {
+            description: 'When your health is below 50% you gain a barrier that will absorb up to %d damage for 10 seconds.',
+            cooldown: '12',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 40,
+            name: 'Fortification'
+        }, {
+            description: 'When you Block, Evade, or are Glanced, you gain %d damage reduction for 5 seconds.',
+            cooldown: '6',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 41,
+            name: 'Salvation'
+        }, {
+            description: 'Your Barrier effects are increased by %d.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 42,
+            name: 'Security'
+        }, {
+            description: 'Whenever you critically heal a target they gain a heal over time effect, healing them for %d heal every 1 second for 5 seconds.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 43,
+            name: 'Echoes'
+        }, {
+            description: 'When you critically heal a target they gain a %d damage increase for 5 seconds.',
+            cooldown: '15',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 44,
+            name: 'Equilibrium'
+        }, {
+            description: 'Your Healing effects are increased by %d.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 45,
+            name: 'Harmony'
+        }, {
+            description: 'Your Leech effects are increased by %d.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 46,
+            name: 'Hunger'
+        }, {
+            description: 'When your health is below 50% you are healed for %d and affected by a heal over time effect healing you for %d every 2 seconds for 8 seconds.',
+            cooldown: '12',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 47,
+            name: 'Rejuvenation'
+        }, {
+            description: 'When you critically heal a target they gain a %d leech effect 5',
+            cooldown: 'seconds.',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 48,
+            name: 'Thirst'
+        }, {
+            description: 'When you block, evade, or are glanced you generate a %s amount of hate on your offensive target.',
+            cooldown: '6',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 49,
+            name: 'Hatred'
+        }, {
+            description: 'When you critically heal a target you reduce your offensive target\'s hate towards you by a %s.',
+            cooldown: '15',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 50,
+            name: 'Serenity'
+        }, {
+            description: 'When you land a critical or penetrating hit you reduce your offensive targets hate towards you by a %s amount.',
+            cooldown: '15',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 51,
+            name: 'Subjugation'
+        }
+    ],
+    'major': [{
+            description: 'Your attack rating is increased by %d',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 21,
+            name: 'Violence'
+        }, {
+            description: 'Your health is increased by %d',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 22,
+            name: 'Vigour'
+        }, {
+            description: 'Your Heal rating is increased by %d.',
+            cooldown: '0',
+            quality: {
+                epic: 2,
+                elite: 1,
+                normal: 0
+            },
+            id: 23,
+            name: 'Amelioration'
+        }
+    ]
 }
 
 bb_costs = {
-    "weapon": {
-        "10.0": {
+    'weapon': {
+        '10.0': {
             cost: 30
         },
-        "10.1": {
+        '10.1': {
             cost: 70
         },
-        "10.2": {
+        '10.2': {
             cost: 110
         },
-        "10.3": {
+        '10.3': {
             cost: 150
         },
-        "10.4": {
+        '10.4': {
             cost: 190
         },
-        "10.5": {
+        '10.5': {
             cost: 230,
             criterion_upgrade: true
         }
     },
-    "talisman": {
-        "10.0": {
+    'talisman': {
+        '10.0': {
             cost: 30
         },
-        "10.1": {
+        '10.1': {
             cost: 50
         },
-        "10.2": {
+        '10.2': {
             cost: 70
         },
-        "10.3": {
+        '10.3': {
             cost: 90
         },
-        "10.4": {
+        '10.4': {
             cost: 110
         },
-        "10.5": {
+        '10.5': {
             cost: 130,
             criterion_upgrade: true
         }
     },
-    "glyph": {
-        "10.0": {
+    'glyph': {
+        '10.0': {
             cost: 30
         },
-        "10.1": {
+        '10.1': {
             cost: 50
         },
-        "10.2": {
+        '10.2': {
             cost: 70
         },
-        "10.3": {
+        '10.3': {
             cost: 90
         },
-        "10.4": {
+        '10.4': {
             cost: 110
         },
-        "10.5": {
+        '10.5': {
             cost: 130,
             astral_fuse: true
         }
@@ -145,7 +677,7 @@ bb_costs = {
 }
 
 custom_gear_data = {
-    "weapon": {
+    'weapon': {
         '10.0': {
             weapon_power: 398
         },
@@ -165,7 +697,7 @@ custom_gear_data = {
             weapon_power: 457
         }
     },
-    "head": {
+    'head': {
         heal_dps: {
             'ql10.0': {
                 rating: 559
@@ -207,7 +739,7 @@ custom_gear_data = {
             }
         }
     },
-    "major": {
+    'major': {
         heal_dps: {
             'ql10.0': {
                 rating: 505
@@ -249,7 +781,7 @@ custom_gear_data = {
             }
         }
     },
-    "minor": {
+    'minor': {
         heal_dps: {
             'ql10.0': {
                 rating: 325
