@@ -10,12 +10,11 @@ $(document).ready(function() {
     addHash();
 
     activateToolTips();
+
     startSubModules();
-
-    triggerReset();
-
-    checkIfExported();
-    summary.collectAllStats();
+    if(!checkIfExported()) {
+        triggerReset();
+    }
 
     $('#summary').scrollToFixed();
 });
@@ -56,7 +55,9 @@ function checkIfExported() {
     var vars = $.getUrlVars();
     if (!$.isEmptyObject(vars) && Object.keys(vars).length == 8) {
         importModule.start(vars);
+        return true;
     }
+    return false;
 };
 
 function startSubModules() {
