@@ -2,7 +2,7 @@ function Summary() {
     self = this;
 
     this.updateAllStats = function() {
-        this.updateCosts();
+        self.updateCosts();
         primarySums = self.updatePrimaryStats();
         offensiveDefensiveSums = self.updateOffensiveDefensiveStats();
         return {
@@ -99,8 +99,8 @@ function Summary() {
             var secondaryGlyph = selectHandler[template_data.slots[i].id_prefix].getGlyph('secondary');
 
             if (primaryGlyph != "none" || secondaryGlyph != "none") {
-                var primaryDist = $('#' + template_data.slots[i].id_prefix + '-primary-glyph-dist > button.btn.active')[0].innerHTML;
-                var secondaryDist = $('#' + template_data.slots[i].id_prefix + '-secondary-glyph-dist > button.btn.active')[0].innerHTML;
+                var primaryDist = buttonHandler[template_data.slots[i].id_prefix].getActiveDist('primary').innerHTML;
+                var secondaryDist = buttonHandler[template_data.slots[i].id_prefix].getActiveDist('secondary').innerHTML;
 
                 if (primaryDist != null || secondaryDist != null) {
                     var primaryValue = 0;

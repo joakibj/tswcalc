@@ -99,7 +99,7 @@ function Export() {
                 statType = 'Hitpoints';
                 statValue = custom_gear_data[group].tank['ql10.' + curState.ql].hitpoints;
             } else if (template_data.slots[i].is_weapon) {
-                statType = 'Weapon Power'; //Weapon Power
+                statType = 'Weapon Power';
                 statValue = custom_gear_data[group]['10.' + curState.ql].weapon_power;
             }
 
@@ -152,8 +152,8 @@ function Export() {
             glyph_ql: self.stripContent($('#' + slotId + '-glyph-ql').val()),
             primary_glyph: self.stripContent($('#' + slotId + '-primary-glyph').val()),
             secondary_glyph: self.stripContent($('#' + slotId + '-secondary-glyph').val()),
-            primary_dist: buttonHandler[slotId].getActiveDist(slotId, 'primary-glyph').innerHTML,
-            secondary_dist: buttonHandler[slotId].getActiveDist(slotId, 'secondary-glyph').innerHTML
+            primary_dist: buttonHandler[slotId].getActiveDist('primary').innerHTML,
+            secondary_dist: buttonHandler[slotId].getActiveDist('secondary').innerHTML
         };
     };
 

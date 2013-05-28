@@ -3,14 +3,13 @@ function DistributionButtonHandler(slotId) {
     var self = this;
 
     this.initiate = function() {
-        this.addListenersToGlyphDistButtons(slotId, 'primary-glyph');
-        this.addListenersToGlyphDistButtons(slotId, 'secondary-glyph');
+        this.addListenersToGlyphDistButtons('primary');
+        this.addListenersToGlyphDistButtons('secondary');
     };
 
-    this.addListenersToGlyphDistButtons = function(id_prefix, glyph) {
-        self.onlyActiveButton('#' + slotId + '-primary-glyph-dist-btn0');
-        self.onlyActiveButton('#' + slotId + '-secondary-glyph-dist-btn0');
-        $('#' + id_prefix + '-' + glyph + '-dist > button.btn').on('click', function(event) {
+    this.addListenersToGlyphDistButtons = function(glyph) {
+        this.onlyActiveButton('#' + slotId + '-' + glyph + '-glyph-dist-btn0');
+        $('#' + slotId + '-' + glyph + '-glyph-dist > button.btn').on('click', function(event) {
             self.onlyActiveButton('#' + this.id);
             self.balanceGlyphDist(this, glyph);
             summary.updateOffensiveDefensiveStats();
@@ -19,11 +18,11 @@ function DistributionButtonHandler(slotId) {
 
     this.balanceGlyphDist = function(button, glyph) {
         otherActiveButton = self.getActiveDist(self.getInverseGlyphStat(glyph));
-        self.balanceGlyphDistOverflow(button, otherActiveButton);
+        this.balanceGlyphDistOverflow(button, otherActiveButton);
     }
 
     this.getActiveDist = function(glyph) {
-        return $('#' + slotId + '-' + glyph + '-dist > button.btn.active')[0];
+        return $('#' + slotId + '-' + glyph + '-glyph-dist > button.btn.active')[0];
     };
 
     this.balanceGlyphDistOverflow = function(clickedButton, otherButton) {
@@ -46,6 +45,6 @@ function DistributionButtonHandler(slotId) {
     };
 
     this.getInverseGlyphStat = function(glyph) {
-        return glyph == 'primary-glyph' ? 'secondary-glyph' : 'primary-glyph';
+        return glyph == 'primary' ? 'secondary' : glyph;
     }
 }
