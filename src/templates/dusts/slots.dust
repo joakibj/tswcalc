@@ -32,7 +32,11 @@
             </div>
             <div>
               <table id="{id_prefix}-signets" class="table table-signets">
-                <tr><td>Signet</td>
+                <tr>
+                  <td>
+                    <a href="#" class="signet-tooltip" data-toggle="tooltip" title="Signet for the {name} slot. Choose the quality and type of signet.">
+                      <img src="assets/images/dps_weapon_normal_signet.png" alt="Signet"/></a>
+                  </td>
                   <td>
                     <select id="{id_prefix}-signet-quality">
                       <option value="none">Quality</option>

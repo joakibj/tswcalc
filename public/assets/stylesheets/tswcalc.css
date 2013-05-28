@@ -17,6 +17,11 @@ body {
 
 .table-signets td {
     height: 50px;
+    padding-right: 2px;
+}
+
+.table-signets td img {
+    min-width: 31px;
 }
 
 .signet-description {
