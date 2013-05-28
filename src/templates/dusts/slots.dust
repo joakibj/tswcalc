@@ -30,6 +30,23 @@
               <td id="{id_prefix}-secondary-glyph-value" class="statvalue">0</td></tr>
               </table>
             </div>
+            <div>
+              <table id="{id_prefix}-signets" class="table table-signets">
+                <tr><td>Signet</td>
+                  <td>
+                    <select id="{id_prefix}-signet-quality">
+                      <option value="none">Quality</option>
+                      <option value="normal">Normal</option>
+                      <option value="elite">Elite</option>
+                      <option value="epic">Epic</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select id="{id_prefix}-pick-signet">
+                    </select></td>
+                    <td id="{id_prefix}-signet-description" class="signet-description"></td></tr>
+              </table>
+            </div>
           </div>  
 {:else}
   <p>No slots found (Bug)!</p>

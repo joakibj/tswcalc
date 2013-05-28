@@ -80,6 +80,14 @@ template_data = {
 }
 
 signet_data = {
+    find : function(group, id) {
+        for (var i = this[group].length - 1; i >= 0; i--) {
+            if(this[group][i].id == id) {
+                return this[group][i];
+            }
+        };
+        return null;
+    },
     'weapon': [{
             description: 'When you hit a target you have a 10% chance to gain a damage increase of %d for 5 seconds.',
             cooldown: '11',
