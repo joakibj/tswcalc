@@ -45,6 +45,6 @@ function DistributionButtonHandler(slotId) {
     };
 
     this.getInverseGlyphStat = function(glyph) {
-        return glyph == 'primary' ? 'secondary' : glyph;
+        return glyph == 'primary' ? 'secondary' : 'primary';
     }
 }
