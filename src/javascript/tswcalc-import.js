@@ -8,6 +8,7 @@ function Import() {
                 this.setValues(slotId, splitVars);
             }
         }
+        summary.updateAllStats();
     };
 
     this.setValues = function(slotId, values) {
@@ -18,6 +19,5 @@ function Import() {
         $('#' + slotId + '-secondary-glyph').val(stat_mapping.to_stat[values[4]]);
         $('#' + slotId + '-primary-glyph-dist-btn' + values[5]).trigger('click');
         $('#' + slotId + '-secondary-glyph-dist-btn' + values[6]).trigger('click');
-        summary.updateAllStats();
     };
 };
