@@ -24,6 +24,9 @@ function triggerReset() {
 };
 
 function activateToolTips() {
+    $('.glyph-tooltip').tooltip({
+        placement: 'left'
+    });
     $('.cost-tooltip').tooltip({
         placement: function(context, source) {
             var position = $(source).position();
@@ -34,7 +37,7 @@ function activateToolTips() {
             }
         }
     });
-    $('.cost-tooltip').on('click', function(event) {
+    $('.cost-tooltip, .glyph-tooltip').on('click', function(event) {
         event.preventDefault();
         event.stopPropagation();
     });
