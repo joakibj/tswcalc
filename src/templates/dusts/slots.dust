@@ -17,8 +17,9 @@
             </table>
             <div>
               <table id="{id_prefix}-glyphs" class="table table-glyphs">
-              <tr><td><strong>Glyph QL</strong></td><td>{>qlselect id_suffix="-glyph"/}</td></tr>
-              <tr><td>Glyph Primary Stat</td>
+              <tr>
+              <td class="glyph-ql" rowspan="2"><strong>Glyph</strong> {>qlselect id_suffix="-glyph"/}</td>
+              <td><strong>Primary Stat</strong></td>
               <td><select id="{id_prefix}-primary-glyph" class="select-glyph">
                 <option value="none" selected="true">None</option>
                 <option value="critical-rating">Critical Rating</option>
@@ -34,7 +35,7 @@
               <td><strong>Distribution:</strong> {>glyphbuttons id_suffix="-primary-glyph"/}</td>
               <td id="{id_prefix}-primary-glyph-value" class="statvalue">0</td></tr>
             
-              <tr><td>Glyph Secondary Stat</td>
+              <tr><td><strong>Secondary Stat</strong></td>
               <td><select id="{id_prefix}-secondary-glyph" class="select-glyph">
                 <option value="none" selected="true">None</option>
                 <option value="critical-rating">Critical Rating</option>

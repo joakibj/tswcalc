@@ -10,6 +10,11 @@ body {
 .table-glyphs td {
     font-size: 12px;
     padding: 0px;
+    vertical-align: middle;
+}
+
+.table-glyphs .glyph-ql {
+    vertical-align: middle;
 }
 
 .table-slots td {
@@ -36,6 +41,8 @@ body {
     font-size: 12px;
     width: auto;
     height:auto;
+    margin-top: 3px;
+    margin-bottom: 3px;
 }
 
 .select-role {
@@ -48,6 +55,8 @@ body {
     font-size: 12px;
     width: auto;
     height:auto;   
+    margin-top: 3px;
+    margin-bottom: 3px;
 }
 
 .qlbuttons {
@@ -67,3 +76,4 @@ body {
 #export-textarea {
   resize: none;
 }
+
