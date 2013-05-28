@@ -15,6 +15,7 @@ $(document).ready(function() {
     triggerReset();
 
     checkIfExported();
+    summary.collectAllStats();
 
     $('#summary').scrollToFixed();
 });

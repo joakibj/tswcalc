@@ -60,7 +60,7 @@ function Export() {
         this.collectAllSlotStates();
         dust.render('export\bbcode', {
             slotState: this.dustSlotState(),
-            summary: summary.updateAllStats
+            summary: summary.collectAllStats()
         },
 
         function(err, out) {
