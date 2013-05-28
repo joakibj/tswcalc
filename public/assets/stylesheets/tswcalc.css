@@ -20,6 +20,9 @@ body {
 .table-slots td {
     font-size: 12px;
     padding: 0px;   
+    margin-top: 3px;
+    margin-bottom: 3px;
+    vertical-align: middle;
 }
 
 .statvalue {
@@ -49,6 +52,8 @@ body {
     font-size: 12px;
     width: auto;
     height:auto;
+    margin-top: 3px;
+    margin-bottom: 3px;
 }
 
 .select-ql {
