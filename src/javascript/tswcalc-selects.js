@@ -3,11 +3,11 @@ function SelectHandler(slotId) {
     var self = this;
 
     this.initiate = function() {
-        self.addListenersToRoleSelect(slotId);
-        self.addListenersToQlSelect(slotId, '');
-        self.addListenersToGlyphSelect(slotId, 'glyph-ql');
-        self.addListenersToGlyphSelect(slotId, 'primary-glyph');
-        self.addListenersToGlyphSelect(slotId, 'secondary-glyph');
+        self.addListenersToRoleSelect();
+        self.addListenersToQlSelect();
+        self.addListenersToGlyphSelect('glyph-ql');
+        self.addListenersToGlyphSelect('primary-glyph');
+        self.addListenersToGlyphSelect('secondary-glyph');
     };
 
     this.getRole = function() {
@@ -26,20 +26,20 @@ function SelectHandler(slotId) {
         return $('#' + slotId + '-' + primary_or_secondary + '-glyph option:selected').attr('value');
     };
 
-    this.addListenersToRoleSelect = function(id_prefix) {
-        $('#' + id_prefix + '-role').change(function() {
+    this.addListenersToRoleSelect = function() {
+        $('#' + slotId + '-role').change(function() {
             summary.updatePrimaryStats();
         });
     };
 
-    this.addListenersToQlSelect = function(id_prefix, id_suffix) {
-        $('#' + id_prefix + id_suffix + '-ql').change(function() {
+    this.addListenersToQlSelect = function(id_suffix) {
+        $('#' + slotId + id_suffix + '-ql').change(function() {
             summary.updatePrimaryStats();
         });
     };
 
-    this.addListenersToGlyphSelect = function(id_prefix, id_suffix) {
-        $('#' + id_prefix + '-' + id_suffix).change(function() {
+    this.addListenersToGlyphSelect = function(id_suffix) {
+        $('#' + slotId + '-' + id_suffix).change(function() {
             summary.updateOffensiveDefensiveStats();
         });
     };
