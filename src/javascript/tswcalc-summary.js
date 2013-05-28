@@ -19,15 +19,15 @@ function Summary() {
             var ql = selectHandler[template_data.slots[i].id_prefix].getQl();
             var glyphQl = selectHandler[template_data.slots[i].id_prefix].getGlyphQl();
             blackBullions += bb_costs['glyph'][glyphQl].cost;
-            if(template_data.slots[i].group == 'weapon') {
+            if (template_data.slots[i].group == 'weapon') {
                 blackBullions += bb_costs['weapon'][ql].cost;
             } else {
                 blackBullions += bb_costs['talisman'][ql].cost;
             }
-            if(ql == '10.5') {
+            if (ql == '10.5') {
                 criterionUpgrades++;
             }
-            if(glyphQl == '10.5') {
+            if (glyphQl == '10.5') {
                 astralFuses++;
             }
         }
@@ -37,14 +37,20 @@ function Summary() {
     };
 
     this.updatePrimaryStats = function() {
+        this.updateCosts();
         var sums = this.collectPrimaryStats();
-        $('#stat-combat-power').text(sums['combat-power']);
-        $('#stat-weapon-power').text(sums['weapon-power']);
-        $('#stat-hitpoints').text(sums['hitpoints']);
-        $('#stat-attack-rating').text(sums['attack-rating']);
-        $('#stat-heal-rating').text(sums['heal-rating']);
+
+        for (var stat in sums) {
+            if (sums.hasOwnProperty(stat)) {
+                this.updateOnePrimaryStat(stat, sums[stat]);
+            }
+        }
 
         return sums;
+    };
+
+    this.updateOnePrimaryStat = function(stat, value) {
+        $('#stat-' + stat).text(value);
     };
 
     this.collectPrimaryStats = function() {
@@ -55,7 +61,7 @@ function Summary() {
             'attack-rating': 0,
             'heal-rating': 0
         };
-        this.updateCosts();
+
         for (var i = 0; i < template_data.slots.length; i++) {
             var role = selectHandler[template_data.slots[i].id_prefix].getRole();
             var ql = selectHandler[template_data.slots[i].id_prefix].getQl();
