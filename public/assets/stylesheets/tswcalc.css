@@ -3,21 +3,7 @@ body {
   padding-bottom: 20px;
 }
 
-.table-glyphs {
-
-}
-
-.table-glyphs td {
-    font-size: 12px;
-    padding: 0px;
-    vertical-align: middle;
-}
-
-.table-glyphs .glyph-ql {
-    vertical-align: middle;
-}
-
-.table-slots td {
+.table td {
     font-size: 12px;
     padding: 0px;   
     margin-top: 3px;
@@ -31,32 +17,16 @@ body {
     min-width: 50px;
 }
 
-.table-stats {
-
-}
-
 .table-stats td {
     font-size: 12px;
     padding: 0px;   
 }
 
-.select-glyph {
-    font-size: 12px;
-    width: auto;
-    height:auto;
-    margin-top: 3px;
-    margin-bottom: 3px;
+.table-stats th {
+    padding: 5px 5px 5px 0px;   
 }
 
-.select-role {
-    font-size: 12px;
-    width: auto;
-    height:auto;
-    margin-top: 3px;
-    margin-bottom: 3px;
-}
-
-.select-ql {
+select {
     font-size: 12px;
     width: auto;
     height:auto;   
