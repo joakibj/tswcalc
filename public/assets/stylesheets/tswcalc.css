@@ -54,9 +54,13 @@ select {
 
 div .slot {
     margin-bottom: 15px;
+    background-color: #f5f5f5;
+    padding:5px;
+    border-radius: 8px;
 }
 
 .slot h4 {
+    padding: 0px;
     display: inline;
 }
 
