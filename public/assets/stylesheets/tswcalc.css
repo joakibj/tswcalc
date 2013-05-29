@@ -22,6 +22,14 @@ body {
     padding-right: 2px;
 }
 
+td.inner-fill {
+    width: 34px;
+}
+
+td.filler {
+    width:293px;
+}
+
 img.signet {
     background-image:url('../images/icons/signet_background.png');
     background-size: cover;

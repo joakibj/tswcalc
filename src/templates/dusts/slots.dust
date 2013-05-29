@@ -3,17 +3,19 @@
           <div id="{id_prefix}-slot" class="slot">
             <h4 class="slot">{name}</h4> 
             <table class="table table-slots">
+              <tr>
             {^is_weapon}
-              <tr><td>
-              <strong>Role: </strong></td><td>
+              <td class="inner-fill"><strong>Role: </strong></td>
+              <td>
               <select id="{id_prefix}-role" class="select-role">
                 <option value="none" selected="true">None</option>
                 <option value="dps">DPS</option>
                 <option value="tank">Tank</option>
                 <option value="healer">Healer</option>
-              </select></td></tr>
+              </select>
+            </td>
             {/is_weapon}
-            <tr><td><strong>QL:</strong></td><td>{>qlselect id_suffix=""/}</td></tr>
+            <td><strong>QL:</strong></td><td>{>qlselect id_suffix=""/}</td><td class="filler"></td></tr>
             </table>
             <div>
               <table id="{id_prefix}-glyphs" class="table table-glyphs">
