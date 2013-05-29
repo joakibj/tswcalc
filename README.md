@@ -51,4 +51,4 @@ License
 -------
 Please refer to the LICENSE file for the source code.
 
-All art assets included in `public/assets/images/icons/` folder are cropped screenshots taken from The Secret World™. The artwork should be considered  property of Funcom GmBH unless otherwise noted.
+All art assets included in `public/assets/images/icons/` folder are taken from The Secret World™. The artwork should be considered property of Funcom GmBH unless otherwise noted.
