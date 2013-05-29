@@ -83,18 +83,26 @@ function SelectHandler(slot) {
             if (this.getSignetQuality() == 'none') {
                 $('#' + slot.id_prefix + '-signet-quality').val('normal');
             }
-            var description = '';
-            description = signet.description.replace('%s', self.determineSignetQualityValue(signet));
-            description = description.replace('%d', self.determineSignetQualityValue(signet));
-            if (Object.prototype.toString.call(signet.quality) === '[object Array]') {
-                description = description.replace('%0', self.determineSignetQualityValue(signet, 0));
-                description = description.replace('%1', self.determineSignetQualityValue(signet, 1));
-            }
 
+            var description = this.getSignetDescription(signet);
             $('#' + slot.id_prefix + '-signet-description').html(description);
         } else {
             $('#' + slot.id_prefix + '-signet-description').html('');
         }
+    };
+
+    this.getSignetDescription = function(signet) {
+        if(signet == null) {
+            return '';
+        }
+        var description = '';
+        description = signet.description.replace('%s', self.determineSignetQualityValue(signet));
+        description = description.replace('%d', self.determineSignetQualityValue(signet));
+        if (Object.prototype.toString.call(signet.quality) === '[object Array]') {
+            description = description.replace('%0', self.determineSignetQualityValue(signet, 0));
+            description = description.replace('%1', self.determineSignetQualityValue(signet, 1));
+        }
+        return description;
     };
 
     this.determineSignetQualityValue = function(signet, quality_index) {

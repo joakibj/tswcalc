@@ -53,6 +53,12 @@ signet_quality_mapping = {
         1: 'normal',
         2: 'elite',
         3: 'epic'
+    },
+    to_colour: {
+        'none': 'white',
+        'normal': 'green',
+        'elite': 'blue',
+        'epic': 'purple'
     }
 }
 
@@ -100,10 +106,23 @@ signet_data = {
                 return this[group][i];
             }
         };
-        if(group == 'head') {
+        if (group == 'head') {
             return this.find('weapon', id);
         }
-        return null;
+        return this.noneSignet();
+    },
+    noneSignet: function() {
+        return {
+            description: '',
+            cooldown: '0',
+            quality: {
+                epic: 0,
+                elite: 0,
+                normal: 0
+            },
+            id: 0,
+            name: ''
+        }
     },
     'weapon': [{
         description: 'When you hit a target you have a 10% chance to gain a damage increase of %d% for 5 seconds.',
@@ -113,7 +132,7 @@ signet_data = {
             elite: 14,
             normal: 7
         },
-        id: 0,
+        id: 52,
         name: 'Abuse'
     }, {
         description: 'When you hit a weakened target you have a 15% chance to gain %d% damage increase for 6 seconds.',

@@ -12,7 +12,7 @@ $(document).ready(function() {
     activateToolTips();
 
     startSubModules();
-    if(!checkIfExported()) {
+    if (!checkIfExported()) {
         triggerReset();
     }
 
@@ -44,7 +44,10 @@ function activateToolTips() {
 };
 
 function renderContainer(data) {
-    dust.render('container', {slots: template_data.slots, signets: signet_data},
+    dust.render('container', {
+        slots: template_data.slots,
+        signets: signet_data
+    },
 
     function(err, out) {
         if (err) {
@@ -56,7 +59,7 @@ function renderContainer(data) {
 
 function checkIfExported() {
     var vars = $.getUrlVars();
-    if (!$.isEmptyObject(vars) && Object.keys(vars).length == 8) {
+    if (!$.isEmptyObject(vars) && Object.keys(vars).length == 8 || Object.keys(vars).length == 10) {
         importModule.start(vars);
         return true;
     }

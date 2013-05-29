@@ -2,6 +2,7 @@
 
 [size=2]Summary[/size]{~n}{~n}
 {#summary}
+    [size=-1]
     {#primary}
     [b]Primary stats[/b]{~n}
     [indent]Hitpoints: [b]{hitpoints}[/b][/indent]{~n}
@@ -25,13 +26,17 @@
     [indent]Physical Protection: [b][color=green]{physical-protection}[/color][/b][/indent]{~n}
     [indent]Magical Protection: [b][color=green]{magical-protection}[/color][/b][/indent]{~n}
     {/offensive_defensive}
+    [/size]
 {/summary}
 {~n}{~n}
 [size=2]Gear report[/size]{~n}{~n}
+[size=-1]
 {#slotState}
     [b]{name} (QL [color=purple]10.{ql}[/color]{?role} {role}{/role})[/b] {?stat_type}[b][color=green]+{stat_value}[/color][/b] {stat_type}{/stat_type}{~n}
     [indent]Glyph (QL [color=purple]10.{glyph_ql}[/color]): 
     {?primary_glyph}{primary_glyph} [b][color=green]+{primary_value}[/color][/b] ({primary_dist}/4){/primary_glyph}
     {?secondary_glyph} , {secondary_glyph} [b][color=green]+{secondary_value}[/color][/b] ({secondary_dist}/4){/secondary_glyph}
     [/indent]{~n}
+    {?signet_name}[indent]Signet ([color={signet_colour}]{signet_quality}[/color]): Signet of [b]{signet_name}[/b]. {signet_description}[/indent]{~n}{/signet_name}
 {/slotState}
+[/size]
