@@ -473,7 +473,7 @@ signet_data = {
         id: 40,
         name: 'Fortification'
     }, {
-        description: 'When you Block, Evade, or are Glanced, you gain %d damage reduction for 5 seconds.',
+        description: 'When you Block, Evade, or are Glanced, you gain %d% damage reduction for 5 seconds.',
         cooldown: '6',
         quality: {
             epic: 6,

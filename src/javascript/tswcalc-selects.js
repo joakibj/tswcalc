@@ -83,20 +83,37 @@ function SelectHandler(slot) {
             if (this.getSignetQuality() == 'none') {
                 $('#' + slot.id_prefix + '-signet-quality').val('normal');
             }
-            var description = signet.description.replace('%d', self.determineSignetQualityValue(signet));
+            var description = '';
+            description = signet.description.replace('%s', self.determineSignetQualityValue(signet));
+            description = description.replace('%d', self.determineSignetQualityValue(signet));
+            if (Object.prototype.toString.call(signet.quality) === '[object Array]') {
+                description = description.replace('%0', self.determineSignetQualityValue(signet, 0));
+                description = description.replace('%1', self.determineSignetQualityValue(signet, 1));
+            }
+
             $('#' + slot.id_prefix + '-signet-description').html(description);
         } else {
             $('#' + slot.id_prefix + '-signet-description').html('');
         }
     };
 
-    this.determineSignetQualityValue = function(signet) {
+    this.determineSignetQualityValue = function(signet, quality_index) {
+        quality_index = typeof quality_index !== 'undefined' ? quality_index : -1;
         var quality = this.getSignetQuality();
         if (quality == 'normal') {
+            if (quality_index != -1) {
+                return signet.quality[quality_index].normal;
+            }
             return signet.quality.normal;
         } else if (quality == 'elite') {
+            if (quality_index != -1) {
+                return signet.quality[quality_index].elite;
+            }
             return signet.quality.elite;
         } else if (quality == 'epic') {
+            if (quality_index != -1) {
+                return signet.quality[quality_index].epic;
+            }
             return signet.quality.epic;
         } else {
             return 0;
