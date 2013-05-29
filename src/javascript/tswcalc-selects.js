@@ -39,15 +39,22 @@ function SelectHandler(slot) {
 
     this.addSignetsToSelect = function() {
         var slotgroup = slot.group;
+        $('#' + slot.id_prefix + '-pick-signet').append($('<option>', {
+            value: "none",
+            text: "None",
+            selected: "true"
+        }));
         if (slot.group == 'head') {
             slotgroup = 'weapon';
+            $.each(signet_data[slotgroup], function(index, value) {
+                $('#' + slot.id_prefix + '-pick-signet').append($('<option>', {
+                    value: value.id,
+                    text: value.name
+                }));
+            });
         }
         var url = 'assets/images/dps_' + slotgroup + '_normal_signet.png';
         $('#' + slot.id_prefix + '-signets img').attr('src', url);
-        $('#' + slot.id_prefix + '-pick-signet').append($('<option>', {
-            value: "none",
-            text: "None"
-        }));
         $.each(signet_data[slot.group], function(index, value) {
             $('#' + slot.id_prefix + '-pick-signet').append($('<option>', {
                 value: value.id,

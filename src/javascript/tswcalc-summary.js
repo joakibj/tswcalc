@@ -69,7 +69,6 @@ function Summary() {
             var ql = selectHandler[slot.id_prefix].getQl();
             if (slot.group == 'major') {
                 var signetId = selectHandler[slot.id_prefix].getSignet();
-                console.log(signetId);
                 if (signetId != 'none') {
                     var signet = signet_data.find(slot.group, signetId);
                     sums[signet.stat] += selectHandler[slot.id_prefix].determineSignetQualityValue(signet);
