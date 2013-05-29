@@ -107,6 +107,10 @@ module.exports = function(grunt) {
       javascript: {
         files: ['src/javascript/*.js'],
         tasks: ['default']
+      },
+      css: {
+        files: ['public/assets/stylesheets/<%= pkg.name %>.css'],
+        tasks: ['default']
       }
     }
   });

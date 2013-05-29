@@ -1,21 +1,25 @@
         <div id="summary">
           <h4>Summary</h4>
           <div id="table-primary">
+            <div class="row-fluid">
+              <span class="span4"><a href="#" class="cost-tooltip" data-toggle="tooltip" title="Black Bullions drop from nightmare dungeon bosses."><img src="assets/images/icons/black_bullion.png" alt="Black Bullion"/></a> <span id="bb-cost">0</span></span>
+              <span class="span4"><a href="#" class="cost-tooltip" data-toggle="tooltip" title="Criterion Upgrades drop from the Unutterable Lurker in the Manhattan Exclusion Zone. Use with a nightwatch weapon/talisman toolkit to create 10.5 gear."><img src="assets/images/icons/criterion_upgrade.png" alt="Criterion Upgrade"/></a> <span id="cu-cost">0</span></span>
+              <span class="span4"><a href="#" class="cost-tooltip" data-toggle="tooltip" title="Astral Fuses drop from the Unutterable Lurker in the Manhattan Exclusion Zone. Use with a nightwatch glyph toolkit to create 10.5 glyphs."><img src="assets/images/icons/astral_fuse.png" alt="Astral Fuse"/></a> <span id="af-cost">0</span></span>
+            </div>
             <table class="table table-stats">
               <thead>
                 <th>Primary Stat</th>
                 <th>Value</th>
               </thead>
               <tbody>
-                <tr><td>Hitpoints</td><td id="stat-hitpoints" class="statvalue">1970</td></tr>
-                <tr><td>Combat Power</td><td id="stat-combat-power" class="statvalue">0</td></tr>
-                <tr><td>Attack Rating</td><td id="stat-attack-rating" class="statvalue">0</td></tr>
-                <tr><td>Weapon Power</td><td id="stat-weapon-power" class="statvalue">0</td></tr>
-                <tr><td>Heal Rating</td><td id="stat-heal-rating" class="statvalue">0</td></tr>
+                <tr><td class="statname">Hitpoints</td><td id="stat-hitpoints" class="statvalue">1970</td></tr>
+                <tr><td class="statname">Combat Power</td><td id="stat-combat-power" class="statvalue">0</td></tr>
+                <tr><td class="statname">Attack Rating</td><td id="stat-attack-rating" class="statvalue">0</td></tr>
+                <tr><td class="statname">Weapon Power</td><td id="stat-weapon-power" class="statvalue">0</td></tr>
+                <tr><td class="statname">Heal Rating</td><td id="stat-heal-rating" class="statvalue">0</td></tr>
               </tbody>
             </table>
           </div>
-          <hr/>
           <div id="table-offensive">
             <table class="table table-stats">
               <thead>
@@ -23,16 +27,15 @@
                 <th>Value</th>
               </thead>
               <tbody>
-                <tr><td>Critical Rating</td><td id="stat-critical-rating" class="statvalue">0 %</td></tr>
-                <tr><td>Critical Chance %</td><td id="stat-critical-chance" class="statvalue">0</td></tr>
-                <tr><td>Critical Power Rating</td><td id="stat-critical-power" class="statvalue">0</td></tr>
-                <tr><td>Critical Power</td><td id="stat-critical-power-percentage" class="statvalue">0 %</td></tr>
-                <tr><td>Penetration Rating</td><td id="stat-penetration-rating" class="statvalue">0</td></tr>
-                <tr><td>Hit Rating</td><td id="stat-hit-rating" class="statvalue">0</td></tr>
+                <tr><td class="statname">Critical Rating</td><td id="stat-critical-rating" class="statvalue">0 %</td></tr>
+                <tr><td class="statname">Critical Chance %</td><td id="stat-critical-chance" class="statvalue">0</td></tr>
+                <tr><td class="statname">Critical Power Rating</td><td id="stat-critical-power" class="statvalue">0</td></tr>
+                <tr><td class="statname">Critical Power</td><td id="stat-critical-power-percentage" class="statvalue">0 %</td></tr>
+                <tr><td class="statname">Penetration Rating</td><td id="stat-penetration-rating" class="statvalue">0</td></tr>
+                <tr><td class="statname">Hit Rating</td><td id="stat-hit-rating" class="statvalue">0</td></tr>
               </tbody>
             </table>
           </div>
-          <hr/>
           <div id="table-defensive">
             <table class="table table-stats">
               <thead>
@@ -40,11 +43,11 @@
                 <th>Value</th>
               </thead>
               <tbody>
-                <tr><td>Block Rating</td><td id="stat-block-rating" class="statvalue">0</td></tr>
-                <tr><td>Defense Rating</td><td id="stat-defense-rating" class="statvalue">0</td></tr>
-                <tr><td>Evade Rating</td><td id="stat-evade-rating" class="statvalue">0</td></tr>
-                <tr><td>Physical Protection</td><td id="stat-physical-protection" class="statvalue">249</td></tr>
-                <tr><td>Magical Protection</td><td id="stat-magical-protection" class="statvalue">249</td></tr>
+                <tr><td class="statname">Block Rating</td><td id="stat-block-rating" class="statvalue">0</td></tr>
+                <tr><td class="statname">Defense Rating</td><td id="stat-defense-rating" class="statvalue">0</td></tr>
+                <tr><td class="statname">Evade Rating</td><td id="stat-evade-rating" class="statvalue">0</td></tr>
+                <tr><td class="statname">Physical Protection</td><td id="stat-physical-protection" class="statvalue">249</td></tr>
+                <tr><td class="statname">Magical Protection</td><td id="stat-magical-protection" class="statvalue">249</td></tr>
               </tbody>
             </table>
           </div>

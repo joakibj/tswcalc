@@ -2,23 +2,56 @@ function Summary() {
     self = this;
 
     this.updateAllStats = function() {
-        primarySums = self.updatePrimaryStats();
-        offensiveDefensiveSums = self.updateOffensiveDefensiveStats();
+        self.updateCosts();
+        self.updatePrimaryStats();
+        self.updateOffensiveDefensiveStats();
+    };
+
+    this.collectAllStats = function() {
         return {
-            primary: primarySums,
-            offensive_defensive: offensiveDefensiveSums
+            primary: self.collectPrimaryStats(),
+            offensive_defensive: self.collectOffensiveDefensiveStats()
         };
+    };
+
+    this.updateCosts = function() {
+        var blackBullions = 0;
+        var criterionUpgrades = 0;
+        var astralFuses = 0;
+        for (var i = 0; i < template_data.slots.length; i++) {
+            var ql = selectHandler[template_data.slots[i].id_prefix].getQl();
+            var glyphQl = selectHandler[template_data.slots[i].id_prefix].getGlyphQl();
+            blackBullions += bb_costs['glyph'][glyphQl].cost;
+            if (template_data.slots[i].group == 'weapon') {
+                blackBullions += bb_costs['weapon'][ql].cost;
+            } else {
+                blackBullions += bb_costs['talisman'][ql].cost;
+            }
+            if (ql == '10.5') {
+                criterionUpgrades++;
+            }
+            if (glyphQl == '10.5') {
+                astralFuses++;
+            }
+        }
+        $('#bb-cost').html(blackBullions);
+        $('#cu-cost').html(criterionUpgrades);
+        $('#af-cost').html(astralFuses);
     };
 
     this.updatePrimaryStats = function() {
         var sums = this.collectPrimaryStats();
-        $('#stat-combat-power').text(sums['combat-power']);
-        $('#stat-weapon-power').text(sums['weapon-power']);
-        $('#stat-hitpoints').text(sums['hitpoints']);
-        $('#stat-attack-rating').text(sums['attack-rating']);
-        $('#stat-heal-rating').text(sums['heal-rating']);
 
-        return sums;
+        for (var stat in sums) {
+            if (sums.hasOwnProperty(stat)) {
+                this.updateOnePrimaryStat(stat, sums[stat]);
+            }
+        }
+        this.updateCosts();
+    };
+
+    this.updateOnePrimaryStat = function(stat, value) {
+        $('#stat-' + stat).text(value);
     };
 
     this.collectPrimaryStats = function() {
@@ -29,9 +62,18 @@ function Summary() {
             'attack-rating': 0,
             'heal-rating': 0
         };
+
         for (var i = 0; i < template_data.slots.length; i++) {
-            var role = $('#' + template_data.slots[i].id_prefix + '-role option:selected').attr('value');
-            var ql = $('#' + template_data.slots[i].id_prefix + '-ql option:selected').attr('value');
+            var slot = template_data.slots[i];
+            var role = selectHandler[slot.id_prefix].getRole();
+            var ql = selectHandler[slot.id_prefix].getQl();
+            if (slot.group == 'major') {
+                var signetId = selectHandler[slot.id_prefix].getSignet();
+                if (signetId != 'none') {
+                    var signet = signet_data.find(slot.group, signetId);
+                    sums[signet.stat] += selectHandler[slot.id_prefix].determineSignetQualityValue(signet);
+                }
+            }
             if (role == 'dps') {
                 sums['attack-rating'] += custom_gear_data[template_data.slots[i].group].heal_dps['ql' + (ql)].rating;
             } else if (role == 'healer') {
@@ -51,6 +93,14 @@ function Summary() {
     };
 
     this.updateOffensiveDefensiveStats = function() {
+        var sums = this.collectOffensiveDefensiveStats();
+
+        this.updateGlyphValues();
+        this.updateStats(sums);
+        this.updateCosts();
+    };
+
+    this.collectOffensiveDefensiveStats = function() {
         var sums = {
             'critical-rating': 0,
             'critical-chance': 0,
@@ -64,44 +114,55 @@ function Summary() {
             'physical-protection': 249,
             'magical-protection': 249
         };
-
         for (var i = 0; i < template_data.slots.length; i++) {
-            var glyphQl = $('#' + template_data.slots[i].id_prefix + '-glyph-ql option:selected').attr('value');
-            var primaryGlyph = $('#' + template_data.slots[i].id_prefix + '-primary-glyph option:selected').attr('value');
-            var secondaryGlyph = $('#' + template_data.slots[i].id_prefix + '-secondary-glyph option:selected').attr('value');
+            var slot = template_data.slots[i];
+            var glyphQl = selectHandler[slot.id_prefix].getGlyphQl();
+            var primaryGlyphStat = selectHandler[slot.id_prefix].getGlyph('primary');
+            var secondaryGlyphStat = selectHandler[slot.id_prefix].getGlyph('secondary');
 
-            if (primaryGlyph != "none" || secondaryGlyph != "none") {
-                var primaryDist = $('#' + template_data.slots[i].id_prefix + '-primary-glyph-dist > button.btn.active')[0].innerHTML;
-                var secondaryDist = $('#' + template_data.slots[i].id_prefix + '-secondary-glyph-dist > button.btn.active')[0].innerHTML;
+            var primaryGlyphDist = buttonHandler[slot.id_prefix].getActiveDist('primary').innerHTML;
+            var secondaryGlyphDist = buttonHandler[slot.id_prefix].getActiveDist('secondary').innerHTML;
 
-                if (primaryDist != null || secondaryDist != null) {
-                    var primaryValue = 0;
-                    var secondaryValue = 0;
-                    if (primaryGlyph != "none") {
-                        primaryValue = glyph_data.stat[primaryGlyph].ql[glyphQl].slot[template_data.slots[i].group].dist[primaryDist];
-                        sums[primaryGlyph] += primaryValue;
-                        $('#' + template_data.slots[i].id_prefix + '-primary-glyph-value').html('+' + primaryValue);
-                    } else {
-                        $('#' + template_data.slots[i].id_prefix + '-primary-glyph-value').html('0');
-                    }
-                    if (secondaryGlyph != "none") {
-                        secondaryValue = glyph_data.stat[secondaryGlyph].ql[glyphQl].slot[template_data.slots[i].group].dist[secondaryDist];
-                        sums[secondaryGlyph] += secondaryValue;
-                        $('#' + template_data.slots[i].id_prefix + '-secondary-glyph-value').html('+' + secondaryValue);
-                    } else {
-                        $('#' + template_data.slots[i].id_prefix + '-secondary-glyph-value').html('0');
-                    }
-
-                }
-            } else {
-                $('#' + template_data.slots[i].id_prefix + '-primary-glyph-value').html('0');
-                $('#' + template_data.slots[i].id_prefix + '-secondary-glyph-value').html('0');
-            }
+            sums[primaryGlyphStat] += this.getGlyphValue(primaryGlyphStat, glyphQl, slot.group, primaryGlyphDist);
+            sums[secondaryGlyphStat] += this.getGlyphValue(secondaryGlyphStat, glyphQl, slot.group, secondaryGlyphDist);
         }
+
         sums['critical-chance'] = this.calculateCriticalChance(sums['critical-rating']);
         sums['critical-power-percentage'] = this.calculateCriticalPowerPercentage(sums['critical-power']);
-        self.updateStats(sums);
         return sums;
+    };
+
+    this.getGlyphValue = function(stat, glyph_ql, group, glyph_dist) {
+        if (stat == 'none' || glyph_dist == null) {
+            return 0;
+        }
+        return glyph_data.stat[stat].ql[glyph_ql].slot[group].dist[glyph_dist];
+    };
+
+    this.updateGlyphValues = function() {
+        for (var i = 0; i < template_data.slots.length; i++) {
+            var slot = template_data.slots[i];
+            var glyphQl = selectHandler[slot.id_prefix].getGlyphQl();
+            var primaryGlyphStat = selectHandler[slot.id_prefix].getGlyph('primary');
+            var secondaryGlyphStat = selectHandler[slot.id_prefix].getGlyph('secondary');
+
+            var primaryGlyphDist = buttonHandler[slot.id_prefix].getActiveDist('primary').innerHTML;
+            var secondaryGlyphDist = buttonHandler[slot.id_prefix].getActiveDist('secondary').innerHTML;
+
+            var primaryGlyphValue = this.getGlyphValue(primaryGlyphStat, glyphQl, slot.group, primaryGlyphDist);
+            var secondaryGlyphValue = this.getGlyphValue(secondaryGlyphStat, glyphQl, slot.group, secondaryGlyphDist);
+
+            this.updateGlyphValue(slot.id_prefix, primaryGlyphStat, 'primary', primaryGlyphValue);
+            this.updateGlyphValue(slot.id_prefix, secondaryGlyphStat, 'secondary', secondaryGlyphValue);
+        }
+    };
+
+    this.updateGlyphValue = function(slotId, stat, glyph, value) {
+        if (stat != 'none' && glyph != 'none' && value != 0) {
+            $('#' + slotId + '-' + glyph + '-glyph-value').html('+' + value);
+        } else {
+            $('#' + slotId + '-' + glyph + '-glyph-value').html('0');
+        }
     };
 
     this.calculateCriticalChance = function(critical_rating) {
@@ -117,7 +178,6 @@ function Summary() {
             if (sums.hasOwnProperty(stat)) {
                 if (sums[stat] > 0) {
                     if (stat == 'critical-power-percentage' || stat == 'critical-chance') {
-                        console.log(sums[stat]);
                         $('#stat-' + stat).html(sums[stat].toString().substring(0, 4) + " %");
                     } else {
                         $('#stat-' + stat).html('+' + sums[stat]);

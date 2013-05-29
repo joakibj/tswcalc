@@ -49,4 +49,6 @@ Open index.html to view.
 
 License
 -------
-Please refer to the LICENSE file.
+Please refer to the LICENSE file for the source code.
+
+All art assets included in `public/assets/images/icons/` folder are taken from The Secret World™. The artwork should be considered property of Funcom GmBH unless otherwise noted.
