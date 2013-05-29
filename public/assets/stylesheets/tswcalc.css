@@ -10,21 +10,23 @@ body {
 .table td {
     font-size: 12px;
     padding: 0px;   
-    margin-top: 3px;
-    margin-bottom: 3px;
+    padding-top: 2px;
+    padding-bottom: 2px;
     vertical-align: middle;
 }
 
 .table-signets td {
-    height: 50px;
+    height: 60px;
     padding-right: 2px;
 }
 
 .table-signets td img {
     min-width: 31px;
+    max-width: 31px;
 }
 
-.signet-description {
+td.signet-description {
+    padding-left: 5px;
     width: 100%;
 }
 
