@@ -3,22 +3,24 @@
           <div id="{id_prefix}-slot" class="slot">
             <h4 class="slot">{name}</h4> 
             <table class="table table-slots">
+              <tr>
             {^is_weapon}
-              <tr><td>
-              <strong>Role: </strong></td><td>
+              <td class="inner-fill"><strong>Role: </strong></td>
+              <td>
               <select id="{id_prefix}-role" class="select-role">
                 <option value="none" selected="true">None</option>
                 <option value="dps">DPS</option>
                 <option value="tank">Tank</option>
                 <option value="healer">Healer</option>
-              </select></td></tr>
+              </select>
+            </td>
             {/is_weapon}
-            <tr><td><strong>QL:</strong></td><td>{>qlselect id_suffix=""/}</td></tr>
+            <td><strong>QL:</strong></td><td>{>qlselect id_suffix=""/}</td><td class="filler"></td></tr>
             </table>
             <div>
               <table id="{id_prefix}-glyphs" class="table table-glyphs">
               <tr>
-              <td class="glyph-ql" rowspan="2"><a href="#" class="glyph-tooltip" data-toggle="tooltip" title="Glyph for the {name} slot. Choose which QL and stats it will have in your build."><img src="assets/images/glyph.png" alt="Glyph"/></a> {>qlselect id_suffix="-glyph"/}</td>
+              <td class="glyph-ql" rowspan="2"><a href="#" class="glyph-tooltip" data-toggle="tooltip" title="Glyph for the {name} slot. Choose which QL and stats it will have in your build."><img src="assets/images/icons/glyph.png" alt="Glyph"/></a> {>qlselect id_suffix="-glyph"/}</td>
               <td><strong>Primary Stat</strong></td>
               <td>{>statselect id_suffix="primary"/}</td>
               <td><strong>Distribution:</strong> {>glyphbuttons id_suffix="-primary-glyph"/}</td>
@@ -28,6 +30,27 @@
               <td>{>statselect id_suffix="secondary"/}</td>
               <td><strong>Distribution:</strong> {>glyphbuttons id_suffix="-secondary-glyph"/}</td>
               <td id="{id_prefix}-secondary-glyph-value" class="statvalue">0</td></tr>
+              </table>
+            </div>
+            <div>
+              <table id="{id_prefix}-signets" class="table table-signets">
+                <tr>
+                  <td>
+                    <a href="#" class="signet-tooltip" data-toggle="tooltip" title="Signet for the {name} slot. Choose the quality and type of signet.">
+                      <img id="{id_prefix}-signet-img-quality" class="signet-quality" src="assets/images/icons/green.png"/><img id="{id_prefix}-signet-img-icon" class="signet" src="assets/images/icons/minor_dps.png"/></a>
+                  </td>
+                  <td>
+                    <select id="{id_prefix}-signet-quality">
+                      <option value="none">Quality</option>
+                      <option value="normal">Normal</option>
+                      <option value="elite">Elite</option>
+                      <option value="epic">Epic</option>
+                    </select>
+                  </td>
+                  <td>
+                    <select id="{id_prefix}-pick-signet">
+                    </select></td>
+                    <td id="{id_prefix}-signet-description" class="signet-description"></td></tr>
               </table>
             </div>
           </div>  

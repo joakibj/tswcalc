@@ -12,7 +12,7 @@ $(document).ready(function() {
     activateToolTips();
 
     startSubModules();
-    if(!checkIfExported()) {
+    if (!checkIfExported()) {
         triggerReset();
     }
 
@@ -24,7 +24,7 @@ function triggerReset() {
 };
 
 function activateToolTips() {
-    $('.glyph-tooltip').tooltip({
+    $('.glyph-tooltip, .signet-tooltip').tooltip({
         placement: 'left'
     });
     $('.cost-tooltip').tooltip({
@@ -37,14 +37,17 @@ function activateToolTips() {
             }
         }
     });
-    $('.cost-tooltip, .glyph-tooltip').on('click', function(event) {
+    $('.cost-tooltip, .glyph-tooltip, .signet-tooltip').on('click', function(event) {
         event.preventDefault();
         event.stopPropagation();
     });
 };
 
 function renderContainer(data) {
-    dust.render('container', template_data,
+    dust.render('container', {
+        slots: template_data.slots,
+        signets: signet_data
+    },
 
     function(err, out) {
         if (err) {
@@ -56,7 +59,7 @@ function renderContainer(data) {
 
 function checkIfExported() {
     var vars = $.getUrlVars();
-    if (!$.isEmptyObject(vars) && Object.keys(vars).length == 8) {
+    if (!$.isEmptyObject(vars) && Object.keys(vars).length == 8 || Object.keys(vars).length == 10) {
         importModule.start(vars);
         return true;
     }
@@ -66,7 +69,7 @@ function checkIfExported() {
 function startSubModules() {
     for (var i = 0; i < template_data.slots.length; i++) {
         startDistributionButtonHandler(template_data.slots[i].id_prefix);
-        startSelectHandler(template_data.slots[i].id_prefix);
+        startSelectHandler(template_data.slots[i]);
     }
     startButtonBar();
     startSummary();
@@ -85,9 +88,9 @@ function startDistributionButtonHandler(slotId) {
     buttonHandler[slotId].initiate();
 };
 
-function startSelectHandler(slotId) {
-    selectHandler[slotId] = new SelectHandler(slotId);
-    selectHandler[slotId].initiate();
+function startSelectHandler(slot) {
+    selectHandler[slot.id_prefix] = new SelectHandler(slot);
+    selectHandler[slot.id_prefix].initiate();
 };
 
 function startButtonBar() {

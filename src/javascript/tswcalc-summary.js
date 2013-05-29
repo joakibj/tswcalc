@@ -64,8 +64,16 @@ function Summary() {
         };
 
         for (var i = 0; i < template_data.slots.length; i++) {
-            var role = selectHandler[template_data.slots[i].id_prefix].getRole();
-            var ql = selectHandler[template_data.slots[i].id_prefix].getQl();
+            var slot = template_data.slots[i];
+            var role = selectHandler[slot.id_prefix].getRole();
+            var ql = selectHandler[slot.id_prefix].getQl();
+            if (slot.group == 'major') {
+                var signetId = selectHandler[slot.id_prefix].getSignet();
+                if (signetId != 'none') {
+                    var signet = signet_data.find(slot.group, signetId);
+                    sums[signet.stat] += selectHandler[slot.id_prefix].determineSignetQualityValue(signet);
+                }
+            }
             if (role == 'dps') {
                 sums['attack-rating'] += custom_gear_data[template_data.slots[i].group].heal_dps['ql' + (ql)].rating;
             } else if (role == 'healer') {
@@ -143,7 +151,7 @@ function Summary() {
 
             var primaryGlyphValue = this.getGlyphValue(primaryGlyphStat, glyphQl, slot.group, primaryGlyphDist);
             var secondaryGlyphValue = this.getGlyphValue(secondaryGlyphStat, glyphQl, slot.group, secondaryGlyphDist);
-            
+
             this.updateGlyphValue(slot.id_prefix, primaryGlyphStat, 'primary', primaryGlyphValue);
             this.updateGlyphValue(slot.id_prefix, secondaryGlyphStat, 'secondary', secondaryGlyphValue);
         }

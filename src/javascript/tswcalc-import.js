@@ -19,5 +19,11 @@ function Import() {
         $('#' + slotId + '-secondary-glyph').val(stat_mapping.to_stat[values[4]]);
         $('#' + slotId + '-primary-glyph-dist-btn' + values[5]).trigger('click');
         $('#' + slotId + '-secondary-glyph-dist-btn' + values[6]).trigger('click');
+        // support signets
+        if(typeof values[7] != 'undefined' && typeof values[8] != 'undefined') {
+            $('#' + slotId + '-signet-quality').val(signet_quality_mapping.to_name[values[7]]); 
+            $('#' + slotId + '-pick-signet').val(values[8]);
+            $('#' + slotId + '-pick-signet').trigger('change');
+        }
     };
 };

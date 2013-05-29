@@ -53,7 +53,7 @@ function Export() {
     this.createSlotUrl = function(slotName) {
         var slot = this.slotState[slotName];
         return slotName + '=' + slot.ql + ',' + slot.role + ',' + slot.glyph_ql + ',' + slot.primary_glyph + ',' + slot.secondary_glyph +
-            ',' + slot.primary_dist + ',' + slot.secondary_dist;
+            ',' + slot.primary_dist + ',' + slot.secondary_dist + ',' + slot.signet_quality + ',' + slot.signet_id;
     };
 
     this.startExportBBCode = function() {
@@ -103,6 +103,9 @@ function Export() {
                 statValue = custom_gear_data[group]['10.' + curState.ql].weapon_power;
             }
 
+            var signet = signet_data.find(group, curState.signet_id);
+            console.log(signet);
+
             var state = {
                 name: capitalise(slot),
                 role: this.blankIfNone(capitalise(role)),
@@ -115,7 +118,11 @@ function Export() {
                 primary_value: primaryValue,
                 secondary_glyph: this.blankIfNone(capitalise(stat_mapping.to_stat[curState.secondary_glyph])),
                 secondary_dist: curState.secondary_dist,
-                secondary_value: secondaryValue
+                secondary_value: secondaryValue,
+                signet_name: signet.name,
+                signet_quality: this.blankIfNone(capitalise(signet_quality_mapping.to_name[curState.signet_quality])),
+                signet_description: selectHandler[slot].getSignetDescription(signet),
+                signet_colour: signet_quality_mapping.to_colour[signet_quality_mapping.to_name[curState.signet_quality]]
             };
             states.push(state);
         }
@@ -153,7 +160,9 @@ function Export() {
             primary_glyph: self.stripContent($('#' + slotId + '-primary-glyph').val()),
             secondary_glyph: self.stripContent($('#' + slotId + '-secondary-glyph').val()),
             primary_dist: buttonHandler[slotId].getActiveDist('primary').innerHTML,
-            secondary_dist: buttonHandler[slotId].getActiveDist('secondary').innerHTML
+            secondary_dist: buttonHandler[slotId].getActiveDist('secondary').innerHTML,
+            signet_quality: self.stripContent(selectHandler[slotId].getSignetQuality()),
+            signet_id: self.stripContent(selectHandler[slotId].getSignet())
         };
     };
 
@@ -169,6 +178,8 @@ function Export() {
             return stat_mapping.to_num[val];
         } else if ($.inArray(val, Object.keys(role_mapping.to_num)) != -1) {
             return role_mapping.to_num[val];
+        } else if ($.inArray(val, Object.keys(signet_quality_mapping.to_num)) != -1) {
+            return signet_quality_mapping.to_num[val];
         } else {
             return val;
         }
