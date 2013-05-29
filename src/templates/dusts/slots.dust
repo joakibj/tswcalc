@@ -41,7 +41,7 @@
                   </td>
                   <td>
                     <select id="{id_prefix}-signet-quality">
-                      <option value="none">Quality</option>
+                      <option value="none" selected="true">Quality</option>
                       <option value="normal">Normal</option>
                       <option value="elite">Elite</option>
                       <option value="epic">Epic</option>
