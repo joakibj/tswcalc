@@ -41,6 +41,21 @@ role_mapping = {
     }
 }
 
+signet_quality_mapping = {
+    to_num: {
+        'none': 0,
+        'normal': 1,
+        'elite': 2,
+        'epic': 3
+    },
+    to_name: {
+        0: 'none',
+        1: 'normal',
+        2: 'elite',
+        3: 'epic'
+    }
+}
+
 template_data = {
     slots: [{
         id_prefix: 'weapon',
