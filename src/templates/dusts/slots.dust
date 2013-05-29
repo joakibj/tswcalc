@@ -18,7 +18,7 @@
             <div>
               <table id="{id_prefix}-glyphs" class="table table-glyphs">
               <tr>
-              <td class="glyph-ql" rowspan="2"><a href="#" class="glyph-tooltip" data-toggle="tooltip" title="Glyph for the {name} slot. Choose which QL and stats it will have in your build."><img src="assets/images/glyph.png" alt="Glyph"/></a> {>qlselect id_suffix="-glyph"/}</td>
+              <td class="glyph-ql" rowspan="2"><a href="#" class="glyph-tooltip" data-toggle="tooltip" title="Glyph for the {name} slot. Choose which QL and stats it will have in your build."><img src="assets/images/icons/glyph.png" alt="Glyph"/></a> {>qlselect id_suffix="-glyph"/}</td>
               <td><strong>Primary Stat</strong></td>
               <td>{>statselect id_suffix="primary"/}</td>
               <td><strong>Distribution:</strong> {>glyphbuttons id_suffix="-primary-glyph"/}</td>
@@ -35,7 +35,7 @@
                 <tr>
                   <td>
                     <a href="#" class="signet-tooltip" data-toggle="tooltip" title="Signet for the {name} slot. Choose the quality and type of signet.">
-                      <img src="assets/images/dps_weapon_normal_signet.png" alt="Signet"/></a>
+                      <img src="assets/images/icons/dps_weapon_normal_signet.png" alt="Signet"/></a>
                   </td>
                   <td>
                     <select id="{id_prefix}-signet-quality">
