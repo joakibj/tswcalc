@@ -53,8 +53,11 @@ function SelectHandler(slot) {
                 }));
             });
         }
-        var url = 'assets/images/dps_' + slotgroup + '_normal_signet.png';
-        $('#' + slot.id_prefix + '-signets img').attr('src', url);
+        var signet_icon_url = 'assets/images/icons/' + slot.group + '_dps.png';
+        var signet_quality_url = 'assets/images/icons/normal.png';
+        $('#' + slot.id_prefix + '-signet-img-icon').attr('src', signet_icon_url);
+        $('#' + slot.id_prefix + '-signet-img-quality').attr('src', signet_quality_url);
+
         $.each(signet_data[slot.group], function(index, value) {
             $('#' + slot.id_prefix + '-pick-signet').append($('<option>', {
                 value: value.id,
@@ -65,6 +68,7 @@ function SelectHandler(slot) {
 
     this.addListenersToSignetQualitySelect = function() {
         $('#' + slot.id_prefix + '-signet-quality').change(function() {
+            self.updateSignetIcon();
             self.updateSignetDescription();
             summary.updatePrimaryStats();
         });
@@ -72,9 +76,23 @@ function SelectHandler(slot) {
 
     this.addListenersToSignetPickSelect = function() {
         $('#' + slot.id_prefix + '-pick-signet').change(function(event) {
+            self.updateSignetIcon();
             self.updateSignetDescription();
             summary.updatePrimaryStats();
         });
+    };
+
+    this.updateSignetIcon = function() {
+        var signet = signet_data.find(slot.group, self.getSignet());
+        if (signet != null) {
+            var signet_icon_url = 'assets/images/icons/' + signet.icon + '.png';
+            $('#' + slot.id_prefix + '-signet-img-icon').attr('src', signet_icon_url);
+            var signetQuality = this.getSignetQuality();
+            if (signetQuality != 'none') {
+                var signet_quality_url = 'assets/images/icons/' + signetQuality + '.png';
+                $('#' + slot.id_prefix + '-signet-img-quality').attr('src', signet_quality_url);
+            }
+        }
     };
 
     this.updateSignetDescription = function() {
@@ -92,7 +110,7 @@ function SelectHandler(slot) {
     };
 
     this.getSignetDescription = function(signet) {
-        if(signet == null) {
+        if (signet == null) {
             return '';
         }
         var description = '';

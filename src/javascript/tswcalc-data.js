@@ -121,7 +121,8 @@ signet_data = {
                 normal: 0
             },
             id: 0,
-            name: ''
+            name: '',
+            icon: 'minor_dps'
         }
     },
     'weapon': [{
@@ -133,7 +134,8 @@ signet_data = {
             normal: 7
         },
         id: 52,
-        name: 'Abuse'
+        name: 'Abuse',
+        icon: 'weapon_dps'
     }, {
         description: 'When you hit a weakened target you have a 15% chance to gain %d% damage increase for 6 seconds.',
         cooldown: '10',
@@ -143,7 +145,8 @@ signet_data = {
             normal: 5
         },
         id: 1,
-        name: 'Aggression'
+        name: 'Aggression',
+        icon: 'weapon_util'
     }, {
         description: 'When you penetrate a target you have a 33% chance to make your target take %d% more damage from further penetrating hits for 7 seconds.',
         cooldown: '0',
@@ -153,7 +156,8 @@ signet_data = {
             normal: 10
         },
         id: 2,
-        name: 'Breaching'
+        name: 'Breaching',
+        icon: 'weapon_dps'
     }, {
         description: 'When you hit a target you have a 10% chance to make your next %d hits never miss.',
         cooldown: '10',
@@ -163,7 +167,8 @@ signet_data = {
             normal: 4
         },
         id: 3,
-        name: 'Castigation'
+        name: 'Castigation',
+        icon: 'weapon_dps'
     }, {
         description: 'Your hinder effects last %d% longer.',
         cooldown: '0',
@@ -173,7 +178,8 @@ signet_data = {
             normal: 10
         },
         id: 4,
-        name: 'Detainment'
+        name: 'Detainment',
+        icon: 'weapon_util'
     }, {
         description: 'When you achieve 10 hits you gain %d% damage increase for 6 seconds.',
         cooldown: '6',
@@ -183,7 +189,8 @@ signet_data = {
             normal: 3
         },
         id: 5,
-        name: 'Fury'
+        name: 'Fury',
+        icon: 'weapon_dps'
     }, {
         description: 'When you critically hit a target you gain a critical damage increase of %d% for 15 seconds.',
         cooldown: '15',
@@ -193,7 +200,8 @@ signet_data = {
             normal: 6
         },
         id: 6,
-        name: 'Laceration'
+        name: 'Laceration',
+        icon: 'weapon_dps'
     }, {
         description: 'When you hit an impaired target you gain increased damage of %d% per stack for 5 seconds, up to 3 stacks.',
         cooldown: '0',
@@ -203,7 +211,8 @@ signet_data = {
             normal: 1
         },
         id: 7,
-        name: 'Obedience'
+        name: 'Obedience',
+        icon: 'weapon_util'
     }, {
         description: 'When you hit an afflicted target, you have a 20% chance to hit them for an additional %d damage.',
         cooldown: '0',
@@ -213,7 +222,8 @@ signet_data = {
             normal: 48
         },
         id: 8,
-        name: 'Opportunism'
+        name: 'Opportunism',
+        icon: 'weapon_util'
     }, {
         description: 'When you hit a target you have a 10% chance to hit them for an additional %d damage.',
         cooldown: '0',
@@ -223,7 +233,8 @@ signet_data = {
             normal: 80
         },
         id: 9,
-        name: 'Sadism'
+        name: 'Sadism',
+        icon: 'weapon_dps'
     }, {
         description: 'When you heal a target there is a 20% chance they will gain a barrier that absorbs %d and lasts 10 seconds.',
         cooldown: '0',
@@ -233,7 +244,8 @@ signet_data = {
             normal: 40
         },
         id: 10,
-        name: 'Benediction'
+        name: 'Benediction',
+        icon: 'weapon_heal'
     }, {
         description: 'When you critically hit a target you gain a barrier that absorbs %d and last 10 seconds.',
         cooldown: '0',
@@ -243,7 +255,8 @@ signet_data = {
             normal: 40
         },
         id: 11,
-        name: 'Valour'
+        name: 'Valour',
+        icon: 'weapon_heal'
     }, {
         description: 'When you hit a weakened target you have a 5% chance to be healed for %d every 2 seconds for 8 seconds.',
         cooldown: '0',
@@ -253,9 +266,10 @@ signet_data = {
             normal: 47
         },
         id: 12,
-        name: 'Cruel Delight'
+        name: 'Cruel Delight',
+        icon: 'weapon_util'
     }, {
-        description: 'When you hinder a target you are healed for %d',
+        description: 'When you hinder a target you are healed for %d.',
         cooldown: '0',
         quality: {
             epic: 120,
@@ -263,7 +277,8 @@ signet_data = {
             normal: 40
         },
         id: 13,
-        name: 'Extrication'
+        name: 'Extrication',
+        icon: 'weapon_util'
     }, {
         description: 'When you impair a target you are healed for %d every 2 for 6 seconds.',
         cooldown: '0',
@@ -273,7 +288,8 @@ signet_data = {
             normal: 26
         },
         id: 14,
-        name: 'Interdiction'
+        name: 'Interdiction',
+        icon: 'weapon_util'
     }, {
         description: 'When you heal a target below 50% health they are healed for %d every 2 seconds for 8 seconds.',
         cooldown: '0',
@@ -283,7 +299,8 @@ signet_data = {
             normal: 24
         },
         id: 15,
-        name: 'Temperance'
+        name: 'Temperance',
+        icon: 'weapon_heal'
     }],
     'head': [{
         description: 'Your Affliction effects deal %d% more damage.',
@@ -294,7 +311,8 @@ signet_data = {
             normal: 5
         },
         id: 16,
-        name: 'Corruption'
+        name: 'Corruption',
+        icon: 'head_util'
     }, {
         description: 'When you are glanced you gain a %d Defense Rating for 8 seconds.',
         cooldown: '10',
@@ -304,7 +322,8 @@ signet_data = {
             normal: 62
         },
         id: 17,
-        name: 'Discipline'
+        name: 'Discipline',
+        icon: 'head_tank'
     }, {
         description: 'When you block you gain a %d% block chance for 4 seconds.',
         cooldown: '10',
@@ -314,7 +333,8 @@ signet_data = {
             normal: 10
         },
         id: 18,
-        name: 'Order'
+        name: 'Order',
+        icon: 'head_tank'
     }, {
         description: 'When you are glanced you gain magical and physical protection of %d per stack for 4 seconds, up to 3 stacks.',
         cooldown: '0',
@@ -324,7 +344,8 @@ signet_data = {
             normal: 47
         },
         id: 19,
-        name: 'Reinforcement'
+        name: 'Reinforcement',
+        icon: 'head_tank'
     }, {
         description: 'When you block you gain %d block rating per stack for 4 seconds, up to 3 stacks.',
         cooldown: '0',
@@ -334,7 +355,8 @@ signet_data = {
             normal: 31
         },
         id: 20,
-        name: 'Resilience'
+        name: 'Resilience',
+        icon: 'head_tank'
     }],
     'minor': [{
         description: 'Your Strike attacks do an additional %d% damage.',
@@ -345,7 +367,8 @@ signet_data = {
             normal: 1
         },
         id: 24,
-        name: 'Assassination'
+        name: 'Assassination',
+        icon: 'minor_dps'
     }, {
         description: 'Your Blast attacks do an additional %d% damage.',
         cooldown: '0',
@@ -355,7 +378,8 @@ signet_data = {
             normal: 1
         },
         id: 25,
-        name: 'Barrage'
+        name: 'Barrage',
+        icon: 'minor_dps'
     }, {
         description: 'Your Focus attacks do an additional %d% damage.',
         cooldown: '0',
@@ -365,7 +389,8 @@ signet_data = {
             normal: 1
         },
         id: 26,
-        name: 'Cleaving'
+        name: 'Cleaving',
+        icon: 'minor_dps'
     }, {
         description: 'Your Chaos attacks do an additional %d% damage.',
         cooldown: '0',
@@ -375,7 +400,8 @@ signet_data = {
             normal: 1
         },
         id: 27,
-        name: 'Distortion'
+        name: 'Distortion',
+        icon: 'minor_dps'
     }, {
         description: 'Your Assault Rifle attacks do an additional %d% damage.',
         cooldown: '0',
@@ -385,7 +411,8 @@ signet_data = {
             normal: 1
         },
         id: 28,
-        name: 'Execution'
+        name: 'Execution',
+        icon: 'minor_dps'
     }, {
         description: 'Your Elemental attacks doing an additional %d% damage.',
         cooldown: '0',
@@ -395,7 +422,8 @@ signet_data = {
             normal: 1
         },
         id: 29,
-        name: 'Flux'
+        name: 'Flux',
+        icon: 'minor_dps'
     }, {
         description: 'Your Pistol attacks do an additional %d% damage.',
         cooldown: '0',
@@ -405,9 +433,10 @@ signet_data = {
             normal: 1
         },
         id: 30,
-        name: 'Liquidation'
+        name: 'Liquidation',
+        icon: 'minor_dps'
     }, {
-        description: 'Your Frenzy attacks do an additional %d% damage',
+        description: 'Your Frenzy attacks do an additional %d% damage.',
         cooldown: '0',
         quality: {
             epic: 3,
@@ -415,7 +444,8 @@ signet_data = {
             normal: 1
         },
         id: 31,
-        name: 'Rage'
+        name: 'Rage',
+        icon: 'minor_dps'
     }, {
         description: 'Your Chain attacks do an additional %d% damage.',
         cooldown: '0',
@@ -425,7 +455,8 @@ signet_data = {
             normal: 1
         },
         id: 32,
-        name: 'Recursion'
+        name: 'Recursion',
+        icon: 'minor_dps'
     }, {
         description: 'Your Fist attacks do an additional %d% damage.',
         cooldown: '0',
@@ -435,7 +466,8 @@ signet_data = {
             normal: 1
         },
         id: 33,
-        name: 'Serration'
+        name: 'Serration',
+        icon: 'minor_dps'
     }, {
         description: 'Your Shotgun attacks do an additional %d% damage.',
         cooldown: '0',
@@ -445,7 +477,8 @@ signet_data = {
             normal: 1
         },
         id: 34,
-        name: 'Shards'
+        name: 'Shards',
+        icon: 'minor_dps'
     }, {
         description: 'Your Hammer attacks do an additional %d% damage.',
         cooldown: '0',
@@ -455,7 +488,8 @@ signet_data = {
             normal: 1
         },
         id: 35,
-        name: 'Shattering'
+        name: 'Shattering',
+        icon: 'minor_dps'
     }, {
         description: 'Your Burst attacks do an additional %d% damage.',
         cooldown: '0',
@@ -465,7 +499,8 @@ signet_data = {
             normal: 1
         },
         id: 36,
-        name: 'Storms'
+        name: 'Storms',
+        icon: 'minor_dps'
     }, {
         description: 'Your Blade attacks do an additional %d% damage.',
         cooldown: '0',
@@ -475,7 +510,8 @@ signet_data = {
             normal: 1
         },
         id: 37,
-        name: 'Swords'
+        name: 'Swords',
+        icon: 'minor_dps'
     }, {
         description: 'Your Blood attacks do an additional %d% damage.',
         cooldown: '0',
@@ -485,7 +521,8 @@ signet_data = {
             normal: 1
         },
         id: 38,
-        name: 'Tomes'
+        name: 'Tomes',
+        icon: 'minor_dps'
     }, {
         description: 'When your health is below 50% the next 5 hits against you do %d% less damage.',
         cooldown: '12',
@@ -495,7 +532,8 @@ signet_data = {
             normal: 9
         },
         id: 39,
-        name: 'Ablation'
+        name: 'Ablation',
+        icon: 'minor_tank'
     }, {
         description: 'When your health is below 50% you gain a barrier that will absorb up to %d damage for 10 seconds.',
         cooldown: '12',
@@ -505,7 +543,8 @@ signet_data = {
             normal: 162
         },
         id: 40,
-        name: 'Fortification'
+        name: 'Fortification',
+        icon: 'minor_tank'
     }, {
         description: 'When you Block, Evade, or are Glanced, you gain %d% damage reduction for 5 seconds.',
         cooldown: '6',
@@ -515,7 +554,8 @@ signet_data = {
             normal: 2
         },
         id: 41,
-        name: 'Salvation'
+        name: 'Salvation',
+        icon: 'minor_tank'
     }, {
         description: 'Your Barrier effects are increased by %d%.',
         cooldown: '0',
@@ -535,7 +575,8 @@ signet_data = {
             normal: 7
         },
         id: 43,
-        name: 'Echoes'
+        name: 'Echoes',
+        icon: 'minor_heal'
     }, {
         description: 'When you critically heal a target they gain a %d% damage increase for 5 seconds.',
         cooldown: '15',
@@ -545,7 +586,8 @@ signet_data = {
             normal: 5
         },
         id: 44,
-        name: 'Equilibrium'
+        name: 'Equilibrium',
+        icon: 'minor_heal'
     }, {
         description: 'Your Healing effects are increased by %d%.',
         cooldown: '0',
@@ -555,7 +597,8 @@ signet_data = {
             normal: 1
         },
         id: 45,
-        name: 'Harmony'
+        name: 'Harmony',
+        icon: 'minor_heal'
     }, {
         description: 'Your Leech effects are increased by %d%.',
         cooldown: '0',
@@ -565,7 +608,8 @@ signet_data = {
             normal: 1
         },
         id: 46,
-        name: 'Hunger'
+        name: 'Hunger',
+        icon: 'minor_heal'
     }, {
         description: 'When your health is below 50% you are healed for %0 and affected by a heal over time effect healing you for %1 every 2 seconds for 8 seconds.',
         cooldown: '12',
@@ -579,7 +623,8 @@ signet_data = {
             normal: 19
         }],
         id: 47,
-        name: 'Rejuvenation'
+        name: 'Rejuvenation',
+        icon: 'minor_heal'
     }, {
         description: 'When you critically heal a target they gain a %d% leech effect.',
         cooldown: '5',
@@ -589,7 +634,8 @@ signet_data = {
             normal: 5
         },
         id: 48,
-        name: 'Thirst'
+        name: 'Thirst',
+        icon: 'minor_heal'
     }, {
         description: 'When you block, evade, or are glanced you generate a %s amount of hate on your offensive target.',
         cooldown: '6',
@@ -599,7 +645,8 @@ signet_data = {
             normal: 'small'
         },
         id: 49,
-        name: 'Hatred'
+        name: 'Hatred',
+        icon: 'minor_tank'
     }, {
         description: 'When you critically heal a target you reduce your offensive target\'s hate towards you by a %s amount.',
         cooldown: '15',
@@ -609,7 +656,8 @@ signet_data = {
             normal: 'small'
         },
         id: 50,
-        name: 'Serenity'
+        name: 'Serenity',
+        icon: 'minor_heal'
     }, {
         description: 'When you land a critical or penetrating hit you reduce your offensive targets hate towards you by a %s amount.',
         cooldown: '15',
@@ -619,7 +667,8 @@ signet_data = {
             normal: 'small'
         },
         id: 51,
-        name: 'Subjugation'
+        name: 'Subjugation',
+        icon: 'minor_dps'
     }],
     'major': [{
         description: 'Your attack rating is increased by %d',
@@ -631,7 +680,8 @@ signet_data = {
         },
         id: 21,
         name: 'Violence',
-        stat: 'attack-rating'
+        stat: 'attack-rating',
+        icon: 'major_dps'
     }, {
         description: 'Your health is increased by %d',
         cooldown: '0',
@@ -642,7 +692,8 @@ signet_data = {
         },
         id: 22,
         name: 'Vigour',
-        stat: 'hitpoints'
+        stat: 'hitpoints',
+        icon: 'major_tank'
     }, {
         description: 'Your Heal rating is increased by %d.',
         cooldown: '0',
@@ -653,7 +704,8 @@ signet_data = {
         },
         id: 23,
         name: 'Amelioration',
-        stat: 'heal-rating'
+        stat: 'heal-rating',
+        icon: 'major_heal'
     }]
 }
 

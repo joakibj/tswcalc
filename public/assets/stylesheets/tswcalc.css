@@ -16,13 +16,26 @@ body {
 }
 
 .table-signets td {
+    min-width: 32px;
+    min-height: 32px;
     height: 60px;
     padding-right: 2px;
 }
 
-.table-signets td img {
-    min-width: 31px;
-    max-width: 31px;
+img.signet {
+    background-image:url('../images/icons/signet_background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 32px;
+    height:32px;
+    z-index: 0;
+}
+
+img.signet-quality {
+    width: 32px;
+    height:32px;
+    position: absolute;
+    z-index: 1;
 }
 
 td.signet-description {

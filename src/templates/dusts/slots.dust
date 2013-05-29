@@ -35,7 +35,7 @@
                 <tr>
                   <td>
                     <a href="#" class="signet-tooltip" data-toggle="tooltip" title="Signet for the {name} slot. Choose the quality and type of signet.">
-                      <img src="assets/images/icons/dps_weapon_normal_signet.png" alt="Signet"/></a>
+                      <img id="{id_prefix}-signet-img-quality" class="signet-quality" src="assets/images/icons/green.png"/><img id="{id_prefix}-signet-img-icon" class="signet" src="assets/images/icons/minor_dps.png"/></a>
                   </td>
                   <td>
                     <select id="{id_prefix}-signet-quality">
