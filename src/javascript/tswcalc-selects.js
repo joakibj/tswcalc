@@ -59,12 +59,14 @@ function SelectHandler(slot) {
     this.addListenersToSignetQualitySelect = function() {
         $('#' + slot.id_prefix + '-signet-quality').change(function() {
             self.updateSignetDescription();
+            summary.updatePrimaryStats();
         });
     };
 
     this.addListenersToSignetPickSelect = function() {
         $('#' + slot.id_prefix + '-pick-signet').change(function(event) {
             self.updateSignetDescription();
+            summary.updatePrimaryStats();
         });
     };
 

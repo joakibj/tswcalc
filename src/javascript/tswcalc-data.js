@@ -588,32 +588,35 @@ signet_data = {
             description: 'Your attack rating is increased by %d',
             cooldown: '0',
             quality: {
-                epic: 2,
-                elite: 1,
-                normal: 0
+                epic: 141,
+                elite: 94,
+                normal: 47
             },
             id: 21,
-            name: 'Violence'
+            name: 'Violence',
+            stat: 'attack-rating'
         }, {
             description: 'Your health is increased by %d',
             cooldown: '0',
             quality: {
-                epic: 2,
-                elite: 1,
-                normal: 0
+                epic: 495,
+                elite: 330,
+                normal: 165
             },
             id: 22,
-            name: 'Vigour'
+            name: 'Vigour',
+            stat: 'hitpoints'
         }, {
             description: 'Your Heal rating is increased by %d.',
             cooldown: '0',
             quality: {
-                epic: 2,
-                elite: 1,
-                normal: 0
+                epic: 141,
+                elite: 94,
+                normal: 47
             },
             id: 23,
-            name: 'Amelioration'
+            name: 'Amelioration',
+            stat: 'heal-rating'
         }
     ]
 }
