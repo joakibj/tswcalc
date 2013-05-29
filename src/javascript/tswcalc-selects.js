@@ -38,6 +38,12 @@ function SelectHandler(slot) {
     };
 
     this.addSignetsToSelect = function() {
+        var slotgroup = slot.group;
+        if (slot.group == 'head') {
+            slotgroup = 'weapon';
+        }
+        var url = 'assets/images/dps_' + slotgroup + '_normal_signet.png';
+        $('#' + slot.id_prefix + '-signets img').attr('src', url);
         $('#' + slot.id_prefix + '-pick-signet').append($('<option>', {
             value: "none",
             text: "None"
@@ -65,7 +71,7 @@ function SelectHandler(slot) {
     this.updateSignetDescription = function() {
         var signet = signet_data.find(slot.group, self.getSignet());
         if (signet != null) {
-            if(this.getSignetQuality() == 'none') {
+            if (this.getSignetQuality() == 'none') {
                 $('#' + slot.id_prefix + '-signet-quality').val('normal');
             }
             var description = signet.description.replace('%d', self.determineSignetQualityValue(signet));
