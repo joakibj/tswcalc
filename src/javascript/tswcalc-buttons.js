@@ -35,7 +35,7 @@ function DistributionButtonHandler(slotId) {
                 self.onlyActiveButton('#' + otherDistLoweredByOne);
             }
         }
-    }
+    };
 
     this.onlyActiveButton = function(id) {
         $(id).siblings().removeClass('active');
@@ -46,5 +46,5 @@ function DistributionButtonHandler(slotId) {
 
     this.getInverseGlyphStat = function(glyph) {
         return glyph == 'primary' ? 'secondary' : 'primary';
-    }
+    };
 }
