@@ -26,7 +26,7 @@ module.exports = function(grunt) {
       options: {
         separator: ';'
       },
-      build: {
+      build_main: {
         src: [
           'build/templates/dusts/**/*.js',
           '<%= dirs.src %>/tswcalc.js',
@@ -37,6 +37,16 @@ module.exports = function(grunt) {
           '<%= dirs.src %>/tswcalc-export.js',
           '<%= dirs.src %>/tswcalc-import.js'],
         dest: 'build/assets/javascripts/<%= pkg.name %>.js'
+      },
+      build_data: {
+        src: [
+          '<%= dirs.src %>/data/tswcalc-data-slots.js',
+          '<%= dirs.src %>/data/tswcalc-data-gear.js',
+          '<%= dirs.src %>/data/tswcalc-data-costs.js',
+          '<%= dirs.src %>/data/tswcalc-data-mappings.js',
+          '<%= dirs.src %>/data/tswcalc-data-signets.js',
+          '<%= dirs.src %>/data/tswcalc-data-glyphs.js'],
+        dest: 'build/assets/javascripts/<%= pkg.name %>-data.js'
       }
     },
     replace: {
@@ -94,8 +104,8 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'dist/assets/javascripts/<%= pkg.name %>.min.js': ['<%= concat.build.dest %>'],
-          'dist/assets/javascripts/<%= pkg.name %>-data.min.js': ['src/javascript/<%= pkg.name %>-data.js']
+          'dist/assets/javascripts/<%= pkg.name %>.min.js': ['<%= concat.build_main.dest %>'],
+          'dist/assets/javascripts/<%= pkg.name %>-data.min.js': ['<%= concat.build_data.dest %>']
         }
       }
     },
