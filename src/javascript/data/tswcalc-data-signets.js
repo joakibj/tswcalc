@@ -465,7 +465,8 @@ signet_data = {
             normal: 1
         },
         id: 42,
-        name: 'Security'
+        name: 'Security',
+        icon: 'minor_heal'
     }, {
         description: 'Whenever you critically heal a target they gain a heal over time effect, healing them for %d heal every 1 second for 5 seconds.',
         cooldown: '0',
