@@ -99,6 +99,8 @@ function SelectHandler(slot) {
             if (signetQuality != 'none') {
                 var signet_quality_url = 'assets/images/icons/' + signetQuality + '.png';
                 $('#' + slot.id_prefix + '-signet-img-quality').attr('src', signet_quality_url);
+            } else {
+                $('#' + slot.id_prefix + '-signet-img-quality').attr('src', 'assets/images/icons/normal.png');
             }
         }
     };
