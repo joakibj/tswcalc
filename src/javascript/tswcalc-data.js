@@ -671,7 +671,7 @@ signet_data = {
         icon: 'minor_dps'
     }],
     'major': [{
-        description: 'Your attack rating is increased by %d',
+        description: 'Your attack rating is increased by %d.',
         cooldown: '0',
         quality: {
             epic: 141,
@@ -683,7 +683,7 @@ signet_data = {
         stat: 'attack-rating',
         icon: 'major_dps'
     }, {
-        description: 'Your health is increased by %d',
+        description: 'Your health is increased by %d.',
         cooldown: '0',
         quality: {
             epic: 495,
