@@ -44,26 +44,34 @@ function SelectHandler(slot) {
             text: "None",
             selected: "true"
         }));
-        if (slot.group == 'head') {
-            slotgroup = 'weapon';
-            $.each(signet_data[slotgroup], function(index, value) {
-                $('#' + slot.id_prefix + '-pick-signet').append($('<option>', {
-                    value: value.id,
-                    text: value.name
-                }));
-            });
-        }
         var signet_icon_url = 'assets/images/icons/' + slot.group + '_dps.png';
         var signet_quality_url = 'assets/images/icons/normal.png';
         $('#' + slot.id_prefix + '-signet-img-icon').attr('src', signet_icon_url);
         $('#' + slot.id_prefix + '-signet-img-quality').attr('src', signet_quality_url);
 
-        $.each(signet_data[slot.group], function(index, value) {
+        var signetsInSlotGroup = signet_data[slot.group];
+        // weapon signets can also be slotted in head
+        $.merge(signetsInSlotGroup, this.getSignetsForHead(slot.group));
+        signetsInSlotGroup.sort(function(a, b) {
+            if (a.name.toLowerCase() > b.name.toLowerCase()) {
+                return 1;
+            } else {
+                return -1;
+            }
+        });
+        $.each(signetsInSlotGroup, function(index, value) {
             $('#' + slot.id_prefix + '-pick-signet').append($('<option>', {
                 value: value.id,
                 text: value.name
             }));
         });
+    };
+
+    this.getSignetsForHead = function(group) {
+        if (group == 'head') {
+            return signet_data['weapon'];
+        }
+        return [];
     };
 
     this.addListenersToSignetQualitySelect = function() {
@@ -91,6 +99,8 @@ function SelectHandler(slot) {
             if (signetQuality != 'none') {
                 var signet_quality_url = 'assets/images/icons/' + signetQuality + '.png';
                 $('#' + slot.id_prefix + '-signet-img-quality').attr('src', signet_quality_url);
+            } else {
+                $('#' + slot.id_prefix + '-signet-img-quality').attr('src', 'assets/images/icons/normal.png');
             }
         }
     };
@@ -120,6 +130,11 @@ function SelectHandler(slot) {
             description = description.replace('%0', self.determineSignetQualityValue(signet, 0));
             description = description.replace('%1', self.determineSignetQualityValue(signet, 1));
         }
+        
+        if (signet.cooldown != '0') {
+            description += ' ' + signet.cooldown + ' seconds cooldown.';
+        }
+
         return description;
     };
 
