@@ -53,7 +53,7 @@ function SelectHandler(slot) {
         // weapon signets can also be slotted in head
         $.merge(signetsInSlotGroup, this.getSignetsForHead(slot.group));
         signetsInSlotGroup.sort(function(a, b) {
-            if(a.name.toLowerCase() > b.name.toLowerCase()) {
+            if (a.name.toLowerCase() > b.name.toLowerCase()) {
                 return 1;
             } else {
                 return -1;
@@ -130,6 +130,11 @@ function SelectHandler(slot) {
             description = description.replace('%0', self.determineSignetQualityValue(signet, 0));
             description = description.replace('%1', self.determineSignetQualityValue(signet, 1));
         }
+        
+        if (signet.cooldown != '0') {
+            description += ' ' + signet.cooldown + ' seconds cooldown.';
+        }
+
         return description;
     };
 
