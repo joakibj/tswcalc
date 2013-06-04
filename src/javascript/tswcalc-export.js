@@ -104,7 +104,6 @@ function Export() {
             }
 
             var signet = signet_data.find(group, curState.signet_id);
-            console.log(signet);
 
             var state = {
                 name: capitalise(slot),
