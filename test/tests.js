@@ -1,5 +1,0 @@
-module("qlbuttons", {
-    setup: function() {
-        
-    }
-});
