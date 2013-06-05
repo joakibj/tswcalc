@@ -1,0 +1,14 @@
+{
+  "name": "tswcalc",
+  "version": "0.5.1",
+  "description": "A living glyph/gear calculator for TSW",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-watch": "~0.4.3",
+    "grunt-dust": "~0.4.0",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-replace": "~0.4.4"
+  }
+}

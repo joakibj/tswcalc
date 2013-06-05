@@ -1,0 +1,35 @@
+<div class="btn-group">
+  <button id="btn-reset" class="btn btn-danger">Reset</button>
+</div>
+<div class="btn-group">
+  <button id="btn-all-dps" class="btn">All DPS</button>
+  <button id="btn-all-healer" class="btn">All Healer</button>
+  <button id="btn-all-tank" class="btn">All Tank</button>
+</div>
+<div class="btn-group">
+  <button id="btn-all-10-4" class="btn">All 10.4</button>
+  <button id="btn-all-10-5" class="btn">All 10.5</button>
+</div>
+<div class="btn-group">
+  <a class="btn btn-info dropdown-toggle" data-toggle="dropdown" href="#">
+    Export
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+    <li><a class="export" href="#open-export-modal" data="url" data-toggle="modal">URL</a></li>
+    <li><a class="export" href="#open-export-modal" data="bbcode" data-toggle="modal">BBCode</a></li>
+  </ul>
+</div>
+
+<div id="open-export-modal" class="modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h5>Export</h5>
+  </div>
+  <div class="modal-body">
+    Copy this and share:
+    <br/>
+    <textarea id="export-textarea" class="field span12" wrap="off" rows="10"></textarea>
+  </div>
+
+</div>

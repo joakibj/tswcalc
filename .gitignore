@@ -1,2 +1,3 @@
-public/js/dusts
+dist
+build
 node_modules
