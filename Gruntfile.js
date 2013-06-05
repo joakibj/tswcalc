@@ -122,6 +122,9 @@ module.exports = function(grunt) {
         files: ['public/assets/stylesheets/<%= pkg.name %>.css'],
         tasks: ['default']
       }
+    },
+    qunit: {
+      all: ['test/**/*.html']
     }
   });
 
@@ -131,7 +134,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-replace');
+  grunt.loadNpmTasks('grunt-contrib-qunit');
 
-  grunt.registerTask('default', ['dust', 'concat', 'replace:develop', 'copy:develop']);
-  grunt.registerTask('dist', ['dust', 'concat', 'uglify', 'replace:dist', 'copy:dist']);
+  grunt.registerTask('default', ['dust', 'concat', 'qunit', 'replace:develop', 'copy:develop']);
+  grunt.registerTask('dist', ['dust', 'concat', 'qunit', 'uglify', 'replace:dist', 'copy:dist']);
 };
