@@ -26,9 +26,13 @@ module.exports = function(grunt) {
       options: {
         separator: ';'
       },
+      build_dust: {
+        src: ['build/templates/dusts/**/*.js'],
+        dest: 'build/assets/javascripts/<%= pkg.name %>-dusts.js'
+      },
       build_main: {
         src: [
-          'build/templates/dusts/**/*.js',
+          '<%= concat.build_main.dest %>',
           '<%= dirs.src %>/tswcalc.js',
           '<%= dirs.src %>/tswcalc-summary.js',
           '<%= dirs.src %>/tswcalc-selects.js',
