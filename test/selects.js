@@ -146,3 +146,12 @@ test('should update signet description to blank if no signet is picked', 1, func
 
     equal($('#head-signet-description').html(), '');
 });
+
+test('should update signet icon', 2, function() {
+    $('#head-pick-signet').val('12');
+    $('#head-signet-quality').val('elite');
+    selectHandler['head'].updateSignetIcon();
+
+    equal($('#head-signet-img-icon').attr('src'), 'assets/images/icons/weapon_util.png');
+    equal($('#head-signet-img-quality').attr('src'), 'assets/images/icons/elite.png');
+});
