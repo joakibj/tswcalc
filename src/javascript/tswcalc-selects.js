@@ -49,7 +49,7 @@ function SelectHandler(slot) {
         $('#' + slot.id_prefix + '-signet-img-icon').attr('src', signet_icon_url);
         $('#' + slot.id_prefix + '-signet-img-quality').attr('src', signet_quality_url);
 
-        var signetsInSlotGroup = signet_data[slot.group];
+        var signetsInSlotGroup = $.merge([], signet_data[slot.group]);
         // weapon signets can also be slotted in head
         $.merge(signetsInSlotGroup, this.getSignetsForHead(slot.group));
         signetsInSlotGroup.sort(function(a, b) {
