@@ -32,7 +32,7 @@ module.exports = function(grunt) {
       },
       build_main: {
         src: [
-          '<%= concat.build_main.dest %>',
+          '<%= concat.build_dust.dest %>',
           '<%= dirs.src %>/tswcalc.js',
           '<%= dirs.src %>/tswcalc-summary.js',
           '<%= dirs.src %>/tswcalc-selects.js',
