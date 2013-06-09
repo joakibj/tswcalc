@@ -86,11 +86,6 @@ module.exports = function(grunt) {
           cwd: 'public/',
           src: ['assets/**/*'],
           dest: 'build/'
-        }, {
-          expand: true,
-          cwd: 'src/javascript/',
-          src: ['tswcalc-data.js'],
-          dest: 'build/assets/javascripts/'
         }]
       },
       dist: {
