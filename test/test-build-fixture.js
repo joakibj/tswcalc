@@ -3,10 +3,8 @@ function createTankBuild() {
     $('#weapon-glyph-ql').val('10.4');
     $('#weapon-primary-glyph').val('hit-rating');
     $('#weapon-secondary-glyph').val('none');
-    var $btn = $('#weapon-primary-glyph-dist-btn4');
-    $btn.trigger('click');
-    //$('#weapon-primary-glyph-dist-btn4').trigger('click');
-    //$('#weapon-secondary-glyph-dist-btn0').trigger('click');
+    $('#weapon-primary-glyph-dist-btn4').trigger('click');
+    $('#weapon-secondary-glyph-dist-btn0').trigger('click');
 
     $('#head-ql').val('10.4');
     $('#head-role').val('tank');
