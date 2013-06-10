@@ -29,6 +29,7 @@ function ButtonBar() {
             for (var i = 0; i < template_data.slots.length; i++) {
                 self.setQlOnSlot(ql, template_data.slots[i].id_prefix);
                 self.setGlyphQlOnSlot(ql, template_data.slots[i].id_prefix);
+                $('#' + template_data.slots[i].id_prefix + '-primary-glyph-dist-btn4').trigger('click');
             }
             summary.updateAllStats();
         });
@@ -40,7 +41,6 @@ function ButtonBar() {
 
     this.setGlyphQlOnSlot = function(ql, slotId) {
         $('#' + slotId + '-glyph-ql').val(ql);
-        $('#' + slotId + '-primary-glyph-dist-btn4').trigger('click');
     };
 
     this.resetButton = function() {
