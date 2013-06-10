@@ -104,7 +104,6 @@ function Export() {
             }
 
             var signet = signet_data.find(group, curState.signet_id);
-            console.log(signet);
 
             var state = {
                 name: capitalise(slot),
@@ -148,12 +147,13 @@ function Export() {
 
     this.collectAllSlotStates = function() {
         for (var i = 0; i < template_data.slots.length; i++) {
-            this.collectSlotState(template_data.slots[i].id_prefix);
+            var slot = template_data.slots[i];
+            this.slotState[slot.id_prefix] = this.collectSlotState(slot.id_prefix);
         }
     };
 
     this.collectSlotState = function(slotId) {
-        this.slotState[slotId] = {
+        return {
             ql: self.stripContent($('#' + slotId + '-ql').val()),
             role: self.stripContent($('#' + slotId + '-role').val()),
             glyph_ql: self.stripContent($('#' + slotId + '-glyph-ql').val()),
