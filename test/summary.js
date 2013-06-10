@@ -90,10 +90,10 @@ test('should collect primary stats for tank build', 5, function() {
 
     var sums = summary.collectPrimaryStats();
 
-    equal(sums['combat-power'], 496);
+    equal(sums['combat-power'], 504);
     equal(sums['weapon-power'], 457);
-    equal(sums['hitpoints'], 10358);
-    equal(sums['attack-rating'], 1518);
+    equal(sums['hitpoints'], 10688);
+    equal(sums['attack-rating'], 1565);
     equal(sums['heal-rating'], 0);
 });
 
@@ -134,10 +134,10 @@ test('should collect offensive and defensive stats for tank build', 11, function
 test('should collect all stats and return two objects', 2, function() {
     createTankBuild();
     var expectedPrimaryStats = {
-        'combat-power': 496,
+        'combat-power': 504,
         'weapon-power': 457,
-        'hitpoints': 10358,
-        'attack-rating': 1518,
+        'hitpoints': 10688,
+        'attack-rating': 1565,
         'heal-rating': 0
     };
     var expectedOffensiveDefensiveStats = {
@@ -166,9 +166,9 @@ test('should update all stats', 16, function() {
 
     summary.updateAllStats();
 
-    equal($('#stat-hitpoints').html(), '10358');
-    equal($('#stat-combat-power').html(), '496');
-    equal($('#stat-attack-rating').html(), '1518');
+    equal($('#stat-hitpoints').html(), '10688');
+    equal($('#stat-combat-power').html(), '504');
+    equal($('#stat-attack-rating').html(), '1565');
     equal($('#stat-weapon-power').html(), '457');
     equal($('#stat-heal-rating').html(), '0');
     equal($('#stat-critical-rating').html(), '0');
