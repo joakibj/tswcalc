@@ -39,7 +39,8 @@ module.exports = function(grunt) {
           '<%= dirs.src %>/tswcalc-buttons.js',
           '<%= dirs.src %>/tswcalc-buttonbar.js',
           '<%= dirs.src %>/tswcalc-export.js',
-          '<%= dirs.src %>/tswcalc-import.js'],
+          '<%= dirs.src %>/tswcalc-import.js',
+          '<%= dirs.src %>/tswcalc-util.js'],
         dest: 'build/assets/javascripts/<%= pkg.name %>.js'
       },
       build_data: {
