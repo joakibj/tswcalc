@@ -23,10 +23,48 @@ function renderSlots() {
     });
 };
 
+module('buttonbar-dom', {
+    setup: function() {
+        renderButtonbar();
+    },
+    teardown: function() {
+
+    }
+});
+
+test('should have required buttonbar buttons in DOM', 6, function() {
+    ok($('#btn-all-dps').length != 0, 'all-dps button exists');
+    ok($('#btn-all-healer').length != 0, 'all-healer button exists');
+    ok($('#btn-all-tank').length != 0, 'all-tank button exists');
+    ok($('#btn-all-10-4').length != 0, 'all-10-4 button exists');
+    ok($('#btn-all-10-5').length != 0, 'all-10-5 button exists');
+    ok($('#btn-reset').length != 0, 'reset button exists');
+});
+
 var buttonBar = {};
 var buttonHandler = {};
 
-module('buttonbar', {
+module('buttonbar-events', {
+    setup: function() {
+        renderButtonbar();
+        buttonBar = new ButtonBar();
+        buttonBar.initiate();
+    },
+    teardown: function() {
+
+    }
+});
+
+test('buttons in buttonbar should have click listeners', 6, function() {
+    ok($._data($('#btn-all-dps').get(0), 'events').click instanceof Array, 'btn-all-dps click listener exists');
+    ok($._data($('#btn-all-healer').get(0), 'events').click instanceof Array, 'btn-all-healer click listener exists');
+    ok($._data($('#btn-all-tank').get(0), 'events').click instanceof Array, 'btn-all-tank click listener exists');
+    ok($._data($('#btn-all-10-4').get(0), 'events').click instanceof Array, 'btn-all-10-4 click listener exists');
+    ok($._data($('#btn-all-10-5').get(0), 'events').click instanceof Array, 'btn-all-10-5 click listener exists');
+    ok($._data($('#btn-reset').get(0), 'events').click instanceof Array, 'btn-reset click listener exists');
+});
+
+module('buttonbar-unit-tests', {
     setup: function() {
         renderButtonbar();
         renderSlots();

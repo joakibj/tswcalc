@@ -14,12 +14,70 @@ function renderSlots() {
 
 var selectHandler = [];
 
-module('selects', {
+module('selects-dom', {
+    setup: function() {
+        renderSlots();
+    },
+    teardown: function() {
+        $('#qunit-fixture').html('');
+    }
+});
+
+test('should have required selects in the DOM', 55, function() {
+    for (var i = 0; i < template_data.slots.length; i++) {
+        var slotId = template_data.slots[i].id_prefix;
+        if (slotId != 'weapon') {
+            ok($('#' + slotId + '-role').length != 0, slotId + '-role exists');
+        }
+        ok($('#' + slotId + '-ql').length != 0, slotId + '-ql exists');
+        ok($('#' + slotId + '-glyph-ql').length != 0, slotId + '-glyph-ql exists');
+        ok($('#' + slotId + '-primary-glyph').length != 0, slotId + '-primary-glyph exists');
+        ok($('#' + slotId + '-secondary-glyph').length != 0, slotId + '-secondary-glyph exists');
+        ok($('#' + slotId + '-pick-signet').length != 0, slotId + '-pick-signet exists');
+        ok($('#' + slotId + '-signet-quality').length != 0, slotId + '-signet-quality exists');
+    }
+});
+
+test('should not have weapon-role select in the DOM', 1, function() {
+    ok($('#weapon-role').length == 0, 'weapon-role is not in the DOM');
+});
+
+module('selects-events', {
     setup: function() {
         renderSlots();
         for (var i = 0; i < template_data.slots.length; i++) {
-            selectHandler[template_data.slots[i].id_prefix] = new SelectHandler(template_data.slots[i]);
-            selectHandler[template_data.slots[i].id_prefix].initiate();
+            var slot = template_data.slots[i];
+            selectHandler[slot.id_prefix] = new SelectHandler(slot);
+            selectHandler[slot.id_prefix].initiate();
+        }
+    },
+    teardown: function() {
+        $('#qunit-fixture').html('');
+    }
+});
+
+test('should have required event listeners for change on selects in the DOM', 55, function() {
+    for (var i = 0; i < template_data.slots.length; i++) {
+        var slotId = template_data.slots[i].id_prefix;
+        ok($._data($('#' + slotId + '-ql').get(0), 'events').change instanceof Array);
+        if (slotId != 'weapon') {
+            ok($._data($('#' + slotId + '-role').get(0), 'events').change instanceof Array);
+        }
+        ok($._data($('#' + slotId + '-glyph-ql').get(0), 'events').change instanceof Array);
+        ok($._data($('#' + slotId + '-primary-glyph').get(0), 'events').change instanceof Array);
+        ok($._data($('#' + slotId + '-secondary-glyph').get(0), 'events').change instanceof Array);
+        ok($._data($('#' + slotId + '-pick-signet').get(0), 'events').change instanceof Array);
+        ok($._data($('#' + slotId + '-signet-quality').get(0), 'events').change instanceof Array);
+    }
+});
+
+module('selects-unit-tests', {
+    setup: function() {
+        renderSlots();
+        for (var i = 0; i < template_data.slots.length; i++) {
+            var slot = template_data.slots[i];
+            selectHandler[slot.id_prefix] = new SelectHandler(slot);
+            selectHandler[slot.id_prefix].initiate();
         }
     },
     teardown: function() {

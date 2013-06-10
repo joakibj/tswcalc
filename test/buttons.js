@@ -1,4 +1,3 @@
-
 function renderGlyphButtons(id_prefix, id_suffix) {
     dust.render('glyphbuttons', {
         id_prefix: id_prefix,
@@ -13,7 +12,44 @@ function renderGlyphButtons(id_prefix, id_suffix) {
     });
 };
 
-module('glyphbuttons', {
+module('glyphbuttons-dom', {
+    setup: function() {
+        renderGlyphButtons('weapon', '-primary-glyph');
+        renderGlyphButtons('weapon', '-secondary-glyph');
+    },
+    teardown: function() {
+
+    }
+});
+
+test('should have required buttons in the DOM', 10, function() {
+    for (var button = 0; button <= 4; button++) {
+        ok($('#weapon-primary-glyph-dist-btn' + button).length != 0, "Primary glyph button " + button + " exists");
+        ok($('#weapon-secondary-glyph-dist-btn' + button).length != 0, "Secondary glyph button " + button + " exists");
+    }
+});
+
+module('glyphbuttons-events', {
+    setup: function() {
+        renderGlyphButtons('weapon', '-primary-glyph');
+        renderGlyphButtons('weapon', '-secondary-glyph');
+    },
+    teardown: function() {
+
+    }
+});
+
+test('should have initialised button handlers for slot', 10, function() {
+    var buttonHandler = new DistributionButtonHandler('weapon');
+    buttonHandler.initiate();
+    for (var button = 0; button <= 4; button++) {
+        ok($._data($('#weapon-primary-glyph-dist-btn' + button).get(0), 'events').click instanceof Array, "Primary glyph button " + button + " has a click event");
+        ok($._data($('#weapon-secondary-glyph-dist-btn' + button).get(0), 'events').click instanceof Array, "Secondary glyph button " + button + " has a click event");
+    };
+});
+
+
+module('glyphbuttons-unit-tests', {
     setup: function() {
         renderGlyphButtons('weapon', '-primary-glyph');
         renderGlyphButtons('weapon', '-secondary-glyph');
