@@ -6,6 +6,10 @@ var exportModule = 0;
 var importModule = 0;
 
 $(document).ready(function() {
+    initiateTswCalc();
+});
+
+function initiateTswCalc() {
     renderContainer(template_data);
     addHash();
 
@@ -17,7 +21,7 @@ $(document).ready(function() {
     }
 
     $('#summary').scrollToFixed();
-});
+};
 
 function triggerReset() {
     $('#btn-reset').trigger('click');
