@@ -10,10 +10,14 @@ function DistributionButtonHandler(slotId) {
     this.addListenersToGlyphDistButtons = function(glyph) {
         this.onlyActiveButton('#' + slotId + '-' + glyph + '-glyph-dist-btn0');
         $('#' + slotId + '-' + glyph + '-glyph-dist > button.btn').on('click', function(event) {
-            self.onlyActiveButton('#' + this.id);
-            self.balanceGlyphDist(this, glyph);
+            self.setActiveButtonAndBalanceGlyphDist(this, glyph);
             summary.updateOffensiveDefensiveStats();
         });
+    };
+
+    this.setActiveButtonAndBalanceGlyphDist = function(element, glyph) {
+        this.onlyActiveButton('#' + element.id);
+        this.balanceGlyphDist(element, glyph);
     };
 
     this.balanceGlyphDist = function(button, glyph) {
