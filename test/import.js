@@ -8,3 +8,7 @@ module('import-unit-tests', {
         
     }
 });
+
+test('should import URL', 1, function() {
+    equal(true, true);
+});
