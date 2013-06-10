@@ -68,12 +68,29 @@ test('should set glyph ql on slot', 1, function() {
     equal($('#head-glyph-ql').val(), '10.3');
 });
 
-test('should reset slot', 5, function() {
+var summary = {};
+module('buttonbar-integration-tests', {
+    setup: function() {
+        renderButtonbar();
+        renderSlots();
+        initiateButtonHandlers();
+        initiateSelectHandlers();
+        buttonBar = new ButtonBar();
+        summary = new Summary();
+    },
+    teardown: function() {
+        
+    }
+});
+
+test('should reset slot', 7, function() {
     $('#head-ql').val('10.4');
     $('#head-role').val('tank');
     $('#head-glyph-ql').val('10.4');
     $('#head-primary-glyph').val('critical-rating');
     $('#head-secondary-glyph').val('magical-protection');
+    $('#head-primary-glyph-dist-btn4').trigger('click');
+    $('#head-secondary-glyph-dist-btn0').trigger('click');
 
     buttonBar.resetAllInput('head');
 
@@ -82,4 +99,6 @@ test('should reset slot', 5, function() {
     equal($('#head-glyph-ql').val(), '10.0');
     equal($('#head-primary-glyph').val(), 'none');
     equal($('#head-secondary-glyph').val(), 'none');
+    ok($('#head-primary-glyph-dist-btn0').hasClass('active'))
+    ok($('#head-secondary-glyph-dist-btn0').hasClass('active'))
 });
