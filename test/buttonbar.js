@@ -1,34 +1,9 @@
-function renderButtonbar() {
-    dust.render('buttonbar', {},
-
-    function(err, out) {
-        if (err) {
-            console.log(err);
-        }
-        $('#qunit-fixture').html(out);
-    });
-};
-
-function renderSlots() {
-    dust.render('slots', {
-        slots: template_data.slots,
-        signets: signet_data
-    },
-
-    function(err, out) {
-        if (err) {
-            console.log(err);
-        }
-        $('#qunit-fixture').append(out);
-    });
-};
-
 module('buttonbar-dom', {
     setup: function() {
         renderButtonbar();
     },
     teardown: function() {
-
+        
     }
 });
 
@@ -51,7 +26,7 @@ module('buttonbar-events', {
         buttonBar.initiate();
     },
     teardown: function() {
-
+        
     }
 });
 
@@ -71,7 +46,7 @@ module('buttonbar-unit-tests', {
         buttonBar = new ButtonBar();
     },
     teardown: function() {
-
+        
     }
 });
 

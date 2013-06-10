@@ -1,24 +1,10 @@
-function renderGlyphButtons(id_prefix, id_suffix) {
-    dust.render('glyphbuttons', {
-        id_prefix: id_prefix,
-        id_suffix: id_suffix
-    },
-
-    function(err, out) {
-        if (err) {
-            console.log(err);
-        }
-        $('#qunit-fixture').append(out);
-    });
-};
-
 module('glyphbuttons-dom', {
     setup: function() {
         renderGlyphButtons('weapon', '-primary-glyph');
         renderGlyphButtons('weapon', '-secondary-glyph');
     },
     teardown: function() {
-
+        
     }
 });
 
@@ -35,7 +21,7 @@ module('glyphbuttons-events', {
         renderGlyphButtons('weapon', '-secondary-glyph');
     },
     teardown: function() {
-
+        
     }
 });
 
@@ -55,7 +41,7 @@ module('glyphbuttons-unit-tests', {
         renderGlyphButtons('weapon', '-secondary-glyph');
     },
     teardown: function() {
-
+        
     }
 });
 

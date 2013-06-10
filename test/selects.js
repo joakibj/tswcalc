@@ -1,17 +1,3 @@
-function renderSlots() {
-    dust.render('slots', {
-        slots: template_data.slots,
-        signets: signet_data
-    },
-
-    function(err, out) {
-        if (err) {
-            console.log(err);
-        }
-        $('#qunit-fixture').html(out);
-    });
-};
-
 var selectHandler = [];
 
 module('selects-dom', {
@@ -19,7 +5,7 @@ module('selects-dom', {
         renderSlots();
     },
     teardown: function() {
-        $('#qunit-fixture').html('');
+        
     }
 });
 
@@ -45,14 +31,10 @@ test('should not have weapon-role select in the DOM', 1, function() {
 module('selects-events', {
     setup: function() {
         renderSlots();
-        for (var i = 0; i < template_data.slots.length; i++) {
-            var slot = template_data.slots[i];
-            selectHandler[slot.id_prefix] = new SelectHandler(slot);
-            selectHandler[slot.id_prefix].initiate();
-        }
+        initiateSelectHandlers();
     },
     teardown: function() {
-        $('#qunit-fixture').html('');
+        
     }
 });
 
@@ -74,15 +56,11 @@ test('should have required event listeners for change on selects in the DOM', 55
 module('selects-unit-tests', {
     setup: function() {
         renderSlots();
-        for (var i = 0; i < template_data.slots.length; i++) {
-            var slot = template_data.slots[i];
-            selectHandler[slot.id_prefix] = new SelectHandler(slot);
-            selectHandler[slot.id_prefix].initiate();
-        }
+        initiateSelectHandlers();
     },
     teardown: function() {
         selectHandler = [];
-        $('#qunit-fixture').html('');
+        
     }
 });
 
