@@ -23,25 +23,6 @@ module('glyphbuttons', {
     }
 });
 
-test('should have required buttons in the DOM', 10, function() {
-    for (var button = 0; button <= 4; button++) {
-        ok($('#weapon-primary-glyph-dist-btn' + button).length != 0, "Primary glyph button " + button + " exists");
-        ok($('#weapon-secondary-glyph-dist-btn' + button).length != 0, "Secondary glyph button " + button + " exists");
-    };
-});
-
-test('should have initialised button handlers for slot', 11, function() {
-    var buttonHandler = new DistributionButtonHandler('weapon');
-    buttonHandler.initiate();
-    ok(typeof buttonHandler != 'undefined', 'Button handler created');
-    
-    for (var button = 0; button <= 4; button++) {
-        ok($._data($('#weapon-primary-glyph-dist-btn' + button).get(0), 'events').click instanceof Array, "Primary glyph button " + button + " has a click event");
-        ok($._data($('#weapon-secondary-glyph-dist-btn' + button).get(0), 'events').click instanceof Array, "Secondary glyph button " + button + " has a click event");
-    };
-    
-});
-
 test('should set button to active in row', 2, function() {
     var buttonHandler = new DistributionButtonHandler('weapon');
     buttonHandler.onlyActiveButton('#weapon-primary-glyph-dist-btn2');

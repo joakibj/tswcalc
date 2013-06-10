@@ -24,33 +24,7 @@ module('selects', {
     },
     teardown: function() {
         selectHandler = [];
-        $('#qunit-fixture').html(' ');
-    }
-});
-
-var selectSuffixes = ['-role', '-ql', '-glyph-ql', '-primary-glyph', '-secondary-glyph', '-pick-signet', '-signet-quality'];
-
-test('should have required selects in the DOM', (selectSuffixes.length * template_data.slots.length) - 1, function() {
-    for (var i = 0; i < template_data.slots.length; i++) {
-        for (var suffix = 0; suffix < selectSuffixes.length; suffix++) {
-            if (template_data.slots[i].id_prefix == 'weapon' && selectSuffixes[suffix] == '-role') {} else {
-                ok($('#' + template_data.slots[i].id_prefix + selectSuffixes[suffix]).length != 0, template_data.slots[i].id_prefix + selectSuffixes[suffix] + ' exists');
-            }
-        }
-    }
-});
-
-test('should not have weapon-role select in the DOM', 1, function() {
-    ok($('#weapon-role').length == 0, 'weapon-role is not in the DOM');
-});
-
-test('should have required event listeners for change on selects in the DOM', (selectSuffixes.length * template_data.slots.length) - 1, function() {
-    for (var i = 0; i < template_data.slots.length; i++) {
-        for (var suffix = 0; suffix < selectSuffixes.length; suffix++) {
-            if (template_data.slots[i].id_prefix == 'weapon' && selectSuffixes[suffix] == '-role') {} else {
-                ok($._data($('#' + template_data.slots[i].id_prefix + selectSuffixes[suffix]).get(0), 'events').change instanceof Array, template_data.slots[i].id_prefix + selectSuffixes[suffix] + ' change event exists');
-            }
-        }
+        $('#qunit-fixture').html('');
     }
 });
 
