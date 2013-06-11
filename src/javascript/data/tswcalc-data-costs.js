@@ -63,4 +63,4 @@ bb_costs = {
             astral_fuse: true
         }
     }
-}
+};

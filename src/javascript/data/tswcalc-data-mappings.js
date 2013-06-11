@@ -24,7 +24,7 @@ stat_mapping = {
         8: 'physical-protection',
         9: 'magical-protection'
     }
-}
+};
 
 role_mapping = {
     to_num: {
@@ -39,7 +39,7 @@ role_mapping = {
         2: 'healer',
         3: 'dps'
     }
-}
+};
 
 signet_quality_mapping = {
     to_num: {
@@ -60,4 +60,4 @@ signet_quality_mapping = {
         'elite': 'blue',
         'epic': 'purple'
     }
-}
+};

@@ -34,4 +34,4 @@ template_data = {
         name: 'Occult Talisman',
         group: 'minor'
     }]
-}
+};
