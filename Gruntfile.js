@@ -9,18 +9,19 @@ module.exports = function(grunt) {
     dust: {
       default: {
         files: [{
-          expand: true,
-          cwd: 'src/templates/dusts/',
-          src: ['**/*.dust'],
-          dest: 'build/templates/dusts/',
-          ext: '.js'
-        }],
+            expand: true,
+            cwd: 'src/templates/dusts/',
+            src: ['**/*.dust'],
+            dest: 'build/templates/dusts/',
+            ext: '.js'
+          }
+        ],
         options: {
           relative: true,
           runtime: false,
           amd: false
         }
-      },
+      }
     },
     concat: {
       options: {
@@ -32,25 +33,27 @@ module.exports = function(grunt) {
       },
       build_main: {
         src: [
-          '<%= concat.build_dust.dest %>',
-          '<%= dirs.src %>/tswcalc.js',
-          '<%= dirs.src %>/tswcalc-summary.js',
-          '<%= dirs.src %>/tswcalc-selects.js',
-          '<%= dirs.src %>/tswcalc-buttons.js',
-          '<%= dirs.src %>/tswcalc-buttonbar.js',
-          '<%= dirs.src %>/tswcalc-export.js',
-          '<%= dirs.src %>/tswcalc-import.js',
-          '<%= dirs.src %>/tswcalc-util.js'],
+            '<%= concat.build_dust.dest %>',
+            '<%= dirs.src %>/<%= pkg.name %>.js',
+            '<%= dirs.src %>/<%= pkg.name %>-summary.js',
+            '<%= dirs.src %>/<%= pkg.name %>-selects.js',
+            '<%= dirs.src %>/<%= pkg.name %>-buttons.js',
+            '<%= dirs.src %>/<%= pkg.name %>-buttonbar.js',
+            '<%= dirs.src %>/<%= pkg.name %>-export.js',
+            '<%= dirs.src %>/<%= pkg.name %>-import.js',
+            '<%= dirs.src %>/<%= pkg.name %>-util.js'
+        ],
         dest: 'build/assets/javascripts/<%= pkg.name %>.js'
       },
       build_data: {
         src: [
-          '<%= dirs.src %>/data/tswcalc-data-slots.js',
-          '<%= dirs.src %>/data/tswcalc-data-gear.js',
-          '<%= dirs.src %>/data/tswcalc-data-costs.js',
-          '<%= dirs.src %>/data/tswcalc-data-mappings.js',
-          '<%= dirs.src %>/data/tswcalc-data-signets.js',
-          '<%= dirs.src %>/data/tswcalc-data-glyphs.js'],
+            '<%= dirs.src %>/data/<%= pkg.name %>-data-slots.js',
+            '<%= dirs.src %>/data/<%= pkg.name %>-data-gear.js',
+            '<%= dirs.src %>/data/<%= pkg.name %>-data-costs.js',
+            '<%= dirs.src %>/data/<%= pkg.name %>-data-mappings.js',
+            '<%= dirs.src %>/data/<%= pkg.name %>-data-signets.js',
+            '<%= dirs.src %>/data/<%= pkg.name %>-data-glyphs.js'
+        ],
         dest: 'build/assets/javascripts/<%= pkg.name %>-data.js'
       }
     },
@@ -59,48 +62,60 @@ module.exports = function(grunt) {
         options: {
           variables: {
             'mainscript': '<%= pkg.name %>.js',
-            'datascript': '<%= pkg.name %>-data.js'
+            'datascript': '<%= pkg.name %>-data.js',
+            'version': '<%= pkg.version %>'
           }
         },
         files: [{
-          src: ['public/index.html'],
-          dest: 'build/index.html'
-        }]
+            src: ['public/index.html'],
+            dest: 'build/index.html'
+          }, {
+            src: '<%= concat.build_main.dest %>',
+            dest: '<%= concat.build_main.dest %>'
+          }
+        ]
       },
       dist: {
         options: {
           variables: {
             'mainscript': '<%= pkg.name %>.min.js',
-            'datascript': '<%= pkg.name %>-data.min.js'
+            'datascript': '<%= pkg.name %>-data.min.js',
+            'version': '<%= pkg.version %>'
           }
         },
         files: [{
-          src: ['public/index.html'],
-          dest: 'dist/index.html'
-        }]
+            src: ['public/index.html'],
+            dest: 'dist/index.html'
+          }, {
+            src: 'dist/assets/javascripts/<%= pkg.name %>.min.js',
+            dest: 'dist/assets/javascripts/<%= pkg.name %>.min.js'
+          }
+        ]
       }
     },
     copy: {
       develop: {
         files: [{
-          expand: true,
-          cwd: 'public/',
-          src: ['assets/**/*'],
-          dest: 'build/'
-        }]
+            expand: true,
+            cwd: 'public/',
+            src: ['assets/**/*'],
+            dest: 'build/'
+          }
+        ]
       },
       dist: {
         files: [{
-          expand: true,
-          cwd: 'public/',
-          src: ['assets/**/*'],
-          dest: 'dist/'
-        }]
+            expand: true,
+            cwd: 'public/',
+            src: ['assets/**/*'],
+            dest: 'dist/'
+          }
+        ]
       }
     },
     uglify: {
       options: {
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+        banner: '/*! <%= pkg.name %> version <%= pkg.version %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
       dist: {
         files: {
@@ -136,6 +151,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-replace');
   grunt.loadNpmTasks('grunt-contrib-qunit');
 
-  grunt.registerTask('default', ['dust', 'concat', 'qunit', 'replace:develop', 'copy:develop']);
+  grunt.registerTask('default', ['dust', 'concat', 'replace:develop', 'copy:develop', 'qunit']);
   grunt.registerTask('dist', ['dust', 'concat', 'qunit', 'uglify', 'replace:dist', 'copy:dist']);
 };
