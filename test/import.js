@@ -15,7 +15,7 @@ module('import-integration-tests', {
     }
 });
 
-test('should import URL and set summary and slots', 85, function() {
+test('should import URL and set summary and slots', 87, function() {
     var vars = {
         head: '4,1,5,5,0,4,0,3,18',
         luck: '4,3,4,8,0,4,0,3,39',
@@ -86,6 +86,7 @@ test('should import URL and set summary and slots', 85, function() {
     equal($('#neck-signet-quality').val(), 'normal');
     equal($('#neck-pick-signet').val(), '21');
 
+    //Brooklyn Bracer
     equal($('#wrist-ql').val(), '10.4');
     equal($('#wrist-role').val(), 'tank');
     equal($('#wrist-glyph-ql').val(), '10.4');
@@ -94,7 +95,7 @@ test('should import URL and set summary and slots', 85, function() {
     ok($('#wrist-primary-glyph-dist-btn4').hasClass('active'));
     ok($('#wrist-secondary-glyph-dist-btn0').hasClass('active'));
     equal($('#wrist-signet-quality').val(), 'normal');
-    //Brooklyn Bracer
+    equal($('#wrist-pick-signet').val(), 'none');
 
     equal($('#luck-ql').val(), '10.4');
     equal($('#luck-role').val(), 'dps');
@@ -106,6 +107,7 @@ test('should import URL and set summary and slots', 85, function() {
     equal($('#luck-signet-quality').val(), 'epic');
     equal($('#luck-pick-signet').val(), '39');
 
+    //NY Buckle
     equal($('#waist-ql').val(), '10.4');
     equal($('#waist-role').val(), 'tank');
     equal($('#waist-glyph-ql').val(), '10.4');
@@ -114,7 +116,7 @@ test('should import URL and set summary and slots', 85, function() {
     ok($('#waist-primary-glyph-dist-btn4').hasClass('active'));
     ok($('#waist-secondary-glyph-dist-btn0').hasClass('active'));
     equal($('#waist-signet-quality').val(), 'normal');
-    //NY Buckle
+    equal($('#waist-pick-signet').val(), 'none');    
 
     equal($('#occult-ql').val(), '10.4');
     equal($('#occult-role').val(), 'dps');
