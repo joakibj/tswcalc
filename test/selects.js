@@ -138,7 +138,7 @@ test('should get signet description for multiple value replace', 1, function() {
     $('#occult-signet-quality').val('epic');
     var signet = signet_data.find('minor', selectHandler['occult'].getSignet());
 
-    equal(selectHandler['occult'].getSignetDescription(signet), 'When your health is below 50% you are healed for 150 and affected by a heal over time effect healing you for 57 every 2 seconds for 8 seconds.');
+    equal(selectHandler['occult'].getSignetDescription(signet), 'When your health is below 50% you are healed for 150 and affected by a heal over time effect healing you for 57 every 2 seconds for 8 seconds. 12 seconds cooldown.');
 });
 
 test('should update signet description', 1, function() {
