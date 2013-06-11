@@ -177,19 +177,15 @@ function Summary() {
         for (var stat in sums) {
             if (sums.hasOwnProperty(stat)) {
                 if (sums[stat] > 0) {
-                    if (stat == 'critical-power-percentage' || stat == 'critical-chance') {
-                        $('#stat-' + stat).html(sums[stat].toString().substring(0, 4) + " %");
-                    } else {
-                        $('#stat-' + stat).html('+' + sums[stat]);
-                    }
+                    $('#stat-' + stat).html(this.isStatPercentageBased(stat) ? sums[stat].toString().substring(0, 4) + " %" : '+' + sums[stat]);
                 } else {
-                    if (stat == 'critical-power-percentage' || stat == 'critical-chance') {
-                        $('#stat-' + stat).html("0 %");
-                    } else {
-                        $('#stat-' + stat).html("0");
-                    }
+                    $('#stat-' + stat).html(this.isStatPercentageBased(stat) ? "0 %" : "0");
                 }
             }
         }
+    };
+
+    this.isStatPercentageBased = function(statName) {
+        return statName == 'critical-power-percentage' || statName == 'critical-chance';
     };
 };
