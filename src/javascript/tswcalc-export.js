@@ -135,14 +135,11 @@ function Export() {
         return str;
     };
 
-    this.blankIfZero = function(sums) {
-        for (var primary in sums.primary) {
-            if (sums.primary.hasOwnProperty(primary)) {
-                if (sums.primary[primary]) {
-                    sums.primary[primary] = '';
-                }
-            }
+    this.blankIfZero = function(str) {
+        if (str == '0') {
+            return '';
         }
+        return str;
     };
 
     this.collectAllSlotStates = function() {
