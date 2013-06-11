@@ -3,9 +3,6 @@ var selectHandler = [];
 module('selects-dom', {
     setup: function() {
         renderSlots();
-    },
-    teardown: function() {
-        
     }
 });
 
@@ -13,28 +10,25 @@ test('should have required selects in the DOM', 55, function() {
     for (var i = 0; i < template_data.slots.length; i++) {
         var slotId = template_data.slots[i].id_prefix;
         if (slotId != 'weapon') {
-            ok($('#' + slotId + '-role').length != 0, slotId + '-role exists');
+            ok($('#' + slotId + '-role').length !== 0, slotId + '-role exists');
         }
-        ok($('#' + slotId + '-ql').length != 0, slotId + '-ql exists');
-        ok($('#' + slotId + '-glyph-ql').length != 0, slotId + '-glyph-ql exists');
-        ok($('#' + slotId + '-primary-glyph').length != 0, slotId + '-primary-glyph exists');
-        ok($('#' + slotId + '-secondary-glyph').length != 0, slotId + '-secondary-glyph exists');
-        ok($('#' + slotId + '-pick-signet').length != 0, slotId + '-pick-signet exists');
-        ok($('#' + slotId + '-signet-quality').length != 0, slotId + '-signet-quality exists');
+        ok($('#' + slotId + '-ql').length !== 0, slotId + '-ql exists');
+        ok($('#' + slotId + '-glyph-ql').length !== 0, slotId + '-glyph-ql exists');
+        ok($('#' + slotId + '-primary-glyph').length !== 0, slotId + '-primary-glyph exists');
+        ok($('#' + slotId + '-secondary-glyph').length !== 0, slotId + '-secondary-glyph exists');
+        ok($('#' + slotId + '-pick-signet').length !== 0, slotId + '-pick-signet exists');
+        ok($('#' + slotId + '-signet-quality').length !== 0, slotId + '-signet-quality exists');
     }
 });
 
 test('should not have weapon-role select in the DOM', 1, function() {
-    ok($('#weapon-role').length == 0, 'weapon-role is not in the DOM');
+    ok($('#weapon-role').length === 0, 'weapon-role is not in the DOM');
 });
 
 module('selects-events', {
     setup: function() {
         renderSlots();
         initiateSelectHandlers();
-    },
-    teardown: function() {
-        
     }
 });
 
@@ -57,10 +51,6 @@ module('selects-unit-tests', {
     setup: function() {
         renderSlots();
         initiateSelectHandlers();
-    },
-    teardown: function() {
-        selectHandler = [];
-        
     }
 });
 

@@ -3,22 +3,22 @@ function renderSlots() {
         slots: template_data.slots,
         signets: signet_data
     });
-};
+}
 
 function renderSummary() {
     renderTemplate('summary', {});
-};
+}
 
 function renderButtonbar() {
     renderTemplate("buttonbar", {});
-};
+}
 
 function renderGlyphButtons(id_prefix, id_suffix) {
     renderTemplate('glyphbuttons', {
         id_prefix: id_prefix,
         id_suffix: id_suffix
     });
-};
+}
 
 function renderTemplate(template_name, data) {
     dust.render(template_name, data,
@@ -29,11 +29,11 @@ function renderTemplate(template_name, data) {
         }
         $('#qunit-fixture').append(out);
     });
-};
+}
 
 function clearFixture() {
     $('#qunit-fixture').html('');
-};
+}
 
 var buttonHandler = {};
 
@@ -43,7 +43,7 @@ function initiateButtonHandlers() {
         buttonHandler[slot.id_prefix] = new DistributionButtonHandler(slot.id_prefix);
         buttonHandler[slot.id_prefix].initiate();
     }
-};
+}
 
 var selectHandler = {};
 
@@ -53,4 +53,4 @@ function initiateSelectHandlers() {
         selectHandler[slot.id_prefix] = new SelectHandler(slot);
         selectHandler[slot.id_prefix].initiate();
     }
-};
+}

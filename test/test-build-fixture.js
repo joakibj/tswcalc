@@ -77,4 +77,4 @@ function createTankBuild() {
     $('#occult-secondary-glyph-dist-btn0').trigger('click');
     $('#occult-signet-quality').val('epic');
     $('#occult-pick-signet').val('41');
-};
+}

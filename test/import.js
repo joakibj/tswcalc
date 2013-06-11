@@ -25,7 +25,7 @@ test('should import URL and set summary and slots', 87, function() {
         waist: '4,1,4,8,0,4,0,1,0',
         weapon: '5,0,4,4,0,4,0,2,5',
         wrist: '4,1,4,6,0,4,0,1,0'
-    }
+    };
 
     importModule.start(vars);
 
@@ -116,7 +116,7 @@ test('should import URL and set summary and slots', 87, function() {
     ok($('#waist-primary-glyph-dist-btn4').hasClass('active'));
     ok($('#waist-secondary-glyph-dist-btn0').hasClass('active'));
     equal($('#waist-signet-quality').val(), 'normal');
-    equal($('#waist-pick-signet').val(), 'none');    
+    equal($('#waist-pick-signet').val(), 'none');
 
     equal($('#occult-ql').val(), '10.4');
     equal($('#occult-role').val(), 'dps');

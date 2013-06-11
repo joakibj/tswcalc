@@ -3,37 +3,31 @@ var summary = {};
 module('summary-dom', {
     setup: function() {
         renderSummary();
-    },
-    teardown: function() {
-
     }
 });
 
 test('should have required summary in DOM', 16, function() {
-    ok($('#stat-hitpoints').length != 0, 'stat-hitpoints exists');
-    ok($('#stat-combat-power').length != 0, 'stat-combat-power exists');
-    ok($('#stat-attack-rating').length != 0, 'stat-attack-rating exists');
-    ok($('#stat-weapon-power').length != 0, 'stat-weapon-power exists');
-    ok($('#stat-heal-rating').length != 0, 'stat-heal-rating exists');
-    ok($('#stat-critical-rating').length != 0, 'stat-critical-rating exists');
-    ok($('#stat-critical-chance').length != 0, 'stat-critical-chance exists');
-    ok($('#stat-critical-power').length != 0, 'stat-critical-power exists');
-    ok($('#stat-critical-power-percentage').length != 0, 'stat-critical-power-percentage exists');
-    ok($('#stat-penetration-rating').length != 0, 'stat-penetration-rating exists');
-    ok($('#stat-hit-rating').length != 0, 'stat-hit-rating exists');
-    ok($('#stat-block-rating').length != 0, 'stat-block-rating exists');
-    ok($('#stat-defense-rating').length != 0, 'stat-defense-rating exists');
-    ok($('#stat-evade-rating').length != 0, 'stat-evade-rating exists');
-    ok($('#stat-physical-protection').length != 0, 'stat-physical-protection exists');
-    ok($('#stat-magical-protection').length != 0, 'stat-magical-protection exists');
+    ok($('#stat-hitpoints').length !== 0, 'stat-hitpoints exists');
+    ok($('#stat-combat-power').length !== 0, 'stat-combat-power exists');
+    ok($('#stat-attack-rating').length !== 0, 'stat-attack-rating exists');
+    ok($('#stat-weapon-power').length !== 0, 'stat-weapon-power exists');
+    ok($('#stat-heal-rating').length !== 0, 'stat-heal-rating exists');
+    ok($('#stat-critical-rating').length !== 0, 'stat-critical-rating exists');
+    ok($('#stat-critical-chance').length !== 0, 'stat-critical-chance exists');
+    ok($('#stat-critical-power').length !== 0, 'stat-critical-power exists');
+    ok($('#stat-critical-power-percentage').length !== 0, 'stat-critical-power-percentage exists');
+    ok($('#stat-penetration-rating').length !== 0, 'stat-penetration-rating exists');
+    ok($('#stat-hit-rating').length !== 0, 'stat-hit-rating exists');
+    ok($('#stat-block-rating').length !== 0, 'stat-block-rating exists');
+    ok($('#stat-defense-rating').length !== 0, 'stat-defense-rating exists');
+    ok($('#stat-evade-rating').length !== 0, 'stat-evade-rating exists');
+    ok($('#stat-physical-protection').length !== 0, 'stat-physical-protection exists');
+    ok($('#stat-magical-protection').length !== 0, 'stat-magical-protection exists');
 });
 
 module('summary-unit-tests', {
     setup: function() {
         summary = new Summary();
-    },
-    teardown: function() {
-
     }
 });
 

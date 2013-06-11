@@ -1,19 +1,16 @@
 module('buttonbar-dom', {
     setup: function() {
         renderButtonbar();
-    },
-    teardown: function() {
-        
     }
 });
 
 test('should have required buttonbar buttons in DOM', 6, function() {
-    ok($('#btn-all-dps').length != 0, 'all-dps button exists');
-    ok($('#btn-all-healer').length != 0, 'all-healer button exists');
-    ok($('#btn-all-tank').length != 0, 'all-tank button exists');
-    ok($('#btn-all-10-4').length != 0, 'all-10-4 button exists');
-    ok($('#btn-all-10-5').length != 0, 'all-10-5 button exists');
-    ok($('#btn-reset').length != 0, 'reset button exists');
+    ok($('#btn-all-dps').length !== 0, 'all-dps button exists');
+    ok($('#btn-all-healer').length !== 0, 'all-healer button exists');
+    ok($('#btn-all-tank').length !== 0, 'all-tank button exists');
+    ok($('#btn-all-10-4').length !== 0, 'all-10-4 button exists');
+    ok($('#btn-all-10-5').length !== 0, 'all-10-5 button exists');
+    ok($('#btn-reset').length !== 0, 'reset button exists');
 });
 
 var buttonBar = {};
@@ -24,9 +21,6 @@ module('buttonbar-events', {
         renderButtonbar();
         buttonBar = new ButtonBar();
         buttonBar.initiate();
-    },
-    teardown: function() {
-        
     }
 });
 
@@ -44,9 +38,6 @@ module('buttonbar-unit-tests', {
         renderButtonbar();
         renderSlots();
         buttonBar = new ButtonBar();
-    },
-    teardown: function() {
-        
     }
 });
 
@@ -77,9 +68,6 @@ module('buttonbar-integration-tests', {
         initiateSelectHandlers();
         buttonBar = new ButtonBar();
         summary = new Summary();
-    },
-    teardown: function() {
-        
     }
 });
 
@@ -99,6 +87,6 @@ test('should reset slot', 7, function() {
     equal($('#head-glyph-ql').val(), '10.0');
     equal($('#head-primary-glyph').val(), 'none');
     equal($('#head-secondary-glyph').val(), 'none');
-    ok($('#head-primary-glyph-dist-btn0').hasClass('active'))
-    ok($('#head-secondary-glyph-dist-btn0').hasClass('active'))
+    ok($('#head-primary-glyph-dist-btn0').hasClass('active'));
+    ok($('#head-secondary-glyph-dist-btn0').hasClass('active'));
 });
