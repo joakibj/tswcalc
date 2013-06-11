@@ -5,7 +5,7 @@ signet_data = {
             if (this[group][i].id == id) {
                 return this[group][i];
             }
-        };
+        }
         if (group == 'head') {
             return this.find('weapon', id);
         }
@@ -23,7 +23,7 @@ signet_data = {
             id: 0,
             name: '',
             icon: 'minor_dps'
-        }
+        };
     },
     'weapon': [{
         description: 'When you hit a target you have a 10% chance to gain a damage increase of %d% for 5 seconds.',
@@ -608,4 +608,4 @@ signet_data = {
         stat: 'heal-rating',
         icon: 'major_heal'
     }]
-}
+};

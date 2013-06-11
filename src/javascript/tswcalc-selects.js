@@ -1,5 +1,4 @@
 function SelectHandler(slot) {
-    var slot = slot;
     var self = this;
 
     this.initiate = function() {
@@ -49,7 +48,7 @@ function SelectHandler(slot) {
         $('#' + slot.id_prefix + '-signet-img-icon').attr('src', signet_icon_url);
         $('#' + slot.id_prefix + '-signet-img-quality').attr('src', signet_quality_url);
 
-        var signetsInSlotGroup = signet_data[slot.group];
+        var signetsInSlotGroup = $.merge([], signet_data[slot.group]);
         // weapon signets can also be slotted in head
         $.merge(signetsInSlotGroup, this.getSignetsForHead(slot.group));
         signetsInSlotGroup.sort(function(a, b) {
@@ -92,7 +91,7 @@ function SelectHandler(slot) {
 
     this.updateSignetIcon = function() {
         var signet = signet_data.find(slot.group, self.getSignet());
-        if (signet != null) {
+        if (signet !== null) {
             var signet_icon_url = 'assets/images/icons/' + signet.icon + '.png';
             $('#' + slot.id_prefix + '-signet-img-icon').attr('src', signet_icon_url);
             var signetQuality = this.getSignetQuality();
@@ -107,7 +106,7 @@ function SelectHandler(slot) {
 
     this.updateSignetDescription = function() {
         var signet = signet_data.find(slot.group, self.getSignet());
-        if (signet != null) {
+        if (signet !== null) {
             if (this.getSignetQuality() == 'none') {
                 $('#' + slot.id_prefix + '-signet-quality').val('normal');
             }
@@ -120,7 +119,7 @@ function SelectHandler(slot) {
     };
 
     this.getSignetDescription = function(signet) {
-        if (signet == null) {
+        if (signet === null) {
             return '';
         }
         var description = '';
@@ -130,7 +129,7 @@ function SelectHandler(slot) {
             description = description.replace('%0', self.determineSignetQualityValue(signet, 0));
             description = description.replace('%1', self.determineSignetQualityValue(signet, 1));
         }
-        
+
         if (signet.cooldown != '0') {
             description += ' ' + signet.cooldown + ' seconds cooldown.';
         }

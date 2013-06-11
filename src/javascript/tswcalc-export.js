@@ -80,11 +80,11 @@ function Export() {
             var curState = this.slotState[slot];
             var role = role_mapping.to_stat[curState.role];
             var primaryValue = 0;
-            if (curState.primary_glyph != 0) {
+            if (curState.primary_glyph !== 0) {
                 primaryValue = glyph_data.stat[stat_mapping.to_stat[curState.primary_glyph]].ql['10.' + curState.glyph_ql].slot[group].dist[curState.primary_dist];
             }
             var secondaryValue = 0;
-            if (curState.secondary_glyph != 0) {
+            if (curState.secondary_glyph !== 0) {
                 secondaryValue = glyph_data.stat[stat_mapping.to_stat[curState.secondary_glyph]].ql['10.' + curState.glyph_ql].slot[group].dist[curState.secondary_dist];
             }
             var statType = 0;
@@ -144,12 +144,13 @@ function Export() {
 
     this.collectAllSlotStates = function() {
         for (var i = 0; i < template_data.slots.length; i++) {
-            this.collectSlotState(template_data.slots[i].id_prefix);
+            var slot = template_data.slots[i];
+            this.slotState[slot.id_prefix] = this.collectSlotState(slot.id_prefix);
         }
     };
 
     this.collectSlotState = function(slotId) {
-        this.slotState[slotId] = {
+        return {
             ql: self.stripContent($('#' + slotId + '-ql').val()),
             role: self.stripContent($('#' + slotId + '-role').val()),
             glyph_ql: self.stripContent($('#' + slotId + '-glyph-ql').val()),
@@ -180,4 +181,4 @@ function Export() {
             return val;
         }
     };
-};
+}

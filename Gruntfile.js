@@ -26,16 +26,21 @@ module.exports = function(grunt) {
       options: {
         separator: ';'
       },
+      build_dust: {
+        src: ['build/templates/dusts/**/*.js'],
+        dest: 'build/assets/javascripts/<%= pkg.name %>-dusts.js'
+      },
       build_main: {
         src: [
-          'build/templates/dusts/**/*.js',
+          '<%= concat.build_dust.dest %>',
           '<%= dirs.src %>/tswcalc.js',
           '<%= dirs.src %>/tswcalc-summary.js',
           '<%= dirs.src %>/tswcalc-selects.js',
           '<%= dirs.src %>/tswcalc-buttons.js',
           '<%= dirs.src %>/tswcalc-buttonbar.js',
           '<%= dirs.src %>/tswcalc-export.js',
-          '<%= dirs.src %>/tswcalc-import.js'],
+          '<%= dirs.src %>/tswcalc-import.js',
+          '<%= dirs.src %>/tswcalc-util.js'],
         dest: 'build/assets/javascripts/<%= pkg.name %>.js'
       },
       build_data: {
@@ -82,11 +87,6 @@ module.exports = function(grunt) {
           cwd: 'public/',
           src: ['assets/**/*'],
           dest: 'build/'
-        }, {
-          expand: true,
-          cwd: 'src/javascript/',
-          src: ['tswcalc-data.js'],
-          dest: 'build/assets/javascripts/'
         }]
       },
       dist: {
@@ -122,6 +122,9 @@ module.exports = function(grunt) {
         files: ['public/assets/stylesheets/<%= pkg.name %>.css'],
         tasks: ['default']
       }
+    },
+    qunit: {
+      all: ['test/**/*.html']
     }
   });
 
@@ -131,7 +134,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-replace');
+  grunt.loadNpmTasks('grunt-contrib-qunit');
 
-  grunt.registerTask('default', ['dust', 'concat', 'replace:develop', 'copy:develop']);
-  grunt.registerTask('dist', ['dust', 'concat', 'uglify', 'replace:dist', 'copy:dist']);
+  grunt.registerTask('default', ['dust', 'concat', 'qunit', 'replace:develop', 'copy:develop']);
+  grunt.registerTask('dist', ['dust', 'concat', 'qunit', 'uglify', 'replace:dist', 'copy:dist']);
 };

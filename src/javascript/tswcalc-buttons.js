@@ -10,25 +10,29 @@ function DistributionButtonHandler(slotId) {
     this.addListenersToGlyphDistButtons = function(glyph) {
         this.onlyActiveButton('#' + slotId + '-' + glyph + '-glyph-dist-btn0');
         $('#' + slotId + '-' + glyph + '-glyph-dist > button.btn').on('click', function(event) {
-            self.onlyActiveButton('#' + this.id);
-            self.balanceGlyphDist(this, glyph);
+            self.setActiveButtonAndBalanceGlyphDist(this, glyph);
             summary.updateOffensiveDefensiveStats();
         });
+    };
+
+    this.setActiveButtonAndBalanceGlyphDist = function(element, glyph) {
+        this.onlyActiveButton('#' + element.id);
+        this.balanceGlyphDist(element, glyph);
     };
 
     this.balanceGlyphDist = function(button, glyph) {
         otherActiveButton = self.getActiveDist(self.getInverseGlyphStat(glyph));
         this.balanceGlyphDistOverflow(button, otherActiveButton);
-    }
+    };
 
     this.getActiveDist = function(glyph) {
         return $('#' + slotId + '-' + glyph + '-glyph-dist > button.btn.active')[0];
     };
 
     this.balanceGlyphDistOverflow = function(clickedButton, otherButton) {
-        if (otherButton != null) {
-            var clickedDist = parseInt(clickedButton.innerHTML);
-            var otherDist = parseInt(otherButton.innerHTML);
+        if (otherButton !== null) {
+            var clickedDist = parseInt(clickedButton.innerHTML, 10);
+            var otherDist = parseInt(otherButton.innerHTML, 10);
             var sumBothDist = clickedDist + otherDist;
             if ((sumBothDist) > 4) {
                 var otherDistLoweredByOne = otherButton.id.substring(0, otherButton.id.length - 1) + (otherDist - (sumBothDist - 4));
