@@ -21,9 +21,9 @@ function Import() {
         $('#' + slotId + '-secondary-glyph-dist-btn' + values[6]).trigger('click');
         // support signets
         if(typeof values[7] != 'undefined' && typeof values[8] != 'undefined') {
-            $('#' + slotId + '-signet-quality').val(signet_quality_mapping.to_name[values[7]]); 
+            $('#' + slotId + '-signet-quality').val(signet_quality_mapping.to_name[values[7]]);
             $('#' + slotId + '-pick-signet').val(values[8] != '0' ? values[8] : 'none');
             $('#' + slotId + '-pick-signet').trigger('change');
         }
     };
-};
+}

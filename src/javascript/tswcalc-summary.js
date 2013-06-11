@@ -75,13 +75,13 @@ function Summary() {
                 }
             }
             if (role == 'dps') {
-                sums['attack-rating'] += custom_gear_data[template_data.slots[i].group].heal_dps['ql' + (ql)].rating;
+                sums['attack-rating'] += custom_gear_data[slot.group].heal_dps['ql' + (ql)].rating;
             } else if (role == 'healer') {
-                sums['heal-rating'] += custom_gear_data[template_data.slots[i].group].heal_dps['ql' + (ql)].rating;
+                sums['heal-rating'] += custom_gear_data[slot.group].heal_dps['ql' + (ql)].rating;
             } else if (role == 'tank') {
-                sums['hitpoints'] += custom_gear_data[template_data.slots[i].group].tank['ql' + (ql)].hitpoints;
-            } else if (typeof role == 'undefined' && template_data.slots[i].is_weapon) {
-                sums['weapon-power'] = custom_gear_data[template_data.slots[i].group][ql].weapon_power;
+                sums['hitpoints'] += custom_gear_data[slot.group].tank['ql' + (ql)].hitpoints;
+            } else if (typeof role == 'undefined' && slot.is_weapon) {
+                sums['weapon-power'] = custom_gear_data[slot.group][ql].weapon_power;
             }
         }
         sums['combat-power'] = this.calculateCombatPower(sums['attack-rating'], sums['weapon-power']);
@@ -133,7 +133,7 @@ function Summary() {
     };
 
     this.getGlyphValue = function(stat, glyph_ql, group, glyph_dist) {
-        if (stat == 'none' || glyph_dist == null) {
+        if (stat == 'none' || glyph_dist === null) {
             return 0;
         }
         return glyph_data.stat[stat].ql[glyph_ql].slot[group].dist[glyph_dist];
@@ -158,7 +158,7 @@ function Summary() {
     };
 
     this.updateGlyphValue = function(slotId, stat, glyph, value) {
-        if (stat != 'none' && glyph != 'none' && value != 0) {
+        if (stat != 'none' && glyph != 'none' && value !== 0) {
             $('#' + slotId + '-' + glyph + '-glyph-value').html('+' + value);
         } else {
             $('#' + slotId + '-' + glyph + '-glyph-value').html('0');
@@ -188,4 +188,4 @@ function Summary() {
     this.isStatPercentageBased = function(statName) {
         return statName == 'critical-power-percentage' || statName == 'critical-chance';
     };
-};
+}

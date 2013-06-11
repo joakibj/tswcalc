@@ -21,11 +21,11 @@ function initiateTswCalc() {
     }
 
     $('#summary').scrollToFixed();
-};
+}
 
 function triggerReset() {
     $('#btn-reset').trigger('click');
-};
+}
 
 function activateToolTips() {
     $('.glyph-tooltip, .signet-tooltip').tooltip({
@@ -45,7 +45,7 @@ function activateToolTips() {
         event.preventDefault();
         event.stopPropagation();
     });
-};
+}
 
 function renderContainer(data) {
     dust.render('container', {
@@ -59,7 +59,7 @@ function renderContainer(data) {
         }
         $('.container').html(out);
     });
-};
+}
 
 function checkIfExported() {
     var vars = $.getUrlVars();
@@ -68,7 +68,7 @@ function checkIfExported() {
         return true;
     }
     return false;
-};
+}
 
 function startSubModules() {
     for (var i = 0; i < template_data.slots.length; i++) {
@@ -79,38 +79,38 @@ function startSubModules() {
     startSummary();
     startExportModule();
     startImportModule();
-};
+}
 
 function addHash() {
     if (location.hash == '') {
         location.hash = ' ';
     }
-};
+}
 
 function startDistributionButtonHandler(slotId) {
     buttonHandler[slotId] = new DistributionButtonHandler(slotId);
     buttonHandler[slotId].initiate();
-};
+}
 
 function startSelectHandler(slot) {
     selectHandler[slot.id_prefix] = new SelectHandler(slot);
     selectHandler[slot.id_prefix].initiate();
-};
+}
 
 function startButtonBar() {
     buttonBar = new ButtonBar();
     buttonBar.initiate();
-};
+}
 
 function startSummary() {
     summary = new Summary();
-};
+}
 
 function startExportModule() {
     exportModule = new Export();
     exportModule.initiate();
-};
+}
 
 function startImportModule() {
     importModule = new Import();
-};
+}

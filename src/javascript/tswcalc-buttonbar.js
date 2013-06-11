@@ -33,7 +33,7 @@ function ButtonBar() {
             }
             summary.updateAllStats();
         });
-    }
+    };
 
     this.setQlOnSlot = function(ql, slotId) {
         $('#' + slotId + '-ql').val(ql);
@@ -61,4 +61,4 @@ function ButtonBar() {
         $('#' + slotId + '-primary-glyph-dist-btn0').trigger('click');
         $('#' + slotId + '-secondary-glyph-dist-btn0').trigger('click');
     };
-};
+}

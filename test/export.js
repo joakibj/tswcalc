@@ -40,8 +40,8 @@ test('should collect slotstate', 7, function() {
     equal($('#head-glyph-ql').val(), '10.5');
     equal($('#head-primary-glyph').val(), 'block-rating');
     equal($('#head-secondary-glyph').val(), 'none');
-    ok($('#head-primary-glyph-dist-btn4').hasClass('active'))
-    ok($('#head-secondary-glyph-dist-btn0').hasClass('active'))
+    ok($('#head-primary-glyph-dist-btn4').hasClass('active'));
+    ok($('#head-secondary-glyph-dist-btn0').hasClass('active'));
 });
 
 test('should create slot url for head', 1, function() {
@@ -75,5 +75,5 @@ test('should create BBCode export', 1, function() {
 
     exportModule.startExportBBCode();
 
-    equal($('#export-textarea').html(), bbcode); 
+    equal($('#export-textarea').html(), bbcode);
 });
