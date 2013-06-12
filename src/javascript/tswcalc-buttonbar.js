@@ -1,38 +1,48 @@
 function ButtonBar() {
     var self = this;
 
-    this.initiate = function() {
-        self.resetButton();
-        self.addAllRoleListenerToButton('dps');
-        self.addAllRoleListenerToButton('healer');
-        self.addAllRoleListenerToButton('tank');
-        self.addAllQlListenerToButton('10.4');
-        self.addAllQlListenerToButton('10.5');
+    this.el = {
+        btn_all_dps: $('#btn-all-dps'),
+        btn_all_healer: $('#btn-all-healer'),
+        btn_all_tank: $('#btn-all-tank'),
+        btn_all_10_4: $('#btn-all-10-4'),
+        btn_all_10_5: $('#btn-all-10-5'),
+        btn_reset: $('#btn-reset')
     };
 
-    this.addAllRoleListenerToButton = function(role) {
-        $('#btn-all-' + role).on('click', function(event) {
-            for (var i = 0; i < template_data.slots.length; i++) {
-                self.setRoleOnSlot(role, template_data.slots[i].id_prefix);
-            }
-            summary.updateAllStats();
-        });
+    this.initiate = function() {
+        this.bindEvents();
+    };
+
+    this.bindEvents = function() {
+        this.el.btn_all_dps.on('click', this.setRoleOnAllSlots);
+        this.el.btn_all_healer.on('click', this.setRoleOnAllSlots);
+        this.el.btn_all_tank.on('click', this.setRoleOnAllSlots);
+        this.el.btn_all_10_4.on('click', this.setQlOnAllSlots);
+        this.el.btn_all_10_5.on('click', this.setQlOnAllSlots);
+        this.el.btn_reset.on('click', this.resetAllSlots);
+    };
+
+    this.setRoleOnAllSlots = function(event) {
+        var role = event.target.id.split('-')[2];
+        for (var i = 0; i < template_data.slots.length; i++) {
+            self.setRoleOnSlot(role, template_data.slots[i].id_prefix);
+        }
+        summary.updateAllStats();
     };
 
     this.setRoleOnSlot = function(role, slotId) {
         $('#' + slotId + '-role').val(role);
     };
 
-    this.addAllQlListenerToButton = function(ql) {
-        qlid = ql.replace('.', '-');
-        $('#btn-all-' + qlid).on('click', function(event) {
-            for (var i = 0; i < template_data.slots.length; i++) {
-                self.setQlOnSlot(ql, template_data.slots[i].id_prefix);
-                self.setGlyphQlOnSlot(ql, template_data.slots[i].id_prefix);
-                $('#' + template_data.slots[i].id_prefix + '-primary-glyph-dist-btn4').trigger('click');
-            }
-            summary.updateAllStats();
-        });
+    this.setQlOnAllSlots = function(event) {
+        var ql = '10.' + event.target.id.split('-')[3];
+        for (var i = 0; i < template_data.slots.length; i++) {
+            this.setQlOnSlot(ql, template_data.slots[i].id_prefix);
+            this.setGlyphQlOnSlot(ql, template_data.slots[i].id_prefix);
+            $('#' + template_data.slots[i].id_prefix + '-primary-glyph-dist-btn4').trigger('click');
+        }
+        summary.updateAllStats();
     };
 
     this.setQlOnSlot = function(ql, slotId) {
@@ -43,16 +53,14 @@ function ButtonBar() {
         $('#' + slotId + '-glyph-ql').val(ql);
     };
 
-    this.resetButton = function() {
-        $('#btn-reset').on('click', function(event) {
-            for (var i = 0; i < template_data.slots.length; i++) {
-                self.resetAllInput(template_data.slots[i].id_prefix);
-            }
-            summary.updateAllStats();
-        });
+    this.resetAllSlots = function(event) {
+        for (var i = 0; i < template_data.slots.length; i++) {
+            self.resetSlot(template_data.slots[i].id_prefix);
+        }
+        summary.updateAllStats();
     };
 
-    this.resetAllInput = function(slotId) {
+    this.resetSlot = function(slotId) {
         $('#' + slotId + '-ql').val('10.0');
         $('#' + slotId + '-role').val('none');
         $('#' + slotId + '-glyph-ql').val('10.0');

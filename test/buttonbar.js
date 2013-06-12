@@ -80,7 +80,7 @@ test('should reset slot', 7, function() {
     $('#head-primary-glyph-dist-btn4').trigger('click');
     $('#head-secondary-glyph-dist-btn0').trigger('click');
 
-    buttonBar.resetAllInput('head');
+    buttonBar.resetSlot('head');
 
     equal($('#head-ql').val(), '10.0');
     equal($('#head-role').val(), 'none');
