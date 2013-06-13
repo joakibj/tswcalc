@@ -1,6 +1,12 @@
 function Summary() {
     self = this;
 
+    this.el = {
+        black_bullion_cost: $('#bb-cost'),
+        criterion_upgrade_cost: $('#cu-cost'),
+        astral_fuse_cost: $('#af-cost')
+    };
+
     this.updateAllStats = function() {
         self.updateCosts();
         self.updatePrimaryStats();
@@ -18,25 +24,28 @@ function Summary() {
         var blackBullions = 0;
         var criterionUpgrades = 0;
         var astralFuses = 0;
-        for (var i = 0; i < template_data.slots.length; i++) {
-            var ql = slots[template_data.slots[i].id_prefix].ql()
-            var glyphQl = slots[template_data.slots[i].id_prefix].glyphQl()
-            blackBullions += bb_costs['glyph'][glyphQl].cost;
-            if (template_data.slots[i].group == 'weapon') {
-                blackBullions += bb_costs['weapon'][ql].cost;
-            } else {
-                blackBullions += bb_costs['talisman'][ql].cost;
-            }
-            if (ql == '10.5') {
-                criterionUpgrades++;
-            }
-            if (glyphQl == '10.5') {
-                astralFuses++;
+        for (var slotId in slots) {
+            if (slots.hasSlot(slotId)) {
+                var slot = slots[slotId];
+                var ql = slot.ql();
+                var glyphQl = slot.glyphQl();
+                blackBullions += bb_costs['glyph'][glyphQl].cost;
+                if (slot.group == 'weapon') {
+                    blackBullions += bb_costs['weapon'][ql].cost;
+                } else {
+                    blackBullions += bb_costs['talisman'][ql].cost;
+                }
+                if (ql == '10.5') {
+                    criterionUpgrades++;
+                }
+                if (glyphQl == '10.5') {
+                    astralFuses++;
+                }
             }
         }
-        $('#bb-cost').html(blackBullions);
-        $('#cu-cost').html(criterionUpgrades);
-        $('#af-cost').html(astralFuses);
+        this.el.black_bullion_cost.html(blackBullions);
+        this.el.criterion_upgrade_cost.html(criterionUpgrades);
+        this.el.astral_fuse_cost.html(astralFuses);
     };
 
     this.updatePrimaryStats = function() {
@@ -63,25 +72,36 @@ function Summary() {
             'heal-rating': 0
         };
 
-        for (var i = 0; i < template_data.slots.length; i++) {
-            var slot = template_data.slots[i];
-            var role = slots[slot.id_prefix].role();
-            var ql = slots[slot.id_prefix].ql();
-            if (slot.group == 'major') {
-                var signetId = slots[slot.id_prefix].signetId();
-                if (signetId != 'none') {
-                    var signet = signet_data.find(slot.group, signetId);
-                    sums[signet.stat] += slots[slot.id_prefix].determineSignetQualityValue(signet);
+        for (var slotId in slots) {
+            if (slots.hasSlot(slotId)) {
+                var slot = slots[slotId];
+                var role = slot.role();
+                var ql = slot.ql();
+                if (slot.group == 'major') {
+                    var signet = slot.signet();
+                    if (signet.id !== 0) {
+                        sums[signet.stat] += slot.determineSignetQualityValue(signet);
+                    }
                 }
-            }
-            if (role == 'dps') {
-                sums['attack-rating'] += custom_gear_data[slot.group].heal_dps['ql' + (ql)].rating;
-            } else if (role == 'healer') {
-                sums['heal-rating'] += custom_gear_data[slot.group].heal_dps['ql' + (ql)].rating;
-            } else if (role == 'tank') {
-                sums['hitpoints'] += custom_gear_data[slot.group].tank['ql' + (ql)].hitpoints;
-            } else if (role == 'none' && slot.is_weapon) {
-                sums['weapon-power'] = custom_gear_data[slot.group][ql].weapon_power;
+                switch (role) {
+                    case 'dps':
+                        sums['attack-rating'] += custom_gear_data[slot.group].heal_dps['ql' + (ql)].rating;
+                        break;
+                    case 'healer':
+                        sums['heal-rating'] += custom_gear_data[slot.group].heal_dps['ql' + (ql)].rating;
+                        break;
+                    case 'tank':
+                        sums['hitpoints'] += custom_gear_data[slot.group].tank['ql' + (ql)].hitpoints;
+                        break;
+                    case 'none':
+                        if (slot.id == 'weapon') {
+                            sums['weapon-power'] = custom_gear_data[slot.group][ql].weapon_power;
+                        }
+                        break;
+                    default:
+                        console.log('Illegal role value when collecting primary stats');
+                        break;
+                }
             }
         }
         sums['combat-power'] = this.calculateCombatPower(sums['attack-rating'], sums['weapon-power']);
