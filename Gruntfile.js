@@ -41,7 +41,8 @@ module.exports = function(grunt) {
             '<%= dirs.src %>/<%= pkg.name %>-buttonbar.js',
             '<%= dirs.src %>/<%= pkg.name %>-export.js',
             '<%= dirs.src %>/<%= pkg.name %>-import.js',
-            '<%= dirs.src %>/<%= pkg.name %>-util.js'
+            '<%= dirs.src %>/<%= pkg.name %>-util.js',
+            '<%= dirs.src %>/<%= pkg.name %>-slots.js'
         ],
         dest: 'build/assets/javascripts/<%= pkg.name %>.js'
       },

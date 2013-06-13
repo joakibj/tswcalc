@@ -71,6 +71,7 @@ function checkIfExported() {
 }
 
 function startSubModules() {
+    slots.init();
     for (var i = 0; i < template_data.slots.length; i++) {
         startDistributionButtonHandler(template_data.slots[i].id_prefix);
         startSelectHandler(template_data.slots[i]);
