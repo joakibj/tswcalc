@@ -137,6 +137,10 @@ test('should get indexed signet value based on quality', 2, function() {
     deepEqual(slots.occult.determineSignetQualityValue(signet, 1), 57);
 });
 
+test('slots should have length of 8', 1, function() {
+    equal(slots.length(), 8);
+});
+
 test('should reset slot state', 7, function() {
     slots.head.reset();
 

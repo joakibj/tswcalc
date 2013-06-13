@@ -256,6 +256,10 @@ var slots = {
         }
     },
 
+    length: function() {
+        return template_data.slots.length;
+    },
+
     hasSlot: function(slot) {
         return this.hasOwnProperty(slot) && $.inArray(slot, ['head', 'weapon', 'ring', 'neck', 'wrist', 'luck', 'waist', 'occult']) != -1;
     },

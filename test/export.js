@@ -30,27 +30,10 @@ module('export-integration-tests', {
     }
 });
 
-test('should collect slotstate', 9, function() {
-    createTankBuild();
-
-    var slotState = exportModule.collectSlotState('head');
-
-    deepEqual(slotState.ql, '4');
-    deepEqual(slotState.role, 1);
-    deepEqual(slotState.glyph_ql, '5');
-    deepEqual(slotState.primary_glyph, 5);
-    deepEqual(slotState.secondary_glyph, 0);
-    deepEqual(slotState.primary_dist, '4');
-    deepEqual(slotState.secondary_dist, '0');
-    deepEqual(slotState.signet_quality, 3);
-    deepEqual(slotState.signet_id, '18');
-});
-
 test('should create slot url for head', 1, function() {
     createTankBuild();
 
-    exportModule.slotState['head'] = exportModule.collectSlotState('head');
-    var slotUrl = exportModule.createSlotUrl('head');
+    var slotUrl = exportModule.createSlotUrl(slots.head.id, slots.head.mappedState());
 
     equal(slotUrl, 'head=4,1,5,5,0,4,0,3,18');
 });
