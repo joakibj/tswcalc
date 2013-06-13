@@ -10,6 +10,11 @@ module('slots-unit-tests', {
     }
 });
 
+test('should set talisman role', 1, function() {
+    slots.head.role('healer');
+    equal(slots.head.role(), 'healer');
+});
+
 test('should get talisman role', 1, function() {
     equal(slots.head.role(), 'tank');
 });
@@ -22,13 +27,31 @@ test('should get talisman ql', 1, function() {
     equal(slots.head.ql(), '10.4');
 });
 
+test('should set talisman ql', 1, function() {
+    slots.head.ql('10.1');
+    equal(slots.head.ql(), '10.1');
+});
+
 test('should get talisman glyph ql', 1, function() {
     equal(slots.head.glyphQl(), '10.5');
+});
+
+test('should set talisman glyph ql', 1, function() {
+    slots.head.glyphQl('10.1');
+    equal(slots.head.glyphQl(), '10.1');
 });
 
 test('should get talisman glyphs', 2, function() {
     equal(slots.head.primaryGlyph(), 'block-rating');
     equal(slots.head.secondaryGlyph(), 'none');
+});
+
+test('should set talisman glyphs', 2, function() {
+    slots.head.primaryGlyph('hit-rating');
+    slots.head.secondaryGlyph('defense-rating');
+
+    equal(slots.head.primaryGlyph(), 'hit-rating');
+    equal(slots.head.secondaryGlyph(), 'defense-rating');
 });
 
 test('should get talisman glyph distribution', 2, function() {
@@ -92,6 +115,18 @@ test('should get indexed signet value based on quality', 2, function() {
 
     deepEqual(slots.occult.determineSignetQualityValue(signet, 0), 150);
     deepEqual(slots.occult.determineSignetQualityValue(signet, 1), 57);
+});
+
+test('should reset slot state', 7, function() {
+    slots.head.reset();
+
+    equal(slots.head.ql(), '10.0');
+    equal(slots.head.role(), 'none');
+    equal(slots.head.glyphQl(), '10.0');
+    equal(slots.head.primaryGlyph(), 'none');
+    equal(slots.head.secondaryGlyph(), 'none');
+    ok(slots.head.el.btn.primary[0].hasClass('active'));
+    ok(slots.head.el.btn.secondary[0].hasClass('active'));
 });
 
 test('should collect current slot state', 9, function() {
