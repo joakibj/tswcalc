@@ -38,7 +38,6 @@ module('buttonbar-integration-tests', {
     setup: function() {
         renderButtonbar();
         renderSlots();
-        slots.init();
         initiateButtonHandlers();
         initiateSelectHandlers();
         buttonBar = new ButtonBar();

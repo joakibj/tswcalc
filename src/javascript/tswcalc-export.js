@@ -120,7 +120,7 @@ function Export() {
                 secondary_value: secondaryValue,
                 signet_name: signet.name,
                 signet_quality: this.blankIfNone(capitalise(signet_quality_mapping.to_name[curState.signet_quality])),
-                signet_description: selectHandler[slot].getSignetDescription(signet),
+                signet_description: slots[slot].signetDescription(),
                 signet_colour: signet_quality_mapping.to_colour[signet_quality_mapping.to_name[curState.signet_quality]]
             };
             states.push(state);
@@ -158,8 +158,8 @@ function Export() {
             secondary_glyph: self.stripContent($('#' + slotId + '-secondary-glyph').val()),
             primary_dist: buttonHandler[slotId].getActiveDist('primary').innerHTML,
             secondary_dist: buttonHandler[slotId].getActiveDist('secondary').innerHTML,
-            signet_quality: self.stripContent(selectHandler[slotId].getSignetQuality()),
-            signet_id: self.stripContent(selectHandler[slotId].getSignet())
+            signet_quality: self.stripContent(slots[slotId].signetQuality()),
+            signet_id: self.stripContent(slots[slotId].signetId())
         };
     };
 

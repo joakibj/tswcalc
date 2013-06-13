@@ -19,8 +19,8 @@ function Summary() {
         var criterionUpgrades = 0;
         var astralFuses = 0;
         for (var i = 0; i < template_data.slots.length; i++) {
-            var ql = selectHandler[template_data.slots[i].id_prefix].getQl();
-            var glyphQl = selectHandler[template_data.slots[i].id_prefix].getGlyphQl();
+            var ql = slots[template_data.slots[i].id_prefix].ql()
+            var glyphQl = slots[template_data.slots[i].id_prefix].glyphQl()
             blackBullions += bb_costs['glyph'][glyphQl].cost;
             if (template_data.slots[i].group == 'weapon') {
                 blackBullions += bb_costs['weapon'][ql].cost;
@@ -65,13 +65,13 @@ function Summary() {
 
         for (var i = 0; i < template_data.slots.length; i++) {
             var slot = template_data.slots[i];
-            var role = selectHandler[slot.id_prefix].getRole();
-            var ql = selectHandler[slot.id_prefix].getQl();
+            var role = slots[slot.id_prefix].role();
+            var ql = slots[slot.id_prefix].ql();
             if (slot.group == 'major') {
-                var signetId = selectHandler[slot.id_prefix].getSignet();
+                var signetId = slots[slot.id_prefix].signetId();
                 if (signetId != 'none') {
                     var signet = signet_data.find(slot.group, signetId);
-                    sums[signet.stat] += selectHandler[slot.id_prefix].determineSignetQualityValue(signet);
+                    sums[signet.stat] += slots[slot.id_prefix].determineSignetQualityValue(signet);
                 }
             }
             if (role == 'dps') {
@@ -80,7 +80,7 @@ function Summary() {
                 sums['heal-rating'] += custom_gear_data[slot.group].heal_dps['ql' + (ql)].rating;
             } else if (role == 'tank') {
                 sums['hitpoints'] += custom_gear_data[slot.group].tank['ql' + (ql)].hitpoints;
-            } else if (typeof role == 'undefined' && slot.is_weapon) {
+            } else if (role == 'none' && slot.is_weapon) {
                 sums['weapon-power'] = custom_gear_data[slot.group][ql].weapon_power;
             }
         }
@@ -116,9 +116,9 @@ function Summary() {
         };
         for (var i = 0; i < template_data.slots.length; i++) {
             var slot = template_data.slots[i];
-            var glyphQl = selectHandler[slot.id_prefix].getGlyphQl();
-            var primaryGlyphStat = selectHandler[slot.id_prefix].getGlyph('primary');
-            var secondaryGlyphStat = selectHandler[slot.id_prefix].getGlyph('secondary');
+            var glyphQl = slots[template_data.slots[i].id_prefix].glyphQl();
+            var primaryGlyphStat = slots[template_data.slots[i].id_prefix].primaryGlyph();
+            var secondaryGlyphStat = slots[template_data.slots[i].id_prefix].secondaryGlyph();
 
             var primaryGlyphDist = buttonHandler[slot.id_prefix].getActiveDist('primary').innerHTML;
             var secondaryGlyphDist = buttonHandler[slot.id_prefix].getActiveDist('secondary').innerHTML;
@@ -142,9 +142,9 @@ function Summary() {
     this.updateGlyphValues = function() {
         for (var i = 0; i < template_data.slots.length; i++) {
             var slot = template_data.slots[i];
-            var glyphQl = selectHandler[slot.id_prefix].getGlyphQl();
-            var primaryGlyphStat = selectHandler[slot.id_prefix].getGlyph('primary');
-            var secondaryGlyphStat = selectHandler[slot.id_prefix].getGlyph('secondary');
+            var glyphQl = slots[slot.id_prefix].glyphQl();
+            var primaryGlyphStat = slots[slot.id_prefix].primaryGlyph();
+            var secondaryGlyphStat = slots[slot.id_prefix].secondaryGlyph();
 
             var primaryGlyphDist = buttonHandler[slot.id_prefix].getActiveDist('primary').innerHTML;
             var secondaryGlyphDist = buttonHandler[slot.id_prefix].getActiveDist('secondary').innerHTML;

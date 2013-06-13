@@ -5,7 +5,6 @@ module('slots-unit-tests', {
         renderSlots();
         initiateSelectHandlers();
         initiateButtonHandlers();
-        slots.init();
         createTankBuild();
     }
 });
