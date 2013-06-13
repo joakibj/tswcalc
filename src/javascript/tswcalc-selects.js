@@ -17,15 +17,13 @@ function SelectHandler(slot) {
     };
 
     this.addSignetsToSelect = function() {
-        $('#' + slot.id_prefix + '-pick-signet').append($('<option>', {
+        slots[slot.id_prefix].el.signetId.append($('<option>', {
             value: "none",
             text: "None",
             selected: "true"
         }));
-        var signet_icon_url = 'assets/images/icons/' + slot.group + '_dps.png';
-        var signet_quality_url = 'assets/images/icons/normal.png';
-        $('#' + slot.id_prefix + '-signet-img-icon').attr('src', signet_icon_url);
-        $('#' + slot.id_prefix + '-signet-img-quality').attr('src', signet_quality_url);
+
+        this.updateToDefaultSignet();
 
         var signetsInSlotGroup = $.merge([], signet_data[slot.group]);
         // weapon signets can also be slotted in head
@@ -38,11 +36,18 @@ function SelectHandler(slot) {
             }
         });
         $.each(signetsInSlotGroup, function(index, value) {
-            $('#' + slot.id_prefix + '-pick-signet').append($('<option>', {
+            slots[slot.id_prefix].el.signetId.append($('<option>', {
                 value: value.id,
                 text: value.name
             }));
         });
+    };
+
+    this.updateToDefaultSignet = function() {
+        var signet_icon_url = 'assets/images/icons/' + slot.group + '_dps.png';
+        var signet_quality_url = 'assets/images/icons/normal.png';
+        $('#' + slot.id_prefix + '-signet-img-icon').attr('src', signet_icon_url);
+        $('#' + slot.id_prefix + '-signet-img-quality').attr('src', signet_quality_url);
     };
 
     this.getSignetsForHead = function(group) {
