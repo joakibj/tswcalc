@@ -13,11 +13,14 @@ function Slot(id, name, group) {
         primaryDist: '#' + this.id + '-primary-glyph-dist > button.btn.active',
         secondaryDist: '#' + this.id + '-secondary-glyph-dist > button.btn.active',
         signetId: $('#' + this.id + '-pick-signet'),
-        signetQuality: $('#' + this.id + '-signet-quality')
+        signetQuality: $('#' + this.id + '-signet-quality'),
+        signetIconImg: $('#' + this.id + '-signet-img-icon'),
+        signetIconBorderImg: $('#' + this.id + '-signet-img-quality'),
+        signetDescription: $('#' + this.id + '-signet-description')
     };
 
     this.role = function() {
-        return this.el.role.val();
+        return this.group != 'weapon' ? this.el.role.val() : 'none';
     };
 
     this.ql = function() {
@@ -54,6 +57,71 @@ function Slot(id, name, group) {
 
     this.signet = function() {
         return signet_data.find(this.group, this.signetId());
+    };
+
+    this.signetDescription = function() {
+        var signet = this.signet();
+        if (signet === null) {
+            return '';
+        }
+        var description = '';
+        description = signet.description.replace('%s', this.determineSignetQualityValue(signet));
+        description = description.replace('%d', this.determineSignetQualityValue(signet));
+        if (Object.prototype.toString.call(signet.quality) === '[object Array]') {
+            description = description.replace('%0', this.determineSignetQualityValue(signet, 0));
+            description = description.replace('%1', this.determineSignetQualityValue(signet, 1));
+        }
+
+        if (signet.cooldown != '0') {
+            description += ' ' + signet.cooldown + ' seconds cooldown.';
+        }
+
+        return description;
+    };
+
+    this.determineSignetQualityValue = function(signet, quality_index) {
+        quality_index = typeof quality_index !== 'undefined' ? quality_index : -1;
+        var quality = this.signetQuality();
+        switch (quality) {
+            case 'none':
+                return 0;
+            case 'normal':
+                return quality_index == -1 ? signet.quality.normal : signet.quality[quality_index].normal;
+            case 'elite':
+                return quality_index == -1 ? signet.quality.elite : signet.quality[quality_index].elite;
+            case 'epic':
+                return quality_index == -1 ? signet.quality.epic : signet.quality[quality_index].epic;
+            default:
+                return 0;
+        }
+    };
+
+    this.updateSignet = function() {
+        this.updateSignetIcon();
+        this.updateSignetDescription();
+    };
+
+    this.updateSignetIcon = function() {
+        var signet = this.signet();
+        var signetQuality = this.signetQuality();
+        if (signet !== null && signetQuality != 'none') {
+            this.updateSignetIconBorder(signetQuality);
+            this.updateSignetIconImage(signet);
+        }
+    };
+
+    this.updateSignetIconBorder = function(signetQuality) {
+        var signet_quality_url = 'assets/images/icons/' + signetQuality + '.png';
+        this.el.signetIconBorderImg.attr('src', signet_quality_url);
+    };
+
+    this.updateSignetIconImage = function(signet) {
+        var signet_icon_url = 'assets/images/icons/' + signet.icon + '.png';
+        this.el.signetIconImg.attr('src', signet_icon_url);
+    };
+
+    this.updateSignetDescription = function() {
+        this.el.signetDescription.html(this.signetDescription());
     };
 
     this.state = function() {

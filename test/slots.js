@@ -14,6 +14,10 @@ test('should get talisman role', 1, function() {
     equal(slots.head.role(), 'tank');
 });
 
+test('should not get weapon role', 1, function() {
+    equal(slots.weapon.role(), 'none');
+});
+
 test('should get talisman ql', 1, function() {
     equal(slots.head.ql(), '10.4');
 });
@@ -45,6 +49,51 @@ test('should get talisman signet None object if signet Id cannot be found', 1, f
     deepEqual(slots.wrist.signet(), signet_data.noneSignet());
 });
 
+test('should update signet icon and border', 2, function() {
+    slots.head.updateSignetIcon();
+
+    equal($('#head-signet-img-icon').attr('src'), 'assets/images/icons/head_tank.png');
+    equal($('#head-signet-img-quality').attr('src'), 'assets/images/icons/epic.png');
+});
+
+test('should get signet description for single value replace', 1, function() {
+    equal(slots.head.signetDescription(), 'When you block you gain a 30% block chance for 4 seconds. 10 seconds cooldown.');
+});
+
+test('should get signet description for multiple value replace', 1, function() {
+    $('#occult-pick-signet').val('47');
+    $('#occult-signet-quality').val('epic');
+
+    equal(slots.occult.signetDescription(), 'When your health is below 50% you are healed for 150 and affected by a heal over time effect healing you for 57 every 2 seconds for 8 seconds. 12 seconds cooldown.');
+});
+
+test('should update signet description', 1, function() {
+    slots.head.updateSignetDescription();
+
+    equal($('#head-signet-description').html(), 'When you block you gain a 30% block chance for 4 seconds. 10 seconds cooldown.');
+});
+
+test('should update signet description to blank if no signet is picked', 1, function() {
+    slots.wrist.updateSignetDescription();
+
+    equal($('#wrist-signet-description').html(), '');
+});
+
+test('should get single signet value based on quality', 1, function() {
+    var signet = slots.head.signet();
+
+    deepEqual(slots.head.determineSignetQualityValue(signet), 30);
+});
+
+test('should get indexed signet value based on quality', 2, function() {
+    $('#occult-pick-signet').val('47');
+    $('#occult-signet-quality').val('epic');
+    var signet = slots.occult.signet();
+
+    deepEqual(slots.occult.determineSignetQualityValue(signet, 0), 150);
+    deepEqual(slots.occult.determineSignetQualityValue(signet, 1), 57);
+});
+
 test('should collect current slot state', 9, function() {
     var slotState = slots.head.state();
 
@@ -73,8 +122,17 @@ test('should collect current mapped slot state', 9, function() {
     deepEqual(slotState.signet_id, '18');
 });
 
-test('should collect all slot states', 9, function() {
+test('should collect all slot states', 17, function() {
     var slotStates = slots.state();
+
+    deepEqual(slotStates.weapon.ql, '10.5');
+    deepEqual(slotStates.weapon.glyph_ql, '10.4');
+    deepEqual(slotStates.weapon.primary_glyph, 'hit-rating');
+    deepEqual(slotStates.weapon.secondary_glyph, 'none');
+    deepEqual(slotStates.weapon.primary_dist, '4');
+    deepEqual(slotStates.weapon.secondary_dist, '0');
+    deepEqual(slotStates.weapon.signet_quality, 'elite');
+    deepEqual(slotStates.weapon.signet_id, '5');
 
     deepEqual(slotStates.head.ql, '10.4');
     deepEqual(slotStates.head.role, 'tank');
@@ -87,8 +145,17 @@ test('should collect all slot states', 9, function() {
     deepEqual(slotStates.head.signet_id, '18');
 });
 
-test('should collect all mapped slot states', 9, function() {
+test('should collect all mapped slot states', 17, function() {
     var slotStates = slots.mappedState();
+
+    deepEqual(slotStates.weapon.ql, '5');
+    deepEqual(slotStates.weapon.glyph_ql, '4');
+    deepEqual(slotStates.weapon.primary_glyph, 4);
+    deepEqual(slotStates.weapon.secondary_glyph, 0);
+    deepEqual(slotStates.weapon.primary_dist, '4');
+    deepEqual(slotStates.weapon.secondary_dist, '0');
+    deepEqual(slotStates.weapon.signet_quality, 2);
+    deepEqual(slotStates.weapon.signet_id, '5');
 
     deepEqual(slotStates.head.ql, '4');
     deepEqual(slotStates.head.role, 1);
