@@ -12,6 +12,8 @@ function Slot(id, name, group) {
         secondaryGlyph: $('#' + this.id + '-secondary-glyph'),
         primaryDist: '#' + this.id + '-primary-glyph-dist > button.btn.active',
         secondaryDist: '#' + this.id + '-secondary-glyph-dist > button.btn.active',
+        primaryGlyphValue: $('#' + this.id + '-primary-glyph-value'),
+        secondaryGlyphValue: $('#' + this.id + '-secondary-glyph-value'),
         signetId: $('#' + this.id + '-pick-signet'),
         signetQuality: $('#' + this.id + '-signet-quality'),
         signetIconImg: $('#' + this.id + '-signet-img-icon'),
@@ -75,6 +77,20 @@ function Slot(id, name, group) {
         }
     };
 
+    this.primaryGlyphValue = function() {
+        if (this.primaryGlyph() == 'none') {
+            return 0;
+        }
+        return glyph_data.stat[this.primaryGlyph()].ql[this.glyphQl()].slot[this.group].dist[this.primaryDist()];
+    };
+
+    this.secondaryGlyphValue = function() {
+        if (this.secondaryGlyph() == 'none') {
+            return 0;
+        }
+        return glyph_data.stat[this.secondaryGlyph()].ql[this.glyphQl()].slot[this.group].dist[this.secondaryDist()];
+    };
+
     this.primaryDist = function() {
         return $(this.el.primaryDist)[0].innerHTML;
     };
@@ -130,6 +146,19 @@ function Slot(id, name, group) {
             default:
                 return 0;
         }
+    };
+
+    this.updateGlyphValues = function() {
+        this.updatePrimaryGlyphValue();
+        this.updateSecondaryGlyphValue();
+    };
+
+    this.updatePrimaryGlyphValue = function() {
+        this.el.primaryGlyphValue.html(this.primaryGlyphValue() !== 0 ? '+' + this.primaryGlyphValue() : 0);
+    };
+
+    this.updateSecondaryGlyphValue = function() {
+        this.el.secondaryGlyphValue.html(this.secondaryGlyphValue() !== 0 ? '+' + this.secondaryGlyphValue() : 0);
     };
 
     this.updateSignet = function() {

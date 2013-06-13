@@ -46,16 +46,6 @@ test('should calculate combat power', 2, function() {
     equal(summary.calculateCombatPower(3049, 398), 647);
 });
 
-test('should get glyph value', 7, function() {
-    equal(summary.getGlyphValue('none', '10.0', 'major', 4), 0, 'return 0 if state is none');
-    equal(summary.getGlyphValue('critical-rating', '10.0', 'major', null), 0, 'return 0 if dist is null');
-    equal(summary.getGlyphValue('critical-rating', '10.4', 'major', 4), 279);
-    equal(summary.getGlyphValue('critical-rating', '10.4', 'major', 3), 210);
-    equal(summary.getGlyphValue('critical-rating', '10.4', 'major', 2), 140);
-    equal(summary.getGlyphValue('critical-rating', '10.4', 'major', 1), 70);
-    equal(summary.getGlyphValue('critical-rating', '10.4', 'major', 0), 0);
-});
-
 module('summary-integration-tests', {
     setup: function() {
         renderSummary();

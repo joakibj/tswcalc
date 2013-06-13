@@ -134,17 +134,12 @@ function Summary() {
             'physical-protection': 249,
             'magical-protection': 249
         };
-        for (var i = 0; i < template_data.slots.length; i++) {
-            var slot = template_data.slots[i];
-            var glyphQl = slots[template_data.slots[i].id_prefix].glyphQl();
-            var primaryGlyphStat = slots[template_data.slots[i].id_prefix].primaryGlyph();
-            var secondaryGlyphStat = slots[template_data.slots[i].id_prefix].secondaryGlyph();
-
-            var primaryGlyphDist = buttonHandler[slot.id_prefix].getActiveDist('primary').innerHTML;
-            var secondaryGlyphDist = buttonHandler[slot.id_prefix].getActiveDist('secondary').innerHTML;
-
-            sums[primaryGlyphStat] += this.getGlyphValue(primaryGlyphStat, glyphQl, slot.group, primaryGlyphDist);
-            sums[secondaryGlyphStat] += this.getGlyphValue(secondaryGlyphStat, glyphQl, slot.group, secondaryGlyphDist);
+        for (var slotId in slots) {
+            if (slots.hasSlot(slotId)) {
+                var slot = slots[slotId];
+                sums[slot.primaryGlyph()] += slot.primaryGlyphValue();
+                sums[slot.secondaryGlyph()] += slot.secondaryGlyphValue();
+            }
         }
 
         sums['critical-chance'] = this.calculateCriticalChance(sums['critical-rating']);
@@ -152,36 +147,12 @@ function Summary() {
         return sums;
     };
 
-    this.getGlyphValue = function(stat, glyph_ql, group, glyph_dist) {
-        if (stat == 'none' || glyph_dist === null) {
-            return 0;
-        }
-        return glyph_data.stat[stat].ql[glyph_ql].slot[group].dist[glyph_dist];
-    };
-
     this.updateGlyphValues = function() {
-        for (var i = 0; i < template_data.slots.length; i++) {
-            var slot = template_data.slots[i];
-            var glyphQl = slots[slot.id_prefix].glyphQl();
-            var primaryGlyphStat = slots[slot.id_prefix].primaryGlyph();
-            var secondaryGlyphStat = slots[slot.id_prefix].secondaryGlyph();
-
-            var primaryGlyphDist = buttonHandler[slot.id_prefix].getActiveDist('primary').innerHTML;
-            var secondaryGlyphDist = buttonHandler[slot.id_prefix].getActiveDist('secondary').innerHTML;
-
-            var primaryGlyphValue = this.getGlyphValue(primaryGlyphStat, glyphQl, slot.group, primaryGlyphDist);
-            var secondaryGlyphValue = this.getGlyphValue(secondaryGlyphStat, glyphQl, slot.group, secondaryGlyphDist);
-
-            this.updateGlyphValue(slot.id_prefix, primaryGlyphStat, 'primary', primaryGlyphValue);
-            this.updateGlyphValue(slot.id_prefix, secondaryGlyphStat, 'secondary', secondaryGlyphValue);
-        }
-    };
-
-    this.updateGlyphValue = function(slotId, stat, glyph, value) {
-        if (stat != 'none' && glyph != 'none' && value !== 0) {
-            $('#' + slotId + '-' + glyph + '-glyph-value').html('+' + value);
-        } else {
-            $('#' + slotId + '-' + glyph + '-glyph-value').html('0');
+        for (var slotId in slots) {
+            if (slots.hasSlot(slotId)) {
+                var slot = slots[slotId];
+                slot.updateGlyphValues();
+            }
         }
     };
 

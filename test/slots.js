@@ -58,6 +58,27 @@ test('should get talisman glyph distribution', 2, function() {
     equal(slots.head.secondaryDist(), '0');
 });
 
+test('should get talisman glyph values from lookup tables', 2, function() {
+    slots.head.secondaryGlyph('hit-rating');
+    slots.head.el.btn.primary[2].trigger('click');
+    slots.head.el.btn.secondary[2].trigger('click');
+
+    equal(slots.head.primaryGlyphValue(), 182);
+    equal(slots.head.secondaryGlyphValue(), 182);
+});
+
+test('should update talisman glyph values', 2, function() {
+    slots.head.secondaryGlyph('hit-rating');
+    slots.head.el.btn.primary[2].trigger('click');
+    slots.head.el.btn.secondary[2].trigger('click');
+
+    slots.head.updatePrimaryGlyphValue();
+    slots.head.updateSecondaryGlyphValue();
+
+    deepEqual(slots.head.el.primaryGlyphValue.html(), '+182');
+    deepEqual(slots.head.el.secondaryGlyphValue.html(), '+182');
+});
+
 test('should get talisman signet id and quality', 2, function() {
     equal(slots.head.signetId(), '18');
     equal(slots.head.signetQuality(), 'epic');
@@ -201,4 +222,3 @@ test('should collect all mapped slot states', 17, function() {
     deepEqual(slotStates.head.signet_quality, 3);
     deepEqual(slotStates.head.signet_id, '18');
 });
-
