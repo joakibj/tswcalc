@@ -84,6 +84,14 @@ test('should get talisman signet id and quality', 2, function() {
     equal(slots.head.signetQuality(), 'epic');
 });
 
+test('should set talisman signet id and quality', 2, function() {
+    slots.head.signetId('16');
+    slots.head.signetQuality('elite');
+
+    equal(slots.head.signetId(), '16');
+    equal(slots.head.signetQuality(), 'elite');
+});
+
 test('should get talisman signet object', 1, function() {
     deepEqual(slots.head.signet(), signet_data.find('head', '18'));
 });
@@ -104,8 +112,8 @@ test('should get signet description for single value replace', 1, function() {
 });
 
 test('should get signet description for multiple value replace', 1, function() {
-    $('#occult-pick-signet').val('47');
-    $('#occult-signet-quality').val('epic');
+    slots.occult.signetId('47');
+    slots.occult.signetQuality('epic');
 
     equal(slots.occult.signetDescription(), 'When your health is below 50% you are healed for 150 and affected by a heal over time effect healing you for 57 every 2 seconds for 8 seconds. 12 seconds cooldown.');
 });
@@ -129,8 +137,8 @@ test('should get single signet value based on quality', 1, function() {
 });
 
 test('should get indexed signet value based on quality', 2, function() {
-    $('#occult-pick-signet').val('47');
-    $('#occult-signet-quality').val('epic');
+    slots.occult.signetId('47');
+    slots.occult.signetQuality('epic');
     var signet = slots.occult.signet();
 
     deepEqual(slots.occult.determineSignetQualityValue(signet, 0), 150);

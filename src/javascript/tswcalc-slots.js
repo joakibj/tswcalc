@@ -100,11 +100,19 @@ function Slot(id, name, group) {
     };
 
     this.signetId = function() {
-        return this.el.signetId.val();
+        if (arguments.length == 1) {
+            this.el.signetId.val(arguments[0]);
+        } else {
+            return this.el.signetId.val();
+        }
     };
 
     this.signetQuality = function() {
-        return this.el.signetQuality.val();
+        if (arguments.length == 1) {
+            this.el.signetQuality.val(arguments[0]);
+        } else {
+            return this.el.signetQuality.val();
+        }
     };
 
     this.signet = function() {
