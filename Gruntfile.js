@@ -131,7 +131,7 @@ module.exports = function(grunt) {
         tasks: ['default']
       },
       javascript: {
-        files: ['src/javascript/*.js'],
+        files: ['<%= dirs.src %>/*.js'],
         tasks: ['default']
       },
       css: {
@@ -141,6 +141,10 @@ module.exports = function(grunt) {
     },
     qunit: {
       all: ['test/**/*.html']
+    },
+    clean: {
+      build: ['build'],
+      dist: ['dist']
     }
   });
 
@@ -151,6 +155,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-replace');
   grunt.loadNpmTasks('grunt-contrib-qunit');
+  grunt.loadNpmTasks('grunt-contrib-clean');
 
   grunt.registerTask('default', ['dust', 'concat', 'replace:develop', 'copy:develop', 'qunit']);
   grunt.registerTask('dist', ['dust', 'concat', 'qunit', 'uglify', 'replace:dist', 'copy:dist']);
