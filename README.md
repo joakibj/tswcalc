@@ -7,7 +7,7 @@ tswcalc contains all Nightwatch custom gear and glyphs from QL 10.0 to 10.5. It 
 
 tswcalc can be found at: http://joakibj.github.io/tswcalc
 
-Note: all active development of tswcalc takes place in the [`develop` branch](https://github.com/joakibj/tswcalc/tree/develop).
+Note: all active development of tswcalc takes place in the [`develop`](https://github.com/joakibj/tswcalc/tree/develop) branch. Stable releases are merged into [`master`](https://github.com/joakibj/tswcalc/tree/master).
 
 Installing
 --------
