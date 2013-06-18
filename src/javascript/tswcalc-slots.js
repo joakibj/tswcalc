@@ -177,9 +177,14 @@ function Slot(id, name, group) {
     this.updateSignetIcon = function() {
         var signet = this.signet();
         var signetQuality = this.signetQuality();
-        if (signet !== null && signetQuality != 'none') {
+        if (signet.id !== 0 && signetQuality != 'none') {
             this.updateSignetIconBorder(signetQuality);
             this.updateSignetIconImage(signet);
+        } else if(signet.id !== 0 && signetQuality == 'none') {
+            this.signetQuality('normal');
+        } else if(signetQuality != 'none' && signet.id === 0) {
+            this.updateSignetIconBorder(signetQuality);
+            this.updateSignetIconImageFromName(this.group + '_dps');
         }
     };
 
@@ -189,7 +194,11 @@ function Slot(id, name, group) {
     };
 
     this.updateSignetIconImage = function(signet) {
-        var signet_icon_url = 'assets/images/icons/' + signet.icon + '.png';
+        this.updateSignetIconImageFromName(signet.icon);
+    };
+
+    this.updateSignetIconImageFromName = function(name) {
+        var signet_icon_url = 'assets/images/icons/' + name + '.png';
         this.el.signetIconImg.attr('src', signet_icon_url);
     };
 
