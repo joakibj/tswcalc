@@ -59,7 +59,7 @@ signet_data = {
         name: 'Breaching',
         icon: 'weapon_dps'
     }, {
-        description: 'When you hit a target you have a 10% chance to make your next %d hits never glance and deal %d more damage.',
+        description: 'When you hit a target you have a 10% chance to make your next %0 hits never glance and deal %1 more damage.',
         cooldown: '12',
             quality: [{
             epic: 12,
