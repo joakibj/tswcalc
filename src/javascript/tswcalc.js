@@ -6,6 +6,10 @@ var exportModule = 0;
 var importModule = 0;
 
 $(document).ready(function() {
+    initiateTswCalc();
+});
+
+function initiateTswCalc() {
     renderContainer(template_data);
     addHash();
 
@@ -17,11 +21,11 @@ $(document).ready(function() {
     }
 
     $('#summary').scrollToFixed();
-});
+}
 
 function triggerReset() {
     $('#btn-reset').trigger('click');
-};
+}
 
 function activateToolTips() {
     $('.glyph-tooltip, .signet-tooltip').tooltip({
@@ -41,7 +45,7 @@ function activateToolTips() {
         event.preventDefault();
         event.stopPropagation();
     });
-};
+}
 
 function renderContainer(data) {
     dust.render('container', {
@@ -55,7 +59,7 @@ function renderContainer(data) {
         }
         $('.container').html(out);
     });
-};
+}
 
 function checkIfExported() {
     var vars = $.getUrlVars();
@@ -64,9 +68,10 @@ function checkIfExported() {
         return true;
     }
     return false;
-};
+}
 
 function startSubModules() {
+    slots.init();
     for (var i = 0; i < template_data.slots.length; i++) {
         startDistributionButtonHandler(template_data.slots[i].id_prefix);
         startSelectHandler(template_data.slots[i]);
@@ -75,42 +80,38 @@ function startSubModules() {
     startSummary();
     startExportModule();
     startImportModule();
-};
+}
 
 function addHash() {
     if (location.hash == '') {
         location.hash = ' ';
     }
-};
+}
 
 function startDistributionButtonHandler(slotId) {
     buttonHandler[slotId] = new DistributionButtonHandler(slotId);
     buttonHandler[slotId].initiate();
-};
+}
 
 function startSelectHandler(slot) {
     selectHandler[slot.id_prefix] = new SelectHandler(slot);
     selectHandler[slot.id_prefix].initiate();
-};
+}
 
 function startButtonBar() {
     buttonBar = new ButtonBar();
     buttonBar.initiate();
-};
+}
 
 function startSummary() {
     summary = new Summary();
-};
+}
 
 function startExportModule() {
     exportModule = new Export();
     exportModule.initiate();
-};
+}
 
 function startImportModule() {
     importModule = new Import();
-};
-
-function capitalise(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
 }

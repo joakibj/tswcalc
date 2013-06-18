@@ -1,7 +1,15 @@
 {
   "name": "tswcalc",
   "version": "0.5.2",
-  "description": "A living glyph/gear calculator for TSW",
+  "author": "Joakim Bjørnstad <joakibj@gmail.com>",
+  "description": "A living glyph and gear calculator for The Secret World",
+  "contributors": [
+    {
+      "name": "Joakim Bjørnstad",
+      "email": "joakibj@gmail.com"
+    }
+  ],
+  "license": "MIT",
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-uglify": "~0.2.0",
@@ -9,6 +17,8 @@
     "grunt-contrib-watch": "~0.4.3",
     "grunt-dust": "~0.4.0",
     "grunt-contrib-copy": "~0.4.1",
-    "grunt-replace": "~0.4.4"
+    "grunt-replace": "~0.4.4",
+    "grunt-contrib-qunit": "~0.2.1",
+    "grunt-contrib-clean": "~0.4.1"
   }
 }
