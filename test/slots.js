@@ -107,6 +107,12 @@ test('should update signet icon and border', 2, function() {
     equal($('#head-signet-img-quality').attr('src'), 'assets/images/icons/epic.png');
 });
 
+test('should update signet icon from name', 1, function() {
+    slots.head.updateSignetIconImageFromName('minor_dps');
+
+    equal($('#head-signet-img-icon').attr('src'), 'assets/images/icons/minor_dps.png');
+});
+
 test('should get signet description for single value replace', 1, function() {
     equal(slots.head.signetDescription(), 'When you block you gain a 30% block chance for 4 seconds. 10 seconds cooldown.');
 });
