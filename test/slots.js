@@ -108,7 +108,7 @@ test('should update signet icon and border', 2, function() {
 });
 
 test('should get signet description for single value replace', 1, function() {
-    equal(slots.head.signetDescription(), 'When you block you gain a 30% block chance for 4 seconds. 10 seconds cooldown.');
+    equal(slots.head.signetDescription(), 'When you block you gain 45% block chance for 4 seconds. 10 seconds cooldown.');
 });
 
 test('should get signet description for multiple value replace', 1, function() {
@@ -121,7 +121,7 @@ test('should get signet description for multiple value replace', 1, function() {
 test('should update signet description', 1, function() {
     slots.head.updateSignetDescription();
 
-    equal($('#head-signet-description').html(), 'When you block you gain a 30% block chance for 4 seconds. 10 seconds cooldown.');
+    equal($('#head-signet-description').html(), 'When you block you gain 45% block chance for 4 seconds. 10 seconds cooldown.');
 });
 
 test('should update signet description to blank if no signet is picked', 1, function() {
@@ -133,7 +133,7 @@ test('should update signet description to blank if no signet is picked', 1, func
 test('should get single signet value based on quality', 1, function() {
     var signet = slots.head.signet();
 
-    deepEqual(slots.head.determineSignetQualityValue(signet), 30);
+    deepEqual(slots.head.determineSignetQualityValue(signet), 45);
 });
 
 test('should get indexed signet value based on quality', 2, function() {
