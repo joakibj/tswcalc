@@ -146,4 +146,4 @@ custom_gear_data = {
             }
         }
     }
-}
+};

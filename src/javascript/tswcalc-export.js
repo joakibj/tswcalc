@@ -1,20 +1,29 @@
 function Export() {
     var self = this;
-    var exportType = 0;
-    var slotState = 0;
+    this.exportType = 0;
+    this.slotState = {};
+
+    this.el = {
+        export_btn: $('a.export'),
+        export_textarea: $('#export-textarea'),
+        open_export_modal: $('#open-export-modal')
+    };
 
     this.initiate = function() {
-        this.slotState = {};
-        $('a.export').on('click', function(event) {
+        this.bindEvents();
+    };
+
+    this.bindEvents = function() {
+        this.el.export_btn.on('click', function(event) {
             self.exportType = $(event.target).attr('data');
             self.startExport();
         });
 
-        $('#open-export-modal').on('shown', function() {
-            $('#export-textarea').focus();
+        this.el.open_export_modal.on('shown', function() {
+            self.el.export_textarea.focus();
         });
 
-        $('#export-textarea').focus(function() {
+        this.el.export_textarea.focus(function() {
             $(this).select();
 
             $(this).mouseup(function() {
@@ -35,25 +44,29 @@ function Export() {
     this.startExportUrl = function() {
         this.collectAllSlotStates();
         url = this.createExportUrl();
-        $('#export-textarea').attr('rows', '1');
-        $('#export-textarea').html(location.origin + location.pathname + '#' + url);
+        this.el.export_textarea.attr('rows', '1');
+        this.el.export_textarea.html(location.origin + location.pathname + '#' + url);
     };
 
     this.createExportUrl = function() {
         var url = '';
-        for (var i = 0; i < template_data.slots.length; i++) {
-            url += this.createSlotUrl(template_data.slots[i].id_prefix);
-            if (i < (template_data.slots.length - 1)) {
-                url += '&';
+        var i = 0;
+        for (var slotId in slots) {
+            if (slots.hasSlot(slotId)) {
+                var slot = slots[slotId];
+                url += this.createSlotUrl(slot.id, this.slotState[slot.id]);
+                if (i < slots.length() - 1) {
+                    url += '&';
+                }
+                i++;
             }
         }
         return url;
     };
 
-    this.createSlotUrl = function(slotName) {
-        var slot = this.slotState[slotName];
-        return slotName + '=' + slot.ql + ',' + slot.role + ',' + slot.glyph_ql + ',' + slot.primary_glyph + ',' + slot.secondary_glyph +
-            ',' + slot.primary_dist + ',' + slot.secondary_dist + ',' + slot.signet_quality + ',' + slot.signet_id;
+    this.createSlotUrl = function(slotId, state) {
+        return slotId + '=' + state.ql + ',' + state.role + ',' + state.glyph_ql + ',' + state.primary_glyph + ',' + state.secondary_glyph +
+            ',' + state.primary_dist + ',' + state.secondary_dist + ',' + state.signet_quality + ',' + state.signet_id;
     };
 
     this.startExportBBCode = function() {
@@ -67,8 +80,8 @@ function Export() {
             if (err) {
                 console.log(err);
             }
-            $('#export-textarea').attr('rows', '10');
-            $('#export-textarea').html(out);
+            self.el.export_textarea.attr('rows', '10');
+            self.el.export_textarea.html(out);
         });
     };
 
@@ -80,11 +93,11 @@ function Export() {
             var curState = this.slotState[slot];
             var role = role_mapping.to_stat[curState.role];
             var primaryValue = 0;
-            if (curState.primary_glyph != 0) {
+            if (curState.primary_glyph !== 0) {
                 primaryValue = glyph_data.stat[stat_mapping.to_stat[curState.primary_glyph]].ql['10.' + curState.glyph_ql].slot[group].dist[curState.primary_dist];
             }
             var secondaryValue = 0;
-            if (curState.secondary_glyph != 0) {
+            if (curState.secondary_glyph !== 0) {
                 secondaryValue = glyph_data.stat[stat_mapping.to_stat[curState.secondary_glyph]].ql['10.' + curState.glyph_ql].slot[group].dist[curState.secondary_dist];
             }
             var statType = 0;
@@ -120,7 +133,7 @@ function Export() {
                 secondary_value: secondaryValue,
                 signet_name: signet.name,
                 signet_quality: this.blankIfNone(capitalise(signet_quality_mapping.to_name[curState.signet_quality])),
-                signet_description: selectHandler[slot].getSignetDescription(signet),
+                signet_description: slots[slot].signetDescription(),
                 signet_colour: signet_quality_mapping.to_colour[signet_quality_mapping.to_name[curState.signet_quality]]
             };
             states.push(state);
@@ -143,41 +156,6 @@ function Export() {
     };
 
     this.collectAllSlotStates = function() {
-        for (var i = 0; i < template_data.slots.length; i++) {
-            this.collectSlotState(template_data.slots[i].id_prefix);
-        }
+        this.slotState = slots.mappedState();
     };
-
-    this.collectSlotState = function(slotId) {
-        this.slotState[slotId] = {
-            ql: self.stripContent($('#' + slotId + '-ql').val()),
-            role: self.stripContent($('#' + slotId + '-role').val()),
-            glyph_ql: self.stripContent($('#' + slotId + '-glyph-ql').val()),
-            primary_glyph: self.stripContent($('#' + slotId + '-primary-glyph').val()),
-            secondary_glyph: self.stripContent($('#' + slotId + '-secondary-glyph').val()),
-            primary_dist: buttonHandler[slotId].getActiveDist('primary').innerHTML,
-            secondary_dist: buttonHandler[slotId].getActiveDist('secondary').innerHTML,
-            signet_quality: self.stripContent(selectHandler[slotId].getSignetQuality()),
-            signet_id: self.stripContent(selectHandler[slotId].getSignet())
-        };
-    };
-
-    this.stripContent = function(val) {
-        if (val == null || val == 'none') {
-            val = 0;
-        }
-
-        var qlpattern = /\d+\.\d/;
-        if (val != 0 && val.match(qlpattern)) {
-            return val.split('.')[1];
-        } else if ($.inArray(val, Object.keys(stat_mapping.to_num)) != -1) {
-            return stat_mapping.to_num[val];
-        } else if ($.inArray(val, Object.keys(role_mapping.to_num)) != -1) {
-            return role_mapping.to_num[val];
-        } else if ($.inArray(val, Object.keys(signet_quality_mapping.to_num)) != -1) {
-            return signet_quality_mapping.to_num[val];
-        } else {
-            return val;
-        }
-    };
-};
+}

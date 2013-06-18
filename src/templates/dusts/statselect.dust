@@ -1,4 +1,4 @@
-<select id="{id_prefix}-{id_suffix}-glyph" class="select-glyph">
+<select id="{id_prefix}-{id_suffix}-glyph" class="select-glyph"  title="Please select stat">
     <option value="none" selected="true">None</option>
     <option value="critical-rating">Critical Rating</option>
     <option value="critical-power">Critical Power</option>
