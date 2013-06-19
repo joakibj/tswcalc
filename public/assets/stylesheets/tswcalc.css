@@ -112,6 +112,10 @@ div .slot {
     display: inline;
 }
 
+h4 .slot-name {
+    font-weight: normal;
+}
+
 #export-textarea {
   resize: none;
 }

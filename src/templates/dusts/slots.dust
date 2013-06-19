@@ -1,7 +1,7 @@
 
 {#slots}
           <div id="{id_prefix}-slot" class="slot">
-            <h4 class="slot">{name}</h4> <h4 class="slot-name"></h4>
+            <h4 class="slot">{name}</h4> <h4 id="{id_prefix}-name" class="slot-name"></h4>
             <table class="table table-slots">
               <tr>
             {^is_weapon}

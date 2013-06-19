@@ -9,6 +9,11 @@ module('slots-unit-tests', {
     }
 });
 
+test('should set and get talisman name', 1, function() {
+    slots.head.name('Mark of the starspawn');
+    equal(slots.head.name(), 'Mark of the starspawn');
+});
+
 test('should set talisman role', 1, function() {
     slots.head.role('healer');
     equal(slots.head.role(), 'healer');

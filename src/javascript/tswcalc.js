@@ -1,5 +1,6 @@
 var buttonHandler = {};
 var selectHandler = {};
+var raidCheckboxes = {};
 var buttonBar = 0;
 var summary = 0;
 var exportModule = 0;
@@ -75,6 +76,7 @@ function startSubModules() {
     for (var i = 0; i < template_data.slots.length; i++) {
         startDistributionButtonHandler(template_data.slots[i].id_prefix);
         startSelectHandler(template_data.slots[i]);
+        startRaidCheckboxes(template_data.slots[i].id_prefix);
     }
     startButtonBar();
     startSummary();
@@ -96,6 +98,11 @@ function startDistributionButtonHandler(slotId) {
 function startSelectHandler(slot) {
     selectHandler[slot.id_prefix] = new SelectHandler(slot);
     selectHandler[slot.id_prefix].initiate();
+}
+
+function startRaidCheckboxes(slotId) {
+    raidCheckboxes[slotId] = new RaidCheckbox(slotId);
+    raidCheckboxes[slotId].initiate();
 }
 
 function startButtonBar() {

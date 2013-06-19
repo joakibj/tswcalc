@@ -55,3 +55,13 @@ function initiateSelectHandlers() {
         selectHandler[slot.id_prefix].initiate();
     }
 }
+
+var raidCheckboxes = {};
+
+function initiateRaidCheckboxes() {
+    for (var i = 0; i < template_data.slots.length; i++) {
+        var slot = template_data.slots[i];
+        raidCheckboxes[slot.id_prefix] = new RaidCheckbox(slot.id_prefix);
+        raidCheckboxes[slot.id_prefix].initiate();
+    }
+}

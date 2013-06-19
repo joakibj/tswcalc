@@ -42,7 +42,8 @@ module.exports = function(grunt) {
             '<%= dirs.src %>/<%= pkg.name %>-export.js',
             '<%= dirs.src %>/<%= pkg.name %>-import.js',
             '<%= dirs.src %>/<%= pkg.name %>-util.js',
-            '<%= dirs.src %>/<%= pkg.name %>-slots.js'
+            '<%= dirs.src %>/<%= pkg.name %>-slots.js',
+            '<%= dirs.src %>/<%= pkg.name %>-checkbox.js'
         ],
         dest: 'build/assets/javascripts/<%= pkg.name %>.js'
       },
@@ -53,7 +54,8 @@ module.exports = function(grunt) {
             '<%= dirs.src %>/data/<%= pkg.name %>-data-costs.js',
             '<%= dirs.src %>/data/<%= pkg.name %>-data-mappings.js',
             '<%= dirs.src %>/data/<%= pkg.name %>-data-signets.js',
-            '<%= dirs.src %>/data/<%= pkg.name %>-data-glyphs.js'
+            '<%= dirs.src %>/data/<%= pkg.name %>-data-glyphs.js',
+            '<%= dirs.src %>/data/<%= pkg.name %>-data-nyraid.js'
         ],
         dest: 'build/assets/javascripts/<%= pkg.name %>-data.js'
       }

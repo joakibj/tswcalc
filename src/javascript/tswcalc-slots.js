@@ -5,6 +5,7 @@ function Slot(id, name, group) {
     this.group = group;
 
     this.el = {
+        name: $('#' + this.id + '-name'),
         role: $('#' + this.id + '-role'),
         ql: $('#' + this.id + '-ql'),
         glyphQl: $('#' + this.id + '-glyph-ql'),
@@ -33,7 +34,16 @@ function Slot(id, name, group) {
                 2: $('#' + this.id + '-secondary-glyph-dist-btn2'),
                 3: $('#' + this.id + '-secondary-glyph-dist-btn3'),
                 4: $('#' + this.id + '-secondary-glyph-dist-btn4')
-            }
+            },
+            nyraid: $('#' + this.id + '-nyraid')
+        }
+    };
+
+    this.name = function() {
+        if (arguments.length == 1) {
+            this.el.name.html(arguments[0]);
+        } else {
+            return this.el.name.html();
         }
     };
 
@@ -116,7 +126,14 @@ function Slot(id, name, group) {
     };
 
     this.signet = function() {
-        return signet_data.find(this.group, this.signetId());
+        // this signet is a raid item and has its own lookup table
+        var foundSignet = 0;
+        if (this.signetId() >= 80) {
+            foundSignet = ny_raid_items[this.id][this.role()].signet;
+        } else {
+            foundSignet = signet_data.find(this.group, this.signetId());
+        }
+        return foundSignet !== 0 || foundSignet !== undefined ? foundSignet : null;
     };
 
     this.signetDescription = function() {
@@ -180,10 +197,13 @@ function Slot(id, name, group) {
         if (signet.id !== 0 && signetQuality != 'none') {
             this.updateSignetIconBorder(signetQuality);
             this.updateSignetIconImage(signet);
-        } else if(signet.id !== 0 && signetQuality == 'none') {
+        } else if (signet.id !== 0 && signetQuality == 'none') {
             this.signetQuality('normal');
-        } else if(signetQuality != 'none' && signet.id === 0) {
+        } else if (signetQuality != 'none' && signet.id === 0) {
             this.updateSignetIconBorder(signetQuality);
+            this.updateSignetIconImageFromName(this.group + '_dps');
+        } else {
+            this.updateSignetIconBorder('normal');
             this.updateSignetIconImageFromName(this.group + '_dps');
         }
     };
