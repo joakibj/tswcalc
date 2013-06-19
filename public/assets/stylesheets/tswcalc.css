@@ -22,12 +22,24 @@ body {
     padding-right: 2px;
 }
 
-td.inner-fill {
+td.role-label {
     width: 34px;
 }
 
+td.role-select {
+    width: 136px;
+}
+
+td.ql-label {
+    width: 34px;
+}
+
+td.ql-select {
+    width: 157px;
+}
+
 td.filler {
-    width:293px;
+    width: auto;
 }
 
 img.signet {

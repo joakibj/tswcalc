@@ -1,21 +1,23 @@
 
 {#slots}
           <div id="{id_prefix}-slot" class="slot">
-            <h4 class="slot">{name}</h4> 
+            <h4 class="slot">{name}</h4> <h4 class="slot-name"></h4>
             <table class="table table-slots">
               <tr>
             {^is_weapon}
-              <td class="inner-fill"><strong>Role: </strong></td>
-              <td>
-              <select id="{id_prefix}-role" class="select-role" title="Please select role">
-                <option value="none" selected="true">None</option>
-                <option value="dps">DPS</option>
-                <option value="tank">Tank</option>
-                <option value="healer">Healer</option>
-              </select>
-            </td>
+              <td class="role-label"><strong>Role: </strong></td>
+              <td class="role-select">
+                <select id="{id_prefix}-role" class="select-role" title="Please select role">
+                  <option value="none" selected="true">None</option>
+                  <option value="dps">DPS</option>
+                  <option value="tank">Tank</option>
+                  <option value="healer">Healer</option>
+                </select>
+              </td>
             {/is_weapon}
-            <td><strong>QL:</strong></td><td>{>qlselect id_suffix=""/}</td><td class="filler"></td></tr>
+              <td class="ql-label"><strong>QL:</strong></td><td class="ql-select">{>qlselect id_suffix=""/}</td>
+              {^is_weapon}<td><label class="checkbox inline"><input type="checkbox" id="{id_prefix}-nyraid" value="nyraid">NY Raid</label></td>{/is_weapon}
+              <td class="filler"></td></tr>
             </table>
             <div>
               <table id="{id_prefix}-glyphs" class="table table-glyphs">
