@@ -50,7 +50,7 @@
                     </select>
                   </td>
                   <td>
-                    <select id="{id_prefix}-pick-signet"  title="Please select signet">
+                    <select id="{id_prefix}-pick-signet" title="Please select signet">
                     </select></td>
                     <td id="{id_prefix}-signet-description" class="signet-description"></td></tr>
               </table>
