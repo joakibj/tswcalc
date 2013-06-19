@@ -11,7 +11,7 @@ test('should change slot to raid item based on role', 9, function() {
     slots.head.role('healer');
     raidCheckboxes['head'].changeToRaidItem();
 
-    equal($('#head-name').html(), 'Blood of the Old Ones');
+    equal($('#head-name').html(), ': Blood of the Old Ones');
     equal($('#head-signet-img-icon').attr('src'), 'assets/images/icons/blood_of_the_old_ones.png');
     equal($('#head-signet-img-quality').attr('src'), 'assets/images/icons/epic.png');
     ok($('#head-signet-quality').attr('disabled'), 'signet quality select is disabled');

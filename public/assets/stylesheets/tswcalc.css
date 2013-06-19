@@ -107,13 +107,13 @@ div .slot {
     border-radius: 8px;
 }
 
+.slot-name {
+    font-weight: normal;
+}
+
 .slot h4 {
     padding: 0px;
     display: inline;
-}
-
-h4 .slot-name {
-    font-weight: normal;
 }
 
 #export-textarea {

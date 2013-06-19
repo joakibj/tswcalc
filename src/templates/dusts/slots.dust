@@ -16,7 +16,7 @@
               </td>
             {/is_weapon}
               <td class="ql-label"><strong>QL:</strong></td><td class="ql-select">{>qlselect id_suffix=""/}</td>
-              {^is_weapon}<td><label class="checkbox inline"><input type="checkbox" id="{id_prefix}-nyraid" value="nyraid">NY Raid</label></td>{/is_weapon}
+              {^is_weapon}<td><label class="checkbox inline"><input type="checkbox" id="{id_prefix}-nyraid" value="nyraid" disabled="disabled">NY Raid</label></td>{/is_weapon}
               <td class="filler"></td></tr>
             </table>
             <div>

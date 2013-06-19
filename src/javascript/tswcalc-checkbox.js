@@ -2,7 +2,7 @@ function RaidCheckbox(slot) {
     var self = this;
 
     this.initiate = function() {
-        if(slot != 'weapon') {
+        if (slot != 'weapon') {
             this.bindEvents();
         }
     };
@@ -22,7 +22,7 @@ function RaidCheckbox(slot) {
     this.changeToRaidItem = function() {
         var item = ny_raid_items[slot][slots[slot].role()];
         if (item !== undefined) {
-            slots[slot].name(item.name);
+            slots[slot].name(': ' + item.name);
             slots[slot].signetQuality('epic');
             slots[slot].el.signetId.append($('<option>', {
                 value: item.signet.id,
