@@ -33,32 +33,6 @@ test('buttons in buttonbar should have click listeners', 6, function() {
     ok($._data($('#btn-reset').get(0), 'events').click instanceof Array, 'btn-reset click listener exists');
 });
 
-module('buttonbar-unit-tests', {
-    setup: function() {
-        renderButtonbar();
-        renderSlots();
-        buttonBar = new ButtonBar();
-    }
-});
-
-test('should set role on slot', 1, function() {
-    buttonBar.setRoleOnSlot('tank', 'head');
-
-    equal($('#head-role').val(), 'tank');
-});
-
-test('should set ql on slot', 1, function() {
-    buttonBar.setQlOnSlot('10.3', 'head');
-
-    equal($('#head-ql').val(), '10.3');
-});
-
-test('should set glyph ql on slot', 1, function() {
-    buttonBar.setGlyphQlOnSlot('10.3', 'head');
-
-    equal($('#head-glyph-ql').val(), '10.3');
-});
-
 var summary = {};
 module('buttonbar-integration-tests', {
     setup: function() {
@@ -68,25 +42,70 @@ module('buttonbar-integration-tests', {
         initiateSelectHandlers();
         buttonBar = new ButtonBar();
         summary = new Summary();
+        createTankBuild();
     }
 });
 
-test('should reset slot', 7, function() {
-    $('#head-ql').val('10.4');
-    $('#head-role').val('tank');
-    $('#head-glyph-ql').val('10.4');
-    $('#head-primary-glyph').val('critical-rating');
-    $('#head-secondary-glyph').val('magical-protection');
-    $('#head-primary-glyph-dist-btn4').trigger('click');
-    $('#head-secondary-glyph-dist-btn0').trigger('click');
+test('should set role on all slots to dps', 7, function() {
+    buttonBar.setRoleOnAllSlots({
+        target: {
+            id: '#btn-all-dps'
+        }
+    });
 
-    buttonBar.resetAllInput('head');
-
-    equal($('#head-ql').val(), '10.0');
-    equal($('#head-role').val(), 'none');
-    equal($('#head-glyph-ql').val(), '10.0');
-    equal($('#head-primary-glyph').val(), 'none');
-    equal($('#head-secondary-glyph').val(), 'none');
-    ok($('#head-primary-glyph-dist-btn0').hasClass('active'));
-    ok($('#head-secondary-glyph-dist-btn0').hasClass('active'));
+    equal(slots.head.role(), 'dps');
+    equal(slots.ring.role(), 'dps');
+    equal(slots.neck.role(), 'dps');
+    equal(slots.wrist.role(), 'dps');
+    equal(slots.luck.role(), 'dps');
+    equal(slots.waist.role(), 'dps');
+    equal(slots.occult.role(), 'dps');
 });
+
+test('should set ql and glyph ql on all slots to 10.5', 16, function() {
+    buttonBar.setQlOnAllSlots({
+        target: {
+            id: '#btn-all-10-5'
+        }
+    });
+
+    equal(slots.weapon.ql(), '10.5');
+    equal(slots.weapon.glyphQl(), '10.5');
+    equal(slots.head.ql(), '10.5');
+    equal(slots.head.glyphQl(), '10.5');
+    equal(slots.ring.ql(), '10.5');
+    equal(slots.ring.glyphQl(), '10.5');
+    equal(slots.neck.ql(), '10.5');
+    equal(slots.neck.glyphQl(), '10.5');
+    equal(slots.wrist.ql(), '10.5');
+    equal(slots.wrist.glyphQl(), '10.5');
+    equal(slots.luck.ql(), '10.5');
+    equal(slots.luck.glyphQl(), '10.5');
+    equal(slots.waist.ql(), '10.5');
+    equal(slots.waist.glyphQl(), '10.5');
+    equal(slots.occult.ql(), '10.5');
+    equal(slots.occult.glyphQl(), '10.5');
+});
+
+test('should reset all slots', 56, function() {
+    buttonBar.resetAllSlots();
+
+    assertReset(slots.weapon);
+    assertReset(slots.head);
+    assertReset(slots.ring);
+    assertReset(slots.neck);
+    assertReset(slots.wrist);
+    assertReset(slots.luck);
+    assertReset(slots.waist);
+    assertReset(slots.occult);
+});
+
+function assertReset(slot) {
+    equal(slot.role(), 'none');
+    equal(slot.ql(), '10.0');
+    equal(slot.glyphQl(), '10.0');
+    equal(slot.primaryGlyph(), 'none');
+    equal(slot.secondaryGlyph(), 'none');
+    ok(slot.el.btn.primary[0].hasClass('active'));
+    ok(slot.el.btn.secondary[0].hasClass('active'));
+};

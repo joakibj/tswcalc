@@ -1,6 +1,12 @@
 function Summary() {
     self = this;
 
+    this.el = {
+        black_bullion_cost: $('#bb-cost'),
+        criterion_upgrade_cost: $('#cu-cost'),
+        astral_fuse_cost: $('#af-cost')
+    };
+
     this.updateAllStats = function() {
         self.updateCosts();
         self.updatePrimaryStats();
@@ -18,25 +24,28 @@ function Summary() {
         var blackBullions = 0;
         var criterionUpgrades = 0;
         var astralFuses = 0;
-        for (var i = 0; i < template_data.slots.length; i++) {
-            var ql = selectHandler[template_data.slots[i].id_prefix].getQl();
-            var glyphQl = selectHandler[template_data.slots[i].id_prefix].getGlyphQl();
-            blackBullions += bb_costs['glyph'][glyphQl].cost;
-            if (template_data.slots[i].group == 'weapon') {
-                blackBullions += bb_costs['weapon'][ql].cost;
-            } else {
-                blackBullions += bb_costs['talisman'][ql].cost;
-            }
-            if (ql == '10.5') {
-                criterionUpgrades++;
-            }
-            if (glyphQl == '10.5') {
-                astralFuses++;
+        for (var slotId in slots) {
+            if (slots.hasSlot(slotId)) {
+                var slot = slots[slotId];
+                var ql = slot.ql();
+                var glyphQl = slot.glyphQl();
+                blackBullions += bb_costs['glyph'][glyphQl].cost;
+                if (slot.group == 'weapon') {
+                    blackBullions += bb_costs['weapon'][ql].cost;
+                } else {
+                    blackBullions += bb_costs['talisman'][ql].cost;
+                }
+                if (ql == '10.5') {
+                    criterionUpgrades++;
+                }
+                if (glyphQl == '10.5') {
+                    astralFuses++;
+                }
             }
         }
-        $('#bb-cost').html(blackBullions);
-        $('#cu-cost').html(criterionUpgrades);
-        $('#af-cost').html(astralFuses);
+        this.el.black_bullion_cost.html(blackBullions);
+        this.el.criterion_upgrade_cost.html(criterionUpgrades);
+        this.el.astral_fuse_cost.html(astralFuses);
     };
 
     this.updatePrimaryStats = function() {
@@ -63,25 +72,36 @@ function Summary() {
             'heal-rating': 0
         };
 
-        for (var i = 0; i < template_data.slots.length; i++) {
-            var slot = template_data.slots[i];
-            var role = selectHandler[slot.id_prefix].getRole();
-            var ql = selectHandler[slot.id_prefix].getQl();
-            if (slot.group == 'major') {
-                var signetId = selectHandler[slot.id_prefix].getSignet();
-                if (signetId != 'none') {
-                    var signet = signet_data.find(slot.group, signetId);
-                    sums[signet.stat] += selectHandler[slot.id_prefix].determineSignetQualityValue(signet);
+        for (var slotId in slots) {
+            if (slots.hasSlot(slotId)) {
+                var slot = slots[slotId];
+                var role = slot.role();
+                var ql = slot.ql();
+                if (slot.group == 'major') {
+                    var signet = slot.signet();
+                    if (signet.id !== 0) {
+                        sums[signet.stat] += slot.determineSignetQualityValue(signet);
+                    }
                 }
-            }
-            if (role == 'dps') {
-                sums['attack-rating'] += custom_gear_data[slot.group].heal_dps['ql' + (ql)].rating;
-            } else if (role == 'healer') {
-                sums['heal-rating'] += custom_gear_data[slot.group].heal_dps['ql' + (ql)].rating;
-            } else if (role == 'tank') {
-                sums['hitpoints'] += custom_gear_data[slot.group].tank['ql' + (ql)].hitpoints;
-            } else if (typeof role == 'undefined' && slot.is_weapon) {
-                sums['weapon-power'] = custom_gear_data[slot.group][ql].weapon_power;
+                switch (role) {
+                    case 'dps':
+                        sums['attack-rating'] += custom_gear_data[slot.group].heal_dps['ql' + (ql)].rating;
+                        break;
+                    case 'healer':
+                        sums['heal-rating'] += custom_gear_data[slot.group].heal_dps['ql' + (ql)].rating;
+                        break;
+                    case 'tank':
+                        sums['hitpoints'] += custom_gear_data[slot.group].tank['ql' + (ql)].hitpoints;
+                        break;
+                    case 'none':
+                        if (slot.id == 'weapon') {
+                            sums['weapon-power'] = custom_gear_data[slot.group][ql].weapon_power;
+                        }
+                        break;
+                    default:
+                        console.log('Illegal role value when collecting primary stats');
+                        break;
+                }
             }
         }
         sums['combat-power'] = this.calculateCombatPower(sums['attack-rating'], sums['weapon-power']);
@@ -114,17 +134,12 @@ function Summary() {
             'physical-protection': 249,
             'magical-protection': 249
         };
-        for (var i = 0; i < template_data.slots.length; i++) {
-            var slot = template_data.slots[i];
-            var glyphQl = selectHandler[slot.id_prefix].getGlyphQl();
-            var primaryGlyphStat = selectHandler[slot.id_prefix].getGlyph('primary');
-            var secondaryGlyphStat = selectHandler[slot.id_prefix].getGlyph('secondary');
-
-            var primaryGlyphDist = buttonHandler[slot.id_prefix].getActiveDist('primary').innerHTML;
-            var secondaryGlyphDist = buttonHandler[slot.id_prefix].getActiveDist('secondary').innerHTML;
-
-            sums[primaryGlyphStat] += this.getGlyphValue(primaryGlyphStat, glyphQl, slot.group, primaryGlyphDist);
-            sums[secondaryGlyphStat] += this.getGlyphValue(secondaryGlyphStat, glyphQl, slot.group, secondaryGlyphDist);
+        for (var slotId in slots) {
+            if (slots.hasSlot(slotId)) {
+                var slot = slots[slotId];
+                sums[slot.primaryGlyph()] += slot.primaryGlyphValue();
+                sums[slot.secondaryGlyph()] += slot.secondaryGlyphValue();
+            }
         }
 
         sums['critical-chance'] = this.calculateCriticalChance(sums['critical-rating']);
@@ -132,36 +147,12 @@ function Summary() {
         return sums;
     };
 
-    this.getGlyphValue = function(stat, glyph_ql, group, glyph_dist) {
-        if (stat == 'none' || glyph_dist === null) {
-            return 0;
-        }
-        return glyph_data.stat[stat].ql[glyph_ql].slot[group].dist[glyph_dist];
-    };
-
     this.updateGlyphValues = function() {
-        for (var i = 0; i < template_data.slots.length; i++) {
-            var slot = template_data.slots[i];
-            var glyphQl = selectHandler[slot.id_prefix].getGlyphQl();
-            var primaryGlyphStat = selectHandler[slot.id_prefix].getGlyph('primary');
-            var secondaryGlyphStat = selectHandler[slot.id_prefix].getGlyph('secondary');
-
-            var primaryGlyphDist = buttonHandler[slot.id_prefix].getActiveDist('primary').innerHTML;
-            var secondaryGlyphDist = buttonHandler[slot.id_prefix].getActiveDist('secondary').innerHTML;
-
-            var primaryGlyphValue = this.getGlyphValue(primaryGlyphStat, glyphQl, slot.group, primaryGlyphDist);
-            var secondaryGlyphValue = this.getGlyphValue(secondaryGlyphStat, glyphQl, slot.group, secondaryGlyphDist);
-
-            this.updateGlyphValue(slot.id_prefix, primaryGlyphStat, 'primary', primaryGlyphValue);
-            this.updateGlyphValue(slot.id_prefix, secondaryGlyphStat, 'secondary', secondaryGlyphValue);
-        }
-    };
-
-    this.updateGlyphValue = function(slotId, stat, glyph, value) {
-        if (stat != 'none' && glyph != 'none' && value !== 0) {
-            $('#' + slotId + '-' + glyph + '-glyph-value').html('+' + value);
-        } else {
-            $('#' + slotId + '-' + glyph + '-glyph-value').html('0');
+        for (var slotId in slots) {
+            if (slots.hasSlot(slotId)) {
+                var slot = slots[slotId];
+                slot.updateGlyphValues();
+            }
         }
     };
 

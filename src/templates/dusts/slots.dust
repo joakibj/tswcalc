@@ -7,7 +7,7 @@
             {^is_weapon}
               <td class="inner-fill"><strong>Role: </strong></td>
               <td>
-              <select id="{id_prefix}-role" class="select-role">
+              <select id="{id_prefix}-role" class="select-role" title="Please select role">
                 <option value="none" selected="true">None</option>
                 <option value="dps">DPS</option>
                 <option value="tank">Tank</option>
@@ -40,7 +40,7 @@
                       <img id="{id_prefix}-signet-img-quality" class="signet-quality" src="assets/images/icons/normal.png"/><img id="{id_prefix}-signet-img-icon" class="signet" src="assets/images/icons/minor_dps.png"/></a>
                   </td>
                   <td>
-                    <select id="{id_prefix}-signet-quality">
+                    <select id="{id_prefix}-signet-quality"  title="Please select signet quality">
                       <option value="none" selected="true">Quality</option>
                       <option value="normal">Normal</option>
                       <option value="elite">Elite</option>
@@ -48,7 +48,7 @@
                     </select>
                   </td>
                   <td>
-                    <select id="{id_prefix}-pick-signet">
+                    <select id="{id_prefix}-pick-signet"  title="Please select signet">
                     </select></td>
                     <td id="{id_prefix}-signet-description" class="signet-description"></td></tr>
               </table>

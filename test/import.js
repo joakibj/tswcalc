@@ -9,9 +9,6 @@ module('import-integration-tests', {
         importModule = new Import();
         initiateSelectHandlers();
         initiateButtonHandlers();
-    },
-    teardown: function() {
-
     }
 });
 

@@ -3,6 +3,7 @@ function renderSlots() {
         slots: template_data.slots,
         signets: signet_data
     });
+    slots.init();
 }
 
 function renderSummary() {

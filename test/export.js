@@ -30,25 +30,10 @@ module('export-integration-tests', {
     }
 });
 
-test('should collect slotstate', 7, function() {
-    createTankBuild();
-
-    var slotState = exportModule.collectSlotState('head');
-
-    equal($('#head-ql').val(), '10.4');
-    equal($('#head-role').val(), 'tank');
-    equal($('#head-glyph-ql').val(), '10.5');
-    equal($('#head-primary-glyph').val(), 'block-rating');
-    equal($('#head-secondary-glyph').val(), 'none');
-    ok($('#head-primary-glyph-dist-btn4').hasClass('active'));
-    ok($('#head-secondary-glyph-dist-btn0').hasClass('active'));
-});
-
 test('should create slot url for head', 1, function() {
     createTankBuild();
 
-    exportModule.slotState['head'] = exportModule.collectSlotState('head');
-    var slotUrl = exportModule.createSlotUrl('head');
+    var slotUrl = exportModule.createSlotUrl(slots.head.id, slots.head.mappedState());
 
     equal(slotUrl, 'head=4,1,5,5,0,4,0,3,18');
 });
