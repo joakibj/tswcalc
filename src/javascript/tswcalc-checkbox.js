@@ -2,7 +2,9 @@ function RaidCheckbox(slot) {
     var self = this;
 
     this.initiate = function() {
-        this.bindEvents();
+        if(slot != 'weapon') {
+            this.bindEvents();
+        }
     };
 
     this.bindEvents = function() {

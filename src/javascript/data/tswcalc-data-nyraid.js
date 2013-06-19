@@ -48,7 +48,7 @@ ny_raid_items = {
         }
     },
     'ring': {
-        heal: {
+        healer: {
             name: 'Coney Island Band',
             signet: {
                 id: 83,
@@ -140,7 +140,7 @@ ny_raid_items = {
         }
     },
     'occult': {
-        heal: {
+        healer: {
             name: 'Broadway Charm',
             signet: {
                 id: 88,

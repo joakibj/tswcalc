@@ -63,6 +63,12 @@ function SelectHandler(slot) {
     };
 
     this.roleChange = function(event) {
+        var role = $(this).val();
+        if(ny_raid_items[slot.id_prefix][role] === undefined) {
+            slots[slot.id_prefix].el.btn.nyraid.attr('disabled', 'disabled');
+        } else {
+            slots[slot.id_prefix].el.btn.nyraid.removeAttr('disabled');
+        }
         summary.updatePrimaryStats();
     };
 
