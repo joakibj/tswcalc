@@ -1,11 +1,10 @@
 var importModule = {};
-var summary = {};
 
 module('import-integration-tests', {
     setup: function() {
         renderSlots();
         renderSummary();
-        summary = new Summary();
+        initiateSummary();
         importModule = new Import();
         initiateSelectHandlers();
         initiateButtonHandlers();

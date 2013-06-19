@@ -1,7 +1,7 @@
-var summary = {};
+
 module('slots-unit-tests', {
     setup: function() {
-        summary = new Summary();
+        initiateSummary();
         renderSlots();
         initiateSelectHandlers();
         initiateButtonHandlers();

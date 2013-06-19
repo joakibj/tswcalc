@@ -120,3 +120,8 @@ div .slot {
   resize: none;
 }
 
+#raid-stats h5 {
+    font-size: 14px;
+    padding: 5px 5px 5px 0px;
+    margin: 0px;
+}

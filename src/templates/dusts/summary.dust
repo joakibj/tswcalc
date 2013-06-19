@@ -51,4 +51,8 @@
               </tbody>
             </table>
           </div>
+          <div id="raid-stats">
+            <h5>Raid items</h5>
+            <label class="checkbox inline"><input type="checkbox" id="summary-activate-raid">Active NY Raid items</label>
+          </div>
         </div>

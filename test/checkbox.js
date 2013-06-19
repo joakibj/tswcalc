@@ -1,10 +1,9 @@
-var summary = 0;
 
 module('checkbox-integration-tests', {
     setup: function() {
         renderSlots();
         initiateSelectHandlers();
-        summary = new Summary();
+        initiateSummary();
         raidCheckboxes['head'] = new RaidCheckbox('head');
         raidCheckboxes['head'].initiate();
     }

@@ -1,4 +1,3 @@
-var summary = {};
 
 module('summary-dom', {
     setup: function() {
@@ -27,18 +26,18 @@ test('should have required summary in DOM', 16, function() {
 
 module('summary-unit-tests', {
     setup: function() {
-        summary = new Summary();
+        initiateSummary();
     }
 });
 
 test('should calculate critical chance', 2, function() {
     equal(summary.calculateCriticalChance(0), 5);
-    equal(summary.calculateCriticalChance(309), (11.59));
+    equal(summary.calculateCriticalChance(309), 11.585374715895394);
 });
 
 test('should calculate critical power', 2, function() {
     equal(summary.calculateCriticalPowerPercentage(0), 25);
-    equal(summary.calculateCriticalPowerPercentage(238), 42.6);
+    equal(summary.calculateCriticalPowerPercentage(238), 42.60281680828159);
 });
 
 test('should calculate combat power', 2, function() {
@@ -50,9 +49,10 @@ module('summary-integration-tests', {
     setup: function() {
         renderSummary();
         renderSlots();
-        summary = new Summary();
+        initiateSummary();
         initiateSelectHandlers();
         initiateButtonHandlers();
+        initiateRaidCheckboxes();
     },
     teardown: function() {
 
@@ -186,8 +186,10 @@ test('should update costs for tank build', 3, function() {
     equal($('#af-cost').html(), '2');
 });
 
-test('should collect offensive and defensive stats for NY raid DPS build with raid items that modify stats', 11, function() {
+test('should collect offensive and defensive stats for NY raid DPS build with raid items that modify stats when activate raid button is checked', 11, function() {
     createDPSNYRaidBuild();
+    summary.el.activateRaid.prop('checked', true);
+    summary.el.activateRaid.change();
 
     var sums = summary.collectOffensiveDefensiveStats();
 
@@ -195,11 +197,11 @@ test('should collect offensive and defensive stats for NY raid DPS build with ra
     equal(sums['critical-chance'], 5);
     equal(sums['critical-power'], 0);
     equal(sums['critical-power-percentage'], 50);
-    equal(sums['penetration-rating'], 813);
+    equal(sums['penetration-rating'], 814);
     equal(sums['hit-rating'], 504);
     equal(sums['block-rating'], 328);
     equal(sums['defense-rating'], 288);
     equal(sums['evade-rating'], 0);
-    equal(sums['physical-protection'], 609);
-    equal(sums['magical-protection'], 249);
+    equal(sums['physical-protection'], 792);
+    equal(sums['magical-protection'], 324);
 });

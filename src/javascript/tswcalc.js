@@ -112,6 +112,7 @@ function startButtonBar() {
 
 function startSummary() {
     summary = new Summary();
+    summary.initiate();
 }
 
 function startExportModule() {

@@ -108,14 +108,14 @@ ny_raid_items = {
                 quality: {
                     epic: 0
                 },
+                bonus: {
+                    stat: ['damage-deal-percentage'],
+                    add: 1
+                },
+                stack_interval: 6,
+                stack_max: 10,
                 icon: 'subway_tokens'
-            },
-            bonus: {
-                stat: ['damage-deal-percentage'],
-                add: 1
-            },
-            stack_interval: 6,
-            stack_max: 10
+            }
         }
     },
     'waist': {
@@ -129,14 +129,14 @@ ny_raid_items = {
                 quality: {
                     epic: 0
                 },
+                bonus: {
+                    stat: ['physical-protection', 'magical-protection'],
+                    multiply: 0.03
+                },
+                stack_interval: 6,
+                stack_max: 10,
                 icon: 'ny_buckle'
-            },
-            bonus: {
-                stat: ['physical-protection', 'magical-protection'],
-                multiply: 1.03
-            },
-            stack_interval: 6,
-            stack_max: 10
+            }
         }
     },
     'occult': {

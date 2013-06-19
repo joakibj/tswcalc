@@ -8,11 +8,11 @@ function RaidCheckbox(slot) {
     };
 
     this.bindEvents = function() {
-        slots[slot].el.btn.nyraid.on('click', this.checkboxClicked);
+        slots[slot].el.btn.nyraid.on('change', this.checkboxClicked);
     };
 
     this.checkboxClicked = function(event) {
-        if (slots[slot].el.btn.nyraid.is(':checked')) {
+        if ($(this).is(':checked')) {
             self.changeToRaidItem();
         } else {
             self.changeToCustomItem();

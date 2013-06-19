@@ -1,5 +1,4 @@
 var exportModule = {};
-var summary = {};
 
 module('export-unit-tests', {
     setup: function() {
@@ -21,7 +20,7 @@ module('export-integration-tests', {
         renderButtonbar();
         initiateSelectHandlers();
         initiateButtonHandlers();
-        summary = new Summary();
+        initiateSummary();
         exportModule = new Export();
         exportModule.initiate();
     },

@@ -33,7 +33,6 @@ test('buttons in buttonbar should have click listeners', 6, function() {
     ok($._data($('#btn-reset').get(0), 'events').click instanceof Array, 'btn-reset click listener exists');
 });
 
-var summary = {};
 module('buttonbar-integration-tests', {
     setup: function() {
         renderButtonbar();
@@ -41,7 +40,7 @@ module('buttonbar-integration-tests', {
         initiateButtonHandlers();
         initiateSelectHandlers();
         buttonBar = new ButtonBar();
-        summary = new Summary();
+        initiateSummary();
         createTankBuild();
     }
 });

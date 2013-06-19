@@ -89,23 +89,23 @@ function createDPSNYRaidBuild() {
     $('#weapon-signet-quality').val('elite');
     $('#weapon-pick-signet').val('5');
 
-    $('#head-ql').val('10.4');
     $('#head-role').val('dps');
     $('#head-glyph-ql').val('10.5');
     $('#head-primary-glyph').val('penetration-rating');
     $('#head-secondary-glyph').val('none');
     $('#head-primary-glyph-dist-btn4').trigger('click');
     $('#head-secondary-glyph-dist-btn0').trigger('click');
-    $('#head-nyraid').click(); // Ashes of Elder Things
+    $('#head-nyraid').prop('checked', true);
+    $('#head-nyraid').change(); // Ashes of Elder Things
 
-    $('#ring-ql').val('10.4');
     $('#ring-role').val('healer');
     $('#ring-glyph-ql').val('10.4');
     $('#ring-primary-glyph').val('penetration-rating');
     $('#ring-secondary-glyph').val('none');
     $('#ring-primary-glyph-dist-btn4').trigger('click');
     $('#ring-secondary-glyph-dist-btn0').trigger('click');
-    $('#ring-nyraid').click(); // Coney Island Band
+    $('#ring-nyraid').prop('checked', true);
+    $('#ring-nyraid').change(); // Coney Island Band
 
     $('#neck-ql').val('10.4');
     $('#neck-role').val('tank');
@@ -117,14 +117,14 @@ function createDPSNYRaidBuild() {
     $('#neck-signet-quality').val('normal');
     $('#neck-pick-signet').val('21');
 
-    $('#wrist-ql').val('10.4');
     $('#wrist-role').val('tank');
     $('#wrist-glyph-ql').val('10.4');
     $('#wrist-primary-glyph').val('defense-rating');
     $('#wrist-secondary-glyph').val('none');
     $('#wrist-primary-glyph-dist-btn4').trigger('click');
     $('#wrist-secondary-glyph-dist-btn0').trigger('click');
-    $('#wrist-nyraid').click(); //Brooklyn Bracer
+    $('#wrist-nyraid').prop('checked', true);
+    $('#wrist-nyraid').change(); //Brooklyn Bracer
 
     $('#luck-ql').val('10.4');
     $('#luck-role').val('dps');
@@ -136,14 +136,14 @@ function createDPSNYRaidBuild() {
     $('#luck-signet-quality').val('epic');
     $('#luck-pick-signet').val('39');
 
-    $('#waist-ql').val('10.4');
     $('#waist-role').val('tank');
     $('#waist-glyph-ql').val('10.4');
     $('#waist-primary-glyph').val('physical-protection');
     $('#waist-secondary-glyph').val('none');
     $('#waist-primary-glyph-dist-btn4').trigger('click');
     $('#waist-secondary-glyph-dist-btn0').trigger('click');
-    $('#waist-nyraid').click(); //NY Buckle
+    $('#waist-nyraid').prop('checked', true);
+    $('#waist-nyraid').change(); //NY Buckle
 
     $('#occult-ql').val('10.4');
     $('#occult-role').val('dps');
