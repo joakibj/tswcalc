@@ -234,6 +234,10 @@ function Slot(id, name, group) {
         this.secondaryGlyph('none');
         this.el.btn.primary[0].trigger('click');
         this.el.btn.secondary[0].trigger('click');
+        if(this.el.btn.nyraid.is(':checked')) {
+            this.el.btn.nyraid.prop('checked', false);
+            this.el.btn.nyraid.change();
+        }
     };
 
     this.state = function() {

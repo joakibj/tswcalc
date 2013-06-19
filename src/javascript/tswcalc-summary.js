@@ -92,7 +92,7 @@ function Summary() {
                 var ql = slot.ql();
                 if (slot.group == 'major') {
                     var signet = slot.signet();
-                    if (signet.id !== 0) {
+                    if (signet.id !== 0 && signet.id < 80) {
                         sums[signet.stat] += slot.determineSignetQualityValue(signet);
                     }
                 }

@@ -61,7 +61,7 @@ test('should set role on all slots to dps', 7, function() {
     equal(slots.occult.role(), 'dps');
 });
 
-test('should set ql and glyph ql on all slots to 10.5', 16, function() {
+test('should set ql and glyph ql on all slots to 10.5 with the exception of ql on raid items', 16, function() {
     buttonBar.setQlOnAllSlots({
         target: {
             id: '#btn-all-10-5'
@@ -76,17 +76,17 @@ test('should set ql and glyph ql on all slots to 10.5', 16, function() {
     equal(slots.ring.glyphQl(), '10.5');
     equal(slots.neck.ql(), '10.5');
     equal(slots.neck.glyphQl(), '10.5');
-    equal(slots.wrist.ql(), '10.5');
+    equal(slots.wrist.ql(), '10.4');
     equal(slots.wrist.glyphQl(), '10.5');
     equal(slots.luck.ql(), '10.5');
     equal(slots.luck.glyphQl(), '10.5');
-    equal(slots.waist.ql(), '10.5');
+    equal(slots.waist.ql(), '10.4');
     equal(slots.waist.glyphQl(), '10.5');
     equal(slots.occult.ql(), '10.5');
     equal(slots.occult.glyphQl(), '10.5');
 });
 
-test('should reset all slots', 56, function() {
+test('should reset all slots', 64, function() {
     buttonBar.resetAllSlots();
 
     assertReset(slots.weapon);
@@ -107,4 +107,5 @@ function assertReset(slot) {
     equal(slot.secondaryGlyph(), 'none');
     ok(slot.el.btn.primary[0].hasClass('active'));
     ok(slot.el.btn.secondary[0].hasClass('active'));
-};
+    ok(!slot.el.btn.nyraid.is(':checked'));
+}

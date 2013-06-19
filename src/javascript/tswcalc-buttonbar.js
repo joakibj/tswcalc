@@ -42,7 +42,9 @@ function ButtonBar() {
         var ql = '10.' + event.target.id.split('-')[3];
         for (var slotId in slots) {
             if (slots.hasSlot(slotId)) {
-                slots[slotId].ql(ql);
+                if (!slots[slotId].el.btn.nyraid.is(':checked')) {
+                    slots[slotId].ql(ql);
+                }
                 slots[slotId].glyphQl(ql);
                 $('#' + slotId + '-primary-glyph-dist-btn4').trigger('click');
             }

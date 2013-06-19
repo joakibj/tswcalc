@@ -45,8 +45,8 @@ function createTankBuild() {
     $('#wrist-secondary-glyph').val('none');
     $('#wrist-primary-glyph-dist-btn4').trigger('click');
     $('#wrist-secondary-glyph-dist-btn0').trigger('click');
-    $('#wrist-signet-quality').val('normal');
-    //Brooklyn Bracer
+    $('#wrist-nyraid').prop('checked', true);
+    $('#wrist-nyraid').change(); //Brooklyn Bracer
 
     $('#luck-ql').val('10.4');
     $('#luck-role').val('dps');
@@ -65,8 +65,8 @@ function createTankBuild() {
     $('#waist-secondary-glyph').val('none');
     $('#waist-primary-glyph-dist-btn4').trigger('click');
     $('#waist-secondary-glyph-dist-btn0').trigger('click');
-    $('#waist-signet-quality').val('normal');
-    //NY Buckle
+    $('#waist-nyraid').prop('checked', true);
+    $('#waist-nyraid').change(); //NY Buckle
 
     $('#occult-ql').val('10.4');
     $('#occult-role').val('dps');
