@@ -179,7 +179,7 @@ function Summary() {
                 }
             }
         }
-        sums['critical-chance'] = parseInt(sums['critical-chance'].toFixed(2), 10);
+        sums['critical-chance'] = sums['critical-chance'].toFixed(2);
         sums['critical-power-percentage'] = sums['critical-power-percentage'].toFixed(2);
         sums['penetration-rating'] = parseInt(sums['penetration-rating'].toFixed(0), 10);
         sums['magical-protection'] = parseInt(sums['magical-protection'].toFixed(0), 10);

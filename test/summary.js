@@ -127,7 +127,7 @@ test('should collect all stats and return two objects', 2, function() {
     var expectedOffensiveDefensiveStats = {
         'none': NaN,
         'critical-rating': 0,
-        'critical-chance': 5,
+        'critical-chance': '5.00',
         'critical-power': 0,
         'critical-power-percentage': '25.00',
         'penetration-rating': 0,
@@ -156,7 +156,7 @@ test('should update all stats', 16, function() {
     equal($('#stat-weapon-power').html(), '457');
     equal($('#stat-heal-rating').html(), '0');
     equal($('#stat-critical-rating').html(), '0');
-    equal($('#stat-critical-chance').html(), '5 %');
+    equal($('#stat-critical-chance').html(), '5.00 %');
     equal($('#stat-critical-power').html(), '0');
     equal($('#stat-critical-power-percentage').html(), '25.0 %');
     equal($('#stat-penetration-rating').html(), '0');
