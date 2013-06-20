@@ -92,14 +92,8 @@ function Export() {
             var group = template_data.slots[i].group;
             var curState = this.slotState[slot];
             var role = role_mapping.to_stat[curState.role];
-            var primaryValue = 0;
-            if (curState.primary_glyph !== 0) {
-                primaryValue = glyph_data.stat[stat_mapping.to_stat[curState.primary_glyph]].ql['10.' + curState.glyph_ql].slot[group].dist[curState.primary_dist];
-            }
-            var secondaryValue = 0;
-            if (curState.secondary_glyph !== 0) {
-                secondaryValue = glyph_data.stat[stat_mapping.to_stat[curState.secondary_glyph]].ql['10.' + curState.glyph_ql].slot[group].dist[curState.secondary_dist];
-            }
+            var primaryValue = slots[slot].primaryGlyphValue();
+            var secondaryValue = slots[slot].secondaryGlyphValue();
             var statType = 0;
             var statValue = 0;
             if (role == 'healer') {
