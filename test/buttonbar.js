@@ -87,7 +87,7 @@ test('should set ql and glyph ql on all slots to 10.5 with the exception of ql o
     equal(slots.occult.glyphQl(), '10.5');
 });
 
-test('should reset all slots', 64, function() {
+test('should reset all slots', 80, function() {
     buttonBar.resetAllSlots();
 
     assertReset(slots.weapon);
@@ -109,4 +109,6 @@ function assertReset(slot) {
     ok(slot.el.btn.primary[0].hasClass('active'));
     ok(slot.el.btn.secondary[0].hasClass('active'));
     ok(!slot.el.btn.nyraid.is(':checked'));
+    equal(slot.signetId(), 'none');
+    equal(slot.signetQuality(), 'none');
 }
