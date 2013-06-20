@@ -38,7 +38,6 @@ function createTankBuild() {
     $('#neck-signet-quality').val('normal');
     $('#neck-pick-signet').val('21');
 
-    $('#wrist-ql').val('10.4');
     $('#wrist-role').val('tank');
     $('#wrist-glyph-ql').val('10.4');
     $('#wrist-primary-glyph').val('defense-rating');
@@ -58,7 +57,6 @@ function createTankBuild() {
     $('#luck-signet-quality').val('epic');
     $('#luck-pick-signet').val('39');
 
-    $('#waist-ql').val('10.4');
     $('#waist-role').val('tank');
     $('#waist-glyph-ql').val('10.4');
     $('#waist-primary-glyph').val('physical-protection');
