@@ -12,7 +12,7 @@ module('import-integration-tests', {
     }
 });
 
-test('should import URL and set summary and slots', 93, function() {
+test('should import URL and set summary and slots', 95, function() {
     var vars = {
         head: '4,1,5,5,0,4,0,3,18',
         luck: '4,3,4,8,0,4,0,3,39',
@@ -96,6 +96,7 @@ test('should import URL and set summary and slots', 93, function() {
     ok($('#wrist-signet-quality').attr('disabled'));
     ok($('#wrist-pick-signet').attr('disabled'));
     ok($('#wrist-ql').attr('disabled'));
+    ok(!$('#wrist-nyraid').attr('disabled'));
 
     equal($('#luck-ql').val(), '10.4');
     equal($('#luck-role').val(), 'dps');
@@ -120,6 +121,7 @@ test('should import URL and set summary and slots', 93, function() {
     ok($('#waist-signet-quality').attr('disabled'));
     ok($('#waist-pick-signet').attr('disabled'));
     ok($('#waist-ql').attr('disabled'));
+    ok(!$('#waist-nyraid').attr('disabled'));
 
     equal($('#occult-ql').val(), '10.4');
     equal($('#occult-role').val(), 'dps');

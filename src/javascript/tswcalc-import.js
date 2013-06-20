@@ -22,6 +22,7 @@ function Import() {
         // support signets
         if (typeof values[7] !== undefined && typeof values[8] !== undefined) {
             if (values[8] >= 80) {
+                slots[slotId].el.btn.nyraid.prop('disabled', false);
                 slots[slotId].el.btn.nyraid.prop('checked', true);
                 slots[slotId].el.btn.nyraid.change();
             } else {
