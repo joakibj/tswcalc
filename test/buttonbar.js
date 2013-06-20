@@ -39,6 +39,7 @@ module('buttonbar-integration-tests', {
         renderSlots();
         initiateButtonHandlers();
         initiateSelectHandlers();
+        initiateRaidCheckboxes();
         buttonBar = new ButtonBar();
         initiateSummary();
         createTankBuild();

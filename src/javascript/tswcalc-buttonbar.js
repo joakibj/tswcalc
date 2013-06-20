@@ -29,6 +29,8 @@ function ButtonBar() {
             if (slots.hasSlot(slotId)) {
                 slots[slotId].role(role);
                 if (slotId != 'weapon' && ny_raid_items[slotId][role] === undefined) {
+                    slots[slotId].el.btn.nyraid.prop('checked', false);
+                    slots[slotId].el.btn.nyraid.change();
                     slots[slotId].el.btn.nyraid.attr('disabled', 'disabled');
                 } else {
                     slots[slotId].el.btn.nyraid.removeAttr('disabled');

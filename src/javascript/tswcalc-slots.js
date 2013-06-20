@@ -126,8 +126,8 @@ function Slot(id, name, group) {
     };
 
     this.signet = function() {
-        // this signet is a raid item and has its own lookup table
         var foundSignet = 0;
+        // check if this signet is a raid item, if so, look it up
         if (this.signetId() >= 80) {
             foundSignet = ny_raid_items[this.id][this.role()].signet;
         } else {
