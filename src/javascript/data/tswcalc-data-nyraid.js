@@ -125,7 +125,7 @@ ny_raid_items = {
                 id: 87,
                 name: 'NY Buckle',
                 description: 'Every 6 seconds, you gain a single stack of a beneficial effect that increases your Physical and Magical Protection by 3% per stack. This effect is removed whenever you are penetrated or the number of stacks exceeds 10.',
-                cooldown: 6,
+                cooldown: 0,
                 quality: {
                     epic: 0
                 },

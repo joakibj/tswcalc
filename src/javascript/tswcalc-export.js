@@ -116,7 +116,7 @@ function Export() {
                 statValue = custom_gear_data[group]['10.' + curState.ql].weapon_power;
             }
 
-            var signet = signet_data.find(group, curState.signet_id);
+            var signet = slots[slot].signet();
 
             var state = {
                 name: capitalise(slot),
@@ -134,7 +134,8 @@ function Export() {
                 signet_name: signet.name,
                 signet_quality: this.blankIfNone(capitalise(signet_quality_mapping.to_name[curState.signet_quality])),
                 signet_description: slots[slot].signetDescription(),
-                signet_colour: signet_quality_mapping.to_colour[signet_quality_mapping.to_name[curState.signet_quality]]
+                signet_colour: signet_quality_mapping.to_colour[signet_quality_mapping.to_name[curState.signet_quality]],
+                is_item: signet.id >= 80 ? true : false
             };
             states.push(state);
         }
