@@ -37,6 +37,10 @@ function Slot(id, name, group) {
         }
     };
 
+    this.isWeapon = function() {
+        return this.group == 'weapon' ? true : false;
+    };
+
     this.role = function() {
         if (arguments.length == 1) {
             this.el.role.val(arguments[0]);
@@ -97,6 +101,27 @@ function Slot(id, name, group) {
 
     this.secondaryDist = function() {
         return $(this.el.secondaryDist)[0].innerHTML;
+    };
+
+    this.blackBullionCost = function() {
+        var blackBullions = 0;
+        blackBullions += bb_costs['glyph'][this.glyphQl()].cost;
+        blackBullions += bb_costs[this.isWeapon() ? 'weapon' : 'talisman'][this.ql()].cost;
+        return blackBullions;
+    };
+
+    this.astralFuseCost = function() {
+        if (this.glyphQl() == '10.5') {
+            return 1;
+        }
+        return 0;
+    };
+
+    this.criterionUpgradeCost = function() {
+        if (this.ql() == '10.5') {
+            return 1;
+        }
+        return 0;
     };
 
     this.signetId = function() {
@@ -180,9 +205,9 @@ function Slot(id, name, group) {
         if (signet.id !== 0 && signetQuality != 'none') {
             this.updateSignetIconBorder(signetQuality);
             this.updateSignetIconImage(signet);
-        } else if(signet.id !== 0 && signetQuality == 'none') {
+        } else if (signet.id !== 0 && signetQuality == 'none') {
             this.signetQuality('normal');
-        } else if(signetQuality != 'none' && signet.id === 0) {
+        } else if (signetQuality != 'none' && signet.id === 0) {
             this.updateSignetIconBorder(signetQuality);
             this.updateSignetIconImageFromName(this.group + '_dps');
         }

@@ -27,20 +27,9 @@ function Summary() {
         for (var slotId in slots) {
             if (slots.hasSlot(slotId)) {
                 var slot = slots[slotId];
-                var ql = slot.ql();
-                var glyphQl = slot.glyphQl();
-                blackBullions += bb_costs['glyph'][glyphQl].cost;
-                if (slot.group == 'weapon') {
-                    blackBullions += bb_costs['weapon'][ql].cost;
-                } else {
-                    blackBullions += bb_costs['talisman'][ql].cost;
-                }
-                if (ql == '10.5') {
-                    criterionUpgrades++;
-                }
-                if (glyphQl == '10.5') {
-                    astralFuses++;
-                }
+                blackBullions += slot.blackBullionCost();
+                criterionUpgrades += slot.criterionUpgradeCost();
+                astralFuses += slot.astralFuseCost();
             }
         }
         this.el.black_bullion_cost.html(blackBullions);

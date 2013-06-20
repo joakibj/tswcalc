@@ -9,6 +9,11 @@ module('slots-unit-tests', {
     }
 });
 
+test('should tell whether this slot is a weapon', 2, function() {
+    equal(slots.weapon.isWeapon(), true);
+    equal(slots.head.isWeapon(), false);
+});
+
 test('should set talisman role', 1, function() {
     slots.head.role('healer');
     equal(slots.head.role(), 'healer');
@@ -140,6 +145,20 @@ test('should get single signet value based on quality', 1, function() {
     var signet = slots.head.signet();
 
     deepEqual(slots.head.determineSignetQualityValue(signet), 30);
+});
+
+test('should get black bullion cost for head slot (10.4/10.5)', 1, function() {
+    deepEqual(slots.head.blackBullionCost(), 240);
+});
+
+test('should get astral fuse cost for slot', 2, function() {
+   deepEqual(slots.head.astralFuseCost(), 1); 
+   deepEqual(slots.weapon.astralFuseCost(), 0); 
+});
+
+test('should get criterion upgrade cost for slot', 2, function() {
+   deepEqual(slots.weapon.criterionUpgradeCost(), 1);  
+   deepEqual(slots.head.criterionUpgradeCost(), 0);  
 });
 
 test('should get indexed signet value based on quality', 2, function() {
