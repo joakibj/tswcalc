@@ -42,6 +42,9 @@ function activateToolTips() {
             }
         }
     });
+    $('#raid-stats > label').tooltip({
+        placement: 'bottom'
+    });
     $('.cost-tooltip, .glyph-tooltip, .signet-tooltip').on('click', function(event) {
         event.preventDefault();
         event.stopPropagation();
