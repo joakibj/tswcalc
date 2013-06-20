@@ -1,19 +1,5 @@
 var exportModule = {};
 
-module('export-unit-tests', {
-    setup: function() {
-        exportModule = new Export();
-        exportModule.initiate();
-    },
-    teardown: function() {
-
-    }
-});
-
-test('should return blank if arg is none', 1, function() {
-    equal(exportModule.blankIfNone('None'), '');
-});
-
 module('export-integration-tests', {
     setup: function() {
         renderSlots();

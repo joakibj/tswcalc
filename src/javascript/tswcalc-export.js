@@ -114,19 +114,19 @@ function Export() {
 
             var state = {
                 name: capitalise(slot),
-                role: this.blankIfNone(capitalise(role)),
+                role: blankIfNone(capitalise(role)),
                 ql: curState.ql,
                 stat_type: statType,
                 stat_value: statValue,
                 glyph_ql: curState.glyph_ql,
-                primary_glyph: this.blankIfNone(capitalise(stat_mapping.to_stat[curState.primary_glyph])),
+                primary_glyph: blankIfNone(capitalise(stat_mapping.to_stat[curState.primary_glyph])),
                 primary_dist: curState.primary_dist,
                 primary_value: primaryValue,
-                secondary_glyph: this.blankIfNone(capitalise(stat_mapping.to_stat[curState.secondary_glyph])),
+                secondary_glyph: blankIfNone(capitalise(stat_mapping.to_stat[curState.secondary_glyph])),
                 secondary_dist: curState.secondary_dist,
                 secondary_value: secondaryValue,
                 signet_name: signet.name,
-                signet_quality: this.blankIfNone(capitalise(signet_quality_mapping.to_name[curState.signet_quality])),
+                signet_quality: blankIfNone(capitalise(signet_quality_mapping.to_name[curState.signet_quality])),
                 signet_description: slots[slot].signetDescription(),
                 signet_colour: signet_quality_mapping.to_colour[signet_quality_mapping.to_name[curState.signet_quality]],
                 is_item: signet.id >= 80 ? true : false
@@ -134,20 +134,6 @@ function Export() {
             states.push(state);
         }
         return states;
-    };
-
-    this.blankIfNone = function(str) {
-        if (str == 'None') {
-            return '';
-        }
-        return str;
-    };
-
-    this.blankIfZero = function(str) {
-        if (str == '0') {
-            return '';
-        }
-        return str;
     };
 
     this.collectAllSlotStates = function() {
