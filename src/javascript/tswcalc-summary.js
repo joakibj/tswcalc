@@ -144,7 +144,6 @@ function Summary() {
             }
         }
 
-        sums['critical-chance'] = this.calculateCriticalChance(sums['critical-rating']);
         sums['critical-power-percentage'] = this.calculateCriticalPowerPercentage(sums['critical-power']);
 
         for (var slotId in slots) {
@@ -168,6 +167,9 @@ function Summary() {
                 }
             }
         }
+        sums['critical-chance'] = this.calculateCriticalChance(sums['critical-rating']);
+
+        sums['critical-rating'] = parseInt(sums['critical-rating'].toFixed(0), 10);
         sums['critical-chance'] = sums['critical-chance'].toFixed(2);
         sums['critical-power-percentage'] = sums['critical-power-percentage'].toFixed(2);
         sums['penetration-rating'] = parseInt(sums['penetration-rating'].toFixed(0), 10);

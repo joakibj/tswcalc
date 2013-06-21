@@ -193,13 +193,13 @@ test('should collect offensive and defensive stats for NY raid DPS build with ra
 
     var sums = summary.collectOffensiveDefensiveStats();
 
-    equal(sums['critical-rating'], 0);
-    equal(sums['critical-chance'], 5);
+    equal(sums['critical-rating'], 379);
+    equal(sums['critical-chance'], 13.02);
     equal(sums['critical-power'], 0);
     equal(sums['critical-power-percentage'], 50);
     equal(sums['penetration-rating'], 814);
     equal(sums['hit-rating'], 504);
-    equal(sums['block-rating'], 328);
+    equal(sums['block-rating'], 0);
     equal(sums['defense-rating'], 288);
     equal(sums['evade-rating'], 0);
     equal(sums['physical-protection'], 792);
