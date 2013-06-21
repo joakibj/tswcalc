@@ -77,6 +77,10 @@ ny_raid_items = {
                 quality: {
                     epic: 0
                 },
+                bonus: {
+                    stat: ['critical-rating'],
+                    multiply: 1.25
+                },
                 icon: 'egon_pendant'
             }
         }

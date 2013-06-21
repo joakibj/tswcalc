@@ -105,15 +105,14 @@ function createDPSNYRaidBuild() {
     $('#ring-nyraid').prop('checked', true);
     $('#ring-nyraid').change(); // Coney Island Band
 
-    $('#neck-ql').val('10.4');
-    $('#neck-role').val('tank');
+    $('#neck-role').val('dps');
     $('#neck-glyph-ql').val('10.5');
-    $('#neck-primary-glyph').val('block-rating');
+    $('#neck-primary-glyph').val('critical-rating');
     $('#neck-secondary-glyph').val('none');
     $('#neck-primary-glyph-dist-btn4').trigger('click');
     $('#neck-secondary-glyph-dist-btn0').trigger('click');
-    $('#neck-signet-quality').val('normal');
-    $('#neck-pick-signet').val('21');
+    $('#neck-nyraid').prop('checked', true);
+    $('#neck-nyraid').change(); //Egon Pendant
 
     $('#wrist-role').val('tank');
     $('#wrist-glyph-ql').val('10.4');
