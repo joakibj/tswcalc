@@ -92,14 +92,8 @@ function Export() {
             var group = template_data.slots[i].group;
             var curState = this.slotState[slot];
             var role = role_mapping.to_stat[curState.role];
-            var primaryValue = 0;
-            if (curState.primary_glyph !== 0) {
-                primaryValue = glyph_data.stat[stat_mapping.to_stat[curState.primary_glyph]].ql['10.' + curState.glyph_ql].slot[group].dist[curState.primary_dist];
-            }
-            var secondaryValue = 0;
-            if (curState.secondary_glyph !== 0) {
-                secondaryValue = glyph_data.stat[stat_mapping.to_stat[curState.secondary_glyph]].ql['10.' + curState.glyph_ql].slot[group].dist[curState.secondary_dist];
-            }
+            var primaryValue = slots[slot].primaryGlyphValue();
+            var secondaryValue = slots[slot].secondaryGlyphValue();
             var statType = 0;
             var statValue = 0;
             if (role == 'healer') {
@@ -116,43 +110,30 @@ function Export() {
                 statValue = custom_gear_data[group]['10.' + curState.ql].weapon_power;
             }
 
-            var signet = signet_data.find(group, curState.signet_id);
+            var signet = slots[slot].signet();
 
             var state = {
                 name: capitalise(slot),
-                role: this.blankIfNone(capitalise(role)),
+                role: blankIfNone(capitalise(role)),
                 ql: curState.ql,
                 stat_type: statType,
                 stat_value: statValue,
                 glyph_ql: curState.glyph_ql,
-                primary_glyph: this.blankIfNone(capitalise(stat_mapping.to_stat[curState.primary_glyph])),
+                primary_glyph: blankIfNone(capitalise(stat_mapping.to_stat[curState.primary_glyph])),
                 primary_dist: curState.primary_dist,
                 primary_value: primaryValue,
-                secondary_glyph: this.blankIfNone(capitalise(stat_mapping.to_stat[curState.secondary_glyph])),
+                secondary_glyph: blankIfNone(capitalise(stat_mapping.to_stat[curState.secondary_glyph])),
                 secondary_dist: curState.secondary_dist,
                 secondary_value: secondaryValue,
                 signet_name: signet.name,
-                signet_quality: this.blankIfNone(capitalise(signet_quality_mapping.to_name[curState.signet_quality])),
+                signet_quality: blankIfNone(capitalise(signet_quality_mapping.to_name[curState.signet_quality])),
                 signet_description: slots[slot].signetDescription(),
-                signet_colour: signet_quality_mapping.to_colour[signet_quality_mapping.to_name[curState.signet_quality]]
+                signet_colour: signet_quality_mapping.to_colour[signet_quality_mapping.to_name[curState.signet_quality]],
+                is_item: signet.id >= 80 ? true : false
             };
             states.push(state);
         }
         return states;
-    };
-
-    this.blankIfNone = function(str) {
-        if (str == 'None') {
-            return '';
-        }
-        return str;
-    };
-
-    this.blankIfZero = function(str) {
-        if (str == '0') {
-            return '';
-        }
-        return str;
     };
 
     this.collectAllSlotStates = function() {

@@ -63,6 +63,18 @@ function SelectHandler(slot) {
     };
 
     this.roleChange = function(event) {
+        var role = $(this).val();
+        if(ny_raid_items[slot.id_prefix][role] === undefined) {
+            slots[slot.id_prefix].el.btn.nyraid.attr('checked', false);
+            slots[slot.id_prefix].el.btn.nyraid.attr('disabled', 'disabled');
+        } else {
+            slots[slot.id_prefix].el.btn.nyraid.removeAttr('disabled');
+        }
+        if(slots[slot.id_prefix].el.btn.nyraid.is(':checked')) {
+            raidCheckboxes[slot.id_prefix].changeToRaidItem();
+        } else {
+            raidCheckboxes[slot.id_prefix].changeToCustomItem();
+        }
         summary.updatePrimaryStats();
     };
 

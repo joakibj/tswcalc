@@ -32,11 +32,11 @@
 [size=2]Gear report[/size]{~n}{~n}
 [size=-1]
 {#slotState}
-    [b]{name} (QL [color=purple]10.{ql}[/color]{?role} {role}{/role})[/b] {?stat_type}[b][color=green]+{stat_value}[/color][/b] {stat_type}{/stat_type}{~n}
+    [b]{name} ({?is_item}{signet_name}{:else}QL [color=purple]10.{ql}[/color]{?role} {role}{/role}{/is_item})[/b] {?stat_type}[b][color=green]+{stat_value}[/color][/b] {stat_type}{/stat_type}{~n}
     [indent]Glyph (QL [color=purple]10.{glyph_ql}[/color]): 
     {?primary_glyph}{primary_glyph} [b][color=green]+{primary_value}[/color][/b] ({primary_dist}/4){/primary_glyph}
     {?secondary_glyph} , {secondary_glyph} [b][color=green]+{secondary_value}[/color][/b] ({secondary_dist}/4){/secondary_glyph}
     [/indent]{~n}
-    {?signet_name}[indent]Signet ([color={signet_colour}]{signet_quality}[/color]): Signet of [b]{signet_name}[/b]. {signet_description}[/indent]{~n}{/signet_name}
+    {?signet_name}[indent]Signet ([color={signet_colour}]{signet_quality}[/color]):{^is_item} Signet of [b]{signet_name}[/b].{/is_item} {signet_description}[/indent]{~n}{/signet_name}
 {/slotState}
 [/size]

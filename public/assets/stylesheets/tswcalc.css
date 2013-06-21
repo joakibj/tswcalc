@@ -22,12 +22,24 @@ body {
     padding-right: 2px;
 }
 
-td.inner-fill {
+td.role-label {
     width: 34px;
 }
 
+td.role-select {
+    width: 136px;
+}
+
+td.ql-label {
+    width: 34px;
+}
+
+td.ql-select {
+    width: 157px;
+}
+
 td.filler {
-    width:293px;
+    width: auto;
 }
 
 img.signet {
@@ -95,6 +107,10 @@ div .slot {
     border-radius: 8px;
 }
 
+.slot-name {
+    font-weight: normal;
+}
+
 .slot h4 {
     padding: 0px;
     display: inline;
@@ -104,3 +120,8 @@ div .slot {
   resize: none;
 }
 
+#raid-stats h5 {
+    font-size: 14px;
+    padding: 5px 5px 5px 0px;
+    margin: 0px;
+}

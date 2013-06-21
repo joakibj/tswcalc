@@ -5,6 +5,7 @@ function Slot(id, name, group) {
     this.group = group;
 
     this.el = {
+        name: $('#' + this.id + '-name'),
         role: $('#' + this.id + '-role'),
         ql: $('#' + this.id + '-ql'),
         glyphQl: $('#' + this.id + '-glyph-ql'),
@@ -33,8 +34,21 @@ function Slot(id, name, group) {
                 2: $('#' + this.id + '-secondary-glyph-dist-btn2'),
                 3: $('#' + this.id + '-secondary-glyph-dist-btn3'),
                 4: $('#' + this.id + '-secondary-glyph-dist-btn4')
-            }
+            },
+            nyraid: $('#' + this.id + '-nyraid')
         }
+    };
+
+    this.name = function() {
+        if (arguments.length == 1) {
+            this.el.name.html(arguments[0]);
+        } else {
+            return this.el.name.html();
+        }
+    };
+
+    this.isWeapon = function() {
+        return this.group == 'weapon' ? true : false;
     };
 
     this.role = function() {
@@ -99,6 +113,27 @@ function Slot(id, name, group) {
         return $(this.el.secondaryDist)[0].innerHTML;
     };
 
+    this.blackBullionCost = function() {
+        var blackBullions = 0;
+        blackBullions += bb_costs['glyph'][this.glyphQl()].cost;
+        blackBullions += bb_costs[this.isWeapon() ? 'weapon' : 'talisman'][this.ql()].cost;
+        return blackBullions;
+    };
+
+    this.astralFuseCost = function() {
+        if (this.glyphQl() == '10.5') {
+            return 1;
+        }
+        return 0;
+    };
+
+    this.criterionUpgradeCost = function() {
+        if (this.ql() == '10.5') {
+            return 1;
+        }
+        return 0;
+    };
+
     this.signetId = function() {
         if (arguments.length == 1) {
             this.el.signetId.val(arguments[0]);
@@ -116,7 +151,14 @@ function Slot(id, name, group) {
     };
 
     this.signet = function() {
-        return signet_data.find(this.group, this.signetId());
+        var foundSignet = 0;
+        // check if this signet is a raid item, if so, look it up
+        if (this.signetId() >= 80) {
+            foundSignet = ny_raid_items[this.id][this.role()].signet;
+        } else {
+            foundSignet = signet_data.find(this.group, this.signetId());
+        }
+        return foundSignet !== 0 || foundSignet !== undefined ? foundSignet : null;
     };
 
     this.signetDescription = function() {
@@ -180,10 +222,13 @@ function Slot(id, name, group) {
         if (signet.id !== 0 && signetQuality != 'none') {
             this.updateSignetIconBorder(signetQuality);
             this.updateSignetIconImage(signet);
-        } else if(signet.id !== 0 && signetQuality == 'none') {
+        } else if (signet.id !== 0 && signetQuality == 'none') {
             this.signetQuality('normal');
-        } else if(signetQuality != 'none' && signet.id === 0) {
+        } else if (signetQuality != 'none' && signet.id === 0) {
             this.updateSignetIconBorder(signetQuality);
+            this.updateSignetIconImageFromName(this.group + '_dps');
+        } else {
+            this.updateSignetIconBorder('normal');
             this.updateSignetIconImageFromName(this.group + '_dps');
         }
     };
@@ -214,6 +259,13 @@ function Slot(id, name, group) {
         this.secondaryGlyph('none');
         this.el.btn.primary[0].trigger('click');
         this.el.btn.secondary[0].trigger('click');
+        this.signetId('none');
+        this.signetQuality('none');
+        this.updateSignet();
+        if(this.el.btn.nyraid.is(':checked')) {
+            this.el.btn.nyraid.prop('checked', false);
+            this.el.btn.nyraid.change();
+        }
     };
 
     this.state = function() {

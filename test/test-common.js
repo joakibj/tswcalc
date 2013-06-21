@@ -36,6 +36,13 @@ function clearFixture() {
     $('#qunit-fixture').html('');
 }
 
+var summary = {};
+
+function initiateSummary() {
+    summary = new Summary();
+    summary.initiate();
+}
+
 var buttonHandler = {};
 
 function initiateButtonHandlers() {
@@ -53,5 +60,15 @@ function initiateSelectHandlers() {
         var slot = template_data.slots[i];
         selectHandler[slot.id_prefix] = new SelectHandler(slot);
         selectHandler[slot.id_prefix].initiate();
+    }
+}
+
+var raidCheckboxes = {};
+
+function initiateRaidCheckboxes() {
+    for (var i = 0; i < template_data.slots.length; i++) {
+        var slot = template_data.slots[i];
+        raidCheckboxes[slot.id_prefix] = new RaidCheckbox(slot.id_prefix);
+        raidCheckboxes[slot.id_prefix].initiate();
     }
 }

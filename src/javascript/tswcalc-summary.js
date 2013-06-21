@@ -4,7 +4,20 @@ function Summary() {
     this.el = {
         black_bullion_cost: $('#bb-cost'),
         criterion_upgrade_cost: $('#cu-cost'),
-        astral_fuse_cost: $('#af-cost')
+        astral_fuse_cost: $('#af-cost'),
+        activateRaid: $('#summary-activate-raid')
+    };
+
+    this.initiate = function() {
+        this.bindEvents();
+    };
+
+    this.bindEvents = function() {
+        this.el.activateRaid.on('change', this.activateRaidItems);
+    };
+
+    this.activateRaidItems = function(event) {
+        self.updateAllStats();
     };
 
     this.updateAllStats = function() {
@@ -27,20 +40,9 @@ function Summary() {
         for (var slotId in slots) {
             if (slots.hasSlot(slotId)) {
                 var slot = slots[slotId];
-                var ql = slot.ql();
-                var glyphQl = slot.glyphQl();
-                blackBullions += bb_costs['glyph'][glyphQl].cost;
-                if (slot.group == 'weapon') {
-                    blackBullions += bb_costs['weapon'][ql].cost;
-                } else {
-                    blackBullions += bb_costs['talisman'][ql].cost;
-                }
-                if (ql == '10.5') {
-                    criterionUpgrades++;
-                }
-                if (glyphQl == '10.5') {
-                    astralFuses++;
-                }
+                blackBullions += slot.blackBullionCost();
+                criterionUpgrades += slot.criterionUpgradeCost();
+                astralFuses += slot.astralFuseCost();
             }
         }
         this.el.black_bullion_cost.html(blackBullions);
@@ -79,7 +81,7 @@ function Summary() {
                 var ql = slot.ql();
                 if (slot.group == 'major') {
                     var signet = slot.signet();
-                    if (signet.id !== 0) {
+                    if (signet.id !== 0 && signet.id < 80) {
                         sums[signet.stat] += slot.determineSignetQualityValue(signet);
                     }
                 }
@@ -144,6 +146,33 @@ function Summary() {
 
         sums['critical-chance'] = this.calculateCriticalChance(sums['critical-rating']);
         sums['critical-power-percentage'] = this.calculateCriticalPowerPercentage(sums['critical-power']);
+
+        for (var slotId in slots) {
+            if (slots.hasSlot(slotId)) {
+                var slot = slots[slotId];
+                if (this.el.activateRaid.is(':checked') && slot.signetId() >= 80) {
+                    var signet = slot.signet();
+                    if (signet.bonus !== undefined) {
+                        for (var statIdx = 0; statIdx < signet.bonus.stat.length; statIdx++) {
+                            if (signet.bonus.add !== undefined) {
+                                sums[signet.bonus.stat[statIdx]] += signet.bonus.add;
+                            } else if (signet.bonus.multiply !== undefined) {
+                                if (signet.stack_max !== undefined) {
+                                    sums[signet.bonus.stat[statIdx]] = (1 + (signet.bonus.multiply * signet.stack_max)) * sums[signet.bonus.stat[statIdx]];
+                                } else {
+                                    sums[signet.bonus.stat[statIdx]] = signet.bonus.multiply * sums[signet.bonus.stat[statIdx]];
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        sums['critical-chance'] = sums['critical-chance'].toFixed(2);
+        sums['critical-power-percentage'] = sums['critical-power-percentage'].toFixed(2);
+        sums['penetration-rating'] = parseInt(sums['penetration-rating'].toFixed(0), 10);
+        sums['magical-protection'] = parseInt(sums['magical-protection'].toFixed(0), 10);
+        sums['physical-protection'] = parseInt(sums['physical-protection'].toFixed(0), 10);
         return sums;
     };
 
@@ -157,11 +186,11 @@ function Summary() {
     };
 
     this.calculateCriticalChance = function(critical_rating) {
-        return 39 - (68 / (Math.pow(Math.E, (critical_rating / 787.6)) + 1)).toFixed(2);
+        return 39 - (68 / (Math.pow(Math.E, (critical_rating / 787.6)) + 1));
     };
 
     this.calculateCriticalPowerPercentage = function(critical_power) {
-        return Math.sqrt(5 * critical_power + 625).toFixed(2);
+        return Math.sqrt(5 * critical_power + 625);
     };
 
     this.updateStats = function(sums) {

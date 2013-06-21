@@ -1,5 +1,6 @@
 var buttonHandler = {};
 var selectHandler = {};
+var raidCheckboxes = {};
 var buttonBar = 0;
 var summary = 0;
 var exportModule = 0;
@@ -41,6 +42,9 @@ function activateToolTips() {
             }
         }
     });
+    $('#raid-stats > label').tooltip({
+        placement: 'bottom'
+    });
     $('.cost-tooltip, .glyph-tooltip, .signet-tooltip').on('click', function(event) {
         event.preventDefault();
         event.stopPropagation();
@@ -75,6 +79,7 @@ function startSubModules() {
     for (var i = 0; i < template_data.slots.length; i++) {
         startDistributionButtonHandler(template_data.slots[i].id_prefix);
         startSelectHandler(template_data.slots[i]);
+        startRaidCheckboxes(template_data.slots[i].id_prefix);
     }
     startButtonBar();
     startSummary();
@@ -98,6 +103,11 @@ function startSelectHandler(slot) {
     selectHandler[slot.id_prefix].initiate();
 }
 
+function startRaidCheckboxes(slotId) {
+    raidCheckboxes[slotId] = new RaidCheckbox(slotId);
+    raidCheckboxes[slotId].initiate();
+}
+
 function startButtonBar() {
     buttonBar = new ButtonBar();
     buttonBar.initiate();
@@ -105,6 +115,7 @@ function startButtonBar() {
 
 function startSummary() {
     summary = new Summary();
+    summary.initiate();
 }
 
 function startExportModule() {
