@@ -26,6 +26,9 @@ function Import() {
                 slots[slotId].el.btn.nyraid.prop('checked', true);
                 slots[slotId].el.btn.nyraid.change();
             } else {
+                if (!slots[slotId].isWeapon() && ny_raid_items[slotId][slots[slotId].role()] !== undefined) {
+                    slots[slotId].el.btn.nyraid.prop('disabled', false);
+                }
                 slots[slotId].signetQuality(signet_quality_mapping.to_name[values[7]]);
                 slots[slotId].signetId(values[8] != '0' ? values[8] : 'none');
                 slots[slotId].el.signetId.change();
