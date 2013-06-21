@@ -28,6 +28,13 @@ function ButtonBar() {
         for (var slotId in slots) {
             if (slots.hasSlot(slotId)) {
                 slots[slotId].role(role);
+                if (slotId != 'weapon' && ny_raid_items[slotId][role] === undefined) {
+                    slots[slotId].el.btn.nyraid.prop('checked', false);
+                    slots[slotId].el.btn.nyraid.change();
+                    slots[slotId].el.btn.nyraid.attr('disabled', 'disabled');
+                } else {
+                    slots[slotId].el.btn.nyraid.removeAttr('disabled');
+                }
             }
         }
         summary.updateAllStats();
@@ -37,9 +44,11 @@ function ButtonBar() {
         var ql = '10.' + event.target.id.split('-')[3];
         for (var slotId in slots) {
             if (slots.hasSlot(slotId)) {
-                slots[slotId].ql(ql);
+                if (!slots[slotId].el.btn.nyraid.is(':checked')) {
+                    slots[slotId].ql(ql);
+                }
                 slots[slotId].glyphQl(ql);
-                $('#' + slotId + '-primary-glyph-dist-btn4').trigger('click');
+                slots[slotId].el.btn.primary[4].trigger('click');
             }
         }
         summary.updateAllStats();

@@ -21,9 +21,15 @@ function Import() {
         slots[slotId].el.btn.secondary[values[6]].click();
         // support signets
         if (typeof values[7] !== undefined && typeof values[8] !== undefined) {
-            slots[slotId].signetQuality(signet_quality_mapping.to_name[values[7]]);
-            slots[slotId].signetId(values[8] != '0' ? values[8] : 'none');
-            slots[slotId].el.signetId.change();
+            if (values[8] >= 80) {
+                slots[slotId].el.btn.nyraid.prop('disabled', false);
+                slots[slotId].el.btn.nyraid.prop('checked', true);
+                slots[slotId].el.btn.nyraid.change();
+            } else {
+                slots[slotId].signetQuality(signet_quality_mapping.to_name[values[7]]);
+                slots[slotId].signetId(values[8] != '0' ? values[8] : 'none');
+                slots[slotId].el.signetId.change();
+            }
         }
     };
 }

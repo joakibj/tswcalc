@@ -51,4 +51,8 @@
               </tbody>
             </table>
           </div>
+          <div id="raid-stats">
+            <h5>Raid items</h5>
+            <label class="checkbox inline" data-toggle="tooltip" title="Activate bonuses from NY raid items, if they have a bonus applicable to the summary sheet. The bonus counts as you had procced all NY Raid items simultaneously or instantly got 10 stacks of the effect."><input type="checkbox" id="summary-activate-raid">Activate NY Raid items</label>
+          </div>
         </div>

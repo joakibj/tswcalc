@@ -1,7 +1,7 @@
-var summary = {};
+
 module('slots-unit-tests', {
     setup: function() {
-        summary = new Summary();
+        initiateSummary();
         renderSlots();
         initiateSelectHandlers();
         initiateButtonHandlers();
@@ -12,6 +12,11 @@ module('slots-unit-tests', {
 test('should tell whether this slot is a weapon', 2, function() {
     equal(slots.weapon.isWeapon(), true);
     equal(slots.head.isWeapon(), false);
+});
+
+test('should set and get talisman name', 1, function() {
+    slots.head.name('Mark of the starspawn');
+    equal(slots.head.name(), 'Mark of the starspawn');
 });
 
 test('should set talisman role', 1, function() {

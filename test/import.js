@@ -1,27 +1,27 @@
 var importModule = {};
-var summary = {};
 
 module('import-integration-tests', {
     setup: function() {
         renderSlots();
         renderSummary();
-        summary = new Summary();
+        initiateSummary();
         importModule = new Import();
         initiateSelectHandlers();
         initiateButtonHandlers();
+        initiateRaidCheckboxes();
     }
 });
 
-test('should import URL and set summary and slots', 87, function() {
+test('should import URL and set summary and slots', 95, function() {
     var vars = {
         head: '4,1,5,5,0,4,0,3,18',
         luck: '4,3,4,8,0,4,0,3,39',
         neck: '4,1,5,5,0,4,0,1,21',
         occult: '4,3,4,4,0,4,0,3,41',
         ring: '4,3,4,6,0,4,0,2,22',
-        waist: '4,1,4,8,0,4,0,1,0',
+        waist: '4,1,4,8,0,4,0,3,87',
         weapon: '5,0,4,4,0,4,0,2,5',
-        wrist: '4,1,4,6,0,4,0,1,0'
+        wrist: '4,1,4,6,0,4,0,3,85'
     };
 
     importModule.start(vars);
@@ -33,7 +33,7 @@ test('should import URL and set summary and slots', 87, function() {
     equal($('#stat-weapon-power').html(), '457');
     equal($('#stat-heal-rating').html(), '0');
     equal($('#stat-critical-rating').html(), '0');
-    equal($('#stat-critical-chance').html(), '5 %');
+    equal($('#stat-critical-chance').html(), '5.00 %');
     equal($('#stat-critical-power').html(), '0');
     equal($('#stat-critical-power-percentage').html(), '25.0 %');
     equal($('#stat-penetration-rating').html(), '0');
@@ -91,8 +91,12 @@ test('should import URL and set summary and slots', 87, function() {
     equal($('#wrist-secondary-glyph').val(), 'none');
     ok($('#wrist-primary-glyph-dist-btn4').hasClass('active'));
     ok($('#wrist-secondary-glyph-dist-btn0').hasClass('active'));
-    equal($('#wrist-signet-quality').val(), 'normal');
-    equal($('#wrist-pick-signet').val(), 'none');
+    equal($('#wrist-signet-quality').val(), 'epic');
+    equal($('#wrist-pick-signet').val(), '85');
+    ok($('#wrist-signet-quality').attr('disabled'));
+    ok($('#wrist-pick-signet').attr('disabled'));
+    ok($('#wrist-ql').attr('disabled'));
+    ok(!$('#wrist-nyraid').attr('disabled'));
 
     equal($('#luck-ql').val(), '10.4');
     equal($('#luck-role').val(), 'dps');
@@ -112,8 +116,12 @@ test('should import URL and set summary and slots', 87, function() {
     equal($('#waist-secondary-glyph').val(), 'none');
     ok($('#waist-primary-glyph-dist-btn4').hasClass('active'));
     ok($('#waist-secondary-glyph-dist-btn0').hasClass('active'));
-    equal($('#waist-signet-quality').val(), 'normal');
-    equal($('#waist-pick-signet').val(), 'none');
+    equal($('#waist-signet-quality').val(), 'epic');
+    equal($('#waist-pick-signet').val(), '87');
+    ok($('#waist-signet-quality').attr('disabled'));
+    ok($('#waist-pick-signet').attr('disabled'));
+    ok($('#waist-ql').attr('disabled'));
+    ok(!$('#waist-nyraid').attr('disabled'));
 
     equal($('#occult-ql').val(), '10.4');
     equal($('#occult-role').val(), 'dps');
