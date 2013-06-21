@@ -48,7 +48,7 @@ function ButtonBar() {
                     slots[slotId].ql(ql);
                 }
                 slots[slotId].glyphQl(ql);
-                $('#' + slotId + '-primary-glyph-dist-btn4').trigger('click');
+                slots[slotId].el.btn.primary[4].trigger('click');
             }
         }
         summary.updateAllStats();

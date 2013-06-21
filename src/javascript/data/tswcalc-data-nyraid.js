@@ -104,7 +104,7 @@ ny_raid_items = {
                 id: 86,
                 name: 'Subway Tokens',
                 description: 'Every 6 seconds, you gain a single stack of a beneficial effect that increases all damage dealt by 1% per stack. This effect is removed whenever you glance or the number of stacks exceeds 10.',
-                cooldown: 6,
+                cooldown: 0,
                 quality: {
                     epic: 0
                 },
