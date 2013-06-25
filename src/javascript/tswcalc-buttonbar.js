@@ -2,16 +2,20 @@ var tswcalc = tswcalc || {};
 
 tswcalc.buttonBar = function() {
 
-    var el = {
-        btn_all_dps: $('#btn-all-dps'),
-        btn_all_healer: $('#btn-all-healer'),
-        btn_all_tank: $('#btn-all-tank'),
-        btn_all_10_4: $('#btn-all-10-4'),
-        btn_all_10_5: $('#btn-all-10-5'),
-        btn_reset: $('#btn-reset')
+    var el = {};
+    var elInit = function() {
+        return {
+            btn_all_dps: $('#btn-all-dps'),
+            btn_all_healer: $('#btn-all-healer'),
+            btn_all_tank: $('#btn-all-tank'),
+            btn_all_10_4: $('#btn-all-10-4'),
+            btn_all_10_5: $('#btn-all-10-5'),
+            btn_reset: $('#btn-reset')
+        };
     };
 
     var init = function() {
+        el = elInit();
         bindEvents();
     };
 
