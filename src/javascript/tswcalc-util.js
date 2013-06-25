@@ -1,10 +1,20 @@
-function capitalise(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
+var tswcalc = tswcalc || {};
 
-function blankIfNone(arg) {
-    if (arg == 'None' || arg == 'none') {
-        return '';
+tswcalc.util = function() {
+    var capitalise = function(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    };
+
+    var blankIfNone = function(arg) {
+        if (arg == 'None' || arg == 'none') {
+            return '';
+        }
+        return arg;
+    };
+
+    var oPublic = {
+        capitalise: capitalise,
+        blankIfNone: blankIfNone
     }
-    return arg;
-}
+    return oPublic;
+}();

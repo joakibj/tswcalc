@@ -118,20 +118,20 @@ tswcalc.export = function() {
             var signet = slots[slot].signet();
 
             var state = {
-                name: capitalise(slot),
-                role: blankIfNone(capitalise(role)),
+                name: tswcalc.util.capitalise(slot),
+                role: tswcalc.util.blankIfNone(tswcalc.util.capitalise(role)),
                 ql: curState.ql,
                 stat_type: statType,
                 stat_value: statValue,
                 glyph_ql: curState.glyph_ql,
-                primary_glyph: blankIfNone(capitalise(stat_mapping.to_stat[curState.primary_glyph])),
+                primary_glyph: tswcalc.util.blankIfNone(tswcalc.util.capitalise(stat_mapping.to_stat[curState.primary_glyph])),
                 primary_dist: curState.primary_dist,
                 primary_value: primaryValue,
-                secondary_glyph: blankIfNone(capitalise(stat_mapping.to_stat[curState.secondary_glyph])),
+                secondary_glyph: tswcalc.util.blankIfNone(tswcalc.util.capitalise(stat_mapping.to_stat[curState.secondary_glyph])),
                 secondary_dist: curState.secondary_dist,
                 secondary_value: secondaryValue,
                 signet_name: signet.name,
-                signet_quality: blankIfNone(capitalise(signet_quality_mapping.to_name[curState.signet_quality])),
+                signet_quality: tswcalc.util.blankIfNone(tswcalc.util.capitalise(signet_quality_mapping.to_name[curState.signet_quality])),
                 signet_description: slots[slot].signetDescription(),
                 signet_colour: signet_quality_mapping.to_colour[signet_quality_mapping.to_name[curState.signet_quality]],
                 is_item: signet.id >= 80 ? true : false
