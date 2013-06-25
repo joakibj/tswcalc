@@ -4,12 +4,13 @@ module('tswcalc', {
     }
 });
 
-test('should initate tswcalc submodules', 7, function() {
+test('should initate tswcalc submodules', 8, function() {
     ok(tswcalc);
+    ok(tswcalc.data);
     ok(buttonHandler);
     ok(selectHandler);
     ok(tswcalc.buttonBar);
-    ok(summary);
+    ok(tswcalc.summary);
     ok(tswcalc.export);
     ok(tswcalc.import);
 });

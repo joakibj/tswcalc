@@ -92,27 +92,27 @@ tswcalc.export = function() {
 
     var dustSlotState = function() {
         var states = [];
-        for (var i = 0; i < template_data.slots.length; i++) {
-            var slot = template_data.slots[i].id_prefix;
-            var group = template_data.slots[i].group;
+        for (var i = 0; i < tswcalc.data.template_data.slots.length; i++) {
+            var slot = tswcalc.data.template_data.slots[i].id_prefix;
+            var group = tswcalc.data.template_data.slots[i].group;
             var curState = slotState[slot];
-            var role = role_mapping.to_stat[curState.role];
+            var role = tswcalc.data.role_mapping.to_stat[curState.role];
             var primaryValue = slots[slot].primaryGlyphValue();
             var secondaryValue = slots[slot].secondaryGlyphValue();
             var statType = 0;
             var statValue = 0;
             if (role == 'healer') {
                 statType = 'Heal Rating';
-                statValue = custom_gear_data[group].heal_dps['ql10.' + curState.ql].rating;
+                statValue = tswcalc.data.custom_gear_data[group].heal_dps['ql10.' + curState.ql].rating;
             } else if (role == 'dps') {
                 statType = 'Attack Rating';
-                statValue = custom_gear_data[group].heal_dps['ql10.' + curState.ql].rating;
+                statValue = tswcalc.data.custom_gear_data[group].heal_dps['ql10.' + curState.ql].rating;
             } else if (role == 'tank') {
                 statType = 'Hitpoints';
-                statValue = custom_gear_data[group].tank['ql10.' + curState.ql].hitpoints;
-            } else if (template_data.slots[i].is_weapon) {
+                statValue = tswcalc.data.custom_gear_data[group].tank['ql10.' + curState.ql].hitpoints;
+            } else if (tswcalc.data.template_data.slots[i].is_weapon) {
                 statType = 'Weapon Power';
-                statValue = custom_gear_data[group]['10.' + curState.ql].weapon_power;
+                statValue = tswcalc.data.custom_gear_data[group]['10.' + curState.ql].weapon_power;
             }
 
             var signet = slots[slot].signet();
@@ -124,16 +124,16 @@ tswcalc.export = function() {
                 stat_type: statType,
                 stat_value: statValue,
                 glyph_ql: curState.glyph_ql,
-                primary_glyph: tswcalc.util.blankIfNone(tswcalc.util.capitalise(stat_mapping.to_stat[curState.primary_glyph])),
+                primary_glyph: tswcalc.util.blankIfNone(tswcalc.util.capitalise(tswcalc.data.stat_mapping.to_stat[curState.primary_glyph])),
                 primary_dist: curState.primary_dist,
                 primary_value: primaryValue,
-                secondary_glyph: tswcalc.util.blankIfNone(tswcalc.util.capitalise(stat_mapping.to_stat[curState.secondary_glyph])),
+                secondary_glyph: tswcalc.util.blankIfNone(tswcalc.util.capitalise(tswcalc.data.stat_mapping.to_stat[curState.secondary_glyph])),
                 secondary_dist: curState.secondary_dist,
                 secondary_value: secondaryValue,
                 signet_name: signet.name,
-                signet_quality: tswcalc.util.blankIfNone(tswcalc.util.capitalise(signet_quality_mapping.to_name[curState.signet_quality])),
+                signet_quality: tswcalc.util.blankIfNone(tswcalc.util.capitalise(tswcalc.data.signet_quality_mapping.to_name[curState.signet_quality])),
                 signet_description: slots[slot].signetDescription(),
-                signet_colour: signet_quality_mapping.to_colour[signet_quality_mapping.to_name[curState.signet_quality]],
+                signet_colour: tswcalc.data.signet_quality_mapping.to_colour[tswcalc.data.signet_quality_mapping.to_name[curState.signet_quality]],
                 is_item: signet.id >= 80 ? true : false
             };
             states.push(state);

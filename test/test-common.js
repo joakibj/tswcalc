@@ -1,7 +1,7 @@
 function renderSlots() {
     renderTemplate('slots', {
-        slots: template_data.slots,
-        signets: signet_data
+        slots: tswcalc.data.template_data.slots,
+        signets: tswcalc.data.signet_data
     });
     slots.init();
 }
@@ -43,8 +43,8 @@ function initiateSummary() {
 var buttonHandler = {};
 
 function initiateButtonHandlers() {
-    for (var i = 0; i < template_data.slots.length; i++) {
-        var slot = template_data.slots[i];
+    for (var i = 0; i < tswcalc.data.template_data.slots.length; i++) {
+        var slot = tswcalc.data.template_data.slots[i];
         buttonHandler[slot.id_prefix] = new DistributionButtonHandler(slot.id_prefix);
         buttonHandler[slot.id_prefix].initiate();
     }
@@ -53,8 +53,8 @@ function initiateButtonHandlers() {
 var selectHandler = {};
 
 function initiateSelectHandlers() {
-    for (var i = 0; i < template_data.slots.length; i++) {
-        var slot = template_data.slots[i];
+    for (var i = 0; i < tswcalc.data.template_data.slots.length; i++) {
+        var slot = tswcalc.data.template_data.slots[i];
         selectHandler[slot.id_prefix] = new SelectHandler(slot);
         selectHandler[slot.id_prefix].initiate();
     }
@@ -63,8 +63,8 @@ function initiateSelectHandlers() {
 var raidCheckboxes = {};
 
 function initiateRaidCheckboxes() {
-    for (var i = 0; i < template_data.slots.length; i++) {
-        var slot = template_data.slots[i];
+    for (var i = 0; i < tswcalc.data.template_data.slots.length; i++) {
+        var slot = tswcalc.data.template_data.slots[i];
         raidCheckboxes[slot.id_prefix] = new RaidCheckbox(slot.id_prefix);
         raidCheckboxes[slot.id_prefix].initiate();
     }

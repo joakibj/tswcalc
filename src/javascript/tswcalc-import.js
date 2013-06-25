@@ -14,10 +14,10 @@ tswcalc.import = function() {
 
     var updateSlot = function(slotId, values) {
         slots[slotId].ql('10.' + values[0]);
-        slots[slotId].role(role_mapping.to_stat[values[1]]);
+        slots[slotId].role(tswcalc.data.role_mapping.to_stat[values[1]]);
         slots[slotId].glyphQl('10.' + values[2]);
-        slots[slotId].primaryGlyph(stat_mapping.to_stat[values[3]]);
-        slots[slotId].secondaryGlyph(stat_mapping.to_stat[values[4]]);
+        slots[slotId].primaryGlyph(tswcalc.data.stat_mapping.to_stat[values[3]]);
+        slots[slotId].secondaryGlyph(tswcalc.data.stat_mapping.to_stat[values[4]]);
         slots[slotId].el.btn.primary[values[5]].click();
         slots[slotId].el.btn.secondary[values[6]].click();
         // support signets
@@ -27,10 +27,10 @@ tswcalc.import = function() {
                 slots[slotId].el.btn.nyraid.prop('checked', true);
                 slots[slotId].el.btn.nyraid.change();
             } else {
-                if (!slots[slotId].isWeapon() && ny_raid_items[slotId][slots[slotId].role()] !== undefined) {
+                if (!slots[slotId].isWeapon() && tswcalc.data.ny_raid_items[slotId][slots[slotId].role()] !== undefined) {
                     slots[slotId].el.btn.nyraid.prop('disabled', false);
                 }
-                slots[slotId].signetQuality(signet_quality_mapping.to_name[values[7]]);
+                slots[slotId].signetQuality(tswcalc.data.signet_quality_mapping.to_name[values[7]]);
                 slots[slotId].signetId(values[8] != '0' ? values[8] : 'none');
                 slots[slotId].el.signetId.change();
             }

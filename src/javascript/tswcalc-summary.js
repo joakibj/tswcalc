@@ -92,17 +92,17 @@ tswcalc.summary = function() {
                 }
                 switch (role) {
                     case 'dps':
-                        sums['attack-rating'] += custom_gear_data[slot.group].heal_dps['ql' + (ql)].rating;
+                        sums['attack-rating'] += tswcalc.data.custom_gear_data[slot.group].heal_dps['ql' + (ql)].rating;
                         break;
                     case 'healer':
-                        sums['heal-rating'] += custom_gear_data[slot.group].heal_dps['ql' + (ql)].rating;
+                        sums['heal-rating'] += tswcalc.data.custom_gear_data[slot.group].heal_dps['ql' + (ql)].rating;
                         break;
                     case 'tank':
-                        sums['hitpoints'] += custom_gear_data[slot.group].tank['ql' + (ql)].hitpoints;
+                        sums['hitpoints'] += tswcalc.data.custom_gear_data[slot.group].tank['ql' + (ql)].hitpoints;
                         break;
                     case 'none':
                         if (slot.id == 'weapon') {
-                            sums['weapon-power'] = custom_gear_data[slot.group][ql].weapon_power;
+                            sums['weapon-power'] = tswcalc.data.custom_gear_data[slot.group][ql].weapon_power;
                         }
                         break;
                     default:

@@ -10,7 +10,7 @@ var raidCheckboxes = {};
 
 tswcalc = function() {
     var init = function() {
-        renderContainer(template_data);
+        renderContainer(tswcalc.data.template_data);
         addHash();
 
         activateToolTips();
@@ -52,8 +52,8 @@ tswcalc = function() {
 
     var renderContainer = function(data) {
         dust.render('container', {
-            slots: template_data.slots,
-            signets: signet_data
+            slots: tswcalc.data.template_data.slots,
+            signets: tswcalc.data.signet_data
         },
 
         function(err, out) {
@@ -75,10 +75,10 @@ tswcalc = function() {
 
     var startSubModules = function() {
         slots.init();
-        for (var i = 0; i < template_data.slots.length; i++) {
-            startDistributionButtonHandler(template_data.slots[i].id_prefix);
-            startSelectHandler(template_data.slots[i]);
-            startRaidCheckboxes(template_data.slots[i].id_prefix);
+        for (var i = 0; i < tswcalc.data.template_data.slots.length; i++) {
+            startDistributionButtonHandler(tswcalc.data.template_data.slots[i].id_prefix);
+            startSelectHandler(tswcalc.data.template_data.slots[i]);
+            startRaidCheckboxes(tswcalc.data.template_data.slots[i].id_prefix);
         }
         startButtonBar();
         startSummary();

@@ -103,11 +103,11 @@ test('should set talisman signet id and quality', 2, function() {
 });
 
 test('should get talisman signet object', 1, function() {
-    deepEqual(slots.head.signet(), signet_data.find('head', '18'));
+    deepEqual(slots.head.signet(), tswcalc.data.signet_data.find('head', '18'));
 });
 
 test('should get talisman signet None object if signet Id cannot be found', 1, function() {
-    deepEqual(slots.wrist.signet(), signet_data.noneSignet());
+    deepEqual(slots.wrist.signet(), tswcalc.data.signet_data.noneSignet());
 });
 
 test('should update signet icon and border', 2, function() {

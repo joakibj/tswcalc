@@ -25,7 +25,7 @@ function SelectHandler(slot) {
 
         this.updateToDefaultSignet();
 
-        var signetsInSlotGroup = $.merge([], signet_data[slot.group]);
+        var signetsInSlotGroup = $.merge([], tswcalc.data.signet_data[slot.group]);
         // weapon signets can also be slotted in head
         $.merge(signetsInSlotGroup, this.getSignetsForHead(slot.group));
         signetsInSlotGroup.sort(function(a, b) {
@@ -52,7 +52,7 @@ function SelectHandler(slot) {
 
     this.getSignetsForHead = function(group) {
         if (group == 'head') {
-            return signet_data['weapon'];
+            return tswcalc.data.signet_data['weapon'];
         }
         return [];
     };

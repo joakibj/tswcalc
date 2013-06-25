@@ -20,7 +20,7 @@ function RaidCheckbox(slot) {
     };
 
     this.changeToRaidItem = function() {
-        var item = ny_raid_items[slot][slots[slot].role()];
+        var item = tswcalc.data.ny_raid_items[slot][slots[slot].role()];
         if (item !== undefined) {
             slots[slot].name(': ' + item.name);
             slots[slot].ql('10.4');
