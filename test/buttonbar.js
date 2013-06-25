@@ -13,24 +13,6 @@ test('should have required buttonbar buttons in DOM', 6, function() {
     ok($('#btn-reset').length !== 0, 'reset button exists');
 });
 
-var buttonHandler = {};
-
-module('buttonbar-events', {
-    setup: function() {
-        renderButtonbar();
-        tswcalc.buttonBar.init();
-    }
-});
-
-test('buttons in buttonbar should have click listeners', 6, function() {
-    ok($._data($('#btn-all-dps').get(0), 'events').click instanceof Array, 'btn-all-dps click listener exists');
-    ok($._data($('#btn-all-healer').get(0), 'events').click instanceof Array, 'btn-all-healer click listener exists');
-    ok($._data($('#btn-all-tank').get(0), 'events').click instanceof Array, 'btn-all-tank click listener exists');
-    ok($._data($('#btn-all-10-4').get(0), 'events').click instanceof Array, 'btn-all-10-4 click listener exists');
-    ok($._data($('#btn-all-10-5').get(0), 'events').click instanceof Array, 'btn-all-10-5 click listener exists');
-    ok($._data($('#btn-reset').get(0), 'events').click instanceof Array, 'btn-reset click listener exists');
-});
-
 module('buttonbar-integration-tests', {
     setup: function() {
         renderButtonbar();

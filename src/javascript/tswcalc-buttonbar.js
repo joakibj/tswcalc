@@ -62,7 +62,10 @@ tswcalc.buttonBar = function() {
 
     var oPublic = {
         el: el,
-        init: init
+        init: init,
+        setRoleOnAllSlots: setRoleOnAllSlots,
+        setQlOnAllSlots: setQlOnAllSlots,
+        resetAllSlots: resetAllSlots
     };
 
     return oPublic;
