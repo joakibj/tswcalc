@@ -1,29 +1,34 @@
-function Export() {
-    var self = this;
-    this.exportType = 0;
-    this.slotState = {};
+var tswcalc = tswcalc || {};
 
-    this.el = {
-        export_btn: $('a.export'),
-        export_textarea: $('#export-textarea'),
-        open_export_modal: $('#open-export-modal')
+tswcalc.export = function() {
+    var exportType = 0;
+    var slotState = {};
+
+    var el = {};
+    var elInit = function() {
+        return {
+            export_btn: $('a.export'),
+            export_textarea: $('#export-textarea'),
+            open_export_modal: $('#open-export-modal')
+        };
     };
 
-    this.initiate = function() {
-        this.bindEvents();
+    var init = function() {
+        el = elInit();
+        bindEvents();
     };
 
-    this.bindEvents = function() {
-        this.el.export_btn.on('click', function(event) {
-            self.exportType = $(event.target).attr('data');
-            self.startExport();
+    var bindEvents = function() {
+        el.export_btn.on('click', function(event) {
+            exportType = $(event.target).attr('data');
+            startExport();
         });
 
-        this.el.open_export_modal.on('shown', function() {
-            self.el.export_textarea.focus();
+        el.open_export_modal.on('shown', function() {
+            el.export_textarea.focus();
         });
 
-        this.el.export_textarea.focus(function() {
+        el.export_textarea.focus(function() {
             $(this).select();
 
             $(this).mouseup(function() {
@@ -33,28 +38,28 @@ function Export() {
         });
     };
 
-    this.startExport = function() {
-        if (this.exportType == 'url') {
-            this.startExportUrl();
-        } else if (this.exportType == 'bbcode') {
-            this.startExportBBCode();
+    var startExport = function() {
+        if (exportType == 'url') {
+            startExportUrl();
+        } else if (exportType == 'bbcode') {
+            startExportBBCode();
         }
     };
 
-    this.startExportUrl = function() {
-        this.collectAllSlotStates();
-        url = this.createExportUrl();
-        this.el.export_textarea.attr('rows', '1');
-        this.el.export_textarea.html(location.origin + location.pathname + '#' + url);
+    var startExportUrl = function() {
+        collectAllSlotStates();
+        var url = createExportUrl();
+        el.export_textarea.attr('rows', '1');
+        el.export_textarea.html(location.origin + location.pathname + '#' + url);
     };
 
-    this.createExportUrl = function() {
+    var createExportUrl = function() {
         var url = '';
         var i = 0;
         for (var slotId in slots) {
             if (slots.hasSlot(slotId)) {
                 var slot = slots[slotId];
-                url += this.createSlotUrl(slot.id, this.slotState[slot.id]);
+                url += createSlotUrl(slot.id, slotState[slot.id]);
                 if (i < slots.length() - 1) {
                     url += '&';
                 }
@@ -64,15 +69,15 @@ function Export() {
         return url;
     };
 
-    this.createSlotUrl = function(slotId, state) {
+    var createSlotUrl = function(slotId, state) {
         return slotId + '=' + state.ql + ',' + state.role + ',' + state.glyph_ql + ',' + state.primary_glyph + ',' + state.secondary_glyph +
             ',' + state.primary_dist + ',' + state.secondary_dist + ',' + state.signet_quality + ',' + state.signet_id;
     };
 
-    this.startExportBBCode = function() {
-        this.collectAllSlotStates();
+    var startExportBBCode = function() {
+        collectAllSlotStates();
         dust.render('export\bbcode', {
-            slotState: this.dustSlotState(),
+            slotState: dustSlotState(),
             summary: summary.collectAllStats()
         },
 
@@ -80,17 +85,17 @@ function Export() {
             if (err) {
                 console.log(err);
             }
-            self.el.export_textarea.attr('rows', '10');
-            self.el.export_textarea.html(out);
+            el.export_textarea.attr('rows', '10');
+            el.export_textarea.html(out);
         });
     };
 
-    this.dustSlotState = function() {
+    var dustSlotState = function() {
         var states = [];
         for (var i = 0; i < template_data.slots.length; i++) {
             var slot = template_data.slots[i].id_prefix;
             var group = template_data.slots[i].group;
-            var curState = this.slotState[slot];
+            var curState = slotState[slot];
             var role = role_mapping.to_stat[curState.role];
             var primaryValue = slots[slot].primaryGlyphValue();
             var secondaryValue = slots[slot].secondaryGlyphValue();
@@ -136,7 +141,18 @@ function Export() {
         return states;
     };
 
-    this.collectAllSlotStates = function() {
-        this.slotState = slots.mappedState();
+    var collectAllSlotStates = function() {
+        slotState = slots.mappedState();
     };
-}
+
+    var oPublic = {
+        init: init,
+        createSlotUrl: createSlotUrl,
+        createExportUrl: createExportUrl,
+        collectAllSlotStates: collectAllSlotStates,
+        startExportUrl: startExportUrl,
+        startExportBBCode: startExportBBCode
+    };
+
+    return oPublic;
+}();
