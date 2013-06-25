@@ -14,7 +14,7 @@ module('export-integration-tests', {
 test('should create slot url for head', 1, function() {
     createTankBuild();
 
-    var slotUrl = tswcalc.export.createSlotUrl(slots.head.id, slots.head.mappedState());
+    var slotUrl = tswcalc.export.createSlotUrl(tswcalc.slots.head.id, tswcalc.slots.head.mappedState());
 
     equal(slotUrl, 'head=4,1,5,5,0,4,0,3,18');
 });
@@ -22,7 +22,7 @@ test('should create slot url for head', 1, function() {
 test('should create slot url for NY raid wrist', 1, function() {
     createTankBuild();
 
-    var slotUrl = tswcalc.export.createSlotUrl(slots.wrist.id, slots.wrist.mappedState());
+    var slotUrl = tswcalc.export.createSlotUrl(tswcalc.slots.wrist.id, tswcalc.slots.wrist.mappedState());
 
     equal(slotUrl, 'wrist=4,1,4,6,0,4,0,3,85');
 });

@@ -8,7 +8,7 @@ function RaidCheckbox(slot) {
     };
 
     this.bindEvents = function() {
-        slots[slot].el.btn.nyraid.on('change', this.checkboxClicked);
+        tswcalc.slots[slot].el.btn.nyraid.on('change', this.checkboxClicked);
     };
 
     this.checkboxClicked = function(event) {
@@ -20,20 +20,20 @@ function RaidCheckbox(slot) {
     };
 
     this.changeToRaidItem = function() {
-        var item = tswcalc.data.ny_raid_items[slot][slots[slot].role()];
+        var item = tswcalc.data.ny_raid_items[slot][tswcalc.slots[slot].role()];
         if (item !== undefined) {
-            slots[slot].name(': ' + item.name);
-            slots[slot].ql('10.4');
-            slots[slot].signetQuality('epic');
-            slots[slot].el.signetId.append($('<option>', {
+            tswcalc.slots[slot].name(': ' + item.name);
+            tswcalc.slots[slot].ql('10.4');
+            tswcalc.slots[slot].signetQuality('epic');
+            tswcalc.slots[slot].el.signetId.append($('<option>', {
                 value: item.signet.id,
                 text: item.signet.name,
                 selected: true
             }));
-            slots[slot].updateSignet();
-            slots[slot].el.ql.attr('disabled', 'disabled');
-            slots[slot].el.signetId.attr('disabled', 'disabled');
-            slots[slot].el.signetQuality.attr('disabled', 'disabled');
+            tswcalc.slots[slot].updateSignet();
+            tswcalc.slots[slot].el.ql.attr('disabled', 'disabled');
+            tswcalc.slots[slot].el.signetId.attr('disabled', 'disabled');
+            tswcalc.slots[slot].el.signetQuality.attr('disabled', 'disabled');
             tswcalc.summary.updateAllStats();
         } else {
             //slot does not have any NY raid item
@@ -41,17 +41,17 @@ function RaidCheckbox(slot) {
     };
 
     this.changeToCustomItem = function() {
-        slots[slot].el.ql.removeAttr('disabled');
-        slots[slot].el.signetId.removeAttr('disabled');
-        slots[slot].el.signetQuality.removeAttr('disabled');
-        slots[slot].el.signetId.find('option').filter(function() {
+        tswcalc.slots[slot].el.ql.removeAttr('disabled');
+        tswcalc.slots[slot].el.signetId.removeAttr('disabled');
+        tswcalc.slots[slot].el.signetQuality.removeAttr('disabled');
+        tswcalc.slots[slot].el.signetId.find('option').filter(function() {
             return $(this).attr('value') >= 80;
         }).remove();
-        slots[slot].name('');
-        slots[slot].ql('10.0');
-        slots[slot].signetQuality('none');
-        slots[slot].signetId('none');
-        slots[slot].updateSignet();
+        tswcalc.slots[slot].name('');
+        tswcalc.slots[slot].ql('10.0');
+        tswcalc.slots[slot].signetQuality('none');
+        tswcalc.slots[slot].signetId('none');
+        tswcalc.slots[slot].updateSignet();
         tswcalc.summary.updateAllStats();
     };
 }

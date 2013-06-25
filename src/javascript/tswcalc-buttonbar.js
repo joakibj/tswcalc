@@ -30,15 +30,15 @@ tswcalc.buttonBar = function() {
 
     var setRoleOnAllSlots = function(event) {
         var role = event.target.id.split('-')[2];
-        for (var slotId in slots) {
-            if (slots.hasSlot(slotId)) {
-                slots[slotId].role(role);
+        for (var slotId in tswcalc.slots) {
+            if (tswcalc.slots.hasSlot(slotId)) {
+                tswcalc.slots[slotId].role(role);
                 if (slotId != 'weapon' && tswcalc.data.ny_raid_items[slotId][role] === undefined) {
-                    slots[slotId].el.btn.nyraid.prop('checked', false);
-                    slots[slotId].el.btn.nyraid.change();
-                    slots[slotId].el.btn.nyraid.attr('disabled', 'disabled');
+                    tswcalc.slots[slotId].el.btn.nyraid.prop('checked', false);
+                    tswcalc.slots[slotId].el.btn.nyraid.change();
+                    tswcalc.slots[slotId].el.btn.nyraid.attr('disabled', 'disabled');
                 } else {
-                    slots[slotId].el.btn.nyraid.removeAttr('disabled');
+                    tswcalc.slots[slotId].el.btn.nyraid.removeAttr('disabled');
                 }
             }
         }
@@ -47,20 +47,20 @@ tswcalc.buttonBar = function() {
 
     var setQlOnAllSlots = function(event) {
         var ql = '10.' + event.target.id.split('-')[3];
-        for (var slotId in slots) {
-            if (slots.hasSlot(slotId)) {
-                if (!slots[slotId].el.btn.nyraid.is(':checked')) {
-                    slots[slotId].ql(ql);
+        for (var slotId in tswcalc.slots) {
+            if (tswcalc.slots.hasSlot(slotId)) {
+                if (!tswcalc.slots[slotId].el.btn.nyraid.is(':checked')) {
+                    tswcalc.slots[slotId].ql(ql);
                 }
-                slots[slotId].glyphQl(ql);
-                slots[slotId].el.btn.primary[4].trigger('click');
+                tswcalc.slots[slotId].glyphQl(ql);
+                tswcalc.slots[slotId].el.btn.primary[4].trigger('click');
             }
         }
         tswcalc.summary.updateAllStats();
     };
 
     var resetAllSlots = function(event) {
-        slots.reset();
+        tswcalc.slots.reset();
         tswcalc.summary.updateAllStats();
     };
 
