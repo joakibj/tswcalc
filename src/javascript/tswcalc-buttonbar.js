@@ -2,10 +2,6 @@ var tswcalc = tswcalc || {};
 
 tswcalc.buttonBar = function() {
 
-    var init = function() {
-        bindEvents();
-    };
-
     var el = {
         btn_all_dps: $('#btn-all-dps'),
         btn_all_healer: $('#btn-all-healer'),
@@ -13,6 +9,10 @@ tswcalc.buttonBar = function() {
         btn_all_10_4: $('#btn-all-10-4'),
         btn_all_10_5: $('#btn-all-10-5'),
         btn_reset: $('#btn-reset')
+    };
+
+    var init = function() {
+        bindEvents();
     };
 
     var bindEvents = function() {
