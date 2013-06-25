@@ -10,7 +10,7 @@ module('checkbox-integration-tests', {
 });
 
 test('should change slot to raid item based on role', 11, function() {
-    slots.head.role('healer');
+    tswcalc.slots.head.role('healer');
     raidCheckboxes['head'].changeToRaidItem();
 
     equal($('#head-name').html(), ': Blood of the Old Ones');
@@ -27,7 +27,7 @@ test('should change slot to raid item based on role', 11, function() {
 });
 
 test('should change slot to custom item, from raid item', 12, function() {
-    slots.head.role('healer');
+    tswcalc.slots.head.role('healer');
     raidCheckboxes['head'].changeToRaidItem();
 
     raidCheckboxes['head'].changeToCustomItem();
@@ -50,7 +50,7 @@ test('should not change slot to raid item when there is no raid item for the slo
     raidCheckboxes['wrist'] = new RaidCheckbox('wrist');
     raidCheckboxes['wrist'].initiate();
 
-    slots.wrist.role('healer');
+    tswcalc.slots.wrist.role('healer');
     raidCheckboxes['wrist'].changeToRaidItem();
 
     equal($('#wrist-name').html(), '');

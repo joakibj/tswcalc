@@ -56,11 +56,11 @@ tswcalc.export = function() {
     var createExportUrl = function() {
         var url = '';
         var i = 0;
-        for (var slotId in slots) {
-            if (slots.hasSlot(slotId)) {
-                var slot = slots[slotId];
+        for (var slotId in tswcalc.slots) {
+            if (tswcalc.slots.hasSlot(slotId)) {
+                var slot = tswcalc.slots[slotId];
                 url += createSlotUrl(slot.id, slotState[slot.id]);
-                if (i < slots.length() - 1) {
+                if (i < tswcalc.slots.length() - 1) {
                     url += '&';
                 }
                 i++;
@@ -97,8 +97,8 @@ tswcalc.export = function() {
             var group = tswcalc.data.template_data.slots[i].group;
             var curState = slotState[slot];
             var role = tswcalc.data.role_mapping.to_stat[curState.role];
-            var primaryValue = slots[slot].primaryGlyphValue();
-            var secondaryValue = slots[slot].secondaryGlyphValue();
+            var primaryValue = tswcalc.slots[slot].primaryGlyphValue();
+            var secondaryValue = tswcalc.slots[slot].secondaryGlyphValue();
             var statType = 0;
             var statValue = 0;
             if (role == 'healer') {
@@ -115,7 +115,7 @@ tswcalc.export = function() {
                 statValue = tswcalc.data.custom_gear_data[group]['10.' + curState.ql].weapon_power;
             }
 
-            var signet = slots[slot].signet();
+            var signet = tswcalc.slots[slot].signet();
 
             var state = {
                 name: tswcalc.util.capitalise(slot),
@@ -132,7 +132,7 @@ tswcalc.export = function() {
                 secondary_value: secondaryValue,
                 signet_name: signet.name,
                 signet_quality: tswcalc.util.blankIfNone(tswcalc.util.capitalise(tswcalc.data.signet_quality_mapping.to_name[curState.signet_quality])),
-                signet_description: slots[slot].signetDescription(),
+                signet_description: tswcalc.slots[slot].signetDescription(),
                 signet_colour: tswcalc.data.signet_quality_mapping.to_colour[tswcalc.data.signet_quality_mapping.to_name[curState.signet_quality]],
                 is_item: signet.id >= 80 ? true : false
             };
@@ -142,7 +142,7 @@ tswcalc.export = function() {
     };
 
     var collectAllSlotStates = function() {
-        slotState = slots.mappedState();
+        slotState = tswcalc.slots.mappedState();
     };
 
     var oPublic = {

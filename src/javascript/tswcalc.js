@@ -74,7 +74,7 @@ tswcalc = function() {
     };
 
     var startSubModules = function() {
-        slots.init();
+        tswcalc.slots.init();
         for (var i = 0; i < tswcalc.data.template_data.slots.length; i++) {
             startDistributionButtonHandler(tswcalc.data.template_data.slots[i].id_prefix);
             startSelectHandler(tswcalc.data.template_data.slots[i]);

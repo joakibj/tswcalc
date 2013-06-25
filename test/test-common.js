@@ -3,7 +3,7 @@ function renderSlots() {
         slots: tswcalc.data.template_data.slots,
         signets: tswcalc.data.signet_data
     });
-    slots.init();
+    tswcalc.slots.init();
 }
 
 function renderSummary() {

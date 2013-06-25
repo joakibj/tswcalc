@@ -42,9 +42,9 @@ tswcalc.summary = function() {
         var blackBullions = 0;
         var criterionUpgrades = 0;
         var astralFuses = 0;
-        for (var slotId in slots) {
-            if (slots.hasSlot(slotId)) {
-                var slot = slots[slotId];
+        for (var slotId in tswcalc.slots) {
+            if (tswcalc.slots.hasSlot(slotId)) {
+                var slot = tswcalc.slots[slotId];
                 blackBullions += slot.blackBullionCost();
                 criterionUpgrades += slot.criterionUpgradeCost();
                 astralFuses += slot.astralFuseCost();
@@ -79,9 +79,9 @@ tswcalc.summary = function() {
             'heal-rating': 0
         };
 
-        for (var slotId in slots) {
-            if (slots.hasSlot(slotId)) {
-                var slot = slots[slotId];
+        for (var slotId in tswcalc.slots) {
+            if (tswcalc.slots.hasSlot(slotId)) {
+                var slot = tswcalc.slots[slotId];
                 var role = slot.role();
                 var ql = slot.ql();
                 if (slot.group == 'major') {
@@ -141,9 +141,9 @@ tswcalc.summary = function() {
             'physical-protection': 249,
             'magical-protection': 249
         };
-        for (var slotId in slots) {
-            if (slots.hasSlot(slotId)) {
-                var slot = slots[slotId];
+        for (var slotId in tswcalc.slots) {
+            if (tswcalc.slots.hasSlot(slotId)) {
+                var slot = tswcalc.slots[slotId];
                 sums[slot.primaryGlyph()] += slot.primaryGlyphValue();
                 sums[slot.secondaryGlyph()] += slot.secondaryGlyphValue();
             }
@@ -151,9 +151,9 @@ tswcalc.summary = function() {
 
         sums['critical-power-percentage'] = calculateCriticalPowerPercentage(sums['critical-power']);
 
-        for (var slotId in slots) {
-            if (slots.hasSlot(slotId)) {
-                var slot = slots[slotId];
+        for (var slotId in tswcalc.slots) {
+            if (tswcalc.slots.hasSlot(slotId)) {
+                var slot = tswcalc.slots[slotId];
                 if (el.activateRaid.is(':checked') && slot.signetId() >= 80) {
                     var signet = slot.signet();
                     if (signet.bonus !== undefined) {
@@ -184,9 +184,9 @@ tswcalc.summary = function() {
     };
 
     var updateGlyphValues = function() {
-        for (var slotId in slots) {
-            if (slots.hasSlot(slotId)) {
-                var slot = slots[slotId];
+        for (var slotId in tswcalc.slots) {
+            if (tswcalc.slots.hasSlot(slotId)) {
+                var slot = tswcalc.slots[slotId];
                 slot.updateGlyphValues();
             }
         }
