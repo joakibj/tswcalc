@@ -36,11 +36,8 @@ function clearFixture() {
     $('#qunit-fixture').html('');
 }
 
-var summary = {};
-
 function initiateSummary() {
-    summary = new Summary();
-    summary.initiate();
+    tswcalc.summary.init();
 }
 
 var buttonHandler = {};

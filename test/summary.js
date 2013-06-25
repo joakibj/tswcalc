@@ -31,18 +31,18 @@ module('summary-unit-tests', {
 });
 
 test('should calculate critical chance', 2, function() {
-    equal(summary.calculateCriticalChance(0), 5);
-    equal(summary.calculateCriticalChance(309), 11.585374715895394);
+    equal(tswcalc.summary.calculateCriticalChance(0), 5);
+    equal(tswcalc.summary.calculateCriticalChance(309), 11.585374715895394);
 });
 
 test('should calculate critical power', 2, function() {
-    equal(summary.calculateCriticalPowerPercentage(0), 25);
-    equal(summary.calculateCriticalPowerPercentage(238), 42.60281680828159);
+    equal(tswcalc.summary.calculateCriticalPowerPercentage(0), 25);
+    equal(tswcalc.summary.calculateCriticalPowerPercentage(238), 42.60281680828159);
 });
 
 test('should calculate combat power', 2, function() {
-    equal(summary.calculateCombatPower(0, 0), 75);
-    equal(summary.calculateCombatPower(3049, 398), 647);
+    equal(tswcalc.summary.calculateCombatPower(0, 0), 75);
+    equal(tswcalc.summary.calculateCombatPower(3049, 398), 647);
 });
 
 module('summary-integration-tests', {
@@ -60,7 +60,7 @@ module('summary-integration-tests', {
 });
 
 test('should collect primary stats at initial state', 5, function() {
-    var sums = summary.collectPrimaryStats();
+    var sums = tswcalc.summary.collectPrimaryStats();
 
     equal(sums['combat-power'], 155);
     equal(sums['weapon-power'], 398);
@@ -72,7 +72,7 @@ test('should collect primary stats at initial state', 5, function() {
 test('should collect primary stats for tank build', 5, function() {
     createTankBuild();
 
-    var sums = summary.collectPrimaryStats();
+    var sums = tswcalc.summary.collectPrimaryStats();
 
     equal(sums['combat-power'], 504);
     equal(sums['weapon-power'], 457);
@@ -82,7 +82,7 @@ test('should collect primary stats for tank build', 5, function() {
 });
 
 test('should collect offensive and defensive stats for initial state', 11, function() {
-    var sums = summary.collectOffensiveDefensiveStats();
+    var sums = tswcalc.summary.collectOffensiveDefensiveStats();
 
     equal(sums['critical-rating'], 0);
     equal(sums['critical-chance'], 5);
@@ -100,7 +100,7 @@ test('should collect offensive and defensive stats for initial state', 11, funct
 test('should collect offensive and defensive stats for tank build', 11, function() {
     createTankBuild();
 
-    var sums = summary.collectOffensiveDefensiveStats();
+    var sums = tswcalc.summary.collectOffensiveDefensiveStats();
 
     equal(sums['critical-rating'], 0);
     equal(sums['critical-chance'], 5);
@@ -139,7 +139,7 @@ test('should collect all stats and return two objects', 2, function() {
         'magical-protection': 249
     };
 
-    var allSums = summary.collectAllStats();
+    var allSums = tswcalc.summary.collectAllStats();
 
     deepEqual(allSums.primary, expectedPrimaryStats);
     deepEqual(allSums.offensive_defensive, expectedOffensiveDefensiveStats);
@@ -148,7 +148,7 @@ test('should collect all stats and return two objects', 2, function() {
 test('should update all stats', 16, function() {
     createTankBuild();
 
-    summary.updateAllStats();
+    tswcalc.summary.updateAllStats();
 
     equal($('#stat-hitpoints').html(), '10688');
     equal($('#stat-combat-power').html(), '504');
@@ -169,7 +169,7 @@ test('should update all stats', 16, function() {
 });
 
 test('should have initial costs at 10.0 price', 3, function() {
-    summary.updateCosts();
+    tswcalc.summary.updateCosts();
 
     equal($('#bb-cost').html(), '480');
     equal($('#cu-cost').html(), '0');
@@ -179,7 +179,7 @@ test('should have initial costs at 10.0 price', 3, function() {
 test('should update costs for tank build', 3, function() {
     createTankBuild();
 
-    summary.updateCosts();
+    tswcalc.summary.updateCosts();
 
     equal($('#bb-cost').html(), '1920');
     equal($('#cu-cost').html(), '1');
@@ -188,10 +188,9 @@ test('should update costs for tank build', 3, function() {
 
 test('should collect offensive and defensive stats for NY raid DPS build with raid items that modify stats when activate raid button is checked', 11, function() {
     createDPSNYRaidBuild();
-    summary.el.activateRaid.prop('checked', true);
-    summary.el.activateRaid.change();
+    tswcalc.summary.checkActivateRaid();
 
-    var sums = summary.collectOffensiveDefensiveStats();
+    var sums = tswcalc.summary.collectOffensiveDefensiveStats();
 
     equal(sums['critical-rating'], 379);
     equal(sums['critical-chance'], 13.02);

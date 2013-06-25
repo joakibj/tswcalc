@@ -9,7 +9,7 @@ tswcalc.import = function() {
                 updateSlot(slotId, splitVars);
             }
         }
-        summary.updateAllStats();
+        tswcalc.summary.updateAllStats();
     };
 
     var updateSlot = function(slotId, values) {

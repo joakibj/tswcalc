@@ -42,7 +42,7 @@ tswcalc.buttonBar = function() {
                 }
             }
         }
-        summary.updateAllStats();
+        tswcalc.summary.updateAllStats();
     };
 
     var setQlOnAllSlots = function(event) {
@@ -56,12 +56,12 @@ tswcalc.buttonBar = function() {
                 slots[slotId].el.btn.primary[4].trigger('click');
             }
         }
-        summary.updateAllStats();
+        tswcalc.summary.updateAllStats();
     };
 
     var resetAllSlots = function(event) {
         slots.reset();
-        summary.updateAllStats();
+        tswcalc.summary.updateAllStats();
     };
 
     var oPublic = {

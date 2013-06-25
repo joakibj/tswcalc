@@ -34,7 +34,7 @@ function RaidCheckbox(slot) {
             slots[slot].el.ql.attr('disabled', 'disabled');
             slots[slot].el.signetId.attr('disabled', 'disabled');
             slots[slot].el.signetQuality.attr('disabled', 'disabled');
-            summary.updateAllStats();
+            tswcalc.summary.updateAllStats();
         } else {
             //slot does not have any NY raid item
         }
@@ -52,6 +52,6 @@ function RaidCheckbox(slot) {
         slots[slot].signetQuality('none');
         slots[slot].signetId('none');
         slots[slot].updateSignet();
-        summary.updateAllStats();
+        tswcalc.summary.updateAllStats();
     };
 }

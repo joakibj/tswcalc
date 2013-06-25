@@ -11,7 +11,7 @@ function DistributionButtonHandler(slotId) {
         this.onlyActiveButton('#' + slotId + '-' + glyph + '-glyph-dist-btn0');
         $('#' + slotId + '-' + glyph + '-glyph-dist > button.btn').on('click', function(event) {
             self.setActiveButtonAndBalanceGlyphDist(this, glyph);
-            summary.updateOffensiveDefensiveStats();
+            tswcalc.summary.updateOffensiveDefensiveStats();
         });
     };
 

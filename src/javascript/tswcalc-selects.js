@@ -59,7 +59,7 @@ function SelectHandler(slot) {
 
     this.signetChange = function(event) {
         slots[slot.id_prefix].updateSignet();
-        summary.updatePrimaryStats();
+        tswcalc.summary.updatePrimaryStats();
     };
 
     this.roleChange = function(event) {
@@ -75,14 +75,14 @@ function SelectHandler(slot) {
         } else {
             raidCheckboxes[slot.id_prefix].changeToCustomItem();
         }
-        summary.updatePrimaryStats();
+        tswcalc.summary.updatePrimaryStats();
     };
 
     this.qlChange = function(event) {
-        summary.updatePrimaryStats();
+        tswcalc.summary.updatePrimaryStats();
     };
 
     this.glyphChange = function(id_suffix) {
-        summary.updateOffensiveDefensiveStats();
+        tswcalc.summary.updateOffensiveDefensiveStats();
     };
 }

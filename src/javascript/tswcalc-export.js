@@ -78,7 +78,7 @@ tswcalc.export = function() {
         collectAllSlotStates();
         dust.render('export\bbcode', {
             slotState: dustSlotState(),
-            summary: summary.collectAllStats()
+            summary: tswcalc.summary.collectAllStats()
         },
 
         function(err, out) {
