@@ -5,7 +5,6 @@ module('import-integration-tests', {
         renderSlots();
         renderSummary();
         initiateSummary();
-        importModule = new Import();
         initiateSelectHandlers();
         initiateButtonHandlers();
         initiateRaidCheckboxes();
@@ -24,7 +23,7 @@ test('should import URL and set summary and slots', 95, function() {
         wrist: '4,1,4,6,0,4,0,3,85'
     };
 
-    importModule.start(vars);
+    tswcalc.import.start(vars);
 
     // Summary
     equal($('#stat-hitpoints').html(), '10688');

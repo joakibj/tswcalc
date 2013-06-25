@@ -1,17 +1,18 @@
-function Import() {
-    var self = this;
+var tswcalc = tswcalc || {};
 
-    this.start = function(vars) {
+tswcalc.import = function() {
+
+    var start = function(vars) {
         for (var slotId in vars) {
             if (vars.hasOwnProperty(slotId)) {
                 splitVars = vars[slotId].split(',');
-                this.updateSlot(slotId, splitVars);
+                updateSlot(slotId, splitVars);
             }
         }
         summary.updateAllStats();
     };
 
-    this.updateSlot = function(slotId, values) {
+    var updateSlot = function(slotId, values) {
         slots[slotId].ql('10.' + values[0]);
         slots[slotId].role(role_mapping.to_stat[values[1]]);
         slots[slotId].glyphQl('10.' + values[2]);
@@ -35,4 +36,10 @@ function Import() {
             }
         }
     };
-}
+
+    var oPublic = {
+        start: start
+    };
+
+    return oPublic;
+}();

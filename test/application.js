@@ -11,5 +11,5 @@ test('should initate tswcalc submodules', 7, function() {
     ok(tswcalc.buttonBar);
     ok(summary);
     ok(tswcalc.export);
-    ok(importModule);
+    ok(tswcalc.import);
 });

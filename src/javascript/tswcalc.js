@@ -69,7 +69,7 @@ tswcalc = function() {
     var checkIfExported = function() {
         var vars = $.getUrlVars();
         if (!$.isEmptyObject(vars) && Object.keys(vars).length == 8 || Object.keys(vars).length == 10) {
-            importModule.start(vars);
+            tswcalc.import.start(vars);
             return true;
         }
         return false;
@@ -85,7 +85,6 @@ tswcalc = function() {
         startButtonBar();
         startSummary();
         startExportModule();
-        startImportModule();
     };
 
     var addHash = function() {
@@ -120,10 +119,6 @@ tswcalc = function() {
 
     var startExportModule = function() {
         tswcalc.export.init();
-    };
-
-    var startImportModule = function() {
-        importModule = new Import();
     };
 
     var oPublic = {
