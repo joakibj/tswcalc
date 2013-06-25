@@ -87,6 +87,43 @@ test('should set ql and glyph ql on all slots to 10.5 with the exception of ql o
     equal(slots.occult.glyphQl(), '10.5');
 });
 
+test('should set ql and glyph ql on all slots to 10.4 with the exception of ql on raid items after changing QL then changing role', 23, function() {
+    buttonBar.setQlOnAllSlots({
+        target: {
+            id: '#btn-all-10-4'
+        }
+    });
+    buttonBar.setRoleOnAllSlots({
+        target: {
+            id: '#btn-all-tank'
+        }
+    });
+
+    equal(slots.weapon.ql(), '10.4');
+    equal(slots.weapon.glyphQl(), '10.4');
+    equal(slots.head.ql(), '10.4');
+    equal(slots.head.glyphQl(), '10.4');
+    equal(slots.ring.ql(), '10.4');
+    equal(slots.ring.glyphQl(), '10.4');
+    equal(slots.neck.ql(), '10.4');
+    equal(slots.neck.glyphQl(), '10.4');
+    equal(slots.wrist.ql(), '10.4');
+    equal(slots.wrist.glyphQl(), '10.4');
+    equal(slots.luck.ql(), '10.4');
+    equal(slots.luck.glyphQl(), '10.4');
+    equal(slots.waist.ql(), '10.4');
+    equal(slots.waist.glyphQl(), '10.4');
+    equal(slots.occult.ql(), '10.4');
+    equal(slots.occult.glyphQl(), '10.4');
+    equal(slots.head.role(), 'tank');
+    equal(slots.ring.role(), 'tank');
+    equal(slots.neck.role(), 'tank');
+    equal(slots.wrist.role(), 'tank');
+    equal(slots.luck.role(), 'tank');
+    equal(slots.waist.role(), 'tank');
+    equal(slots.occult.role(), 'tank');
+});
+
 test('should reset all slots', 80, function() {
     buttonBar.resetAllSlots();
 
