@@ -13,14 +13,12 @@ test('should have required buttonbar buttons in DOM', 6, function() {
     ok($('#btn-reset').length !== 0, 'reset button exists');
 });
 
-var buttonBar = {};
 var buttonHandler = {};
 
 module('buttonbar-events', {
     setup: function() {
         renderButtonbar();
-        buttonBar = new ButtonBar();
-        buttonBar.initiate();
+        tswcalc.buttonBar.init();
     }
 });
 
@@ -40,14 +38,14 @@ module('buttonbar-integration-tests', {
         initiateButtonHandlers();
         initiateSelectHandlers();
         initiateRaidCheckboxes();
-        buttonBar = new ButtonBar();
+        tswcalc.buttonBar.init();
         initiateSummary();
         createTankBuild();
     }
 });
 
 test('should set role on all slots to dps', 7, function() {
-    buttonBar.setRoleOnAllSlots({
+    tswcalc.buttonBar.setRoleOnAllSlots({
         target: {
             id: '#btn-all-dps'
         }
@@ -63,7 +61,7 @@ test('should set role on all slots to dps', 7, function() {
 });
 
 test('should set ql and glyph ql on all slots to 10.5 with the exception of ql on raid items', 16, function() {
-    buttonBar.setQlOnAllSlots({
+    tswcalc.buttonBar.setQlOnAllSlots({
         target: {
             id: '#btn-all-10-5'
         }
@@ -88,7 +86,7 @@ test('should set ql and glyph ql on all slots to 10.5 with the exception of ql o
 });
 
 test('should reset all slots', 80, function() {
-    buttonBar.resetAllSlots();
+    tswcalc.buttonBar.resetAllSlots();
 
     assertReset(slots.weapon);
     assertReset(slots.head);

@@ -1,7 +1,12 @@
-function ButtonBar() {
-    var self = this;
+var tswcalc = tswcalc || {};
 
-    this.el = {
+tswcalc.buttonBar = function() {
+
+    var init = function() {
+        bindEvents();
+    };
+
+    var el = {
         btn_all_dps: $('#btn-all-dps'),
         btn_all_healer: $('#btn-all-healer'),
         btn_all_tank: $('#btn-all-tank'),
@@ -10,20 +15,16 @@ function ButtonBar() {
         btn_reset: $('#btn-reset')
     };
 
-    this.initiate = function() {
-        this.bindEvents();
+    var bindEvents = function() {
+        el.btn_all_dps.on('click', setRoleOnAllSlots);
+        el.btn_all_healer.on('click', setRoleOnAllSlots);
+        el.btn_all_tank.on('click', setRoleOnAllSlots);
+        el.btn_all_10_4.on('click', setQlOnAllSlots);
+        el.btn_all_10_5.on('click', setQlOnAllSlots);
+        el.btn_reset.on('click', resetAllSlots);
     };
 
-    this.bindEvents = function() {
-        this.el.btn_all_dps.on('click', this.setRoleOnAllSlots);
-        this.el.btn_all_healer.on('click', this.setRoleOnAllSlots);
-        this.el.btn_all_tank.on('click', this.setRoleOnAllSlots);
-        this.el.btn_all_10_4.on('click', this.setQlOnAllSlots);
-        this.el.btn_all_10_5.on('click', this.setQlOnAllSlots);
-        this.el.btn_reset.on('click', this.resetAllSlots);
-    };
-
-    this.setRoleOnAllSlots = function(event) {
+    var setRoleOnAllSlots = function(event) {
         var role = event.target.id.split('-')[2];
         for (var slotId in slots) {
             if (slots.hasSlot(slotId)) {
@@ -40,7 +41,7 @@ function ButtonBar() {
         summary.updateAllStats();
     };
 
-    this.setQlOnAllSlots = function(event) {
+    var setQlOnAllSlots = function(event) {
         var ql = '10.' + event.target.id.split('-')[3];
         for (var slotId in slots) {
             if (slots.hasSlot(slotId)) {
@@ -54,8 +55,15 @@ function ButtonBar() {
         summary.updateAllStats();
     };
 
-    this.resetAllSlots = function(event) {
+    var resetAllSlots = function(event) {
         slots.reset();
         summary.updateAllStats();
     };
-}
+
+    var oPublic = {
+        el: el,
+        init: init
+    };
+
+    return oPublic;
+}();

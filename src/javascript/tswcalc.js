@@ -7,7 +7,6 @@ var tswcalc = tswcalc || {};
 var buttonHandler = {};
 var selectHandler = {};
 var raidCheckboxes = {};
-var buttonBar = {};
 var summary = {};
 var exportModule = {};
 var importModule = {};
@@ -112,8 +111,7 @@ tswcalc = function() {
     };
 
     var startButtonBar = function() {
-        buttonBar = new ButtonBar();
-        buttonBar.initiate();
+        tswcalc.buttonBar.init();
     };
 
     var startSummary = function() {
