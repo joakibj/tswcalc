@@ -1,13 +1,11 @@
 module('tswcalc', {
     setup: function() {
-        initiateTswCalc();
-    },
-    teardown: function() {
-
+        tswcalc.init();
     }
 });
 
-test('should initate tswcalc submodules', 6, function() {
+test('should initate tswcalc submodules', 7, function() {
+    ok(tswcalc);
     ok(buttonHandler);
     ok(selectHandler);
     ok(buttonBar);

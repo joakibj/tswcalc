@@ -1,128 +1,138 @@
+$(document).ready(function() {
+    tswcalc.init();
+});
+
+var tswcalc = tswcalc || {};
+
 var buttonHandler = {};
 var selectHandler = {};
 var raidCheckboxes = {};
-var buttonBar = 0;
-var summary = 0;
-var exportModule = 0;
-var importModule = 0;
+var buttonBar = {};
+var summary = {};
+var exportModule = {};
+var importModule = {};
 
-$(document).ready(function() {
-    initiateTswCalc();
-});
+tswcalc = function() {
+    var init = function() {
+        renderContainer(template_data);
+        addHash();
 
-function initiateTswCalc() {
-    renderContainer(template_data);
-    addHash();
+        activateToolTips();
 
-    activateToolTips();
+        startSubModules();
+        if (!checkIfExported()) {
+            triggerReset();
+        }
 
-    startSubModules();
-    if (!checkIfExported()) {
-        triggerReset();
-    }
+        $('#summary').scrollToFixed();
+    };
 
-    $('#summary').scrollToFixed();
-}
+    var triggerReset = function() {
+        $('#btn-reset').trigger('click');
+    };
 
-function triggerReset() {
-    $('#btn-reset').trigger('click');
-}
-
-function activateToolTips() {
-    $('.glyph-tooltip, .signet-tooltip').tooltip({
-        placement: 'left'
-    });
-    $('.cost-tooltip').tooltip({
-        placement: function(context, source) {
-            var position = $(source).position();
-            if (position.top < 50) {
-                return 'bottom';
-            } else {
-                return 'top';
+    var activateToolTips = function() {
+        $('.glyph-tooltip, .signet-tooltip').tooltip({
+            placement: 'left'
+        });
+        $('.cost-tooltip').tooltip({
+            placement: function(context, source) {
+                var position = $(source).position();
+                if (position.top < 50) {
+                    return 'bottom';
+                } else {
+                    return 'top';
+                }
             }
+        });
+        $('#raid-stats > label').tooltip({
+            placement: 'bottom'
+        });
+        $('.cost-tooltip, .glyph-tooltip, .signet-tooltip').on('click', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+        });
+    };
+
+    var renderContainer = function(data) {
+        dust.render('container', {
+            slots: template_data.slots,
+            signets: signet_data
+        },
+
+        function(err, out) {
+            if (err) {
+                console.log(err);
+            }
+            $('.container').html(out);
+        });
+    };
+
+    var checkIfExported = function() {
+        var vars = $.getUrlVars();
+        if (!$.isEmptyObject(vars) && Object.keys(vars).length == 8 || Object.keys(vars).length == 10) {
+            importModule.start(vars);
+            return true;
         }
-    });
-    $('#raid-stats > label').tooltip({
-        placement: 'bottom'
-    });
-    $('.cost-tooltip, .glyph-tooltip, .signet-tooltip').on('click', function(event) {
-        event.preventDefault();
-        event.stopPropagation();
-    });
-}
+        return false;
+    };
 
-function renderContainer(data) {
-    dust.render('container', {
-        slots: template_data.slots,
-        signets: signet_data
-    },
-
-    function(err, out) {
-        if (err) {
-            console.log(err);
+    var startSubModules = function() {
+        slots.init();
+        for (var i = 0; i < template_data.slots.length; i++) {
+            startDistributionButtonHandler(template_data.slots[i].id_prefix);
+            startSelectHandler(template_data.slots[i]);
+            startRaidCheckboxes(template_data.slots[i].id_prefix);
         }
-        $('.container').html(out);
-    });
-}
+        startButtonBar();
+        startSummary();
+        startExportModule();
+        startImportModule();
+    };
 
-function checkIfExported() {
-    var vars = $.getUrlVars();
-    if (!$.isEmptyObject(vars) && Object.keys(vars).length == 8 || Object.keys(vars).length == 10) {
-        importModule.start(vars);
-        return true;
-    }
-    return false;
-}
+    var addHash = function() {
+        if (location.hash == '') {
+            location.hash = ' ';
+        }
+    };
 
-function startSubModules() {
-    slots.init();
-    for (var i = 0; i < template_data.slots.length; i++) {
-        startDistributionButtonHandler(template_data.slots[i].id_prefix);
-        startSelectHandler(template_data.slots[i]);
-        startRaidCheckboxes(template_data.slots[i].id_prefix);
-    }
-    startButtonBar();
-    startSummary();
-    startExportModule();
-    startImportModule();
-}
+    var startDistributionButtonHandler = function(slotId) {
+        buttonHandler[slotId] = new DistributionButtonHandler(slotId);
+        buttonHandler[slotId].initiate();
+    };
 
-function addHash() {
-    if (location.hash == '') {
-        location.hash = ' ';
-    }
-}
+    var startSelectHandler = function(slot) {
+        selectHandler[slot.id_prefix] = new SelectHandler(slot);
+        selectHandler[slot.id_prefix].initiate();
+    };
 
-function startDistributionButtonHandler(slotId) {
-    buttonHandler[slotId] = new DistributionButtonHandler(slotId);
-    buttonHandler[slotId].initiate();
-}
+    var startRaidCheckboxes = function(slotId) {
+        raidCheckboxes[slotId] = new RaidCheckbox(slotId);
+        raidCheckboxes[slotId].initiate();
+    };
 
-function startSelectHandler(slot) {
-    selectHandler[slot.id_prefix] = new SelectHandler(slot);
-    selectHandler[slot.id_prefix].initiate();
-}
+    var startButtonBar = function() {
+        buttonBar = new ButtonBar();
+        buttonBar.initiate();
+    };
 
-function startRaidCheckboxes(slotId) {
-    raidCheckboxes[slotId] = new RaidCheckbox(slotId);
-    raidCheckboxes[slotId].initiate();
-}
+    var startSummary = function() {
+        summary = new Summary();
+        summary.initiate();
+    };
 
-function startButtonBar() {
-    buttonBar = new ButtonBar();
-    buttonBar.initiate();
-}
+    var startExportModule = function() {
+        exportModule = new Export();
+        exportModule.initiate();
+    };
 
-function startSummary() {
-    summary = new Summary();
-    summary.initiate();
-}
+    var startImportModule = function() {
+        importModule = new Import();
+    };
 
-function startExportModule() {
-    exportModule = new Export();
-    exportModule.initiate();
-}
+    var oPublic = {
+        init: init
+    };
 
-function startImportModule() {
-    importModule = new Import();
-}
+    return oPublic;
+}();
