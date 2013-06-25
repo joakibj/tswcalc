@@ -7,7 +7,6 @@ var tswcalc = tswcalc || {};
 var buttonHandler = {};
 var selectHandler = {};
 var raidCheckboxes = {};
-var importModule = {};
 
 tswcalc = function() {
     var init = function() {
