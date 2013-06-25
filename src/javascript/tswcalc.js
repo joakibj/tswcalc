@@ -4,10 +4,6 @@ $(document).ready(function() {
 
 var tswcalc = tswcalc || {};
 
-var buttonHandler = {};
-var selectHandler = {};
-var raidCheckboxes = {};
-
 tswcalc = function() {
     var init = function() {
         renderContainer(tswcalc.data.template_data);
@@ -80,9 +76,9 @@ tswcalc = function() {
             startSelectHandler(tswcalc.data.template_data.slots[i]);
             startRaidCheckboxes(tswcalc.data.template_data.slots[i].id_prefix);
         }
-        startButtonBar();
-        startSummary();
-        startExportModule();
+        tswcalc.buttonBar.init();
+        tswcalc.summary.init();
+        tswcalc.export.init();
     };
 
     var addHash = function() {
@@ -92,30 +88,18 @@ tswcalc = function() {
     };
 
     var startDistributionButtonHandler = function(slotId) {
-        buttonHandler[slotId] = new DistributionButtonHandler(slotId);
-        buttonHandler[slotId].initiate();
+        tswcalc.button[slotId] = new tswcalc.button.DistributionButtonHandler(slotId);
+        tswcalc.button[slotId].initiate();
     };
 
     var startSelectHandler = function(slot) {
-        selectHandler[slot.id_prefix] = new SelectHandler(slot);
-        selectHandler[slot.id_prefix].initiate();
+        tswcalc.select[slot.id_prefix] = new tswcalc.select.SelectHandler(slot);
+        tswcalc.select[slot.id_prefix].initiate();
     };
 
     var startRaidCheckboxes = function(slotId) {
-        raidCheckboxes[slotId] = new RaidCheckbox(slotId);
-        raidCheckboxes[slotId].initiate();
-    };
-
-    var startButtonBar = function() {
-        tswcalc.buttonBar.init();
-    };
-
-    var startSummary = function() {
-        tswcalc.summary.init();
-    };
-
-    var startExportModule = function() {
-        tswcalc.export.init();
+        tswcalc.checkbox[slotId] = new tswcalc.checkbox.RaidCheckbox(slotId);
+        tswcalc.checkbox[slotId].initiate();
     };
 
     var oPublic = {

@@ -1,4 +1,3 @@
-var selectHandler = [];
 
 module('selects-dom', {
     setup: function() {
@@ -67,6 +66,6 @@ test('should have added signets to correct group', 8, function() {
 });
 
 test('should get signets for head', 1, function() {
-    equal(selectHandler['head'].getSignetsForHead('head').length, 16);
+    equal(tswcalc.select['head'].getSignetsForHead('head').length, 16);
 });
 

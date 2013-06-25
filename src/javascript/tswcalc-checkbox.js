@@ -1,4 +1,7 @@
-function RaidCheckbox(slot) {
+var tswcalc = tswcalc || {};
+tswcalc.checkbox = tswcalc.checkbox || {};
+
+tswcalc.checkbox.RaidCheckbox = function RaidCheckbox(slot) {
     var self = this;
 
     this.initiate = function() {
@@ -54,4 +57,4 @@ function RaidCheckbox(slot) {
         tswcalc.slots[slot].updateSignet();
         tswcalc.summary.updateAllStats();
     };
-}
+};

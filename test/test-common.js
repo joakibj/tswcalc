@@ -40,32 +40,26 @@ function initiateSummary() {
     tswcalc.summary.init();
 }
 
-var buttonHandler = {};
-
 function initiateButtonHandlers() {
     for (var i = 0; i < tswcalc.data.template_data.slots.length; i++) {
         var slot = tswcalc.data.template_data.slots[i];
-        buttonHandler[slot.id_prefix] = new DistributionButtonHandler(slot.id_prefix);
-        buttonHandler[slot.id_prefix].initiate();
+        tswcalc.button[slot.id_prefix] = new tswcalc.button.DistributionButtonHandler(slot.id_prefix);
+        tswcalc.button[slot.id_prefix].initiate();
     }
 }
-
-var selectHandler = {};
 
 function initiateSelectHandlers() {
     for (var i = 0; i < tswcalc.data.template_data.slots.length; i++) {
         var slot = tswcalc.data.template_data.slots[i];
-        selectHandler[slot.id_prefix] = new SelectHandler(slot);
-        selectHandler[slot.id_prefix].initiate();
+        tswcalc.select[slot.id_prefix] = new tswcalc.select.SelectHandler(slot);
+        tswcalc.select[slot.id_prefix].initiate();
     }
 }
-
-var raidCheckboxes = {};
 
 function initiateRaidCheckboxes() {
     for (var i = 0; i < tswcalc.data.template_data.slots.length; i++) {
         var slot = tswcalc.data.template_data.slots[i];
-        raidCheckboxes[slot.id_prefix] = new RaidCheckbox(slot.id_prefix);
-        raidCheckboxes[slot.id_prefix].initiate();
+        tswcalc.checkbox[slot.id_prefix] = new tswcalc.checkbox.RaidCheckbox(slot.id_prefix);
+        tswcalc.checkbox[slot.id_prefix].initiate();
     }
 }

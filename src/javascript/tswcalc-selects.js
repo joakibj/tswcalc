@@ -1,4 +1,7 @@
-function SelectHandler(slot) {
+var tswcalc = tswcalc || {};
+tswcalc.select = tswcalc.select || {};
+
+tswcalc.select.SelectHandler = function SelectHandler(slot) {
     var self = this;
 
     this.initiate = function() {
@@ -85,4 +88,4 @@ function SelectHandler(slot) {
     this.glyphChange = function(id_suffix) {
         tswcalc.summary.updateOffensiveDefensiveStats();
     };
-}
+};

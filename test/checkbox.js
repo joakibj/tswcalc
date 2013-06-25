@@ -4,14 +4,14 @@ module('checkbox-integration-tests', {
         renderSlots();
         initiateSelectHandlers();
         initiateSummary();
-        raidCheckboxes['head'] = new RaidCheckbox('head');
-        raidCheckboxes['head'].initiate();
+        tswcalc.checkbox['head'] = new tswcalc.checkbox.RaidCheckbox('head');
+        tswcalc.checkbox['head'].initiate();
     }
 });
 
 test('should change slot to raid item based on role', 11, function() {
     tswcalc.slots.head.role('healer');
-    raidCheckboxes['head'].changeToRaidItem();
+    tswcalc.checkbox['head'].changeToRaidItem();
 
     equal($('#head-name').html(), ': Blood of the Old Ones');
     equal($('#head-signet-img-icon').attr('src'), 'assets/images/icons/blood_of_the_old_ones.png');
@@ -28,9 +28,9 @@ test('should change slot to raid item based on role', 11, function() {
 
 test('should change slot to custom item, from raid item', 12, function() {
     tswcalc.slots.head.role('healer');
-    raidCheckboxes['head'].changeToRaidItem();
+    tswcalc.checkbox['head'].changeToRaidItem();
 
-    raidCheckboxes['head'].changeToCustomItem();
+    tswcalc.checkbox['head'].changeToCustomItem();
 
     equal($('#head-name').html(), '');
     equal($('#head-signet-img-icon').attr('src'), 'assets/images/icons/head_dps.png');
@@ -47,11 +47,11 @@ test('should change slot to custom item, from raid item', 12, function() {
 });
 
 test('should not change slot to raid item when there is no raid item for the slot+role', 11, function() {
-    raidCheckboxes['wrist'] = new RaidCheckbox('wrist');
-    raidCheckboxes['wrist'].initiate();
+    tswcalc.checkbox['wrist'] = new tswcalc.checkbox.RaidCheckbox('wrist');
+    tswcalc.checkbox['wrist'].initiate();
 
     tswcalc.slots.wrist.role('healer');
-    raidCheckboxes['wrist'].changeToRaidItem();
+    tswcalc.checkbox['wrist'].changeToRaidItem();
 
     equal($('#wrist-name').html(), '');
     equal($('#wrist-signet-img-icon').attr('src'), 'assets/images/icons/major_dps.png');
