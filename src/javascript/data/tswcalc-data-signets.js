@@ -31,16 +31,16 @@ tswcalc.data.signet_data = {
             description: 'When you hit a target you have a 10% chance to gain a damage increase of %d% for 5 seconds.',
             cooldown: '11',
             quality: {
-                epic: 21,
-                elite: 14,
-                normal: 7
+                epic: 24,
+                elite: 16,
+                normal: 8
             },
             id: 52,
             name: 'Abuse',
             icon: 'weapon_dps'
         }, {
             description: 'When you hit a weakened target you have a 15% chance to gain %d% damage increase for 6 seconds.',
-            cooldown: '10',
+            cooldown: '9',
             quality: {
                 epic: 15,
                 elite: 10,
@@ -50,24 +50,29 @@ tswcalc.data.signet_data = {
             name: 'Aggression',
             icon: 'weapon_util'
         }, {
-            description: 'When you penetrate a target you have a 33% chance to make your target take %d% more damage from further penetrating hits for 7 seconds.',
-            cooldown: '0',
+            description: 'When you penetrate a target you make that target take %d more damage from further penetrating hits for 7 seconds.',
+            cooldown: '7',
             quality: {
-                epic: 30,
-                elite: 20,
-                normal: 10
+                epic: 24,
+                elite: 16,
+                normal: 8
             },
             id: 2,
             name: 'Breaching',
             icon: 'weapon_dps'
         }, {
-            description: 'When you hit a target you have a 10% chance to make your next %d hits never miss.',
-            cooldown: '10',
-            quality: {
-                epic: 12,
-                elite: 8,
-                normal: 4
-            },
+            description: 'When you hit a target you have a 10% chance to make your next %0 hits never glance and deal %1 more damage.',
+            cooldown: '12',
+            quality: [{
+                    epic: 12,
+                    elite: 8,
+                    normal: 4
+                }, {
+                    epic: 3,
+                    elite: 2,
+                    normal: 1
+                }
+            ],
             id: 3,
             name: 'Castigation',
             icon: 'weapon_dps'
@@ -86,20 +91,20 @@ tswcalc.data.signet_data = {
             description: 'When you achieve 10 hits you gain %d% damage increase for 6 seconds.',
             cooldown: '6',
             quality: {
-                epic: 9,
-                elite: 6,
-                normal: 3
+                epic: 15,
+                elite: 10,
+                normal: 5
             },
             id: 5,
             name: 'Fury',
             icon: 'weapon_dps'
         }, {
-            description: 'When you critically hit a target you gain a critical damage increase of %d% for 15 seconds.',
+            description: 'When you critically hit a target, you gain a critical damage increase of %d% for 15 seconds.',
             cooldown: '15',
             quality: {
-                epic: 18,
-                elite: 12,
-                normal: 6
+                epic: 24,
+                elite: 16,
+                normal: 8
             },
             id: 6,
             name: 'Laceration',
@@ -108,42 +113,42 @@ tswcalc.data.signet_data = {
             description: 'When you hit an impaired target you gain increased damage of %d% per stack for 5 seconds, up to 3 stacks.',
             cooldown: '0',
             quality: {
-                epic: 3,
-                elite: 2,
-                normal: 1
+                epic: 6,
+                elite: 4,
+                normal: 2
             },
             id: 7,
             name: 'Obedience',
             icon: 'weapon_util'
         }, {
-            description: 'When you hit an afflicted target, you have a 20% chance to hit them for an additional %d damage.',
+            description: 'When you hit an afflicted target, you have a 20% chance to hit them for an additional %d magical damage.',
             cooldown: '0',
             quality: {
-                epic: 144,
-                elite: 96,
-                normal: 48
+                epic: 224,
+                elite: 149,
+                normal: 74
             },
             id: 8,
             name: 'Opportunism',
             icon: 'weapon_util'
         }, {
-            description: 'When you hit a target you have a 10% chance to hit them for an additional %d damage.',
+            description: 'When you hit a target you have a 10% chance to hit them for an additional %d magical damage.',
             cooldown: '0',
             quality: {
-                epic: 236,
-                elite: 158,
+                epic: 427,
+                elite: 284,
                 normal: 80
             },
             id: 9,
             name: 'Sadism',
             icon: 'weapon_dps'
         }, {
-            description: 'When you heal a target there is a 20% chance they will gain a barrier that absorbs %d and lasts 10 seconds.',
+            description: 'When you heal a target, there is a 20% chance they will gain a barrier that absorbs %d points of damage and lasts 10 seconds.',
             cooldown: '0',
             quality: {
-                epic: 120,
-                elite: 80,
-                normal: 40
+                epic: 142,
+                elite: 94,
+                normal: 47
             },
             id: 10,
             name: 'Benediction',
@@ -160,12 +165,12 @@ tswcalc.data.signet_data = {
             name: 'Valour',
             icon: 'weapon_heal'
         }, {
-            description: 'When you hit a weakened target you have a 5% chance to be healed for %d every 2 seconds for 8 seconds.',
+            description: 'When you hit a weakened target, you have a 5% chance to be healed for %d every 2 seconds for 8 seconds.',
             cooldown: '0',
             quality: {
-                epic: 141,
-                elite: 94,
-                normal: 47
+                epic: 198,
+                elite: 132,
+                normal: 66
             },
             id: 12,
             name: 'Cruel Delight',
@@ -174,31 +179,31 @@ tswcalc.data.signet_data = {
             description: 'When you hinder a target you are healed for %d.',
             cooldown: '0',
             quality: {
-                epic: 120,
-                elite: 80,
-                normal: 40
+                epic: 141,
+                elite: 94,
+                normal: 47
             },
             id: 13,
             name: 'Extrication',
             icon: 'weapon_util'
         }, {
-            description: 'When you impair a target you are healed for %d every 2 for 6 seconds.',
+            description: 'When you impair a target, you are healed for %d every 2 seconds for 6 seconds.',
             cooldown: '0',
             quality: {
-                epic: 79,
-                elite: 53,
-                normal: 26
+                epic: 167,
+                elite: 111,
+                normal: 55
             },
             id: 14,
             name: 'Interdiction',
             icon: 'weapon_util'
         }, {
             description: 'When you heal a target below 50% health they are healed for %d every 2 seconds for 8 seconds.',
-            cooldown: '0',
+            cooldown: '8',
             quality: {
-                epic: 72,
-                elite: 48,
-                normal: 24
+                epic: 94,
+                elite: 63,
+                normal: 32
             },
             id: 15,
             name: 'Temperance',
@@ -209,48 +214,48 @@ tswcalc.data.signet_data = {
             description: 'Your Affliction effects deal %d% more damage.',
             cooldown: '0',
             quality: {
-                epic: 15,
-                elite: 10,
-                normal: 5
+                epic: 21,
+                elite: 14,
+                normal: 7
             },
             id: 16,
             name: 'Corruption',
             icon: 'head_util'
         }, {
             description: 'When you are glanced you gain a %d Defense Rating for 8 seconds.',
-            cooldown: '10',
+            cooldown: '8',
             quality: {
-                epic: 186,
-                elite: 124,
-                normal: 62
+                epic: 348,
+                elite: 232,
+                normal: 116
             },
             id: 17,
             name: 'Discipline',
             icon: 'head_tank'
         }, {
-            description: 'When you block you gain a %d% block chance for 4 seconds.',
+            description: 'When you block you gain %d% block chance for 4 seconds.',
             cooldown: '10',
             quality: {
-                epic: 30,
-                elite: 20,
-                normal: 10
+                epic: 45,
+                elite: 30,
+                normal: 15
             },
             id: 18,
             name: 'Order',
             icon: 'head_tank'
         }, {
-            description: 'When you are glanced you gain magical and physical protection of %d per stack for 4 seconds, up to 3 stacks.',
+            description: 'When you are glanced or evade an attack, you gain magical and physical protection of %d per stack for 4 seconds, up to 3 stacks.',
             cooldown: '0',
             quality: {
-                epic: 141,
-                elite: 94,
-                normal: 47
+                epic: 93,
+                elite: 62,
+                normal: 31
             },
             id: 19,
             name: 'Reinforcement',
             icon: 'head_tank'
         }, {
-            description: 'When you block you gain %d block rating per stack for 4 seconds, up to 3 stacks.',
+            description: 'When you block you gain %d physical and magical protection per stack for 4 seconds, up to 3 stacks.',
             cooldown: '0',
             quality: {
                 epic: 93,

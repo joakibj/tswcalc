@@ -124,7 +124,7 @@ test('should update signet icon from name', 1, function() {
 });
 
 test('should get signet description for single value replace', 1, function() {
-    equal(tswcalc.slots.head.signetDescription(), 'When you block you gain a 30% block chance for 4 seconds. 10 seconds cooldown.');
+    equal(tswcalc.slots.head.signetDescription(), 'When you block you gain 45% block chance for 4 seconds. 10 seconds cooldown.');
 });
 
 test('should get signet description for multiple value replace', 1, function() {
@@ -137,7 +137,7 @@ test('should get signet description for multiple value replace', 1, function() {
 test('should update signet description', 1, function() {
     tswcalc.slots.head.updateSignetDescription();
 
-    equal($('#head-signet-description').html(), 'When you block you gain a 30% block chance for 4 seconds. 10 seconds cooldown.');
+    equal($('#head-signet-description').html(), 'When you block you gain 45% block chance for 4 seconds. 10 seconds cooldown.');
 });
 
 test('should update signet description to blank if no signet is picked', 1, function() {
@@ -149,7 +149,7 @@ test('should update signet description to blank if no signet is picked', 1, func
 test('should get single signet value based on quality', 1, function() {
     var signet = tswcalc.slots.head.signet();
 
-    deepEqual(tswcalc.slots.head.determineSignetQualityValue(signet), 30);
+    deepEqual(tswcalc.slots.head.determineSignetQualityValue(signet), 45);
 });
 
 test('should get black bullion cost for head slot (10.4/10.5)', 1, function() {
