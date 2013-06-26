@@ -1,9 +1,9 @@
 function renderSlots() {
     renderTemplate('slots', {
-        slots: template_data.slots,
-        signets: signet_data
+        slots: tswcalc.data.template_data.slots,
+        signets: tswcalc.data.signet_data
     });
-    slots.init();
+    tswcalc.slots.init();
 }
 
 function renderSummary() {
@@ -36,39 +36,30 @@ function clearFixture() {
     $('#qunit-fixture').html('');
 }
 
-var summary = {};
-
 function initiateSummary() {
-    summary = new Summary();
-    summary.initiate();
+    tswcalc.summary.init();
 }
-
-var buttonHandler = {};
 
 function initiateButtonHandlers() {
-    for (var i = 0; i < template_data.slots.length; i++) {
-        var slot = template_data.slots[i];
-        buttonHandler[slot.id_prefix] = new DistributionButtonHandler(slot.id_prefix);
-        buttonHandler[slot.id_prefix].initiate();
+    for (var i = 0; i < tswcalc.data.template_data.slots.length; i++) {
+        var slot = tswcalc.data.template_data.slots[i];
+        tswcalc.button[slot.id_prefix] = new tswcalc.button.DistributionButtonHandler(slot.id_prefix);
+        tswcalc.button[slot.id_prefix].initiate();
     }
 }
-
-var selectHandler = {};
 
 function initiateSelectHandlers() {
-    for (var i = 0; i < template_data.slots.length; i++) {
-        var slot = template_data.slots[i];
-        selectHandler[slot.id_prefix] = new SelectHandler(slot);
-        selectHandler[slot.id_prefix].initiate();
+    for (var i = 0; i < tswcalc.data.template_data.slots.length; i++) {
+        var slot = tswcalc.data.template_data.slots[i];
+        tswcalc.select[slot.id_prefix] = new tswcalc.select.SelectHandler(slot);
+        tswcalc.select[slot.id_prefix].initiate();
     }
 }
 
-var raidCheckboxes = {};
-
 function initiateRaidCheckboxes() {
-    for (var i = 0; i < template_data.slots.length; i++) {
-        var slot = template_data.slots[i];
-        raidCheckboxes[slot.id_prefix] = new RaidCheckbox(slot.id_prefix);
-        raidCheckboxes[slot.id_prefix].initiate();
+    for (var i = 0; i < tswcalc.data.template_data.slots.length; i++) {
+        var slot = tswcalc.data.template_data.slots[i];
+        tswcalc.checkbox[slot.id_prefix] = new tswcalc.checkbox.RaidCheckbox(slot.id_prefix);
+        tswcalc.checkbox[slot.id_prefix].initiate();
     }
 }

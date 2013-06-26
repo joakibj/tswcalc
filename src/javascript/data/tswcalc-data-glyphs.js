@@ -1,5 +1,7 @@
+var tswcalc = tswcalc || {};
+tswcalc.data = tswcalc.data || {};
 
-glyph_data = {
+tswcalc.data.glyph_data = {
     stat: {
         'hit-rating': {
             ql: {

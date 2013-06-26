@@ -1,4 +1,7 @@
-stat_mapping = {
+var tswcalc = tswcalc || {};
+tswcalc.data = tswcalc.data || {};
+
+tswcalc.data.stat_mapping = {
     to_num: {
         'none': 0,
         'critical-rating': 1,
@@ -26,7 +29,7 @@ stat_mapping = {
     }
 };
 
-role_mapping = {
+tswcalc.data.role_mapping = {
     to_num: {
         'tank': 1,
         'healer': 2,
@@ -41,7 +44,7 @@ role_mapping = {
     }
 };
 
-signet_quality_mapping = {
+tswcalc.data.signet_quality_mapping = {
     to_num: {
         'none': 0,
         'normal': 1,

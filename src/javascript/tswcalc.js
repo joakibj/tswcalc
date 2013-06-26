@@ -1,128 +1,110 @@
-var buttonHandler = {};
-var selectHandler = {};
-var raidCheckboxes = {};
-var buttonBar = 0;
-var summary = 0;
-var exportModule = 0;
-var importModule = 0;
-
 $(document).ready(function() {
-    initiateTswCalc();
+    tswcalc.init();
 });
 
-function initiateTswCalc() {
-    renderContainer(template_data);
-    addHash();
+var tswcalc = tswcalc || {};
 
-    activateToolTips();
+tswcalc = function() {
+    var init = function() {
+        renderContainer(tswcalc.data.template_data);
+        addHash();
 
-    startSubModules();
-    if (!checkIfExported()) {
-        triggerReset();
-    }
+        activateToolTips();
 
-    $('#summary').scrollToFixed();
-}
+        startSubModules();
+        if (!checkIfExported()) {
+            triggerReset();
+        }
 
-function triggerReset() {
-    $('#btn-reset').trigger('click');
-}
+        $('#summary').scrollToFixed();
+    };
 
-function activateToolTips() {
-    $('.glyph-tooltip, .signet-tooltip').tooltip({
-        placement: 'left'
-    });
-    $('.cost-tooltip').tooltip({
-        placement: function(context, source) {
-            var position = $(source).position();
-            if (position.top < 50) {
-                return 'bottom';
-            } else {
-                return 'top';
+    var triggerReset = function() {
+        $('#btn-reset').trigger('click');
+    };
+
+    var activateToolTips = function() {
+        $('.glyph-tooltip, .signet-tooltip').tooltip({
+            placement: 'left'
+        });
+        $('.cost-tooltip').tooltip({
+            placement: function(context, source) {
+                var position = $(source).position();
+                if (position.top < 50) {
+                    return 'bottom';
+                } else {
+                    return 'top';
+                }
             }
+        });
+        $('#raid-stats > label').tooltip({
+            placement: 'bottom'
+        });
+        $('.cost-tooltip, .glyph-tooltip, .signet-tooltip').on('click', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+        });
+    };
+
+    var renderContainer = function(data) {
+        dust.render('container', {
+            slots: tswcalc.data.template_data.slots,
+            signets: tswcalc.data.signet_data
+        },
+
+        function(err, out) {
+            if (err) {
+                console.log(err);
+            }
+            $('.container').html(out);
+        });
+    };
+
+    var checkIfExported = function() {
+        var vars = $.getUrlVars();
+        if (!$.isEmptyObject(vars) && Object.keys(vars).length == 8 || Object.keys(vars).length == 10) {
+            tswcalc.import.start(vars);
+            return true;
         }
-    });
-    $('#raid-stats > label').tooltip({
-        placement: 'bottom'
-    });
-    $('.cost-tooltip, .glyph-tooltip, .signet-tooltip').on('click', function(event) {
-        event.preventDefault();
-        event.stopPropagation();
-    });
-}
+        return false;
+    };
 
-function renderContainer(data) {
-    dust.render('container', {
-        slots: template_data.slots,
-        signets: signet_data
-    },
-
-    function(err, out) {
-        if (err) {
-            console.log(err);
+    var startSubModules = function() {
+        tswcalc.slots.init();
+        for (var i = 0; i < tswcalc.data.template_data.slots.length; i++) {
+            startDistributionButtonHandler(tswcalc.data.template_data.slots[i].id_prefix);
+            startSelectHandler(tswcalc.data.template_data.slots[i]);
+            startRaidCheckboxes(tswcalc.data.template_data.slots[i].id_prefix);
         }
-        $('.container').html(out);
-    });
-}
+        tswcalc.buttonBar.init();
+        tswcalc.summary.init();
+        tswcalc.export.init();
+    };
 
-function checkIfExported() {
-    var vars = $.getUrlVars();
-    if (!$.isEmptyObject(vars) && Object.keys(vars).length == 8 || Object.keys(vars).length == 10) {
-        importModule.start(vars);
-        return true;
-    }
-    return false;
-}
+    var addHash = function() {
+        if (location.hash == '') {
+            location.hash = ' ';
+        }
+    };
 
-function startSubModules() {
-    slots.init();
-    for (var i = 0; i < template_data.slots.length; i++) {
-        startDistributionButtonHandler(template_data.slots[i].id_prefix);
-        startSelectHandler(template_data.slots[i]);
-        startRaidCheckboxes(template_data.slots[i].id_prefix);
-    }
-    startButtonBar();
-    startSummary();
-    startExportModule();
-    startImportModule();
-}
+    var startDistributionButtonHandler = function(slotId) {
+        tswcalc.button[slotId] = new tswcalc.button.DistributionButtonHandler(slotId);
+        tswcalc.button[slotId].initiate();
+    };
 
-function addHash() {
-    if (location.hash == '') {
-        location.hash = ' ';
-    }
-}
+    var startSelectHandler = function(slot) {
+        tswcalc.select[slot.id_prefix] = new tswcalc.select.SelectHandler(slot);
+        tswcalc.select[slot.id_prefix].initiate();
+    };
 
-function startDistributionButtonHandler(slotId) {
-    buttonHandler[slotId] = new DistributionButtonHandler(slotId);
-    buttonHandler[slotId].initiate();
-}
+    var startRaidCheckboxes = function(slotId) {
+        tswcalc.checkbox[slotId] = new tswcalc.checkbox.RaidCheckbox(slotId);
+        tswcalc.checkbox[slotId].initiate();
+    };
 
-function startSelectHandler(slot) {
-    selectHandler[slot.id_prefix] = new SelectHandler(slot);
-    selectHandler[slot.id_prefix].initiate();
-}
+    var oPublic = {
+        init: init
+    };
 
-function startRaidCheckboxes(slotId) {
-    raidCheckboxes[slotId] = new RaidCheckbox(slotId);
-    raidCheckboxes[slotId].initiate();
-}
-
-function startButtonBar() {
-    buttonBar = new ButtonBar();
-    buttonBar.initiate();
-}
-
-function startSummary() {
-    summary = new Summary();
-    summary.initiate();
-}
-
-function startExportModule() {
-    exportModule = new Export();
-    exportModule.initiate();
-}
-
-function startImportModule() {
-    importModule = new Import();
-}
+    return oPublic;
+}();
