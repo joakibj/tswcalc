@@ -1,4 +1,7 @@
-ny_raid_items = {
+var tswcalc = tswcalc || {};
+tswcalc.data = tswcalc.data || {};
+
+tswcalc.data.ny_raid_items = {
     'head': {
         healer: {
             name: 'Blood of the Old Ones',

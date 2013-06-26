@@ -1,5 +1,7 @@
-function DistributionButtonHandler(slotId) {
-    var slotId = slotId;
+var tswcalc = tswcalc || {};
+tswcalc.button = tswcalc.button || {};
+
+tswcalc.button.DistributionButtonHandler = function DistributionButtonHandler(slotId) {
     var self = this;
 
     this.initiate = function() {
@@ -11,7 +13,7 @@ function DistributionButtonHandler(slotId) {
         this.onlyActiveButton('#' + slotId + '-' + glyph + '-glyph-dist-btn0');
         $('#' + slotId + '-' + glyph + '-glyph-dist > button.btn').on('click', function(event) {
             self.setActiveButtonAndBalanceGlyphDist(this, glyph);
-            summary.updateOffensiveDefensiveStats();
+            tswcalc.summary.updateOffensiveDefensiveStats();
         });
     };
 
@@ -51,4 +53,4 @@ function DistributionButtonHandler(slotId) {
     this.getInverseGlyphStat = function(glyph) {
         return glyph == 'primary' ? 'secondary' : 'primary';
     };
-}
+};

@@ -1,4 +1,63 @@
-function Slot(id, name, group) {
+var tswcalc = tswcalc || {};
+
+tswcalc.slots = function() {
+    //this method can only be called after the document is ready
+    var init = function() {
+        for (var i = 0; i < tswcalc.data.template_data.slots.length; i++) {
+            var slotData = tswcalc.data.template_data.slots[i];
+            this[slotData.id_prefix] = new tswcalc.slots.Slot(slotData.id_prefix, slotData.name, slotData.group);
+        }
+    };
+
+    var length = function() {
+        return tswcalc.data.template_data.slots.length;
+    };
+
+    var hasSlot = function(slot) {
+        return this.hasOwnProperty(slot) && $.inArray(slot, ['head', 'weapon', 'ring', 'neck', 'wrist', 'luck', 'waist', 'occult']) != -1;
+    };
+
+    var reset = function() {
+        for (var slotId in this) {
+            if (this.hasSlot(slotId)) {
+                this[slotId].reset();
+            }
+        }
+    };
+
+    var state = function() {
+        var slotStates = {};
+        for (var slotId in this) {
+            if (this.hasSlot(slotId)) {
+                slotStates[slotId] = this[slotId].state();
+            }
+        }
+        return slotStates;
+    };
+
+    var mappedState = function() {
+        var mappedSlotStates = {};
+        for (var slotId in this) {
+            if (this.hasSlot(slotId)) {
+                mappedSlotStates[slotId] = this[slotId].mappedState();
+            }
+        }
+        return mappedSlotStates;
+    };
+
+    var oPublic = {
+        init: init,
+        length: length,
+        hasSlot: hasSlot,
+        reset: reset,
+        state: state,
+        mappedState: mappedState
+    };
+
+    return oPublic;
+}();
+
+tswcalc.slots.Slot = function Slot(id, name, group) {
     var self = this;
     this.id = id;
     this.name = name;
@@ -95,14 +154,14 @@ function Slot(id, name, group) {
         if (this.primaryGlyph() == 'none') {
             return 0;
         }
-        return glyph_data.stat[this.primaryGlyph()].ql[this.glyphQl()].slot[this.group].dist[this.primaryDist()];
+        return tswcalc.data.glyph_data.stat[this.primaryGlyph()].ql[this.glyphQl()].slot[this.group].dist[this.primaryDist()];
     };
 
     this.secondaryGlyphValue = function() {
         if (this.secondaryGlyph() == 'none') {
             return 0;
         }
-        return glyph_data.stat[this.secondaryGlyph()].ql[this.glyphQl()].slot[this.group].dist[this.secondaryDist()];
+        return tswcalc.data.glyph_data.stat[this.secondaryGlyph()].ql[this.glyphQl()].slot[this.group].dist[this.secondaryDist()];
     };
 
     this.primaryDist = function() {
@@ -115,8 +174,8 @@ function Slot(id, name, group) {
 
     this.blackBullionCost = function() {
         var blackBullions = 0;
-        blackBullions += bb_costs['glyph'][this.glyphQl()].cost;
-        blackBullions += bb_costs[this.isWeapon() ? 'weapon' : 'talisman'][this.ql()].cost;
+        blackBullions += tswcalc.data.bb_costs['glyph'][this.glyphQl()].cost;
+        blackBullions += tswcalc.data.bb_costs[this.isWeapon() ? 'weapon' : 'talisman'][this.ql()].cost;
         return blackBullions;
     };
 
@@ -154,9 +213,9 @@ function Slot(id, name, group) {
         var foundSignet = 0;
         // check if this signet is a raid item, if so, look it up
         if (this.signetId() >= 80) {
-            foundSignet = ny_raid_items[this.id][this.role()].signet;
+            foundSignet = tswcalc.data.ny_raid_items[this.id][this.role()].signet;
         } else {
-            foundSignet = signet_data.find(this.group, this.signetId());
+            foundSignet = tswcalc.data.signet_data.find(this.group, this.signetId());
         }
         return foundSignet !== 0 || foundSignet !== undefined ? foundSignet : null;
     };
@@ -262,7 +321,7 @@ function Slot(id, name, group) {
         this.signetId('none');
         this.signetQuality('none');
         this.updateSignet();
-        if(this.el.btn.nyraid.is(':checked')) {
+        if (this.el.btn.nyraid.is(':checked')) {
             this.el.btn.nyraid.prop('checked', false);
             this.el.btn.nyraid.change();
         }
@@ -304,60 +363,14 @@ function Slot(id, name, group) {
         var qlpattern = /\d+\.\d/;
         if (val != 0 && val.match(qlpattern)) {
             return val.split('.')[1];
-        } else if ($.inArray(val, Object.keys(stat_mapping.to_num)) != -1) {
-            return stat_mapping.to_num[val];
-        } else if ($.inArray(val, Object.keys(role_mapping.to_num)) != -1) {
-            return role_mapping.to_num[val];
-        } else if ($.inArray(val, Object.keys(signet_quality_mapping.to_num)) != -1) {
-            return signet_quality_mapping.to_num[val];
+        } else if ($.inArray(val, Object.keys(tswcalc.data.stat_mapping.to_num)) != -1) {
+            return tswcalc.data.stat_mapping.to_num[val];
+        } else if ($.inArray(val, Object.keys(tswcalc.data.role_mapping.to_num)) != -1) {
+            return tswcalc.data.role_mapping.to_num[val];
+        } else if ($.inArray(val, Object.keys(tswcalc.data.signet_quality_mapping.to_num)) != -1) {
+            return tswcalc.data.signet_quality_mapping.to_num[val];
         } else {
             return val;
         }
     };
-}
-
-var slots = {
-    //this method can only be called after the document is ready
-    init: function() {
-        for (var i = 0; i < template_data.slots.length; i++) {
-            var slotData = template_data.slots[i];
-            this[slotData.id_prefix] = new Slot(slotData.id_prefix, slotData.name, slotData.group);
-        }
-    },
-
-    length: function() {
-        return template_data.slots.length;
-    },
-
-    hasSlot: function(slot) {
-        return this.hasOwnProperty(slot) && $.inArray(slot, ['head', 'weapon', 'ring', 'neck', 'wrist', 'luck', 'waist', 'occult']) != -1;
-    },
-
-    reset: function() {
-        for (var slotId in this) {
-            if (this.hasSlot(slotId)) {
-                this[slotId].reset();
-            }
-        }
-    },
-
-    state: function() {
-        var slotStates = {};
-        for (var slotId in this) {
-            if (this.hasSlot(slotId)) {
-                slotStates[slotId] = this[slotId].state();
-            }
-        }
-        return slotStates;
-    },
-
-    mappedState: function() {
-        var mappedSlotStates = {};
-        for (var slotId in this) {
-            if (this.hasSlot(slotId)) {
-                mappedSlotStates[slotId] = this[slotId].mappedState();
-            }
-        }
-        return mappedSlotStates;
-    }
 };

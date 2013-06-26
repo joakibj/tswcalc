@@ -1,4 +1,3 @@
-var selectHandler = [];
 
 module('selects-dom', {
     setup: function() {
@@ -7,8 +6,8 @@ module('selects-dom', {
 });
 
 test('should have required selects in the DOM', 55, function() {
-    for (var i = 0; i < template_data.slots.length; i++) {
-        var slotId = template_data.slots[i].id_prefix;
+    for (var i = 0; i < tswcalc.data.template_data.slots.length; i++) {
+        var slotId = tswcalc.data.template_data.slots[i].id_prefix;
         if (slotId != 'weapon') {
             ok($('#' + slotId + '-role').length !== 0, slotId + '-role exists');
         }
@@ -33,8 +32,8 @@ module('selects-events', {
 });
 
 test('should have required event listeners for change on selects in the DOM', 55, function() {
-    for (var i = 0; i < template_data.slots.length; i++) {
-        var slotId = template_data.slots[i].id_prefix;
+    for (var i = 0; i < tswcalc.data.template_data.slots.length; i++) {
+        var slotId = tswcalc.data.template_data.slots[i].id_prefix;
         ok($._data($('#' + slotId + '-ql').get(0), 'events').change instanceof Array);
         if (slotId != 'weapon') {
             ok($._data($('#' + slotId + '-role').get(0), 'events').change instanceof Array);
@@ -67,6 +66,6 @@ test('should have added signets to correct group', 8, function() {
 });
 
 test('should get signets for head', 1, function() {
-    equal(selectHandler['head'].getSignetsForHead('head').length, 16);
+    equal(tswcalc.select['head'].getSignetsForHead('head').length, 16);
 });
 

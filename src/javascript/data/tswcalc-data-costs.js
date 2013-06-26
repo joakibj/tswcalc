@@ -1,5 +1,8 @@
 
-bb_costs = {
+var tswcalc = tswcalc || {};
+tswcalc.data = tswcalc.data || {};
+
+tswcalc.data.bb_costs = {
     'weapon': {
         '10.0': {
             cost: 30

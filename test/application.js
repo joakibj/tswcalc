@@ -1,17 +1,17 @@
 module('tswcalc', {
     setup: function() {
-        initiateTswCalc();
-    },
-    teardown: function() {
-
+        tswcalc.init();
     }
 });
 
-test('should initate tswcalc submodules', 6, function() {
-    ok(buttonHandler);
-    ok(selectHandler);
-    ok(buttonBar);
-    ok(summary);
-    ok(exportModule);
-    ok(importModule);
+test('should initate tswcalc submodules', 9, function() {
+    ok(tswcalc);
+    ok(tswcalc.data);
+    ok(tswcalc.button);
+    ok(tswcalc.checkbox);
+    ok(tswcalc.select);
+    ok(tswcalc.buttonBar);
+    ok(tswcalc.summary);
+    ok(tswcalc.export);
+    ok(tswcalc.import);
 });

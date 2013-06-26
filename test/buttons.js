@@ -20,7 +20,7 @@ module('glyphbuttons-events', {
 });
 
 test('should have initialised button handlers for slot', 10, function() {
-    var buttonHandler = new DistributionButtonHandler('weapon');
+    var buttonHandler = new tswcalc.button.DistributionButtonHandler('weapon');
     buttonHandler.initiate();
     for (var button = 0; button <= 4; button++) {
         ok($._data($('#weapon-primary-glyph-dist-btn' + button).get(0), 'events').click instanceof Array, "Primary glyph button " + button + " has a click event");
@@ -37,7 +37,7 @@ module('glyphbuttons-unit-tests', {
 });
 
 test('should set button to active in row', 2, function() {
-    var buttonHandler = new DistributionButtonHandler('weapon');
+    var buttonHandler = new tswcalc.button.DistributionButtonHandler('weapon');
     buttonHandler.onlyActiveButton('#weapon-primary-glyph-dist-btn2');
     buttonHandler.onlyActiveButton('#weapon-secondary-glyph-dist-btn4');
     ok($('#weapon-primary-glyph-dist > button.btn.active').length == 1);
@@ -46,7 +46,7 @@ test('should set button to active in row', 2, function() {
 
 
 test('should get active distribution', 2, function() {
-    var buttonHandler = new DistributionButtonHandler('weapon');
+    var buttonHandler = new tswcalc.button.DistributionButtonHandler('weapon');
     buttonHandler.initiate();
     buttonHandler.onlyActiveButton('#weapon-primary-glyph-dist-btn2');
     buttonHandler.onlyActiveButton('#weapon-secondary-glyph-dist-btn2');
@@ -55,14 +55,14 @@ test('should get active distribution', 2, function() {
 });
 
 test('should get inverse glyph', 2, function() {
-    var buttonHandler = new DistributionButtonHandler('weapon');
+    var buttonHandler = new tswcalc.button.DistributionButtonHandler('weapon');
     equal(buttonHandler.getInverseGlyphStat('primary'), 'secondary', 'The inverse glyph of primary is secondary');
     equal(buttonHandler.getInverseGlyphStat('secondary'), 'primary', 'The inverse glyph of secondary is primary');
 });
 
 // only accounts from primary 4 to secondary 4,3,2,1
 test('should balance glyphs distributions to a sum of 4', 8, function() {
-    var buttonHandler = new DistributionButtonHandler('weapon');
+    var buttonHandler = new tswcalc.button.DistributionButtonHandler('weapon');
     buttonHandler.initiate();
 
     buttonHandler.onlyActiveButton('#weapon-primary-glyph-dist-btn4');

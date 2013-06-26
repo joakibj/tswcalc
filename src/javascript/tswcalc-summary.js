@@ -1,71 +1,76 @@
-function Summary() {
-    self = this;
+var tswcalc = tswcalc || {};
 
-    this.el = {
-        black_bullion_cost: $('#bb-cost'),
-        criterion_upgrade_cost: $('#cu-cost'),
-        astral_fuse_cost: $('#af-cost'),
-        activateRaid: $('#summary-activate-raid')
-    };
+tswcalc.summary = function() {
 
-    this.initiate = function() {
-        this.bindEvents();
-    };
-
-    this.bindEvents = function() {
-        this.el.activateRaid.on('change', this.activateRaidItems);
-    };
-
-    this.activateRaidItems = function(event) {
-        self.updateAllStats();
-    };
-
-    this.updateAllStats = function() {
-        self.updateCosts();
-        self.updatePrimaryStats();
-        self.updateOffensiveDefensiveStats();
-    };
-
-    this.collectAllStats = function() {
+    var el = {};
+    var elInit = function() {
         return {
-            primary: self.collectPrimaryStats(),
-            offensive_defensive: self.collectOffensiveDefensiveStats()
+            black_bullion_cost: $('#bb-cost'),
+            criterion_upgrade_cost: $('#cu-cost'),
+            astral_fuse_cost: $('#af-cost'),
+            activateRaid: $('#summary-activate-raid')
         };
     };
 
-    this.updateCosts = function() {
+    var init = function() {
+        el = elInit();
+        bindEvents();
+    };
+
+    var bindEvents = function() {
+        el.activateRaid.on('change', activateRaidItems);
+    };
+
+    var activateRaidItems = function(event) {
+        updateAllStats();
+    };
+
+    var updateAllStats = function() {
+        updateCosts();
+        updatePrimaryStats();
+        updateOffensiveDefensiveStats();
+    };
+
+    var collectAllStats = function() {
+        return {
+            primary: collectPrimaryStats(),
+            offensive_defensive: collectOffensiveDefensiveStats()
+        };
+    };
+
+    var updateCosts = function() {
         var blackBullions = 0;
         var criterionUpgrades = 0;
         var astralFuses = 0;
-        for (var slotId in slots) {
-            if (slots.hasSlot(slotId)) {
-                var slot = slots[slotId];
+        for (var slotId in tswcalc.slots) {
+            if (tswcalc.slots.hasSlot(slotId)) {
+                var slot = tswcalc.slots[slotId];
                 blackBullions += slot.blackBullionCost();
                 criterionUpgrades += slot.criterionUpgradeCost();
                 astralFuses += slot.astralFuseCost();
             }
         }
-        this.el.black_bullion_cost.html(blackBullions);
-        this.el.criterion_upgrade_cost.html(criterionUpgrades);
-        this.el.astral_fuse_cost.html(astralFuses);
+        el.black_bullion_cost.html(blackBullions);
+        el.criterion_upgrade_cost.html(criterionUpgrades);
+        el.astral_fuse_cost.html(astralFuses);
     };
 
-    this.updatePrimaryStats = function() {
-        var sums = this.collectPrimaryStats();
+    var updatePrimaryStats = function() {
+        var sums = collectPrimaryStats();
 
         for (var stat in sums) {
             if (sums.hasOwnProperty(stat)) {
-                this.updateOnePrimaryStat(stat, sums[stat]);
+                updateOnePrimaryStat(stat, sums[stat]);
             }
         }
-        this.updateCosts();
+        updateCosts();
     };
 
-    this.updateOnePrimaryStat = function(stat, value) {
+    var updateOnePrimaryStat = function(stat, value) {
         $('#stat-' + stat).text(value);
     };
 
-    this.collectPrimaryStats = function() {
+    var collectPrimaryStats = function() {
         var sums = {
             'combat-power': 0,
             'weapon-power': 75,
@@ -74,9 +79,9 @@ function Summary() {
             'heal-rating': 0
         };
 
-        for (var slotId in slots) {
-            if (slots.hasSlot(slotId)) {
-                var slot = slots[slotId];
+        for (var slotId in tswcalc.slots) {
+            if (tswcalc.slots.hasSlot(slotId)) {
+                var slot = tswcalc.slots[slotId];
                 var role = slot.role();
                 var ql = slot.ql();
                 if (slot.group == 'major') {
@@ -87,17 +92,17 @@ function Summary() {
                 }
                 switch (role) {
                     case 'dps':
-                        sums['attack-rating'] += custom_gear_data[slot.group].heal_dps['ql' + (ql)].rating;
+                        sums['attack-rating'] += tswcalc.data.custom_gear_data[slot.group].heal_dps['ql' + (ql)].rating;
                         break;
                     case 'healer':
-                        sums['heal-rating'] += custom_gear_data[slot.group].heal_dps['ql' + (ql)].rating;
+                        sums['heal-rating'] += tswcalc.data.custom_gear_data[slot.group].heal_dps['ql' + (ql)].rating;
                         break;
                     case 'tank':
-                        sums['hitpoints'] += custom_gear_data[slot.group].tank['ql' + (ql)].hitpoints;
+                        sums['hitpoints'] += tswcalc.data.custom_gear_data[slot.group].tank['ql' + (ql)].hitpoints;
                         break;
                     case 'none':
                         if (slot.id == 'weapon') {
-                            sums['weapon-power'] = custom_gear_data[slot.group][ql].weapon_power;
+                            sums['weapon-power'] = tswcalc.data.custom_gear_data[slot.group][ql].weapon_power;
                         }
                         break;
                     default:
@@ -106,23 +111,23 @@ function Summary() {
                 }
             }
         }
-        sums['combat-power'] = this.calculateCombatPower(sums['attack-rating'], sums['weapon-power']);
+        sums['combat-power'] = calculateCombatPower(sums['attack-rating'], sums['weapon-power']);
         return sums;
     };
 
-    this.calculateCombatPower = function(attack_rating, weapon_power) {
+    var calculateCombatPower = function(attack_rating, weapon_power) {
         return Math.round((375 - (600 / (Math.pow(Math.E, (attack_rating / 1400)) + 1))) * (1 + (weapon_power / 375)));
     };
 
-    this.updateOffensiveDefensiveStats = function() {
-        var sums = this.collectOffensiveDefensiveStats();
+    var updateOffensiveDefensiveStats = function() {
+        var sums = collectOffensiveDefensiveStats();
 
-        this.updateGlyphValues();
-        this.updateStats(sums);
-        this.updateCosts();
+        updateGlyphValues();
+        updateStats(sums);
+        updateCosts();
     };
 
-    this.collectOffensiveDefensiveStats = function() {
+    var collectOffensiveDefensiveStats = function() {
         var sums = {
             'critical-rating': 0,
             'critical-chance': 0,
@@ -136,20 +141,20 @@ function Summary() {
             'physical-protection': 249,
             'magical-protection': 249
         };
-        for (var slotId in slots) {
-            if (slots.hasSlot(slotId)) {
-                var slot = slots[slotId];
+        for (var slotId in tswcalc.slots) {
+            if (tswcalc.slots.hasSlot(slotId)) {
+                var slot = tswcalc.slots[slotId];
                 sums[slot.primaryGlyph()] += slot.primaryGlyphValue();
                 sums[slot.secondaryGlyph()] += slot.secondaryGlyphValue();
             }
         }
 
-        sums['critical-power-percentage'] = this.calculateCriticalPowerPercentage(sums['critical-power']);
+        sums['critical-power-percentage'] = calculateCriticalPowerPercentage(sums['critical-power']);
 
-        for (var slotId in slots) {
-            if (slots.hasSlot(slotId)) {
-                var slot = slots[slotId];
-                if (this.el.activateRaid.is(':checked') && slot.signetId() >= 80) {
+        for (var slotId in tswcalc.slots) {
+            if (tswcalc.slots.hasSlot(slotId)) {
+                var slot = tswcalc.slots[slotId];
+                if (el.activateRaid.is(':checked') && slot.signetId() >= 80) {
                     var signet = slot.signet();
                     if (signet.bonus !== undefined) {
                         for (var statIdx = 0; statIdx < signet.bonus.stat.length; statIdx++) {
@@ -167,7 +172,7 @@ function Summary() {
                 }
             }
         }
-        sums['critical-chance'] = this.calculateCriticalChance(sums['critical-rating']);
+        sums['critical-chance'] = calculateCriticalChance(sums['critical-rating']);
 
         sums['critical-rating'] = parseInt(sums['critical-rating'].toFixed(0), 10);
         sums['critical-chance'] = sums['critical-chance'].toFixed(2);
@@ -178,36 +183,58 @@ function Summary() {
         return sums;
     };
 
-    this.updateGlyphValues = function() {
-        for (var slotId in slots) {
-            if (slots.hasSlot(slotId)) {
-                var slot = slots[slotId];
+    var updateGlyphValues = function() {
+        for (var slotId in tswcalc.slots) {
+            if (tswcalc.slots.hasSlot(slotId)) {
+                var slot = tswcalc.slots[slotId];
                 slot.updateGlyphValues();
             }
         }
     };
 
-    this.calculateCriticalChance = function(critical_rating) {
+    var calculateCriticalChance = function(critical_rating) {
         return 39 - (68 / (Math.pow(Math.E, (critical_rating / 787.6)) + 1));
     };
 
-    this.calculateCriticalPowerPercentage = function(critical_power) {
+    var calculateCriticalPowerPercentage = function(critical_power) {
         return Math.sqrt(5 * critical_power + 625);
     };
 
-    this.updateStats = function(sums) {
+    var updateStats = function(sums) {
         for (var stat in sums) {
             if (sums.hasOwnProperty(stat)) {
                 if (sums[stat] > 0) {
-                    $('#stat-' + stat).html(this.isStatPercentageBased(stat) ? sums[stat].toString().substring(0, 4) + " %" : '+' + sums[stat]);
+                    $('#stat-' + stat).html(isStatPercentageBased(stat) ? sums[stat].toString().substring(0, 4) + " %" : '+' + sums[stat]);
                 } else {
-                    $('#stat-' + stat).html(this.isStatPercentageBased(stat) ? "0 %" : "0");
+                    $('#stat-' + stat).html(isStatPercentageBased(stat) ? "0 %" : "0");
                 }
             }
         }
     };
 
-    this.isStatPercentageBased = function(statName) {
+    var isStatPercentageBased = function(statName) {
         return statName == 'critical-power-percentage' || statName == 'critical-chance';
     };
-}
+
+    var checkActivateRaid = function() {
+        el.activateRaid.prop('checked', true);
+        el.activateRaid.change();
+    };
+
+    var oPublic = {
+        init: init,
+        calculateCriticalChance: calculateCriticalChance,
+        calculateCriticalPowerPercentage: calculateCriticalPowerPercentage,
+        calculateCombatPower: calculateCombatPower,
+        collectPrimaryStats: collectPrimaryStats,
+        collectOffensiveDefensiveStats: collectOffensiveDefensiveStats,
+        collectAllStats: collectAllStats,
+        updateCosts: updateCosts,
+        updateOffensiveDefensiveStats: updateOffensiveDefensiveStats,
+        updatePrimaryStats: updatePrimaryStats,
+        updateAllStats: updateAllStats,
+        checkActivateRaid: checkActivateRaid
+    };
+
+    return oPublic;
+}();
