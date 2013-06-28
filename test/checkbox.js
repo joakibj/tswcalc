@@ -38,7 +38,7 @@ test('should change slot to custom item, from raid item', 12, function() {
     deepEqual($('#head-signet-quality').attr('disabled'), undefined, 'signet quality select is not disabled');
     deepEqual($('#head-pick-signet').attr('disabled'), undefined, 'signet pick select is not disabled');
     deepEqual($('#head-ql').attr('disabled'), undefined, 'ql select is not disabled');
-    equal($('#head-ql').val(), '10.0');
+    equal($('#head-ql').val(), '10.4');
     equal($('#head-pick-signet').val(), 'none');
     equal($('#head-signet-quality').val(), 'none');
     equal($('#head-signet-description').html(), '');
