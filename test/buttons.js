@@ -20,8 +20,9 @@ module('glyphbuttons-events', {
 });
 
 test('should have initialised button handlers for slot', 10, function() {
-    var buttonHandler = new tswcalc.button.DistributionButtonHandler('weapon');
-    buttonHandler.initiate();
+    tswcalc.slots['weapon'] = new tswcalc.slots.Slot('weapon', 'Weapon', 'weapon');
+    tswcalc.button['weapon'] = new tswcalc.button.DistributionButtonHandler('weapon');
+    tswcalc.button['weapon'].init();
     for (var button = 0; button <= 4; button++) {
         ok($._data($('#weapon-primary-glyph-dist-btn' + button).get(0), 'events').click instanceof Array, "Primary glyph button " + button + " has a click event");
         ok($._data($('#weapon-secondary-glyph-dist-btn' + button).get(0), 'events').click instanceof Array, "Secondary glyph button " + button + " has a click event");
@@ -33,64 +34,146 @@ module('glyphbuttons-unit-tests', {
     setup: function() {
         renderGlyphButtons('weapon', '-primary-glyph');
         renderGlyphButtons('weapon', '-secondary-glyph');
+        tswcalc.slots['weapon'] = new tswcalc.slots.Slot('weapon', 'Weapon', 'weapon');
+        tswcalc.button['weapon'] = new tswcalc.button.DistributionButtonHandler('weapon');
+        tswcalc.button['weapon'].activate('primary', 0);
+        tswcalc.button['weapon'].activate('secondary', 0);
     }
 });
 
-test('should set button to active in row', 2, function() {
-    var buttonHandler = new tswcalc.button.DistributionButtonHandler('weapon');
-    buttonHandler.onlyActiveButton('#weapon-primary-glyph-dist-btn2');
-    buttonHandler.onlyActiveButton('#weapon-secondary-glyph-dist-btn4');
+test('should set primary and secondary button to active and deactivate the siblings', 4, function() {
+    tswcalc.button['weapon'].activate('primary', 2);
+    tswcalc.button['weapon'].activate('secondary', 3);
+
+    ok($('#weapon-primary-glyph-dist-btn2').hasClass('active'));
+    ok($('#weapon-secondary-glyph-dist-btn3').hasClass('active'));
     ok($('#weapon-primary-glyph-dist > button.btn.active').length == 1);
     ok($('#weapon-secondary-glyph-dist > button.btn.active').length == 1);
 });
 
-
-test('should get active distribution', 2, function() {
-    var buttonHandler = new tswcalc.button.DistributionButtonHandler('weapon');
-    buttonHandler.initiate();
-    buttonHandler.onlyActiveButton('#weapon-primary-glyph-dist-btn2');
-    buttonHandler.onlyActiveButton('#weapon-secondary-glyph-dist-btn2');
-    equal(buttonHandler.getActiveDist('primary').innerHTML, '2', 'Primary glyph distribution');
-    equal(buttonHandler.getActiveDist('secondary').innerHTML, '2', 'Secondary glyph distribution');
-});
-
 test('should get inverse glyph', 2, function() {
-    var buttonHandler = new tswcalc.button.DistributionButtonHandler('weapon');
-    equal(buttonHandler.getInverseGlyphStat('primary'), 'secondary', 'The inverse glyph of primary is secondary');
-    equal(buttonHandler.getInverseGlyphStat('secondary'), 'primary', 'The inverse glyph of secondary is primary');
+    equal(tswcalc.button['weapon'].inverse('primary'), 'secondary', 'The inverse glyph of primary is secondary');
+    equal(tswcalc.button['weapon'].inverse('secondary'), 'primary', 'The inverse glyph of secondary is primary');
 });
 
-// only accounts from primary 4 to secondary 4,3,2,1
-test('should balance glyphs distributions to a sum of 4', 8, function() {
-    var buttonHandler = new tswcalc.button.DistributionButtonHandler('weapon');
-    buttonHandler.initiate();
+test('should get dist', 2, function() {
+    tswcalc.button['weapon'].activate('primary', 2);
+    tswcalc.button['weapon'].activate('secondary', 3);
 
-    buttonHandler.onlyActiveButton('#weapon-primary-glyph-dist-btn4');
-    buttonHandler.onlyActiveButton('#weapon-secondary-glyph-dist-btn4');
-    buttonHandler.balanceGlyphDist($('#weapon-secondary-glyph-dist-btn4').get(0), 'secondary');
-    equal(buttonHandler.getActiveDist('primary').innerHTML, '0', 'Primary glyph distribution');
-    equal(buttonHandler.getActiveDist('secondary').innerHTML, '4', 'Secondary glyph distribution');
-
-    buttonHandler.onlyActiveButton('#weapon-primary-glyph-dist-btn4');
-    buttonHandler.onlyActiveButton('#weapon-secondary-glyph-dist-btn3');
-    buttonHandler.balanceGlyphDist($('#weapon-secondary-glyph-dist-btn3').get(0), 'secondary');
-    equal(buttonHandler.getActiveDist('primary').innerHTML, '1', 'Primary glyph distribution');
-    equal(buttonHandler.getActiveDist('secondary').innerHTML, '3', 'Secondary glyph distribution');
-
-    buttonHandler.onlyActiveButton('#weapon-primary-glyph-dist-btn4');
-    buttonHandler.onlyActiveButton('#weapon-secondary-glyph-dist-btn2');
-    buttonHandler.balanceGlyphDist($('#weapon-secondary-glyph-dist-btn2').get(0), 'secondary');
-    equal(buttonHandler.getActiveDist('primary').innerHTML, '2', 'Primary glyph distribution');
-    equal(buttonHandler.getActiveDist('secondary').innerHTML, '2', 'Secondary glyph distribution');
-
-    buttonHandler.onlyActiveButton('#weapon-primary-glyph-dist-btn4');
-    buttonHandler.onlyActiveButton('#weapon-secondary-glyph-dist-btn1');
-    buttonHandler.balanceGlyphDist($('#weapon-secondary-glyph-dist-btn1').get(0), 'secondary');
-    equal(buttonHandler.getActiveDist('primary').innerHTML, '3', 'Primary glyph distribution');
-    equal(buttonHandler.getActiveDist('secondary').innerHTML, '1', 'Secondary glyph distribution');
+    deepEqual(tswcalc.button['weapon'].getDist('primary'), 2);
+    deepEqual(tswcalc.button['weapon'].getDist('secondary'), 3);
 });
 
-test('should automatically balance primary and secondary glyph distribution to always be a sum of 4', 1, function() {
-    //tswcalc.button.clickPrimary(0);
-    ok(1,1);
+test('should automatically balance primary and secondary glyph distribution to always be a sum of 4 when primary is clicked', 14, function() {
+    tswcalc.button['weapon'].activate('primary', 4);
+    tswcalc.button['weapon'].activate('secondary', 0);
+    tswcalc.button['weapon'].balance('primary');
+
+    equal(tswcalc.slots.weapon.primaryDist(), 4);
+    equal(tswcalc.slots.weapon.secondaryDist(), 0);
+
+    tswcalc.button['weapon'].activate('primary', 3);
+    tswcalc.button['weapon'].activate('secondary', 0);
+    tswcalc.button['weapon'].balance('primary');
+
+    equal(tswcalc.slots.weapon.primaryDist(), 3);
+    equal(tswcalc.slots.weapon.secondaryDist(), 1);
+
+    tswcalc.button['weapon'].activate('primary', 2);
+    tswcalc.button['weapon'].activate('secondary', 0);
+    tswcalc.button['weapon'].balance('primary');
+
+    equal(tswcalc.slots.weapon.primaryDist(), 2);
+    equal(tswcalc.slots.weapon.secondaryDist(), 2);
+
+    tswcalc.button['weapon'].activate('primary', 1);
+    tswcalc.button['weapon'].activate('secondary', 0);
+    tswcalc.button['weapon'].balance('primary');
+
+    equal(tswcalc.slots.weapon.primaryDist(), 1);
+    equal(tswcalc.slots.weapon.secondaryDist(), 3);
+
+    tswcalc.button['weapon'].activate('primary', 0);
+    tswcalc.button['weapon'].activate('secondary', 0);
+    tswcalc.button['weapon'].balance('primary');
+
+    equal(tswcalc.slots.weapon.primaryDist(), 0);
+    equal(tswcalc.slots.weapon.secondaryDist(), 4);
+
+    tswcalc.button['weapon'].activate('primary', 4);
+    tswcalc.button['weapon'].activate('secondary', 4);
+    tswcalc.button['weapon'].balance('primary');
+
+    equal(tswcalc.slots.weapon.primaryDist(), 4);
+    equal(tswcalc.slots.weapon.secondaryDist(), 0);
+
+    tswcalc.button['weapon'].activate('primary', 3);
+    tswcalc.button['weapon'].activate('secondary', 4);
+    tswcalc.button['weapon'].balance('primary');
+
+    equal(tswcalc.slots.weapon.primaryDist(), 3);
+    equal(tswcalc.slots.weapon.secondaryDist(), 1);
+});
+
+test('should automatically balance primary and secondary glyph distribution to always be a sum of 4 when secondary is clicked', 14, function() {
+    tswcalc.button['weapon'].activate('secondary', 4);
+    tswcalc.button['weapon'].balance('secondary');
+
+    equal(tswcalc.slots.weapon.primaryDist(), 0);
+    equal(tswcalc.slots.weapon.secondaryDist(), 4);
+
+    tswcalc.button['weapon'].activate('secondary', 3);
+    tswcalc.button['weapon'].balance('secondary');
+
+    equal(tswcalc.slots.weapon.primaryDist(), 1);
+    equal(tswcalc.slots.weapon.secondaryDist(), 3);
+
+    tswcalc.button['weapon'].activate('secondary', 2);
+    tswcalc.button['weapon'].balance('secondary');
+
+    equal(tswcalc.slots.weapon.primaryDist(), 2);
+    equal(tswcalc.slots.weapon.secondaryDist(), 2);
+
+    tswcalc.button['weapon'].activate('secondary', 1);
+    tswcalc.button['weapon'].balance('secondary');
+
+    equal(tswcalc.slots.weapon.primaryDist(), 3);
+    equal(tswcalc.slots.weapon.secondaryDist(), 1);
+
+    tswcalc.button['weapon'].activate('secondary', 0);
+    tswcalc.button['weapon'].balance('secondary');
+
+    equal(tswcalc.slots.weapon.primaryDist(), 4);
+    equal(tswcalc.slots.weapon.secondaryDist(), 0);
+
+    tswcalc.button['weapon'].activate('primary', 4);
+    tswcalc.button['weapon'].activate('secondary', 4);
+    tswcalc.button['weapon'].balance('secondary');
+
+    equal(tswcalc.slots.weapon.primaryDist(), 0);
+    equal(tswcalc.slots.weapon.secondaryDist(), 4);
+
+    tswcalc.button['weapon'].activate('primary', 4);
+    tswcalc.button['weapon'].activate('secondary', 3);
+    tswcalc.button['weapon'].balance('secondary');
+
+    equal(tswcalc.slots.weapon.primaryDist(), 1);
+    equal(tswcalc.slots.weapon.secondaryDist(), 3);
+});
+
+module('glyphbuttons-integration-tests', {
+    setup: function() {
+        renderGlyphButtons('weapon', '-primary-glyph');
+        renderGlyphButtons('weapon', '-secondary-glyph');
+        tswcalc.slots['weapon'] = new tswcalc.slots.Slot('weapon', 'Weapon', 'weapon');
+        tswcalc.button['weapon'] = new tswcalc.button.DistributionButtonHandler('weapon');
+        tswcalc.button['weapon'].init();
+    }
+});
+
+test('test', 2, function() {
+    tswcalc.slots.weapon.el.btn.primary[3].click();
+
+    equal(tswcalc.slots.weapon.primaryDist(), 3);
+    equal(tswcalc.slots.weapon.secondaryDist(), 1);
 });

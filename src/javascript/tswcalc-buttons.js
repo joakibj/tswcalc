@@ -2,15 +2,11 @@ var tswcalc = tswcalc || {};
 
 tswcalc.button = function() {
     var init = function() {
-        bindEvents();
-    };
-
-    var bindEvents = function() {
-        $.each(tswcalc.slots.indices(), function(slotIndex, slotValue) {
-            $.each(tswcalc.slots[slotValue].el.btn.primary, function(btnIndex, btnValue) {
-                console.log(btnValue);
-            });
-        });
+        for (var i = 0; i < tswcalc.data.template_data.slots.length; i++) {
+            var slotId = tswcalc.data.template_data.slots[i].id_prefix;
+            this[slotId] = new tswcalc.button.DistributionButtonHandler(slotId);
+            this[slotId].init();
+        }
     };
 
     var oPublic = {
@@ -23,9 +19,31 @@ tswcalc.button = function() {
 tswcalc.button.DistributionButtonHandler = function DistributionButtonHandler(slotId) {
     var self = this;
 
-    this.initiate = function() {
-        this.addListenersToGlyphDistButtons('primary');
-        this.addListenersToGlyphDistButtons('secondary');
+    this.init = function() {
+        this.bindEvents();
+        this.setInitialState();
+    };
+
+    this.bindEvents = function() {
+        $.each(tswcalc.slots[slotId].el.btn.primary, function(btnIndex, btn) {
+            btn.on('click', function(event) {
+                self.activate(event.target.id.split('-')[1], event.target.id.substring(event.target.id.length -1, event.target.id.length));
+                self.balance(event.target.id.split('-')[1]);
+                //tswcalc.summary.updateOffensiveDefensiveStats();
+            });
+        });
+        $.each(tswcalc.slots[slotId].el.btn.secondary, function(btnIndex, btn) {
+            btn.on('click', function(event) {
+                self.activate(event.target.id.split('-')[1], event.target.id.substring(event.target.id.length -1, event.target.id.length));
+                self.balance(event.target.id.split('-')[1]);
+                //tswcalc.summary.updateOffensiveDefensiveStats();
+            });
+        });
+    };
+
+    this.setInitialState = function() {
+        this.activate('primary', 4);
+        this.activate('secondary', 0);
     };
 
     this.addListenersToGlyphDistButtons = function(glyph) {
@@ -62,6 +80,37 @@ tswcalc.button.DistributionButtonHandler = function DistributionButtonHandler(sl
         }
     };
 
+    this.balance = function(clicked) {
+        var inverseOfClicked = self.inverse(clicked);
+
+        var clickedDist = self.getDist(clicked);
+        var inverseDist = self.getDist(inverseOfClicked);
+        var sumDist = clickedDist + inverseDist;
+        if ((sumDist) > 4) {
+            self.activate(inverseOfClicked, inverseDist - clickedDist);
+        } else if (sumDist == 4) {
+            // do nothing
+        } else {
+            self.activate(inverseOfClicked, 4 - clickedDist);
+        }
+    };
+
+    this.getDist = function(glyph) {
+        if (glyph == 'primary') {
+            return parseInt(tswcalc.slots[slotId].primaryDist(), 10);
+        } else {
+            return parseInt(tswcalc.slots[slotId].secondaryDist(), 10);
+        }
+    };
+
+    this.activate = function(glyph, index) {
+        var elem = tswcalc.slots[slotId].el.btn[glyph][index];
+        elem.siblings().removeClass('active');
+        elem.siblings().removeClass('btn-success');
+        elem.addClass('active');
+        elem.addClass('btn-success');
+    };
+
     this.onlyActiveButton = function(id) {
         $(id).siblings().removeClass('active');
         $(id).siblings().removeClass('btn-success');
@@ -69,7 +118,7 @@ tswcalc.button.DistributionButtonHandler = function DistributionButtonHandler(sl
         $(id).addClass('btn-success');
     };
 
-    this.getInverseGlyphStat = function(glyph) {
+    this.inverse = function(glyph) {
         return glyph == 'primary' ? 'secondary' : 'primary';
     };
 };
