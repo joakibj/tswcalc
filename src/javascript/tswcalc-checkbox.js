@@ -48,7 +48,6 @@ function RaidCheckbox(slot) {
             return $(this).attr('value') >= 80;
         }).remove();
         slots[slot].name('');
-        slots[slot].ql('10.0');
         slots[slot].signetQuality('none');
         slots[slot].signetId('none');
         slots[slot].updateSignet();
