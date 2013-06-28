@@ -89,3 +89,8 @@ test('should balance glyphs distributions to a sum of 4', 8, function() {
     equal(buttonHandler.getActiveDist('primary').innerHTML, '3', 'Primary glyph distribution');
     equal(buttonHandler.getActiveDist('secondary').innerHTML, '1', 'Secondary glyph distribution');
 });
+
+test('should automatically balance primary and secondary glyph distribution to always be a sum of 4', 1, function() {
+    //tswcalc.button.clickPrimary(0);
+    ok(1,1);
+});

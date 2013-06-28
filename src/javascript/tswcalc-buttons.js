@@ -1,5 +1,24 @@
 var tswcalc = tswcalc || {};
-tswcalc.button = tswcalc.button || {};
+
+tswcalc.button = function() {
+    var init = function() {
+        bindEvents();
+    };
+
+    var bindEvents = function() {
+        $.each(tswcalc.slots.indices(), function(slotIndex, slotValue) {
+            $.each(tswcalc.slots[slotValue].el.btn.primary, function(btnIndex, btnValue) {
+                console.log(btnValue);
+            });
+        });
+    };
+
+    var oPublic = {
+        init: init
+    };
+
+    return oPublic;
+}();
 
 tswcalc.button.DistributionButtonHandler = function DistributionButtonHandler(slotId) {
     var self = this;

@@ -13,8 +13,12 @@ tswcalc.slots = function() {
         return tswcalc.data.template_data.slots.length;
     };
 
+    var indices = function() {
+        return ['head', 'weapon', 'ring', 'neck', 'wrist', 'luck', 'waist', 'occult'];
+    };
+
     var hasSlot = function(slot) {
-        return this.hasOwnProperty(slot) && $.inArray(slot, ['head', 'weapon', 'ring', 'neck', 'wrist', 'luck', 'waist', 'occult']) != -1;
+        return this.hasOwnProperty(slot) && $.inArray(slot, indices()) != -1;
     };
 
     var reset = function() {
@@ -48,6 +52,7 @@ tswcalc.slots = function() {
     var oPublic = {
         init: init,
         length: length,
+        indices: indices,
         hasSlot: hasSlot,
         reset: reset,
         state: state,
