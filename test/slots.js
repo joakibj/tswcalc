@@ -187,7 +187,7 @@ test('should reset slot state', 7, function() {
     equal(tswcalc.slots.head.glyphQl(), '10.0');
     equal(tswcalc.slots.head.primaryGlyph(), 'none');
     equal(tswcalc.slots.head.secondaryGlyph(), 'none');
-    ok(tswcalc.slots.head.el.btn.primary[0].hasClass('active'));
+    ok(tswcalc.slots.head.el.btn.primary[4].hasClass('active'));
     ok(tswcalc.slots.head.el.btn.secondary[0].hasClass('active'));
 });
 

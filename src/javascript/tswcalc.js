@@ -72,10 +72,10 @@ tswcalc = function() {
     var startSubModules = function() {
         tswcalc.slots.init();
         for (var i = 0; i < tswcalc.data.template_data.slots.length; i++) {
-            startDistributionButtonHandler(tswcalc.data.template_data.slots[i].id_prefix);
             startSelectHandler(tswcalc.data.template_data.slots[i]);
             startRaidCheckboxes(tswcalc.data.template_data.slots[i].id_prefix);
         }
+        tswcalc.button.init();
         tswcalc.buttonBar.init();
         tswcalc.summary.init();
         tswcalc.export.init();
@@ -85,11 +85,6 @@ tswcalc = function() {
         if (location.hash == '') {
             location.hash = ' ';
         }
-    };
-
-    var startDistributionButtonHandler = function(slotId) {
-        tswcalc.button[slotId] = new tswcalc.button.DistributionButtonHandler(slotId);
-        tswcalc.button[slotId].initiate();
     };
 
     var startSelectHandler = function(slot) {

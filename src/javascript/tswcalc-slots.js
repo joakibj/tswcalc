@@ -13,8 +13,12 @@ tswcalc.slots = function() {
         return tswcalc.data.template_data.slots.length;
     };
 
+    var indices = function() {
+        return ['head', 'weapon', 'ring', 'neck', 'wrist', 'luck', 'waist', 'occult'];
+    };
+
     var hasSlot = function(slot) {
-        return this.hasOwnProperty(slot) && $.inArray(slot, ['head', 'weapon', 'ring', 'neck', 'wrist', 'luck', 'waist', 'occult']) != -1;
+        return this.hasOwnProperty(slot) && $.inArray(slot, indices()) != -1;
     };
 
     var reset = function() {
@@ -48,6 +52,7 @@ tswcalc.slots = function() {
     var oPublic = {
         init: init,
         length: length,
+        indices: indices,
         hasSlot: hasSlot,
         reset: reset,
         state: state,
@@ -316,7 +321,7 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
         this.glyphQl('10.0');
         this.primaryGlyph('none');
         this.secondaryGlyph('none');
-        this.el.btn.primary[0].trigger('click');
+        this.el.btn.primary[4].trigger('click');
         this.el.btn.secondary[0].trigger('click');
         this.signetId('none');
         this.signetQuality('none');

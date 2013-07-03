@@ -1,56 +1,82 @@
 var tswcalc = tswcalc || {};
-tswcalc.button = tswcalc.button || {};
+
+tswcalc.button = function() {
+    var init = function() {
+        for (var i = 0; i < tswcalc.data.template_data.slots.length; i++) {
+            var slotId = tswcalc.data.template_data.slots[i].id_prefix;
+            this[slotId] = new tswcalc.button.DistributionButtonHandler(slotId);
+            this[slotId].init();
+        }
+    };
+
+    var oPublic = {
+        init: init
+    };
+
+    return oPublic;
+}();
 
 tswcalc.button.DistributionButtonHandler = function DistributionButtonHandler(slotId) {
     var self = this;
 
-    this.initiate = function() {
-        this.addListenersToGlyphDistButtons('primary');
-        this.addListenersToGlyphDistButtons('secondary');
+    this.init = function() {
+        this.bindEvents();
+        this.setInitialState();
     };
 
-    this.addListenersToGlyphDistButtons = function(glyph) {
-        this.onlyActiveButton('#' + slotId + '-' + glyph + '-glyph-dist-btn0');
-        $('#' + slotId + '-' + glyph + '-glyph-dist > button.btn').on('click', function(event) {
-            self.setActiveButtonAndBalanceGlyphDist(this, glyph);
-            tswcalc.summary.updateOffensiveDefensiveStats();
+    this.bindEvents = function() {
+        this.bindButtonEvents('primary');
+        this.bindButtonEvents('secondary');
+    };
+
+    this.bindButtonEvents = function(glyph) {
+        $.each(tswcalc.slots[slotId].el.btn[glyph], function(btnIndex, btn) {
+            btn.on('click', function(event) {
+                var btnId = event.target.id;
+                self.activate(btnId.split('-')[1], btnId.substring(btnId.length -1, btnId.length));
+                self.balance(btnId.split('-')[1]);
+                tswcalc.summary.updateOffensiveDefensiveStats();
+            });
         });
     };
 
-    this.setActiveButtonAndBalanceGlyphDist = function(element, glyph) {
-        this.onlyActiveButton('#' + element.id);
-        this.balanceGlyphDist(element, glyph);
+    this.setInitialState = function() {
+        this.activate('primary', 4);
+        this.activate('secondary', 0);
     };
 
-    this.balanceGlyphDist = function(button, glyph) {
-        otherActiveButton = self.getActiveDist(self.getInverseGlyphStat(glyph));
-        this.balanceGlyphDistOverflow(button, otherActiveButton);
-    };
+    this.balance = function(clicked) {
+        var inverseOfClicked = self.inverse(clicked);
 
-    this.getActiveDist = function(glyph) {
-        return $('#' + slotId + '-' + glyph + '-glyph-dist > button.btn.active')[0];
-    };
-
-    this.balanceGlyphDistOverflow = function(clickedButton, otherButton) {
-        if (otherButton !== null) {
-            var clickedDist = parseInt(clickedButton.innerHTML, 10);
-            var otherDist = parseInt(otherButton.innerHTML, 10);
-            var sumBothDist = clickedDist + otherDist;
-            if ((sumBothDist) > 4) {
-                var otherDistLoweredByOne = otherButton.id.substring(0, otherButton.id.length - 1) + (otherDist - (sumBothDist - 4));
-                self.onlyActiveButton('#' + otherDistLoweredByOne);
-            }
+        var clickedDist = self.getDist(clicked);
+        var inverseDist = self.getDist(inverseOfClicked);
+        var sumDist = clickedDist + inverseDist;
+        if ((sumDist) > 4) {
+            self.activate(inverseOfClicked, (inverseDist - (sumDist - 4)));
+        } else if (sumDist == 4) {
+            // do nothing
+        } else {
+            self.activate(inverseOfClicked, 4 - clickedDist);
         }
     };
 
-    this.onlyActiveButton = function(id) {
-        $(id).siblings().removeClass('active');
-        $(id).siblings().removeClass('btn-success');
-        $(id).addClass('active');
-        $(id).addClass('btn-success');
+    this.getDist = function(glyph) {
+        if (glyph == 'primary') {
+            return parseInt(tswcalc.slots[slotId].primaryDist(), 10);
+        } else {
+            return parseInt(tswcalc.slots[slotId].secondaryDist(), 10);
+        }
     };
 
-    this.getInverseGlyphStat = function(glyph) {
+    this.activate = function(glyph, index) {
+        var elem = tswcalc.slots[slotId].el.btn[glyph][index];
+        elem.siblings().removeClass('active');
+        elem.siblings().removeClass('btn-success');
+        elem.addClass('active');
+        elem.addClass('btn-success');
+    };
+
+    this.inverse = function(glyph) {
         return glyph == 'primary' ? 'secondary' : 'primary';
     };
 };
