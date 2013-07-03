@@ -41,11 +41,7 @@ function initiateSummary() {
 }
 
 function initiateButtonHandlers() {
-    for (var i = 0; i < tswcalc.data.template_data.slots.length; i++) {
-        var slot = tswcalc.data.template_data.slots[i];
-        tswcalc.button[slot.id_prefix] = new tswcalc.button.DistributionButtonHandler(slot.id_prefix);
-        tswcalc.button[slot.id_prefix].initiate();
-    }
+    tswcalc.button.init();
 }
 
 function initiateSelectHandlers() {
