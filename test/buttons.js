@@ -163,17 +163,23 @@ test('should automatically balance primary and secondary glyph distribution to a
 
 module('glyphbuttons-integration-tests', {
     setup: function() {
+        renderSlots();
         renderGlyphButtons('weapon', '-primary-glyph');
         renderGlyphButtons('weapon', '-secondary-glyph');
-        tswcalc.slots['weapon'] = new tswcalc.slots.Slot('weapon', 'Weapon', 'weapon');
-        tswcalc.button['weapon'] = new tswcalc.button.DistributionButtonHandler('weapon');
-        tswcalc.button['weapon'].init();
+        tswcalc.slots.init();
+        tswcalc.button.init();
+        tswcalc.summary.init();
     }
 });
 
-test('test', 2, function() {
+test('should balance distribution when button is pressed', 4, function() {
     tswcalc.slots.weapon.el.btn.primary[3].click();
 
     equal(tswcalc.slots.weapon.primaryDist(), 3);
     equal(tswcalc.slots.weapon.secondaryDist(), 1);
+
+    tswcalc.slots.head.el.btn.secondary[2].click();
+
+    equal(tswcalc.slots.head.primaryDist(), 2);
+    equal(tswcalc.slots.head.secondaryDist(), 2);
 });

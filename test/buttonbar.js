@@ -123,7 +123,7 @@ function assertReset(slot) {
     equal(slot.glyphQl(), '10.0');
     equal(slot.primaryGlyph(), 'none');
     equal(slot.secondaryGlyph(), 'none');
-    ok(slot.el.btn.primary[0].hasClass('active'));
+    ok(slot.el.btn.primary[4].hasClass('active'));
     ok(slot.el.btn.secondary[0].hasClass('active'));
     ok(!slot.el.btn.nyraid.is(':checked'));
     equal(slot.signetId(), 'none');

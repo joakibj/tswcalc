@@ -29,14 +29,14 @@ tswcalc.button.DistributionButtonHandler = function DistributionButtonHandler(sl
             btn.on('click', function(event) {
                 self.activate(event.target.id.split('-')[1], event.target.id.substring(event.target.id.length -1, event.target.id.length));
                 self.balance(event.target.id.split('-')[1]);
-                //tswcalc.summary.updateOffensiveDefensiveStats();
+                tswcalc.summary.updateOffensiveDefensiveStats();
             });
         });
         $.each(tswcalc.slots[slotId].el.btn.secondary, function(btnIndex, btn) {
             btn.on('click', function(event) {
                 self.activate(event.target.id.split('-')[1], event.target.id.substring(event.target.id.length -1, event.target.id.length));
                 self.balance(event.target.id.split('-')[1]);
-                //tswcalc.summary.updateOffensiveDefensiveStats();
+                tswcalc.summary.updateOffensiveDefensiveStats();
             });
         });
     };
@@ -87,7 +87,7 @@ tswcalc.button.DistributionButtonHandler = function DistributionButtonHandler(sl
         var inverseDist = self.getDist(inverseOfClicked);
         var sumDist = clickedDist + inverseDist;
         if ((sumDist) > 4) {
-            self.activate(inverseOfClicked, inverseDist - clickedDist);
+            self.activate(inverseOfClicked, (inverseDist - (sumDist - 4)));
         } else if (sumDist == 4) {
             // do nothing
         } else {
