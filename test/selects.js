@@ -69,3 +69,28 @@ test('should get signets for head', 1, function() {
     equal(tswcalc.select['head'].getSignetsForHead('head').length, 16);
 });
 
+module('selects-integration-tests', {
+    setup: function() {
+        renderSlots();
+        tswcalc.slots.init();
+        initiateSelectHandlers();
+        initiateRaidCheckboxes();
+        initiateSummary();
+    }
+});
+
+test('should change role and have enabled checkbutton if NY raid item is found', 2, function() {
+    tswcalc.slots['head'].el.role.val('healer');
+    tswcalc.slots['head'].el.role.change();
+
+    equal($('#head-role').val(), "healer");
+    deepEqual($('#head-nyraid').attr('disabled'), undefined, 'ny raid checkbtn not disabled');
+});
+
+test('should change role and have disabled checkbutton if NY raid item is not found', 2, function() {
+    tswcalc.slots['wrist'].el.role.val('dps');
+    tswcalc.slots['wrist'].el.role.change();
+
+    equal($('#wrist-role').val(), "dps");
+    deepEqual($('#wrist-nyraid').attr('disabled'), 'disabled', 'ny raid checkbtn is disabled');
+});

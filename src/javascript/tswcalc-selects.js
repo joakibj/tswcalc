@@ -67,16 +67,16 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
 
     this.roleChange = function(event) {
         var role = $(this).val();
-        if(ny_raid_items[slot.id_prefix][role] === undefined) {
+        if(tswcalc.data.ny_raid_items[slot.id_prefix][role] === undefined) {
             tswcalc.slots[slot.id_prefix].el.btn.nyraid.attr('checked', false);
             tswcalc.slots[slot.id_prefix].el.btn.nyraid.attr('disabled', 'disabled');
         } else {
             tswcalc.slots[slot.id_prefix].el.btn.nyraid.removeAttr('disabled');
         }
-        if(slots[slot.id_prefix].el.btn.nyraid.is(':checked')) {
-            raidCheckboxes[slot.id_prefix].changeToRaidItem();
+        if(tswcalc.slots[slot.id_prefix].el.btn.nyraid.is(':checked')) {
+            tswcalc.checkbox[slot.id_prefix].changeToRaidItem();
         } else {
-            raidCheckboxes[slot.id_prefix].changeToCustomItem();
+            tswcalc.checkbox[slot.id_prefix].changeToCustomItem();
         }
         tswcalc.summary.updatePrimaryStats();
     };
