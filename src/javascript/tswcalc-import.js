@@ -27,7 +27,7 @@ tswcalc.import = function() {
                 tswcalc.slots[slotId].el.btn.nyraid.prop('checked', true);
                 tswcalc.slots[slotId].el.btn.nyraid.change();
             } else {
-                if (!tswcalc.slots[slotId].isWeapon() && tswcalc.data.ny_raid_items[slotId][tswcalc.slots[slotId].role()] !== undefined) {
+                if (isAllowedNyRaidItem(slotId)) {
                     tswcalc.slots[slotId].el.btn.nyraid.prop('disabled', false);
                 }
                 tswcalc.slots[slotId].signetQuality(tswcalc.data.signet_quality_mapping.to_name[values[7]]);
@@ -35,10 +35,17 @@ tswcalc.import = function() {
                 tswcalc.slots[slotId].updateSignet();
             }
         } else {
+            if (isAllowedNyRaidItem(slotId)) {
+                    tswcalc.slots[slotId].el.btn.nyraid.prop('disabled', false);
+            }
             tswcalc.slots[slotId].signetQuality('none');
             tswcalc.slots[slotId].signetId('none');
             tswcalc.slots[slotId].updateSignet();
         }
+    };
+
+    var isAllowedNyRaidItem = function(slotId) {
+        return !tswcalc.slots[slotId].isWeapon() && typeof tswcalc.data.ny_raid_items[slotId][tswcalc.slots[slotId].role()] !== 'undefined';
     };
 
     var oPublic = {
