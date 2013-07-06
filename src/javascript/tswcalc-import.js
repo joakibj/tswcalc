@@ -21,7 +21,7 @@ tswcalc.import = function() {
         tswcalc.slots[slotId].el.btn.primary[values[5]].click();
         tswcalc.slots[slotId].el.btn.secondary[values[6]].click();
         // support signets
-        if (typeof values[7] !== undefined && typeof values[8] !== undefined) {
+        if (typeof values[7] !== 'undefined' && typeof values[8] !== 'undefined') {
             if (values[8] >= 80) {
                 tswcalc.slots[slotId].el.btn.nyraid.prop('disabled', false);
                 tswcalc.slots[slotId].el.btn.nyraid.prop('checked', true);
@@ -32,8 +32,12 @@ tswcalc.import = function() {
                 }
                 tswcalc.slots[slotId].signetQuality(tswcalc.data.signet_quality_mapping.to_name[values[7]]);
                 tswcalc.slots[slotId].signetId(values[8] != '0' ? values[8] : 'none');
-                tswcalc.slots[slotId].el.signetId.change();
+                tswcalc.slots[slotId].updateSignet();
             }
+        } else {
+            tswcalc.slots[slotId].signetQuality('none');
+            tswcalc.slots[slotId].signetId('none');
+            tswcalc.slots[slotId].updateSignet();
         }
     };
 
