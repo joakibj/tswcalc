@@ -31,6 +31,9 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
         var signetsInSlotGroup = $.merge([], tswcalc.data.signet_data[slot.group]);
         // weapon signets can also be slotted in head
         $.merge(signetsInSlotGroup, this.getSignetsForHead(slot.group));
+        // merge in non-head and non-weapon signets in this slot
+        $.merge(signetsInSlotGroup, this.getSignetsForSlot());
+
         signetsInSlotGroup.sort(function(a, b) {
             if (a.name.toLowerCase() > b.name.toLowerCase()) {
                 return 1;
@@ -60,8 +63,16 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
         return [];
     };
 
+    this.getSignetsForSlot = function() {
+        if(slot.id_prefix !== 'head' && slot.id_prefix !== 'weapon' && typeof tswcalc.data.signet_data[slot.id_prefix] !== 'undefined') {
+            return tswcalc.data.signet_data[slot.id_prefix];
+        }
+        return [];
+    };
+
     this.signetChange = function(event) {
         var signet = tswcalc.slots[slot.id_prefix].signet();
+        
         if(typeof signet.requires !== 'undefined') {
             var cadoro = tswcalc.data.cadoro_items[signet.requires];
             var cadoroItem = cadoro[slot.id_prefix][tswcalc.slots[slot.id_prefix].role()];

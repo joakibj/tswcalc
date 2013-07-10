@@ -223,6 +223,9 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
             foundSignet = tswcalc.data.ny_raid_items[this.id][this.role()].signet;
         } else {
             foundSignet = tswcalc.data.signet_data.find(this.group, this.signetId());
+            if(foundSignet.id == 0 && tswcalc.data.signet_data[this.id] !== undefined) {
+                foundSignet = tswcalc.data.signet_data.find(this.id, this.signetId());
+            }
         }
         return foundSignet !== 0 || foundSignet !== undefined ? foundSignet : null;
     };

@@ -1,8 +1,6 @@
 var tswcalc = tswcalc || {};
 tswcalc.data = tswcalc.data || {};
-tswcalc.data.cadoro_warnings = {
 
-};
 tswcalc.data.cadoro_items = {
     'issue-6': {
         'warning_text': "This signet can only be attached to Ageless Blood, Forgotten Ashes or Time's Mark. These items can be purchased from the Ca' d'Oro merchant in Scorched Desert.",
@@ -20,6 +18,26 @@ tswcalc.data.cadoro_items = {
             },
             'tank': {
                 name: "Time's Mark",
+                ql: '10.1'
+            }
+        }
+    },
+    'issue-7': {
+        'warning_text': "This signet can only be attached to Baba Yaga's Bauble, Koschei's Medallion or The Impaler's Cross. These items can be purchased from the Ca' d'Oro merchant in Shadowy Forest.",
+        'neck': {
+            'none': {
+                name: ''
+            },
+            'dps': {
+                name: "The Impaler's Cross",
+                ql: '10.1'
+            },
+            'healer': {
+                name: "Baba Yaga's Bauble",
+                ql: '10.1'
+            },
+            'tank': {
+                name: "Koschei's Medallion",
                 ql: '10.1'
             }
         }
