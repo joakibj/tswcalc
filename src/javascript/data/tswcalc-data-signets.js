@@ -652,5 +652,40 @@ tswcalc.data.signet_data = {
             stat: 'heal-rating',
             icon: 'major_heal'
         }
+    ],
+    'neck': [{
+            id: 56,
+            name: 'Chernobog',
+            description: 'Your attack rating is increased by %d.',
+            cooldown: '0',
+            quality: {
+                epic: 117
+            },
+            stat: 'attack-rating',
+            icon: 'major_dps',
+            requires: 'issue-7'
+        }, {
+            id: 57,
+            name: 'Veles',
+            description: 'Your health is increased by %d.',
+            cooldown: '0',
+            quality: {
+                epic: 410
+            },
+            stat: 'hitpoints',
+            icon: 'major_tank',
+            requires: 'issue-7'
+        }, {
+            id: 58,
+            name: 'Belobog',
+            description: 'Your Heal rating is increased by %d.',
+            cooldown: '0',
+            quality: {
+                epic: 117
+            },
+            stat: 'heal-rating',
+            icon: 'major_heal',
+            requires: 'issue-7'
+        }
     ]
 };
