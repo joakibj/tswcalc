@@ -130,15 +130,15 @@ module.exports = function(grunt) {
     watch: {
       dust: {
         files: ['src/templates/dusts/**/*.dust'],
-        tasks: ['default']
+        tasks: ['build']
       },
       javascript: {
         files: ['<%= dirs.src %>/*.js'],
-        tasks: ['default']
+        tasks: ['build']
       },
       css: {
         files: ['public/assets/stylesheets/<%= pkg.name %>.css'],
-        tasks: ['default']
+        tasks: ['build']
       }
     },
     qunit: {
@@ -159,6 +159,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-clean');
 
-  grunt.registerTask('default', ['dust', 'concat', 'replace:develop', 'copy:develop', 'qunit']);
+  grunt.registerTask('build', ['dust', 'concat', 'replace:develop', 'copy:develop']);
+  grunt.registerTask('default', ['build', 'qunit']);
+  grunt.registerTask('test', ['qunit']);
   grunt.registerTask('dist', ['dust', 'concat', 'qunit', 'uglify', 'replace:dist', 'copy:dist']);
 };

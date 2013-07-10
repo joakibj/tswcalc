@@ -39,7 +39,7 @@ When developing, use:
     
     grunt watch
 
-The previous command monitors changes to files in the `src` folder, compiles (if needed), concatenates and runs tests on them.
+The previous command monitors changes to files in the `src` folder and builds the project.
 
 Open `build/index.html` to view.
 
