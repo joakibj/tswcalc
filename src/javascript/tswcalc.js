@@ -40,10 +40,11 @@ tswcalc = function() {
         $('#raid-stats > label').tooltip({
             placement: 'bottom'
         });
-        $('.cost-tooltip, .glyph-tooltip, .signet-tooltip').on('click', function(event) {
+        $('.cost-tooltip, .glyph-tooltip, .signet-tooltip, .slot-warning').on('click', function(event) {
             event.preventDefault();
             event.stopPropagation();
         });
+
     };
 
     var renderContainer = function(data) {
