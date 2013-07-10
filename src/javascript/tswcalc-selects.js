@@ -67,7 +67,6 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
             var cadoroItem = cadoro[slot.id_prefix][tswcalc.slots[slot.id_prefix].role()];
             if(cadoroItem !== undefined && cadoroItem.name !== '') {
                 tswcalc.slots[slot.id_prefix].name(': ' + cadoroItem.name);
-                tswcalc.slots[slot.id_prefix].ql(cadoroItem.ql);
             }
             tswcalc.slots[slot.id_prefix].signetQuality('epic');
             tswcalc.slots[slot.id_prefix].el.signetQuality.attr('disabled', 'disabled');

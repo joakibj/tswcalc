@@ -95,13 +95,12 @@ test('should change role and have disabled checkbutton if NY raid item is not fo
     deepEqual($('#wrist-nyraid').attr('disabled'), 'disabled', 'ny raid checkbtn is disabled');
 });
 
-test('should only allow epic version of signet when cadoro signets are selected', 6, function() {
+test('should only allow epic version of signet when cadoro signets are selected', 5, function() {
     tswcalc.slots['head'].role('dps');
     tswcalc.slots['head'].signetId('53');
     tswcalc.slots['head'].el.signetId.change();
 
     equal($('#head-name').html(), ': Forgotten Ashes');
-    equal($('#head-ql').val(), '10.1');
     equal($('#head-pick-signet').val(), '53');
     equal($('#head-signet-quality').val(), 'epic');
     deepEqual($('#head-signet-quality').attr('disabled'), 'disabled', 'quality select disabled');
