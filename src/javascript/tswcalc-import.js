@@ -32,7 +32,7 @@ tswcalc.import = function() {
                 }
                 tswcalc.slots[slotId].signetQuality(tswcalc.data.signet_quality_mapping.to_name[values[7]]);
                 tswcalc.slots[slotId].signetId(values[8] != '0' ? values[8] : 'none');
-                tswcalc.slots[slotId].updateSignet();
+                tswcalc.slots[slotId].el.signetId.change();
             }
         } else {
             if (isAllowedNyRaidItem(slotId)) {
