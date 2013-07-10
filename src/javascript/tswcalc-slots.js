@@ -6,6 +6,7 @@ tswcalc.slots = function() {
         for (var i = 0; i < tswcalc.data.template_data.slots.length; i++) {
             var slotData = tswcalc.data.template_data.slots[i];
             this[slotData.id_prefix] = new tswcalc.slots.Slot(slotData.id_prefix, slotData.name, slotData.group);
+            this[slotData.id_prefix].el.nameWarning.hide();
         }
     };
 
@@ -84,6 +85,7 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
         signetIconImg: $('#' + this.id + '-signet-img-icon'),
         signetIconBorderImg: $('#' + this.id + '-signet-img-quality'),
         signetDescription: $('#' + this.id + '-signet-description'),
+        nameWarning: $('#' + this.id + '-name-warning'),
         btn: {
             primary: {
                 0: $('#' + this.id + '-primary-glyph-dist-btn0'),
@@ -316,6 +318,7 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
     };
 
     this.reset = function() {
+        this.name('');
         this.ql('10.0');
         this.role('none');
         this.glyphQl('10.0');

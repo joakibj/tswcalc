@@ -23,7 +23,7 @@ test('should change slot to raid item based on role', 11, function() {
     equal($('#head-pick-signet').val(), '80');
     equal($('#head-signet-description').html(), 'Whenever you apply a heal effect to a friend, there is a 10% chance that you will heal the target for an additional 3% of their maximum health. 5 seconds cooldown.');
     equal($('#head-pick-signet').find("option[value='80']").length, 1);
-    equal($('#head-pick-signet option').size(), 5 + 16 + 1 + 1);
+    equal($('#head-pick-signet option').size(), 8 + 16 + 1 + 1);
 });
 
 test('should change slot to custom item, from raid item', 12, function() {
@@ -43,7 +43,7 @@ test('should change slot to custom item, from raid item', 12, function() {
     equal($('#head-signet-quality').val(), 'none');
     equal($('#head-signet-description').html(), '');
     equal($('#head-pick-signet').find("option[value='80']").length, 0);
-    equal($('#head-pick-signet option').size(), 5 + 16 + 1);
+    equal($('#head-pick-signet option').size(), 8 + 16 + 1);
 });
 
 test('should not change slot to raid item when there is no raid item for the slot+role', 11, function() {

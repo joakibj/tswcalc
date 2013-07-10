@@ -56,7 +56,7 @@ module('selects-unit-tests', {
 test('should have added signets to correct group', 8, function() {
     // None option must be taken into account
     equal($('#weapon-pick-signet option').size(), 16 + 1);
-    equal($('#head-pick-signet option').size(), 5 + 16 + 1); //weapon signets also fit in the head
+    equal($('#head-pick-signet option').size(), 8 + 16 + 1); //weapon signets also fit in the head
     equal($('#ring-pick-signet option').size(), 3 + 1);
     equal($('#neck-pick-signet option').size(), 3 + 1);
     equal($('#wrist-pick-signet option').size(), 3 + 1);
@@ -93,4 +93,38 @@ test('should change role and have disabled checkbutton if NY raid item is not fo
 
     equal($('#wrist-role').val(), "dps");
     deepEqual($('#wrist-nyraid').attr('disabled'), 'disabled', 'ny raid checkbtn is disabled');
+});
+
+test('should only allow epic version of signet when cadoro signets are selected', 5, function() {
+    tswcalc.slots['head'].role('dps');
+    tswcalc.slots['head'].signetId('53');
+    tswcalc.slots['head'].el.signetId.change();
+
+    equal($('#head-name').html(), ': Forgotten Ashes');
+    equal($('#head-pick-signet').val(), '53');
+    equal($('#head-signet-quality').val(), 'epic');
+    deepEqual($('#head-signet-quality').attr('disabled'), 'disabled', 'quality select disabled');
+    deepEqual($('#head-signet-description').html(), 'Whenever you hit you gain a single Kingdom counter which increases your Hit Rating by 6 for 4 seconds per stack. This effect can stack up to 20 times. An additional stack is gained if an attack penetrates or critically hits.');
+});
+
+test('should only allow epic version of signet when quality different than normal is selected before cadoro signet', 4, function() {
+    tswcalc.slots['head'].signetId('20');
+    tswcalc.slots['head'].signetQuality('elite');
+    tswcalc.slots['head'].el.signetId.change();
+    tswcalc.slots['head'].signetId('53');
+    tswcalc.slots['head'].el.signetId.change();
+
+    equal($('#head-pick-signet').val(), '53');
+    equal($('#head-signet-quality').val(), 'epic');
+    deepEqual($('#head-signet-quality').attr('disabled'), 'disabled', 'quality select disabled');
+    deepEqual($('#head-signet-description').html(), 'Whenever you hit you gain a single Kingdom counter which increases your Hit Rating by 6 for 4 seconds per stack. This effect can stack up to 20 times. An additional stack is gained if an attack penetrates or critically hits.');
+});
+
+test('should enable signet quality when a cadoro signet has been selected and then changed to a different signet', 1, function() {
+    tswcalc.slots['head'].signetId('53');
+    tswcalc.slots['head'].el.signetId.change();
+    tswcalc.slots['head'].signetId('20');
+    tswcalc.slots['head'].el.signetId.change();
+
+    deepEqual($('#head-pick-signet').attr('disabled'), undefined, 'quality select enabled');
 });

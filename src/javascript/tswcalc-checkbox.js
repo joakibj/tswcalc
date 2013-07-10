@@ -51,6 +51,7 @@ tswcalc.checkbox.RaidCheckbox = function RaidCheckbox(slot) {
             return $(this).attr('value') >= 80;
         }).remove();
         tswcalc.slots[slot].name('');
+        tswcalc.slots[slot].el.nameWarning.hide();
         tswcalc.slots[slot].signetQuality('none');
         tswcalc.slots[slot].signetId('none');
         tswcalc.slots[slot].updateSignet();

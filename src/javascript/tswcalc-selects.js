@@ -61,6 +61,25 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
     };
 
     this.signetChange = function(event) {
+        var signet = tswcalc.slots[slot.id_prefix].signet();
+        if(typeof signet.requires !== 'undefined') {
+            var cadoro = tswcalc.data.cadoro_items[signet.requires];
+            var cadoroItem = cadoro[slot.id_prefix][tswcalc.slots[slot.id_prefix].role()];
+            if(cadoroItem !== undefined && cadoroItem.name !== '') {
+                tswcalc.slots[slot.id_prefix].name(': ' + cadoroItem.name);
+            }
+            tswcalc.slots[slot.id_prefix].signetQuality('epic');
+            tswcalc.slots[slot.id_prefix].el.signetQuality.attr('disabled', 'disabled');
+            tswcalc.slots[slot.id_prefix].el.nameWarning.tooltip({
+                title: cadoro.warning_text,
+                placement: 'top'
+            });
+            tswcalc.slots[slot.id_prefix].el.nameWarning.show();
+        } else {
+            tswcalc.slots[slot.id_prefix].name('');
+            tswcalc.slots[slot.id_prefix].el.signetQuality.removeAttr('disabled');
+            tswcalc.slots[slot.id_prefix].el.nameWarning.hide();
+        }
         tswcalc.slots[slot.id_prefix].updateSignet();
         tswcalc.summary.updatePrimaryStats();
     };
