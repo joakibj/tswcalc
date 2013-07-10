@@ -273,11 +273,6 @@ tswcalc.data.signet_data = {
             quality: {
                 epic: 6
             },
-            bonus: {
-                stat: ['hit-rating'],
-                add: 6
-            },
-            stack_max: 20,
             icon: 'head_dps',
             requires_item: 'scorched-desert'
         }, {
