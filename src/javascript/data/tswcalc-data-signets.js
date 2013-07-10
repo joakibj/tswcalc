@@ -274,7 +274,7 @@ tswcalc.data.signet_data = {
                 epic: 6
             },
             icon: 'head_dps',
-            requires_item: 'scorched-desert'
+            requires: 'issue-6'
         }, {
             id: 54,
             name: 'Thinis',
@@ -284,7 +284,7 @@ tswcalc.data.signet_data = {
                 epic: 20
             },
             icon: 'head_heal',
-            requires_item: 'scorched-desert'
+            requires: 'issue-6'
         }, {
             id: 55,
             name: 'Trenches',
@@ -297,7 +297,7 @@ tswcalc.data.signet_data = {
                 }
             ],
             icon: 'head_tank',
-            requires_item: 'scorched-desert'
+            requires: 'issue-6'
         }
     ],
     'minor': [{
