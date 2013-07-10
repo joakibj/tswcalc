@@ -90,7 +90,39 @@ test('should change role and have enabled checkbutton if NY raid item is found',
 test('should change role and have disabled checkbutton if NY raid item is not found', 2, function() {
     tswcalc.slots['wrist'].el.role.val('dps');
     tswcalc.slots['wrist'].el.role.change();
-
+    
     equal($('#wrist-role').val(), "dps");
     deepEqual($('#wrist-nyraid').attr('disabled'), 'disabled', 'ny raid checkbtn is disabled');
+});
+
+test('should only allow epic version of signet when cadoro signets are selected', 4, function() {
+    tswcalc.slots['head'].signetId('53');
+    tswcalc.slots['head'].el.signetId.change();
+
+    equal($('#head-pick-signet').val(), '53');
+    equal($('#head-signet-quality').val(), 'epic');
+    deepEqual($('#head-signet-quality').attr('disabled'), 'disabled', 'quality select disabled');
+    deepEqual($('#head-signet-description').html(), 'Whenever you hit you gain a single Kingdom counter which increases your Hit Rating by 6 for 4 seconds per stack. This effect can stack up to 20 times. An additional stack is gained if an attack penetrates or critically hits.');
+});
+
+test('should only allow epic version of signet when quality different than normal is selected before cadoro signet', 4, function() {
+    tswcalc.slots['head'].signetId('20');
+    tswcalc.slots['head'].signetQuality('elite');
+    tswcalc.slots['head'].el.signetId.change();
+    tswcalc.slots['head'].signetId('53');
+    tswcalc.slots['head'].el.signetId.change();
+
+    equal($('#head-pick-signet').val(), '53');
+    equal($('#head-signet-quality').val(), 'epic');
+    deepEqual($('#head-signet-quality').attr('disabled'), 'disabled', 'quality select disabled');
+    deepEqual($('#head-signet-description').html(), 'Whenever you hit you gain a single Kingdom counter which increases your Hit Rating by 6 for 4 seconds per stack. This effect can stack up to 20 times. An additional stack is gained if an attack penetrates or critically hits.');
+});
+
+test('should enable signet quality when a cadoro signet has been selected and then changed to a different signet', 1, function() {
+    tswcalc.slots['head'].signetId('53');
+    tswcalc.slots['head'].el.signetId.change();
+    tswcalc.slots['head'].signetId('20');
+    tswcalc.slots['head'].el.signetId.change();
+
+    deepEqual($('#head-pick-signet').attr('disabled'), undefined, 'quality select enabled');
 });

@@ -60,7 +60,24 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
         return [];
     };
 
+    var warnings = {
+        'scorched-desert': "This signet can only be attached to Ageless Blood, Forgotten Ashes or Time's Mark. These items can be purchased from the Ca' d'Oro merchant in Scorched Desert."
+    };
+
     this.signetChange = function(event) {
+        var signet = tswcalc.slots[slot.id_prefix].signet();
+        if(typeof signet.requires_item !== 'undefined') {
+            tswcalc.slots[slot.id_prefix].signetQuality('epic');
+            tswcalc.slots[slot.id_prefix].el.signetQuality.attr('disabled', 'disabled');
+            tswcalc.slots[slot.id_prefix].el.nameWarning.tooltip({
+                title: warnings[signet.requires_item],
+                placement: 'top'
+            });
+            tswcalc.slots[slot.id_prefix].el.nameWarning.show();
+        } else {
+            tswcalc.slots[slot.id_prefix].el.signetQuality.removeAttr('disabled');
+            tswcalc.slots[slot.id_prefix].el.nameWarning.hide();
+        }
         tswcalc.slots[slot.id_prefix].updateSignet();
         tswcalc.summary.updatePrimaryStats();
     };
