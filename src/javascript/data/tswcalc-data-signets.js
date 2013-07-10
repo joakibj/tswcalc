@@ -265,6 +265,44 @@ tswcalc.data.signet_data = {
             id: 20,
             name: 'Resilience',
             icon: 'head_tank'
+        }, {
+            id: 53,
+            name: 'Kingdom',
+            description: 'Whenever you hit you gain a single Kingdom counter which increases your Hit Rating by %d for 4 seconds per stack. This effect can stack up to 20 times. An additional stack is gained if an attack penetrates or critically hits.',
+            cooldown: '0',
+            quality: {
+                epic: 6
+            },
+            bonus: {
+                stat: ['hit-rating'],
+                add: 6
+            },
+            stack_max: 20,
+            icon: 'head_dps',
+            requires_item: 'scorched-desert'
+        }, {
+            id: 54,
+            name: 'Thinis',
+            description: 'Whenever you use a healing ability which builds a resource, you have a %d% chance to gain a resource for your secondary weapon.',
+            cooldown: '0',
+            quality: {
+                epic: 20
+            },
+            icon: 'head_heal',
+            requires_item: 'scorched-desert'
+        }, {
+            id: 55,
+            name: 'Trenches',
+            description: 'Whenever you are glanced, you evade, or block an attack, you gain a Trench counter. Once this counter reaches %0 you are healed for %1 of your maximum health.',
+            cooldown: '8',
+            quality: [{
+                    epic: 6
+                }, {
+                    epic: 3
+                }
+            ],
+            icon: 'head_tank',
+            requires_item: 'scorched-desert'
         }
     ],
     'minor': [{
