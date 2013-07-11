@@ -288,7 +288,7 @@ tswcalc.data.signet_data = {
         }, {
             id: 55,
             name: 'Trenches',
-            description: 'Whenever you are glanced, you evade, or block an attack, you gain a Trench counter. Once this counter reaches %0 you are healed for %1 of your maximum health.',
+            description: 'Whenever you are glanced, you evade, or block an attack, you gain a Trench counter. Once this counter reaches %0 you are healed for %1% of your maximum health.',
             cooldown: '8',
             quality: [{
                     epic: 6
