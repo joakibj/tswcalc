@@ -4,7 +4,9 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     dirs: {
-      src: 'src/javascript'
+      src: 'src/javascript',
+      build: 'build',
+      dist: 'dist'
     },
     dust: {
       default: {
@@ -12,7 +14,7 @@ module.exports = function(grunt) {
             expand: true,
             cwd: 'src/templates/dusts/',
             src: ['**/*.dust'],
-            dest: 'build/templates/dusts/',
+            dest: '<%= dirs.build %>/templates/dusts/',
             ext: '.js'
           }
         ],
@@ -28,8 +30,8 @@ module.exports = function(grunt) {
         separator: ';'
       },
       build_dust: {
-        src: ['build/templates/dusts/**/*.js'],
-        dest: 'build/assets/javascripts/<%= pkg.name %>-dusts.js'
+        src: ['<%= dirs.build %>/templates/dusts/**/*.js'],
+        dest: '<%= dirs.build %>/assets/javascripts/<%= pkg.name %>-dusts.js'
       },
       build_main: {
         src: [
@@ -45,7 +47,7 @@ module.exports = function(grunt) {
             '<%= dirs.src %>/<%= pkg.name %>-slots.js',
             '<%= dirs.src %>/<%= pkg.name %>-checkbox.js'
         ],
-        dest: 'build/assets/javascripts/<%= pkg.name %>.js'
+        dest: '<%= dirs.build %>/assets/javascripts/<%= pkg.name %>.js'
       },
       build_data: {
         src: [
@@ -58,7 +60,7 @@ module.exports = function(grunt) {
             '<%= dirs.src %>/data/<%= pkg.name %>-data-nyraid.js',
             '<%= dirs.src %>/data/<%= pkg.name %>-data-cadoro.js'
         ],
-        dest: 'build/assets/javascripts/<%= pkg.name %>-data.js'
+        dest: '<%= dirs.build %>/assets/javascripts/<%= pkg.name %>-data.js'
       }
     },
     replace: {
@@ -72,7 +74,7 @@ module.exports = function(grunt) {
         },
         files: [{
             src: ['public/index.html'],
-            dest: 'build/index.html'
+            dest: '<%= dirs.build %>/index.html'
           }, {
             src: '<%= concat.build_main.dest %>',
             dest: '<%= concat.build_main.dest %>'
@@ -89,10 +91,10 @@ module.exports = function(grunt) {
         },
         files: [{
             src: ['public/index.html'],
-            dest: 'dist/index.html'
+            dest: '<%= dirs.dist %>/index.html'
           }, {
-            src: 'dist/assets/javascripts/<%= pkg.name %>.min.js',
-            dest: 'dist/assets/javascripts/<%= pkg.name %>.min.js'
+            src: '<%= dirs.dist %>/assets/javascripts/<%= pkg.name %>.min.js',
+            dest: '<%= dirs.dist %>/assets/javascripts/<%= pkg.name %>.min.js'
           }
         ]
       }
@@ -103,7 +105,7 @@ module.exports = function(grunt) {
             expand: true,
             cwd: 'public/',
             src: ['assets/**/*'],
-            dest: 'build/'
+            dest: '<%= dirs.build %>/'
           }
         ]
       },
@@ -112,7 +114,7 @@ module.exports = function(grunt) {
             expand: true,
             cwd: 'public/',
             src: ['assets/**/*'],
-            dest: 'dist/'
+            dest: '<%= dirs.dist %>/'
           }
         ]
       }
@@ -123,8 +125,8 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'dist/assets/javascripts/<%= pkg.name %>.min.js': ['<%= concat.build_main.dest %>'],
-          'dist/assets/javascripts/<%= pkg.name %>-data.min.js': ['<%= concat.build_data.dest %>']
+          '<%= dirs.dist %>/assets/javascripts/<%= pkg.name %>.min.js': ['<%= concat.build_main.dest %>'],
+          '<%= dirs.dist %>/assets/javascripts/<%= pkg.name %>-data.min.js': ['<%= concat.build_data.dest %>']
         }
       }
     },
@@ -146,8 +148,8 @@ module.exports = function(grunt) {
       all: ['test/**/*.html']
     },
     clean: {
-      build: ['build'],
-      dist: ['dist']
+      build: ['<%= dirs.build %>'],
+      dist: ['<%= dirs.dist %>']
     }
   });
 
