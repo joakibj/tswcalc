@@ -27,21 +27,27 @@ tswcalc.import = function() {
                 tswcalc.slots[slotId].el.btn.nyraid.prop('checked', true);
                 tswcalc.slots[slotId].el.btn.nyraid.change();
             } else {
-                if (isAllowedNyRaidItem(slotId)) {
-                    tswcalc.slots[slotId].el.btn.nyraid.prop('disabled', false);
-                }
-                tswcalc.slots[slotId].signetQuality(tswcalc.data.signet_quality_mapping.to_name[values[7]]);
-                tswcalc.slots[slotId].signetId(values[8] != '0' ? values[8] : 'none');
-                tswcalc.slots[slotId].el.signetId.change();
+                var signetQuality = tswcalc.data.signet_quality_mapping.to_name[values[7]];
+                var signetId = values[8] != '0' ? values[8] : 'none';
+                checkIfNyRaidItemAndEnableCheckButton(slotId);
+                changeSignet(slotId, signetQuality, signetId);
             }
         } else {
-            if (isAllowedNyRaidItem(slotId)) {
-                    tswcalc.slots[slotId].el.btn.nyraid.prop('disabled', false);
-            }
-            tswcalc.slots[slotId].signetQuality('none');
-            tswcalc.slots[slotId].signetId('none');
-            tswcalc.slots[slotId].updateSignet();
+            checkIfNyRaidItemAndEnableCheckButton(slotId);
+            changeSignet(slotId, 'none', 'none');
         }
+    };
+
+    var checkIfNyRaidItemAndEnableCheckButton = function(slotId) {
+        if (isAllowedNyRaidItem(slotId)) {
+            tswcalc.slots[slotId].el.btn.nyraid.prop('disabled', false);
+        }
+    };
+
+    var changeSignet = function(slotId, quality, id) {
+        tswcalc.slots[slotId].signetQuality(quality);
+        tswcalc.slots[slotId].signetId(id);
+        tswcalc.slots[slotId].el.signetId.change();
     };
 
     var isAllowedNyRaidItem = function(slotId) {

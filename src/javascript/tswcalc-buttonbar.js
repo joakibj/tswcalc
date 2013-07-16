@@ -33,7 +33,7 @@ tswcalc.buttonBar = function() {
         for (var slotId in tswcalc.slots) {
             if (tswcalc.slots.hasSlot(slotId)) {
                 tswcalc.slots[slotId].role(role);
-                if (slotId != 'weapon' && tswcalc.data.ny_raid_items[slotId][role] === undefined) {
+                if (!tswcalc.slots[slotId].isWeapon() && tswcalc.data.ny_raid_items[slotId][role] === undefined) {
                     tswcalc.slots[slotId].el.btn.nyraid.prop('checked', false);
                     tswcalc.slots[slotId].el.btn.nyraid.change();
                     tswcalc.slots[slotId].el.btn.nyraid.attr('disabled', 'disabled');

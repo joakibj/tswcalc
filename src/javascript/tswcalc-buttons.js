@@ -61,11 +61,8 @@ tswcalc.button.DistributionButtonHandler = function DistributionButtonHandler(sl
     };
 
     this.getDist = function(glyph) {
-        if (glyph == 'primary') {
-            return parseInt(tswcalc.slots[slotId].primaryDist(), 10);
-        } else {
-            return parseInt(tswcalc.slots[slotId].secondaryDist(), 10);
-        }
+        var slot = tswcalc.slots[slotId];
+        return glyph == 'primary' ? parseInt(slot.primaryDist(), 10) : parseInt(slot.secondaryDist(), 10);
     };
 
     this.activate = function(glyph, index) {
