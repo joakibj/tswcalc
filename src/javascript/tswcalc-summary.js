@@ -63,7 +63,6 @@ tswcalc.summary = function() {
                 updateOnePrimaryStat(stat, sums[stat]);
             }
         }
-        updateCosts();
     };
 
     var updateOnePrimaryStat = function(stat, value) {

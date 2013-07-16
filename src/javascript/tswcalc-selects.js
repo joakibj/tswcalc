@@ -93,6 +93,7 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
         }
         tswcalc.slots[slot.id_prefix].updateSignet();
         tswcalc.summary.updatePrimaryStats();
+        tswcalc.summary.updateCosts();
     };
 
     this.roleChange = function(event) {
@@ -109,10 +110,12 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
             tswcalc.checkbox[slot.id_prefix].changeToCustomItem();
         }
         tswcalc.summary.updatePrimaryStats();
+        tswcalc.summary.updateCosts();
     };
 
     this.qlChange = function(event) {
         tswcalc.summary.updatePrimaryStats();
+        tswcalc.summary.updateCosts();
     };
 
     this.glyphChange = function(id_suffix) {
