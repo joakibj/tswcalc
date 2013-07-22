@@ -47,22 +47,22 @@ tswcalc.data.bb_costs = {
     },
     'glyph': {
         '10.0': {
-            cost: 30
+            cost: 0
         },
         '10.1': {
-            cost: 50
+            cost: 20
         },
         '10.2': {
-            cost: 70
+            cost: 40
         },
         '10.3': {
-            cost: 90
+            cost: 60
         },
         '10.4': {
-            cost: 110
+            cost: 80
         },
         '10.5': {
-            cost: 130,
+            cost: 100,
             astral_fuse: true
         }
     }
