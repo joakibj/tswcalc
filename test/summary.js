@@ -171,7 +171,7 @@ test('should update all stats', 16, function() {
 test('should have initial costs at 10.0 price', 3, function() {
     tswcalc.summary.updateCosts();
 
-    equal($('#bb-cost').html(), '480');
+    equal($('#bb-cost').html(), '240');
     equal($('#cu-cost').html(), '0');
     equal($('#af-cost').html(), '0');
 });
@@ -181,7 +181,7 @@ test('should update costs for tank build', 3, function() {
 
     tswcalc.summary.updateCosts();
 
-    equal($('#bb-cost').html(), '1920');
+    equal($('#bb-cost').html(), '1680');
     equal($('#cu-cost').html(), '1');
     equal($('#af-cost').html(), '2');
 });

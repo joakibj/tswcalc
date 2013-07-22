@@ -153,7 +153,7 @@ test('should get single signet value based on quality', 1, function() {
 });
 
 test('should get black bullion cost for head slot (10.4/10.5)', 1, function() {
-    deepEqual(tswcalc.slots.head.blackBullionCost(), 240);
+    deepEqual(tswcalc.slots.head.blackBullionCost(), 210);
 });
 
 test('should get astral fuse cost for slot', 2, function() {
