@@ -15,9 +15,9 @@ tswcalc uses [grunt](http://gruntjs.com/) to build.
 It uses `dustjs` (`linkedin-dustjs` fork) as a client-side template engine. Tests are covered by `qunit` and performed in each build.
 
 The tools needed to build tswcalc are:
-* [node.js](http://nodejs.org/)
-* npm
-* grunt
+* [node.js](http://nodejs.org/) (v0.10.5+)
+* npm (v1.2.18+)
+* grunt (v0.4.0+)
 
 node.js comes included with `npm`, the node package manager.
 
