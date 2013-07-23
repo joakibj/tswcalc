@@ -53,6 +53,6 @@ Open `dist/index.html` to view.
 
 License
 -------
-Please refer to the LICENSE file for the source code.
+MIT License for the source code. Please see the LICENSE file.
 
-All art assets included in `public/assets/images/icons/` folder are taken from The Secret World™. The artwork should be considered property of Funcom GmBH unless otherwise noted.
+All art assets included in `public/assets/images/icons/` folder are taken from [The Secret World™ Chronicle](http://chronicle.thesecretworld.com/). The artwork should be considered property of Funcom GmBH unless otherwise noted. A small sample of signet, glyph and item icons are redistributed under fair use.
