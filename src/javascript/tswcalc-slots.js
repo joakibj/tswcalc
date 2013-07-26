@@ -115,7 +115,7 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
     };
 
     this.isWeapon = function() {
-        return this.group == 'weapon' ? true : false;
+        return this.group == 'weapon';
     };
 
     this.role = function() {
