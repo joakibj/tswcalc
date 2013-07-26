@@ -11,7 +11,7 @@ module('import-integration-tests', {
     }
 });
 
-test('should import URL and set summary and slots for 0.4.0 links', 95, function() {
+test('should import URL and set summary and slots for 0.4.0 links', 97, function() {
     var vars = {
         head: '4,1,5,5,0,4,0',
         luck: '4,3,4,8,0,4,0',
@@ -133,7 +133,7 @@ test('should import URL and set summary and slots for 0.4.0 links', 95, function
     equal($('#occult-pick-signet').val(), 'none');
 });
 
-test('should import URL and set summary and slots', 95, function() {
+test('should import URL and set summary and slots', 97, function() {
     var vars = {
         head: '4,1,5,5,0,4,0,3,18',
         luck: '4,3,4,8,0,4,0,3,39',
@@ -141,7 +141,7 @@ test('should import URL and set summary and slots', 95, function() {
         occult: '4,3,4,4,0,4,0,3,41',
         ring: '4,3,4,6,0,4,0,2,22',
         waist: '4,1,4,8,0,4,0,3,87',
-        weapon: '5,0,4,4,0,4,0,2,5',
+        weapon: '5,1,4,4,0,4,0,2,5',
         wrist: '4,1,4,6,0,4,0,3,85'
     };
 
@@ -165,6 +165,8 @@ test('should import URL and set summary and slots', 95, function() {
     equal($('#stat-physical-protection').html(), '+609');
     equal($('#stat-magical-protection').html(), '+249');
 
+    equal($('#weapon-name').html(), ': Blade');
+    equal($('#weapon-wtype').val(), 'blade');
     equal($('#weapon-ql').val(), '10.5');
     equal($('#weapon-glyph-ql').val(), '10.4');
     equal($('#weapon-primary-glyph').val(), 'hit-rating');
@@ -205,6 +207,7 @@ test('should import URL and set summary and slots', 95, function() {
     equal($('#neck-pick-signet').val(), '21');
 
     //Brooklyn Bracer
+    equal($('#wrist-name').html(), ': Brooklyn Bracer');
     equal($('#wrist-ql').val(), '10.4');
     equal($('#wrist-role').val(), 'tank');
     equal($('#wrist-glyph-ql').val(), '10.4');
@@ -230,6 +233,7 @@ test('should import URL and set summary and slots', 95, function() {
     equal($('#luck-pick-signet').val(), '39');
 
     //NY Buckle
+    equal($('#waist-name').html(), ': NY Buckle');
     equal($('#waist-ql').val(), '10.4');
     equal($('#waist-role').val(), 'tank');
     equal($('#waist-glyph-ql').val(), '10.4');
