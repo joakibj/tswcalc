@@ -11,7 +11,7 @@ module('import-integration-tests', {
     }
 });
 
-test('should import URL and set summary and slots for 0.4.0 links', 97, function() {
+test('should import URL and set summary and slots for 0.4.0 links', 95, function() {
     var vars = {
         head: '4,1,5,5,0,4,0',
         luck: '4,3,4,8,0,4,0',
@@ -133,7 +133,7 @@ test('should import URL and set summary and slots for 0.4.0 links', 97, function
     equal($('#occult-pick-signet').val(), 'none');
 });
 
-test('should import URL and set summary and slots', 97, function() {
+test('should import URL and set summary and slots', 99, function() {
     var vars = {
         head: '4,1,5,5,0,4,0,3,18',
         luck: '4,3,4,8,0,4,0,3,39',
