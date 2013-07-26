@@ -331,6 +331,7 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
 
     this.reset = function() {
         this.name('');
+        this.wtype('none');
         this.ql('10.0');
         this.role('none');
         this.glyphQl('10.0');
