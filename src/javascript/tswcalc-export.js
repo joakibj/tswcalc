@@ -70,7 +70,11 @@ tswcalc.export = function() {
     };
 
     var createSlotUrl = function(slotId, state) {
-        return slotId + '=' + state.ql + ',' + state.role + ',' + state.glyph_ql + ',' + state.primary_glyph + ',' + state.secondary_glyph +
+        var roleOrWtype = state.role;
+        if(tswcalc.slots[slotId].isWeapon()) {
+            roleOrWtype = state.wtype;
+        }
+        return slotId + '=' + state.ql + ',' + roleOrWtype + ',' + state.glyph_ql + ',' + state.primary_glyph + ',' + state.secondary_glyph +
             ',' + state.primary_dist + ',' + state.secondary_dist + ',' + state.signet_quality + ',' + state.signet_id;
     };
 

@@ -27,6 +27,14 @@ test('should create slot url for NY raid wrist', 1, function() {
     equal(slotUrl, 'wrist=4,1,4,6,0,4,0,3,85');
 });
 
+test('should create slot url for weapon with type', 1, function() {
+    createTankBuild();
+
+    var slotUrl = tswcalc.export.createSlotUrl(tswcalc.slots.weapon.id, tswcalc.slots.weapon.mappedState());
+
+    equal(slotUrl, 'weapon=5,1,4,4,0,4,0,2,5');
+});
+
 test('should create export url', 1, function() {
     createTankBuild();
 
