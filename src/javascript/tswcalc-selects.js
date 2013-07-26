@@ -123,7 +123,9 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
     this.wtypeChange = function(event) {
         var wtype = $(this).val();
 
-        slotObj.name(': ' + tswcalc.util.capitalise(wtype));
+        if(wtype != 'none') {
+            slotObj.name(': ' + tswcalc.util.capitalise(wtype));
+        }
     };
 
     this.qlChange = function(event) {
