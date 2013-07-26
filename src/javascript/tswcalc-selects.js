@@ -10,7 +10,11 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
     };
 
     this.bindEvents = function() {
-        tswcalc.slots[slot.id_prefix].el.role.change(this.roleChange);
+        if (tswcalc.slots[slot.id_prefix].isWeapon()) {
+            tswcalc.slots[slot.id_prefix].el.wtype.change(this.wtypeChange);
+        } else {
+            tswcalc.slots[slot.id_prefix].el.role.change(this.roleChange);
+        }
         tswcalc.slots[slot.id_prefix].el.ql.change(this.qlChange);
         tswcalc.slots[slot.id_prefix].el.glyphQl.change(this.glyphChange);
         tswcalc.slots[slot.id_prefix].el.primaryGlyph.change(this.glyphChange);
@@ -64,7 +68,7 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
     };
 
     this.getSignetsForSlot = function() {
-        if(slot.id_prefix !== 'head' && slot.id_prefix !== 'weapon' && typeof tswcalc.data.signet_data[slot.id_prefix] !== 'undefined') {
+        if (slot.id_prefix !== 'head' && slot.id_prefix !== 'weapon' && typeof tswcalc.data.signet_data[slot.id_prefix] !== 'undefined') {
             return tswcalc.data.signet_data[slot.id_prefix];
         }
         return [];
@@ -72,11 +76,11 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
 
     this.signetChange = function(event) {
         var signet = tswcalc.slots[slot.id_prefix].signet();
-        
-        if(typeof signet.requires !== 'undefined') {
+
+        if (typeof signet.requires !== 'undefined') {
             var cadoro = tswcalc.data.cadoro_items[signet.requires];
             var cadoroItem = cadoro[slot.id_prefix][tswcalc.slots[slot.id_prefix].role()];
-            if(cadoroItem !== undefined && cadoroItem.name !== '') {
+            if (cadoroItem !== undefined && cadoroItem.name !== '') {
                 tswcalc.slots[slot.id_prefix].name(': ' + cadoroItem.name);
             }
             tswcalc.slots[slot.id_prefix].signetQuality('epic');
@@ -87,7 +91,9 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
             });
             tswcalc.slots[slot.id_prefix].el.nameWarning.show();
         } else {
-            tswcalc.slots[slot.id_prefix].name('');
+            if(!tswcalc.slots[slot.id_prefix].isWeapon()) {
+                tswcalc.slots[slot.id_prefix].name('');
+            }
             tswcalc.slots[slot.id_prefix].el.signetQuality.removeAttr('disabled');
             tswcalc.slots[slot.id_prefix].el.nameWarning.hide();
         }
@@ -98,19 +104,25 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
 
     this.roleChange = function(event) {
         var role = $(this).val();
-        if(tswcalc.data.ny_raid_items[slot.id_prefix][role] === undefined) {
+        if (tswcalc.data.ny_raid_items[slot.id_prefix][role] === undefined) {
             tswcalc.slots[slot.id_prefix].el.btn.nyraid.attr('checked', false);
             tswcalc.slots[slot.id_prefix].el.btn.nyraid.attr('disabled', 'disabled');
         } else {
             tswcalc.slots[slot.id_prefix].el.btn.nyraid.removeAttr('disabled');
         }
-        if(tswcalc.slots[slot.id_prefix].el.btn.nyraid.is(':checked')) {
+        if (tswcalc.slots[slot.id_prefix].el.btn.nyraid.is(':checked')) {
             tswcalc.checkbox[slot.id_prefix].changeToRaidItem();
         } else {
             tswcalc.checkbox[slot.id_prefix].changeToCustomItem();
         }
         tswcalc.summary.updatePrimaryStats();
         tswcalc.summary.updateCosts();
+    };
+
+    this.wtypeChange = function(event) {
+        var wtype = $(this).val();
+
+        tswcalc.slots[slot.id_prefix].name(': ' + tswcalc.util.capitalise(wtype));
     };
 
     this.qlChange = function(event) {
