@@ -3,6 +3,7 @@ tswcalc.checkbox = tswcalc.checkbox || {};
 
 tswcalc.checkbox.RaidCheckbox = function RaidCheckbox(slot) {
     var self = this;
+    var slotObj = tswcalc.slots[slot];
 
     this.initiate = function() {
         if (slot != 'weapon') {
@@ -11,7 +12,7 @@ tswcalc.checkbox.RaidCheckbox = function RaidCheckbox(slot) {
     };
 
     this.bindEvents = function() {
-        tswcalc.slots[slot].el.btn.nyraid.on('change', this.checkboxClicked);
+        slotObj.el.btn.nyraid.on('change', this.checkboxClicked);
     };
 
     this.checkboxClicked = function(event) {
@@ -23,20 +24,20 @@ tswcalc.checkbox.RaidCheckbox = function RaidCheckbox(slot) {
     };
 
     this.changeToRaidItem = function() {
-        var item = tswcalc.data.ny_raid_items[slot][tswcalc.slots[slot].role()];
+        var item = tswcalc.data.ny_raid_items[slot][slotObj.role()];
         if (item !== undefined) {
-            tswcalc.slots[slot].name(': ' + item.name);
-            tswcalc.slots[slot].ql('10.4');
-            tswcalc.slots[slot].signetQuality('epic');
-            tswcalc.slots[slot].el.signetId.append($('<option>', {
+            slotObj.name(': ' + item.name);
+            slotObj.ql('10.4');
+            slotObj.signetQuality('epic');
+            slotObj.el.signetId.append($('<option>', {
                 value: item.signet.id,
                 text: item.signet.name,
                 selected: true
             }));
-            tswcalc.slots[slot].updateSignet();
-            tswcalc.slots[slot].el.ql.attr('disabled', 'disabled');
-            tswcalc.slots[slot].el.signetId.attr('disabled', 'disabled');
-            tswcalc.slots[slot].el.signetQuality.attr('disabled', 'disabled');
+            slotObj.updateSignet();
+            slotObj.el.ql.attr('disabled', 'disabled');
+            slotObj.el.signetId.attr('disabled', 'disabled');
+            slotObj.el.signetQuality.attr('disabled', 'disabled');
             tswcalc.summary.updateAllStats();
         } else {
             //slot does not have any NY raid item
@@ -44,17 +45,17 @@ tswcalc.checkbox.RaidCheckbox = function RaidCheckbox(slot) {
     };
 
     this.changeToCustomItem = function() {
-        tswcalc.slots[slot].el.ql.removeAttr('disabled');
-        tswcalc.slots[slot].el.signetId.removeAttr('disabled');
-        tswcalc.slots[slot].el.signetQuality.removeAttr('disabled');
-        tswcalc.slots[slot].el.signetId.find('option').filter(function() {
+        slotObj.el.ql.removeAttr('disabled');
+        slotObj.el.signetId.removeAttr('disabled');
+        slotObj.el.signetQuality.removeAttr('disabled');
+        slotObj.el.signetId.find('option').filter(function() {
             return $(this).attr('value') >= 80;
         }).remove();
-        tswcalc.slots[slot].name('');
-        tswcalc.slots[slot].el.nameWarning.hide();
-        tswcalc.slots[slot].signetQuality('none');
-        tswcalc.slots[slot].signetId('none');
-        tswcalc.slots[slot].updateSignet();
+        slotObj.name('');
+        slotObj.el.nameWarning.hide();
+        slotObj.signetQuality('none');
+        slotObj.signetId('none');
+        slotObj.updateSignet();
         tswcalc.summary.updateAllStats();
     };
 };

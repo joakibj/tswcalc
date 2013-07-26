@@ -3,6 +3,7 @@ tswcalc.select = tswcalc.select || {};
 
 tswcalc.select.SelectHandler = function SelectHandler(slot) {
     var self = this;
+    var slotObj = tswcalc.slots[slot.id_prefix];
 
     this.initiate = function() {
         this.bindEvents();
@@ -10,21 +11,21 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
     };
 
     this.bindEvents = function() {
-        if (tswcalc.slots[slot.id_prefix].isWeapon()) {
-            tswcalc.slots[slot.id_prefix].el.wtype.change(this.wtypeChange);
+        if (slotObj.isWeapon()) {
+            slotObj.el.wtype.change(this.wtypeChange);
         } else {
-            tswcalc.slots[slot.id_prefix].el.role.change(this.roleChange);
+            slotObj.el.role.change(this.roleChange);
         }
-        tswcalc.slots[slot.id_prefix].el.ql.change(this.qlChange);
-        tswcalc.slots[slot.id_prefix].el.glyphQl.change(this.glyphChange);
-        tswcalc.slots[slot.id_prefix].el.primaryGlyph.change(this.glyphChange);
-        tswcalc.slots[slot.id_prefix].el.secondaryGlyph.change(this.glyphChange);
-        tswcalc.slots[slot.id_prefix].el.signetId.change(this.signetChange);
-        tswcalc.slots[slot.id_prefix].el.signetQuality.change(this.signetChange);
+        slotObj.el.ql.change(this.qlChange);
+        slotObj.el.glyphQl.change(this.glyphChange);
+        slotObj.el.primaryGlyph.change(this.glyphChange);
+        slotObj.el.secondaryGlyph.change(this.glyphChange);
+        slotObj.el.signetId.change(this.signetChange);
+        slotObj.el.signetQuality.change(this.signetChange);
     };
 
     this.addSignetsToSelect = function() {
-        tswcalc.slots[slot.id_prefix].el.signetId.append($('<option>', {
+        slotObj.el.signetId.append($('<option>', {
             value: "none",
             text: "None",
             selected: "true"
@@ -46,7 +47,7 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
             }
         });
         $.each(signetsInSlotGroup, function(index, value) {
-            tswcalc.slots[slot.id_prefix].el.signetId.append($('<option>', {
+            slotObj.el.signetId.append($('<option>', {
                 value: value.id,
                 text: value.name
             }));
@@ -75,29 +76,29 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
     };
 
     this.signetChange = function(event) {
-        var signet = tswcalc.slots[slot.id_prefix].signet();
+        var signet = slotObj.signet();
 
         if (typeof signet.requires !== 'undefined') {
             var cadoro = tswcalc.data.cadoro_items[signet.requires];
-            var cadoroItem = cadoro[slot.id_prefix][tswcalc.slots[slot.id_prefix].role()];
+            var cadoroItem = cadoro[slot.id_prefix][slotObj.role()];
             if (cadoroItem !== undefined && cadoroItem.name !== '') {
-                tswcalc.slots[slot.id_prefix].name(': ' + cadoroItem.name);
+                slotObj.name(': ' + cadoroItem.name);
             }
-            tswcalc.slots[slot.id_prefix].signetQuality('epic');
-            tswcalc.slots[slot.id_prefix].el.signetQuality.attr('disabled', 'disabled');
-            tswcalc.slots[slot.id_prefix].el.nameWarning.tooltip({
+            slotObj.signetQuality('epic');
+            slotObj.el.signetQuality.attr('disabled', 'disabled');
+            slotObj.el.nameWarning.tooltip({
                 title: cadoro.warning_text,
                 placement: 'top'
             });
-            tswcalc.slots[slot.id_prefix].el.nameWarning.show();
+            slotObj.el.nameWarning.show();
         } else {
-            if(!tswcalc.slots[slot.id_prefix].isWeapon()) {
-                tswcalc.slots[slot.id_prefix].name('');
+            if(!slotObj.isWeapon()) {
+                slotObj.name('');
             }
-            tswcalc.slots[slot.id_prefix].el.signetQuality.removeAttr('disabled');
-            tswcalc.slots[slot.id_prefix].el.nameWarning.hide();
+            slotObj.el.signetQuality.removeAttr('disabled');
+            slotObj.el.nameWarning.hide();
         }
-        tswcalc.slots[slot.id_prefix].updateSignet();
+        slotObj.updateSignet();
         tswcalc.summary.updatePrimaryStats();
         tswcalc.summary.updateCosts();
     };
@@ -105,12 +106,12 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
     this.roleChange = function(event) {
         var role = $(this).val();
         if (tswcalc.data.ny_raid_items[slot.id_prefix][role] === undefined) {
-            tswcalc.slots[slot.id_prefix].el.btn.nyraid.attr('checked', false);
-            tswcalc.slots[slot.id_prefix].el.btn.nyraid.attr('disabled', 'disabled');
+            slotObj.el.btn.nyraid.attr('checked', false);
+            slotObj.el.btn.nyraid.attr('disabled', 'disabled');
         } else {
-            tswcalc.slots[slot.id_prefix].el.btn.nyraid.removeAttr('disabled');
+            slotObj.el.btn.nyraid.removeAttr('disabled');
         }
-        if (tswcalc.slots[slot.id_prefix].el.btn.nyraid.is(':checked')) {
+        if (slotObj.el.btn.nyraid.is(':checked')) {
             tswcalc.checkbox[slot.id_prefix].changeToRaidItem();
         } else {
             tswcalc.checkbox[slot.id_prefix].changeToCustomItem();
@@ -122,7 +123,7 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
     this.wtypeChange = function(event) {
         var wtype = $(this).val();
 
-        tswcalc.slots[slot.id_prefix].name(': ' + tswcalc.util.capitalise(wtype));
+        slotObj.name(': ' + tswcalc.util.capitalise(wtype));
     };
 
     this.qlChange = function(event) {
