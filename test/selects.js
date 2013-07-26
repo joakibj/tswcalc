@@ -5,10 +5,10 @@ module('selects-dom', {
     }
 });
 
-test('should have required selects in the DOM', 55, function() {
+test('should have required selects in the DOM', 61, function() {
     for (var i = 0; i < tswcalc.data.template_data.slots.length; i++) {
         var slotId = tswcalc.data.template_data.slots[i].id_prefix;
-        if (slotId != 'weapon') {
+        if (slotId != 'weapon' && slotId != 'weapon2') {
             ok($('#' + slotId + '-role').length !== 0, slotId + '-role exists');
         }
         ok($('#' + slotId + '-ql').length !== 0, slotId + '-ql exists');
@@ -31,11 +31,11 @@ module('selects-events', {
     }
 });
 
-test('should have required event listeners for change on selects in the DOM', 55, function() {
+test('should have required event listeners for change on selects in the DOM', 61, function() {
     for (var i = 0; i < tswcalc.data.template_data.slots.length; i++) {
         var slotId = tswcalc.data.template_data.slots[i].id_prefix;
         ok($._data($('#' + slotId + '-ql').get(0), 'events').change instanceof Array);
-        if (slotId != 'weapon') {
+        if (slotId != 'weapon' && slotId != 'weapon2') {
             ok($._data($('#' + slotId + '-role').get(0), 'events').change instanceof Array);
         }
         ok($._data($('#' + slotId + '-glyph-ql').get(0), 'events').change instanceof Array);

@@ -175,8 +175,8 @@ test('should get indexed signet value based on quality', 2, function() {
     deepEqual(tswcalc.slots.occult.determineSignetQualityValue(signet, 1), 57);
 });
 
-test('slots should have length of 8', 1, function() {
-    equal(tswcalc.slots.length(), 8);
+test('slots should have length of 9', 1, function() {
+    equal(tswcalc.slots.length(), 9);
 });
 
 test('should reset slot state', 7, function() {
