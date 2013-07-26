@@ -165,5 +165,5 @@ module.exports = function(grunt) {
   grunt.registerTask('build', ['dust', 'concat', 'replace:develop', 'copy:develop']);
   grunt.registerTask('default', ['build', 'qunit']);
   grunt.registerTask('test', ['qunit']);
-  grunt.registerTask('dist', ['dust', 'concat', 'qunit', 'uglify', 'replace:dist', 'copy:dist']);
+  grunt.registerTask('dist', ['dust', 'concat', 'uglify', 'replace:dist', 'copy:develop', 'copy:dist', 'qunit']);
 };
