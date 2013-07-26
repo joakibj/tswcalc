@@ -8,6 +8,12 @@ tswcalc.slots = function() {
             this[slotData.id_prefix] = new tswcalc.slots.Slot(slotData.id_prefix, slotData.name, slotData.group);
             this[slotData.id_prefix].el.nameWarning.hide();
         }
+        drawPrimaryWeapon();
+    };
+
+    var drawPrimaryWeapon = function() {
+        tswcalc.slots.weapon2.sheathWeapon();
+        tswcalc.slots.weapon.weaponDrawn = true;
     };
 
     var length = function() {
@@ -15,7 +21,7 @@ tswcalc.slots = function() {
     };
 
     var indices = function() {
-        return ['head', 'weapon', 'ring', 'neck', 'wrist', 'luck', 'waist', 'occult'];
+        return ['head', 'weapon', 'weapon2', 'ring', 'neck', 'wrist', 'luck', 'waist', 'occult'];
     };
 
     var hasSlot = function(slot) {
@@ -68,8 +74,10 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
     this.id = id;
     this.name = name;
     this.group = group;
+    this.weaponDrawn = false;
 
     this.el = {
+        div: $('#' + this.id + '-slot'),
         name: $('#' + this.id + '-name'),
         role: $('#' + this.id + '-role'),
         wtype: $('#' + this.id + '-wtype'),
@@ -188,6 +196,20 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
         return $(this.el.secondaryDist)[0].innerHTML;
     };
 
+    this.sheathWeapon = function() {
+        if(this.isWeapon()) {
+            this.weaponDrawn = false;
+            this.el.div.hide();
+        }
+    };
+
+    this.drawWeapon = function() {
+        if(this.isWeapon()) {
+            this.weaponDrawn = true;
+            this.el.div.show();
+        }
+    };
+
     this.blackBullionCost = function() {
         var blackBullions = 0;
         blackBullions += tswcalc.data.bb_costs['glyph'][this.glyphQl()].cost;
@@ -232,7 +254,7 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
             foundSignet = tswcalc.data.ny_raid_items[this.id][this.role()].signet;
         } else {
             foundSignet = tswcalc.data.signet_data.find(this.group, this.signetId());
-            if(foundSignet.id == 0 && tswcalc.data.signet_data[this.id] !== undefined) {
+            if (foundSignet.id == 0 && tswcalc.data.signet_data[this.id] !== undefined) {
                 foundSignet = tswcalc.data.signet_data.find(this.id, this.signetId());
             }
         }
@@ -364,6 +386,7 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
 
     this.mappedState = function() {
         return {
+            wtype: this.stripContent(this.wtype()),
             role: this.stripContent(this.role()),
             ql: this.stripContent(this.ql()),
             glyph_ql: this.stripContent(this.glyphQl()),
@@ -384,6 +407,8 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
         var qlpattern = /\d+\.\d/;
         if (val != 0 && val.match(qlpattern)) {
             return val.split('.')[1];
+        } else if ($.inArray(val, Object.keys(tswcalc.data.wtype_mapping.to_num)) != -1) {
+            return tswcalc.data.wtype_mapping.to_num[val];
         } else if ($.inArray(val, Object.keys(tswcalc.data.stat_mapping.to_num)) != -1) {
             return tswcalc.data.stat_mapping.to_num[val];
         } else if ($.inArray(val, Object.keys(tswcalc.data.role_mapping.to_num)) != -1) {

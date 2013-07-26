@@ -45,6 +45,9 @@ tswcalc.summary = function() {
         for (var slotId in tswcalc.slots) {
             if (tswcalc.slots.hasSlot(slotId)) {
                 var slot = tswcalc.slots[slotId];
+                if(slot.isWeapon() && !slot.weaponDrawn) {
+                    continue;
+                }
                 blackBullions += slot.blackBullionCost();
                 criterionUpgrades += slot.criterionUpgradeCost();
                 astralFuses += slot.astralFuseCost();
@@ -81,6 +84,9 @@ tswcalc.summary = function() {
         for (var slotId in tswcalc.slots) {
             if (tswcalc.slots.hasSlot(slotId)) {
                 var slot = tswcalc.slots[slotId];
+                if(slot.isWeapon() && !slot.weaponDrawn) {
+                    continue;
+                }
                 var role = slot.role();
                 var ql = slot.ql();
                 if (slot.group == 'major') {
@@ -89,6 +95,7 @@ tswcalc.summary = function() {
                         sums[signet.stat] += slot.determineSignetQualityValue(signet);
                     }
                 }
+                //TODO: refactor
                 switch (role) {
                     case 'dps':
                         sums['attack-rating'] += tswcalc.data.custom_gear_data[slot.group].heal_dps['ql' + (ql)].rating;
@@ -143,6 +150,9 @@ tswcalc.summary = function() {
         for (var slotId in tswcalc.slots) {
             if (tswcalc.slots.hasSlot(slotId)) {
                 var slot = tswcalc.slots[slotId];
+                if(slot.isWeapon() && !slot.weaponDrawn) {
+                    continue;
+                }
                 sums[slot.primaryGlyph()] += slot.primaryGlyphValue();
                 sums[slot.secondaryGlyph()] += slot.secondaryGlyphValue();
             }
@@ -150,6 +160,7 @@ tswcalc.summary = function() {
 
         sums['critical-power-percentage'] = calculateCriticalPowerPercentage(sums['critical-power']);
 
+        //TODO: refactor
         for (var slotId in tswcalc.slots) {
             if (tswcalc.slots.hasSlot(slotId)) {
                 var slot = tswcalc.slots[slotId];
