@@ -64,3 +64,30 @@ tswcalc.data.signet_quality_mapping = {
         'epic': 'purple'
     }
 };
+
+tswcalc.data.wtype_mapping = {
+    to_num: {
+        'none': 0,
+        'blade': 1,
+        'hammer': 2,
+        'fist': 3,
+        'blood': 4,
+        'chaos': 5,
+        'elementalism': 6,
+        'shotgun': 7,
+        'pistol': 8,
+        'assault-rifle': 9
+    },
+    to_name: {
+        0: 'none',
+        1: 'blade',
+        2: 'hammer',
+        3: 'fist',
+        4: 'blood',
+        5: 'chaos',
+        6: 'elementalism',
+        7: 'shotgun',
+        8: 'pistol',
+        9: 'assault-rifle'
+    }
+};

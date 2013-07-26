@@ -14,6 +14,22 @@
                   <option value="healer">Healer</option>
                 </select>
               </td>
+            {:else}
+              <td class="wtype-label"><strong>Type: </strong></td>
+              <td class="wtype-select">
+                <select id="{id_prefix}-wtype" class="select-wtype" title="Please select weapon type">
+                  <option value="none" selected="true">None</option>
+                  <option value="blade">Blade</option>
+                  <option value="hammer">Hammer</option>
+                  <option value="fist">Fist</option>
+                  <option value="blood">Blood</option>
+                  <option value="chaos">Chaos</option>
+                  <option value="elementalism">Elementalism</option>
+                  <option value="shotgun">Shotgun</option>
+                  <option value="pistol">Pistol</option>
+                  <option value="assault-rifle">Assault-Rifle</option>
+                </select>
+              </td>
             {/is_weapon}
               <td class="ql-label"><strong>QL:</strong></td><td class="ql-select">{>qlselect id_suffix=""/}</td>
               {^is_weapon}<td><label class="checkbox inline"><input type="checkbox" id="{id_prefix}-nyraid" value="nyraid" disabled="disabled">NY Raid</label></td>{/is_weapon}

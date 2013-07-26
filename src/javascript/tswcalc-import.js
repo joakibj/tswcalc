@@ -14,7 +14,12 @@ tswcalc.import = function() {
 
     var updateSlot = function(slotId, values) {
         tswcalc.slots[slotId].ql('10.' + values[0]);
-        tswcalc.slots[slotId].role(tswcalc.data.role_mapping.to_stat[values[1]]);
+        if(tswcalc.slots[slotId].isWeapon()) {
+            tswcalc.slots[slotId].wtype(tswcalc.data.wtype_mapping.to_name[values[1]]);
+            tswcalc.slots[slotId].el.wtype.change();
+        } else {
+            tswcalc.slots[slotId].role(tswcalc.data.role_mapping.to_stat[values[1]]);
+        }
         tswcalc.slots[slotId].glyphQl('10.' + values[2]);
         tswcalc.slots[slotId].primaryGlyph(tswcalc.data.stat_mapping.to_stat[values[3]]);
         tswcalc.slots[slotId].secondaryGlyph(tswcalc.data.stat_mapping.to_stat[values[4]]);

@@ -72,6 +72,7 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
     this.el = {
         name: $('#' + this.id + '-name'),
         role: $('#' + this.id + '-role'),
+        wtype: $('#' + this.id + '-wtype'),
         ql: $('#' + this.id + '-ql'),
         glyphQl: $('#' + this.id + '-glyph-ql'),
         primaryGlyph: $('#' + this.id + '-primary-glyph'),
@@ -122,6 +123,14 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
             this.el.role.val(arguments[0]);
         } else {
             return this.group != 'weapon' ? this.el.role.val() : 'none';
+        }
+    };
+
+    this.wtype = function() {
+        if (arguments.length == 1) {
+            this.el.wtype.val(arguments[0]);
+        } else {
+            return this.group == 'weapon' ? this.el.wtype.val() : 'none';
         }
     };
 

@@ -22,11 +22,11 @@ body {
     padding-right: 2px;
 }
 
-td.role-label {
+td.role-label, .wtype-label {
     width: 34px;
 }
 
-td.role-select {
+td.role-select, .wtype-select {
     width: 136px;
 }
 
