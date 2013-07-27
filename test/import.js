@@ -259,7 +259,7 @@ test('should import URL and set summary and slots for pre-1.3 links', 99, functi
     equal($('#occult-pick-signet').val(), '41');
 });
 
-test('should import URL and set summary and slots for 1.3 links (secondary weapon added)', 109, function() {
+test('should import URL and set summary and slots for 1.3 links (secondary weapon added)', 111, function() {
     var vars = {
         head: '4,1,5,5,0,4,0,3,18',
         luck: '4,3,4,8,0,4,0,3,39',
@@ -268,7 +268,7 @@ test('should import URL and set summary and slots for 1.3 links (secondary weapo
         ring: '4,3,4,6,0,4,0,2,22',
         waist: '4,1,4,8,0,4,0,3,87',
         weapon: '5,1,4,4,0,4,0,2,5',
-        weapon2: '5,2,4,4,0,4,0,2,5',
+        weapon2: '5,2,4,4,0,4,0,2,6',
         wrist: '4,1,4,6,0,4,0,3,85'
     };
 
@@ -292,6 +292,7 @@ test('should import URL and set summary and slots for 1.3 links (secondary weapo
     equal($('#stat-physical-protection').html(), '+609');
     equal($('#stat-magical-protection').html(), '+249');
 
+    ok($('#weapon-slot').is(':visible'));
     equal($('#weapon-name').html(), ': Blade');
     equal($('#weapon-wtype').val(), 'blade');
     equal($('#weapon-ql').val(), '10.5');
@@ -303,6 +304,7 @@ test('should import URL and set summary and slots for 1.3 links (secondary weapo
     equal($('#weapon-signet-quality').val(), 'elite');
     equal($('#weapon-pick-signet').val(), '5');
 
+    ok(!$('#weapon2-slot').is(':visible'));
     equal($('#weapon2-name').html(), ': Hammer');
     equal($('#weapon2-wtype').val(), 'hammer');
     equal($('#weapon2-ql').val(), '10.5');
@@ -312,7 +314,7 @@ test('should import URL and set summary and slots for 1.3 links (secondary weapo
     ok($('#weapon2-primary-glyph-dist-btn4').hasClass('active'));
     ok($('#weapon2-secondary-glyph-dist-btn0').hasClass('active'));
     equal($('#weapon2-signet-quality').val(), 'elite');
-    equal($('#weapon2-pick-signet').val(), '5');
+    equal($('#weapon2-pick-signet').val(), '6');
 
     equal($('#head-ql').val(), '10.4');
     equal($('#head-role').val(), 'tank');

@@ -183,3 +183,23 @@ test('should balance distribution when button is pressed', 4, function() {
     equal(tswcalc.slots.head.primaryDist(), 2);
     equal(tswcalc.slots.head.secondaryDist(), 2);
 });
+
+test('should have primary weapon drawn and secondary weapon sheathed', 2, function() {
+    ok(tswcalc.slots.weapon.el.div.is(':visible'), 'primary visible');
+    ok(!tswcalc.slots.weapon2.el.div.is(':visible'), 'secondary hidden');
+});
+
+test('should swap weapon from primary to secondary', 2, function() {
+    $('#weapon-swap-weapon').click();
+
+    ok(!tswcalc.slots.weapon.el.div.is(':visible'), 'primary hidden');
+    ok(tswcalc.slots.weapon2.el.div.is(':visible'), 'secondary visible');
+});
+
+test('should swap weapon from primary to secondary and back again', 2, function() {
+    $('#weapon-swap-weapon').click();
+    $('#weapon2-swap-weapon').click();
+
+    ok(tswcalc.slots.weapon.el.div.is(':visible'), 'primary visible');
+    ok(!tswcalc.slots.weapon2.el.div.is(':visible'), 'secondary hidden');
+});
