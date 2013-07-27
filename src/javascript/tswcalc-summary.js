@@ -45,9 +45,6 @@ tswcalc.summary = function() {
         for (var slotId in tswcalc.slots) {
             if (tswcalc.slots.hasSlot(slotId)) {
                 var slot = tswcalc.slots[slotId];
-                if(slot.isWeapon() && !slot.weaponDrawn) {
-                    continue;
-                }
                 blackBullions += slot.blackBullionCost();
                 criterionUpgrades += slot.criterionUpgradeCost();
                 astralFuses += slot.astralFuseCost();
@@ -107,7 +104,7 @@ tswcalc.summary = function() {
                         sums['hitpoints'] += tswcalc.data.custom_gear_data[slot.group].tank['ql' + (ql)].hitpoints;
                         break;
                     case 'none':
-                        if (slot.id == 'weapon') {
+                        if (slot.isWeapon()) {
                             sums['weapon-power'] = tswcalc.data.custom_gear_data[slot.group][ql].weapon_power;
                         }
                         break;
