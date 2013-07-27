@@ -94,15 +94,17 @@ tswcalc.export = function() {
         });
     };
 
+    //TODO: refactor this mess
     var dustSlotState = function() {
         var states = [];
         for (var i = 0; i < tswcalc.data.template_data.slots.length; i++) {
-            var slot = tswcalc.data.template_data.slots[i].id_prefix;
-            var group = tswcalc.data.template_data.slots[i].group;
-            var curState = slotState[slot];
+            var slot = tswcalc.data.template_data.slots[i];
+            var slotId = slot.id_prefix;
+            var group = slot.group;
+            var curState = slotState[slotId];
             var role = tswcalc.data.role_mapping.to_stat[curState.role];
-            var primaryValue = tswcalc.slots[slot].primaryGlyphValue();
-            var secondaryValue = tswcalc.slots[slot].secondaryGlyphValue();
+            var primaryValue = tswcalc.slots[slotId].primaryGlyphValue();
+            var secondaryValue = tswcalc.slots[slotId].secondaryGlyphValue();
             var statType = 0;
             var statValue = 0;
             if (role == 'healer') {
@@ -119,10 +121,10 @@ tswcalc.export = function() {
                 statValue = tswcalc.data.custom_gear_data[group]['10.' + curState.ql].weapon_power;
             }
 
-            var signet = tswcalc.slots[slot].signet();
+            var signet = tswcalc.slots[slotId].signet();
 
             var state = {
-                name: tswcalc.util.capitalise(slot),
+                name: slot.is_weapon ? tswcalc.util.capitalise(slot.name + ": " + tswcalc.util.capitalise(tswcalc.data.wtype_mapping.to_name[curState.wtype])) : tswcalc.util.capitalise(slotId),
                 role: tswcalc.util.blankIfNone(tswcalc.util.capitalise(role)),
                 ql: curState.ql,
                 stat_type: statType,
@@ -136,7 +138,7 @@ tswcalc.export = function() {
                 secondary_value: secondaryValue,
                 signet_name: signet.name,
                 signet_quality: tswcalc.util.blankIfNone(tswcalc.util.capitalise(tswcalc.data.signet_quality_mapping.to_name[curState.signet_quality])),
-                signet_description: tswcalc.slots[slot].signetDescription(),
+                signet_description: tswcalc.slots[slotId].signetDescription(),
                 signet_colour: tswcalc.data.signet_quality_mapping.to_colour[tswcalc.data.signet_quality_mapping.to_name[curState.signet_quality]],
                 is_item: signet.id >= 80 ? true : false
             };
