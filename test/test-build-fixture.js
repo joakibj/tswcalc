@@ -1,4 +1,5 @@
 function createTankBuild() {
+    $('#weapon-wtype').val('blade');
     $('#weapon-ql').val('10.5');
     $('#weapon-glyph-ql').val('10.4');
     $('#weapon-primary-glyph').val('hit-rating');
@@ -7,6 +8,16 @@ function createTankBuild() {
     $('#weapon-secondary-glyph-dist-btn0').trigger('click');
     $('#weapon-signet-quality').val('elite');
     $('#weapon-pick-signet').val('5');
+
+    $('#weapon2-wtype').val('hammer');
+    $('#weapon2-ql').val('10.5');
+    $('#weapon2-glyph-ql').val('10.4');
+    $('#weapon2-primary-glyph').val('hit-rating');
+    $('#weapon2-secondary-glyph').val('none');
+    $('#weapon2-primary-glyph-dist-btn4').trigger('click');
+    $('#weapon2-secondary-glyph-dist-btn0').trigger('click');
+    $('#weapon2-signet-quality').val('elite');
+    $('#weapon2-pick-signet').val('6');
 
     $('#head-ql').val('10.4');
     $('#head-role').val('tank');

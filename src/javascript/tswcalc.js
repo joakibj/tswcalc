@@ -40,7 +40,7 @@ tswcalc = function() {
         $('#raid-stats > label').tooltip({
             placement: 'bottom'
         });
-        $('.cost-tooltip, .glyph-tooltip, .signet-tooltip, .slot-warning').on('click', function(event) {
+        $('.cost-tooltip, .glyph-tooltip, .signet-tooltip, .slot-warning, .swap-weapon').on('click', function(event) {
             event.preventDefault();
             event.stopPropagation();
         });
@@ -63,7 +63,9 @@ tswcalc = function() {
 
     var checkIfExported = function() {
         var vars = $.getUrlVars();
-        if (!$.isEmptyObject(vars) && Object.keys(vars).length == 8 || Object.keys(vars).length == 10) {
+        // length == 8 is pre 1.3 links
+        // length == 9 is post 1.3 links (secondary weapon added)
+        if (!$.isEmptyObject(vars) && Object.keys(vars).length == 8 || Object.keys(vars).length == 9) {
             tswcalc.import.start(vars);
             return true;
         }

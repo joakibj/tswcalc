@@ -168,21 +168,21 @@ test('should update all stats', 16, function() {
     equal($('#stat-magical-protection').html(), '+249');
 });
 
-test('should have initial costs at 10.0 price', 3, function() {
+test('should have initial costs at 10.0 price, including secondary weapon', 3, function() {
     tswcalc.summary.updateCosts();
 
-    equal($('#bb-cost').html(), '240');
+    equal($('#bb-cost').html(), '270');
     equal($('#cu-cost').html(), '0');
     equal($('#af-cost').html(), '0');
 });
 
-test('should update costs for tank build', 3, function() {
+test('should update costs for tank build, including secondary weapon', 3, function() {
     createTankBuild();
 
     tswcalc.summary.updateCosts();
 
-    equal($('#bb-cost').html(), '1680');
-    equal($('#cu-cost').html(), '1');
+    equal($('#bb-cost').html(), '1990');
+    equal($('#cu-cost').html(), '2');
     equal($('#af-cost').html(), '2');
 });
 

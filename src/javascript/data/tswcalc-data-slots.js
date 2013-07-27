@@ -4,9 +4,16 @@ tswcalc.data = tswcalc.data || {};
 tswcalc.data.template_data = {
     slots: [{
             id_prefix: 'weapon',
-            name: 'Weapon',
+            name: 'Primary Weapon',
             is_weapon: true,
-            group: 'weapon'
+            group: 'weapon',
+            is_primary: true
+        },{
+            id_prefix: 'weapon2',
+            name: 'Secondary Weapon',
+            is_weapon: true,
+            group: 'weapon',
+            is_primary: false
         }, {
             id_prefix: 'head',
             name: 'Head Talisman',

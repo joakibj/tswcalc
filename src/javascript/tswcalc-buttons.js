@@ -1,12 +1,21 @@
 var tswcalc = tswcalc || {};
 
 tswcalc.button = function() {
+    var dists = {};
+    var weaponSwap = {};
     var init = function() {
         for (var i = 0; i < tswcalc.data.template_data.slots.length; i++) {
             var slotId = tswcalc.data.template_data.slots[i].id_prefix;
-            this[slotId] = new tswcalc.button.DistributionButtonHandler(slotId);
-            this[slotId].init();
+            dists[slotId] = new tswcalc.button.DistributionButtonHandler(slotId);
+            dists[slotId].init();
         }
+        initWeaponSwap('weapon');
+        initWeaponSwap('weapon2');
+    };
+
+    var initWeaponSwap = function(slotId) {
+        weaponSwap[slotId] = new tswcalc.button.SwapWeaponButton(slotId);
+        weaponSwap[slotId].init();
     };
 
     var oPublic = {
@@ -15,6 +24,29 @@ tswcalc.button = function() {
 
     return oPublic;
 }();
+
+
+tswcalc.button.SwapWeaponButton = function SwapWeaponButton(slotId) {
+    var self = this;
+
+    this.init = function() {
+        this.bindEvents();
+    };
+
+    this.bindEvents = function() {
+        $('#' + slotId + '-swap-weapon').on('click', this.weaponSwap);
+    };
+
+    this.weaponSwap = function(event) {
+        tswcalc.slots[slotId].sheathWeapon();
+        tswcalc.slots[self.otherWeapon()].drawWeapon();
+        tswcalc.summary.updateAllStats();
+    };
+
+    this.otherWeapon = function() {
+        return slotId == 'weapon' ? 'weapon2' : 'weapon';
+    };
+};
 
 tswcalc.button.DistributionButtonHandler = function DistributionButtonHandler(slotId) {
     var self = this;
@@ -33,7 +65,7 @@ tswcalc.button.DistributionButtonHandler = function DistributionButtonHandler(sl
         $.each(tswcalc.slots[slotId].el.btn[glyph], function(btnIndex, btn) {
             btn.on('click', function(event) {
                 var btnId = event.target.id;
-                self.activate(btnId.split('-')[1], btnId.substring(btnId.length -1, btnId.length));
+                self.activate(btnId.split('-')[1], btnId.substring(btnId.length - 1, btnId.length));
                 self.balance(btnId.split('-')[1]);
                 tswcalc.summary.updateOffensiveDefensiveStats();
             });
