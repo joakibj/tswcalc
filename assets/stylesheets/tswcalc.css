@@ -3,6 +3,35 @@ body {
   padding-bottom: 20px;
 }
 
+.logo {     
+    font-size: 50px;
+}
+
+.illuminati {
+    color: #435682;
+}
+
+.templar {
+    color: #7e2d2f;
+}
+
+.dragon {
+    color: #436329;
+}
+
+.lightgrey {
+    color: #717171;
+    font-weight: normal;
+}
+
+.darkgrey {
+    color: #3f3f3f;
+}
+
+.slogan {
+    font-size: 12px;
+}
+
 .table {
     margin-bottom: 2px;
 }
@@ -22,11 +51,11 @@ body {
     padding-right: 2px;
 }
 
-td.role-label {
+td.role-label, .wtype-label {
     width: 34px;
 }
 
-td.role-select {
+td.role-select, .wtype-select {
     width: 136px;
 }
 
