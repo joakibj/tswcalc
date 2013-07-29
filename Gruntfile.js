@@ -149,7 +149,19 @@ module.exports = function(grunt) {
     },
     clean: {
       build: ['<%= dirs.build %>'],
-      dist: ['<%= dirs.dist %>']
+      dist: ['<%= dirs.dist %>'],
+      pack: ['<%= compress.dist.options.archive %>']
+    },
+    compress: {
+      dist: {
+        options: {
+          archive: '<%= pkg.name %>-<%= pkg.version %>.zip',
+          mode: 'zip'
+        },
+        files: [
+          {expand: true, cwd: 'dist/', src: '**/*'}
+        ]
+      }
     }
   });
 
@@ -161,9 +173,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-replace');
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-compress');
 
   grunt.registerTask('build', ['dust', 'concat', 'replace:develop', 'copy:develop']);
   grunt.registerTask('default', ['build', 'qunit']);
   grunt.registerTask('test', ['default']);
   grunt.registerTask('dist', ['dust', 'concat', 'uglify', 'replace:dist', 'copy:develop', 'copy:dist', 'qunit']);
+  grunt.registerTask('package', ['dist', 'compress']);
 };
