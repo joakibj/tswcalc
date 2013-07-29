@@ -69,6 +69,7 @@ module.exports = function(grunt) {
           variables: {
             'mainscript': '<%= pkg.name %>.js',
             'datascript': '<%= pkg.name %>-data.js',
+            'maincss': '<%= pkg.name %>.css',
             'version': '<%= pkg.version %>'
           }
         },
@@ -86,6 +87,7 @@ module.exports = function(grunt) {
           variables: {
             'mainscript': '<%= pkg.name %>.min.js',
             'datascript': '<%= pkg.name %>-data.min.js',
+            'maincss': '<%= pkg.name %>.min.css',
             'version': '<%= pkg.version %>'
           }
         },
