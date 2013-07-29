@@ -134,7 +134,7 @@ module.exports = function(grunt) {
     },
     cssmin: {
       options: {
-        banner: '/* minified CSS %> */\n'
+        banner: '/* minified CSS */\n'
       },
       dist: {
         files: {
