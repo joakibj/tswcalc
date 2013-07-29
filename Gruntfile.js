@@ -130,6 +130,16 @@ module.exports = function(grunt) {
         }
       }
     },
+    cssmin: {
+      options: {
+        banner: '/* minified CSS %> */\n'
+      },
+      dist: {
+        files: {
+          '<%= dirs.dist %>/assets/stylesheets/<%= pkg.name %>.min.css' : ['public/assets/stylesheets/<%= pkg.name %>.css']
+        }
+      }
+    },
     watch: {
       dust: {
         files: ['src/templates/dusts/**/*.dust'],
@@ -174,10 +184,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-compress');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
 
   grunt.registerTask('build', ['dust', 'concat', 'replace:develop', 'copy:develop']);
   grunt.registerTask('default', ['build', 'qunit']);
   grunt.registerTask('test', ['default']);
-  grunt.registerTask('dist', ['dust', 'concat', 'uglify', 'replace:dist', 'copy:develop', 'copy:dist', 'qunit']);
+  grunt.registerTask('dist', ['dust', 'concat', 'uglify', 'cssmin', 'replace:dist', 'copy:develop', 'copy:dist', 'qunit']);
   grunt.registerTask('package', ['dist', 'compress']);
 };
