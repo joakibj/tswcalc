@@ -29,16 +29,17 @@ tswcalc.buttonBar = function() {
     };
 
     var setRoleOnAllSlots = function(event) {
-        var role = event.target.id.split('-')[2];
+        var newRole = extractRole(event);
         for (var slotId in tswcalc.slots) {
             if (tswcalc.slots.hasSlot(slotId)) {
-                tswcalc.slots[slotId].role(role);
-                if (!tswcalc.slots[slotId].isWeapon() && tswcalc.data.ny_raid_items[slotId][role] === undefined) {
-                    tswcalc.slots[slotId].el.btn.nyraid.prop('checked', false);
-                    tswcalc.slots[slotId].el.btn.nyraid.change();
-                    tswcalc.slots[slotId].el.btn.nyraid.attr('disabled', 'disabled');
+                var slot = tswcalc.slots[slotId];
+                slot.role(newRole);
+                if (!slot.isWeapon() && tswcalc.data.ny_raid_items[slotId][newRole] === undefined) {
+                    slot.el.btn.nyraid.prop('checked', false);
+                    slot.el.btn.nyraid.change();
+                    slot.el.btn.nyraid.attr('disabled', 'disabled');
                 } else {
-                    tswcalc.slots[slotId].el.btn.nyraid.removeAttr('disabled');
+                    slot.el.btn.nyraid.removeAttr('disabled');
                 }
             }
         }
@@ -46,13 +47,14 @@ tswcalc.buttonBar = function() {
     };
 
     var setQlOnAllSlots = function(event) {
-        var ql = '10.' + event.target.id.split('-')[3];
+        var newQl = extractQl(event);
         for (var slotId in tswcalc.slots) {
             if (tswcalc.slots.hasSlot(slotId)) {
-                if (!tswcalc.slots[slotId].el.btn.nyraid.is(':checked')) {
-                    tswcalc.slots[slotId].ql(ql);
+                var slot = tswcalc.slots[slotId];
+                if (!slot.el.btn.nyraid.is(':checked')) {
+                    slot.ql(newQl);
                 }
-                tswcalc.slots[slotId].glyphQl(ql);
+                slot.glyphQl(newQl);
             }
         }
         tswcalc.summary.updateAllStats();
@@ -61,6 +63,14 @@ tswcalc.buttonBar = function() {
     var resetAllSlots = function(event) {
         tswcalc.slots.reset();
         tswcalc.summary.updateAllStats();
+    };
+
+    var extractQl = function(event) {
+        return '10.' + event.target.id.split('-')[3];
+    };
+
+    var extractRole = function(event) {
+        return event.target.id.split('-')[2];
     };
 
     var oPublic = {
