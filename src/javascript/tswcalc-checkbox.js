@@ -6,7 +6,7 @@ tswcalc.checkbox.RaidCheckbox = function RaidCheckbox(slot) {
     var slotObj = tswcalc.slots[slot];
 
     this.initiate = function() {
-        if (slot != 'weapon') {
+        if (!slotObj.isWeapon()) {
             this.bindEvents();
         }
     };
@@ -39,8 +39,6 @@ tswcalc.checkbox.RaidCheckbox = function RaidCheckbox(slot) {
             slotObj.el.signetId.attr('disabled', 'disabled');
             slotObj.el.signetQuality.attr('disabled', 'disabled');
             tswcalc.summary.updateAllStats();
-        } else {
-            //slot does not have any NY raid item
         }
     };
 
