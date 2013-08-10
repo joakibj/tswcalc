@@ -53,7 +53,6 @@ tswcalc.buttonBar = function() {
                     tswcalc.slots[slotId].ql(ql);
                 }
                 tswcalc.slots[slotId].glyphQl(ql);
-                tswcalc.slots[slotId].el.btn.primary[4].trigger('click');
             }
         }
         tswcalc.summary.updateAllStats();
