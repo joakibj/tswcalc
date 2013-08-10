@@ -14,7 +14,7 @@ module('export-integration-tests', {
 test('should create slot url for head', 1, function() {
     createTankBuild();
 
-    var slotUrl = tswcalc.export.createSlotUrl(tswcalc.slots.head.id, tswcalc.slots.head.mappedState());
+    var slotUrl = tswcalc.export.createSlotUrl(tswcalc.slots.head, tswcalc.slots.head.mappedState());
 
     equal(slotUrl, 'head=4,1,5,5,0,4,0,3,18');
 });
@@ -22,7 +22,7 @@ test('should create slot url for head', 1, function() {
 test('should create slot url for NY raid wrist', 1, function() {
     createTankBuild();
 
-    var slotUrl = tswcalc.export.createSlotUrl(tswcalc.slots.wrist.id, tswcalc.slots.wrist.mappedState());
+    var slotUrl = tswcalc.export.createSlotUrl(tswcalc.slots.wrist, tswcalc.slots.wrist.mappedState());
 
     equal(slotUrl, 'wrist=4,1,4,6,0,4,0,3,85');
 });
@@ -30,7 +30,7 @@ test('should create slot url for NY raid wrist', 1, function() {
 test('should create slot url for weapon with type', 1, function() {
     createTankBuild();
 
-    var slotUrl = tswcalc.export.createSlotUrl(tswcalc.slots.weapon.id, tswcalc.slots.weapon.mappedState());
+    var slotUrl = tswcalc.export.createSlotUrl(tswcalc.slots.weapon, tswcalc.slots.weapon.mappedState());
 
     equal(slotUrl, 'weapon=5,1,4,4,0,4,0,2,5');
 });

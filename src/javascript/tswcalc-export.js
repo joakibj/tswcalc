@@ -59,7 +59,7 @@ tswcalc.export = function() {
         for (var slotId in tswcalc.slots) {
             if (tswcalc.slots.hasSlot(slotId)) {
                 var slot = tswcalc.slots[slotId];
-                url += createSlotUrl(slot.id, slotState[slot.id]);
+                url += createSlotUrl(slot, slot.mappedState());
                 if (i < tswcalc.slots.length() - 1) {
                     url += '&';
                 }
@@ -69,12 +69,12 @@ tswcalc.export = function() {
         return url;
     };
 
-    var createSlotUrl = function(slotId, state) {
+    var createSlotUrl = function(slot, state) {
         var roleOrWtype = state.role;
-        if(tswcalc.slots[slotId].isWeapon()) {
+        if(slot.isWeapon()) {
             roleOrWtype = state.wtype;
         }
-        return slotId + '=' + state.ql + ',' + roleOrWtype + ',' + state.glyph_ql + ',' + state.primary_glyph + ',' + state.secondary_glyph +
+        return slot.id + '=' + state.ql + ',' + roleOrWtype + ',' + state.glyph_ql + ',' + state.primary_glyph + ',' + state.secondary_glyph +
             ',' + state.primary_dist + ',' + state.secondary_dist + ',' + state.signet_quality + ',' + state.signet_id;
     };
 
