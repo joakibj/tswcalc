@@ -2,20 +2,50 @@
   <h4 class="slot">Miscellaneous</h4> <h4 id="misc-name" class="slot-name"></h4>
   <table class="table table-slots">
     <tr>
+      <td><img id="pure-anima-consumable-border" class="signet-quality" src="assets/images/icons/normal.png"/><img id="pure-anima-consumable-icon" class="signet" src="assets/images/icons/minor_dps.png"/></td>
       <td>Pure Anima Potion</td>
       <td>
         <select>
-          <option>Nananana</option>
+          <option value="none">None</option>
+          <option value="none">Health</option>
+          <option value="none">Pure Anima - Attack Rating</option>
+          <option value="none">Pure Anima - Heal Rating</option>
         </select>
       </td>
+      <td>Adds 100 attack rating.</td>
     </tr>
     <tr>
+      <td><img id="pure-anima-consumable-border" class="signet-quality" src="assets/images/icons/normal.png"/><img id="pure-anima-consumable-icon" class="signet" src="assets/images/icons/minor_dps.png"/></td>
       <td>Anima Potion</td>
       <td>
         <select>
-          <option>Nananana</option>
+          <option value="none">None</option>
+          <option value="none">Crit Damage Rating</option>
         </select>
       </td>
+      <td>Adds 200 attack rating.</td>
+    </tr>
+    <tr>
+      <td><img id="pure-anima-consumable-border" class="signet-quality" src="assets/images/icons/normal.png"/><img id="pure-anima-consumable-icon" class="signet" src="assets/images/icons/minor_dps.png"/></td>
+      <td>Kickbacks</td>
+      <td>
+        <select>
+          <option value="none">None</option>
+          <option value="none">Crit Damage Rating</option>
+        </select>
+      </td>
+      <td>Adds 100 attack rating.</td>
+    </tr>
+    <tr>
+      <td><img id="pure-anima-consumable-border" class="signet-quality" src="assets/images/icons/normal.png"/><img id="pure-anima-consumable-icon" class="signet" src="assets/images/icons/minor_dps.png"/></td>
+      <td>Stimulants</td>
+      <td>
+        <select>
+          <option value="none">None</option>
+          <option value="none">Crit Damage Rating</option>
+        </select>
+      </td>
+      <td>Adds 300 attack rating.</td>
     </tr>
   </table>
 </div>
