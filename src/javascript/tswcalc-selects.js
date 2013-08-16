@@ -125,6 +125,8 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
 
         if(wtype != 'none') {
             slotObj.name(': ' + tswcalc.util.capitalise(wtype));
+        } else {
+            slotObj.name('');
         }
     };
 
