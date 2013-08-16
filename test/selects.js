@@ -128,3 +128,35 @@ test('should enable signet quality when a cadoro signet has been selected and th
 
     deepEqual($('#head-pick-signet').attr('disabled'), undefined, 'quality select enabled');
 });
+
+test('should enable changing of weapon type and set the slot name', 1, function() {
+    tswcalc.slots['weapon'].wtype('blade');
+    tswcalc.slots['weapon'].el.wtype.change();
+
+    deepEqual(tswcalc.slots['weapon'].name(), ': Blade');
+});
+
+test('should enable changing of weapon2 type and set the slot name', 1, function() {
+    tswcalc.slots['weapon2'].wtype('blade');
+    tswcalc.slots['weapon2'].el.wtype.change();
+
+    deepEqual(tswcalc.slots['weapon2'].name(), ': Blade');
+});
+
+test('should enable changing of weapon type to none and set the slot name to blank', 1, function() {
+    tswcalc.slots['weapon'].wtype('blade');
+    tswcalc.slots['weapon'].el.wtype.change();
+    tswcalc.slots['weapon'].wtype('none');
+    tswcalc.slots['weapon'].el.wtype.change();
+
+    deepEqual(tswcalc.slots['weapon'].name(), '');
+});
+
+test('should enable changing of weapon2 type to none and set the slot name to blank', 1, function() {
+    tswcalc.slots['weapon2'].wtype('blade');
+    tswcalc.slots['weapon2'].el.wtype.change();
+    tswcalc.slots['weapon2'].wtype('none');
+    tswcalc.slots['weapon2'].el.wtype.change();
+
+    deepEqual(tswcalc.slots['weapon2'].name(), '');
+});
