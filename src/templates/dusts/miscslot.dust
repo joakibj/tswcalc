@@ -1,0 +1,21 @@
+<div id="misc-slot" class="slot">
+  <h4 class="slot">Miscellaneous</h4> <h4 id="misc-name" class="slot-name"></h4>
+  <table class="table table-slots">
+    <tr>
+      <td>Pure Anima Potion</td>
+      <td>
+        <select>
+          <option>Nananana</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Anima Potion</td>
+      <td>
+        <select>
+          <option>Nananana</option>
+        </select>
+      </td>
+    </tr>
+  </table>
+</div>
