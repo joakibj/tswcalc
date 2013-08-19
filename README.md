@@ -1,9 +1,14 @@
 tswcalc
 =======
 
-tswcalc is intended to be a fan-made living talisman and glyph calculator for The Secret World (TSW), a MMORPG by Funcom. It can be used to plan how to spend your Black Bullions, Criterion Upgrades and Astral Fuses. In addition to share and show others what gear you use to tackle encounters in PvE or PvP.
+tswcalc is a fan-made living talisman and glyph calculator for The Secret World (TSW), a MMORPG by Funcom. It can be used to plan how to spend your Black Bullions, Criterion Upgrades and Astral Fuses. In addition to share and show others what gear you use to tackle encounters in PvE or PvP.
 
-tswcalc contains all Nightwatch custom gear and glyphs from QL 10.0 to 10.5. It also has all signets in normal, elite and epic variations. 
+tswcalc features:
+
+* All Nightwatch custom gear and glyphs from QL 10.0 to 10.5. 
+* Custom gear able to be attached with all signets in normal, elite and epic variations.
+* Issue 6 and 7 signets.
+* NY Raid items.
 
 tswcalc can be found at: http://joakibj.github.io/tswcalc
 
