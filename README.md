@@ -7,30 +7,35 @@ tswcalc contains all Nightwatch custom gear and glyphs from QL 10.0 to 10.5. It 
 
 tswcalc can be found at: http://joakibj.github.io/tswcalc
 
-Note: all active development of tswcalc takes place in the [`develop`](https://github.com/joakibj/tswcalc/tree/develop) branch. Stable releases are merged into [`master`](https://github.com/joakibj/tswcalc/tree/master).
+**Note:** all active development of tswcalc takes place in the [`develop`](https://github.com/joakibj/tswcalc/tree/develop) branch. The tip of [`master`](https://github.com/joakibj/tswcalc/tree/master) always points to the latest, stable release. All releases are tagged. The latest release is deployed to the [`gh-pages`](https://github.com/joakibj/tswcalc/tree/gh-pages) branch.
 
-Installing
+Prerequisites
 --------
-tswcalc uses [grunt](http://gruntjs.com/) to build. 
-It uses `dustjs` (`linkedin-dustjs` fork) as a client-side template engine. Tests are covered by `qunit` and performed in each build.
-
 The tools needed to build tswcalc are:
 * [node.js](http://nodejs.org/) (v0.10.5+)
 * npm (v1.2.18+)
-* grunt (v0.4.0+)
+* [grunt](http://gruntjs.com/) (v0.4.0+)
 
 node.js comes included with `npm`, the node package manager.
 
-Install grunt globally:
+After installing `node.js` and `npm`, install `grunt` globally:
 
     npm install -g grunt-cli
+
+Building
+--------
+Fetch the source code (if you have added a [SSH key to github](https://help.github.com/articles/generating-ssh-keys)):
+
+    git clone git@github.com:joakibj/tswcalc.git
+
+Alternatively:
+
+    git clone https://github.com/joakibj/tswcalc.git
 
 Install tswcalc dependencies, defined in `package.json`:
 
     npm install
 
-Building
---------
 Build tswcalc by running:
 
     grunt
