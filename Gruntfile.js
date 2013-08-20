@@ -174,6 +174,15 @@ module.exports = function(grunt) {
           {expand: true, cwd: 'dist/', src: '**/*'}
         ]
       }
+    },
+    release: {
+      options: {
+        push: false,
+        pushTags: false,
+        npm: false,
+        commitMessage: 'Prepare version <%= version %>',
+        tagMessage: 'Release version <%= version %>'
+      }
     }
   });
 
@@ -187,6 +196,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-compress');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-release');
 
   grunt.registerTask('build', ['dust', 'concat', 'replace:develop', 'copy:develop']);
   grunt.registerTask('default', ['build', 'qunit']);
