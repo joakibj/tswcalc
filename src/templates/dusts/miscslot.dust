@@ -2,50 +2,36 @@
   <h4 class="slot">Miscellaneous</h4> <h4 id="misc-name" class="slot-name"></h4>
   <table class="table table-slots">
     <tr>
-      <td><img id="pure-anima-consumable-border" class="signet-quality" src="assets/images/icons/normal.png"/><img id="pure-anima-consumable-icon" class="signet" src="assets/images/icons/minor_dps.png"/></td>
-      <td>Pure Anima Potion</td>
+      <td><img id="pure-anima-consumable-border" class="signet-quality" src="assets/images/icons/normal.png"/><img id="pure-anima-consumable-icon" class="consumable" src="assets/images/icons/pure_anima_ar.png"/></td>
+      <td>Pure Anima</td>
       <td>
         <select>
           <option value="none">None</option>
-          <option value="none">Health</option>
-          <option value="none">Pure Anima - Attack Rating</option>
-          <option value="none">Pure Anima - Heal Rating</option>
+          <option value="health">Max Health</option>
+          <option value="attack-rating">Attack Rating</option>
+          <option value="heal-rating">Heal Rating</option>
         </select>
       </td>
       <td>Adds 100 attack rating.</td>
     </tr>
     <tr>
-      <td><img id="pure-anima-consumable-border" class="signet-quality" src="assets/images/icons/normal.png"/><img id="pure-anima-consumable-icon" class="signet" src="assets/images/icons/minor_dps.png"/></td>
-      <td>Anima Potion</td>
+      <td><img id="pure-anima-consumable-border" class="signet-quality" src="assets/images/icons/normal.png"/><img id="pure-anima-consumable-icon" class="consumable" src="assets/images/icons/anima_crit_rating.png"/></td>
+      <td>Anima</td>
       <td>
         <select>
           <option value="none">None</option>
-          <option value="none">Crit Damage Rating</option>
+          <option value="critical-rating">Crit Rating</option>
+          <option value="critical-power">Crit Damage Rating</option>
+          <option value="penetration-rating">Penetration Rating</option>
+          <option value="hit-rating">Hit Rating</option>
+          <option value="block-rating">Block Rating</option>
+          <option value="defense-rating">Defense Rating</option>
+          <option value="evade-rating">Evade Rating</option>
+          <option value="physical-protection">Physical Protection Rating</option>
+          <option value="magical-protection">Magical Protection Rating</option>
         </select>
       </td>
       <td>Adds 200 attack rating.</td>
-    </tr>
-    <tr>
-      <td><img id="pure-anima-consumable-border" class="signet-quality" src="assets/images/icons/normal.png"/><img id="pure-anima-consumable-icon" class="signet" src="assets/images/icons/minor_dps.png"/></td>
-      <td>Kickbacks</td>
-      <td>
-        <select>
-          <option value="none">None</option>
-          <option value="none">Crit Damage Rating</option>
-        </select>
-      </td>
-      <td>Adds 100 attack rating.</td>
-    </tr>
-    <tr>
-      <td><img id="pure-anima-consumable-border" class="signet-quality" src="assets/images/icons/normal.png"/><img id="pure-anima-consumable-icon" class="signet" src="assets/images/icons/minor_dps.png"/></td>
-      <td>Stimulants</td>
-      <td>
-        <select>
-          <option value="none">None</option>
-          <option value="none">Crit Damage Rating</option>
-        </select>
-      </td>
-      <td>Adds 300 attack rating.</td>
     </tr>
   </table>
 </div>
