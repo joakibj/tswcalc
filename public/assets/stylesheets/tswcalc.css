@@ -96,7 +96,7 @@ img.item-border {
     z-index: 1;
 }
 
-td.signet-description {
+td.item-description {
     padding-left: 5px;
     width: 100%;
 }

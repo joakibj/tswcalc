@@ -3,7 +3,6 @@
   <table class="table table-slots">
     <tr>
       <td><img id="pure-anima-consumable-border" class="item-border" src="assets/images/icons/normal.png"/><img id="pure-anima-consumable-icon" class="consumable" src="assets/images/icons/pure_anima_ar.png"/></td>
-      <td>Pure Anima</td>
       <td>
         <select>
           <option value="none">None</option>
@@ -12,11 +11,10 @@
           <option value="heal-rating">Heal Rating</option>
         </select>
       </td>
-      <td>Adds 100 attack rating.</td>
+      <td id="pure-anima-description" class="item-description">Adds 100 attack rating.</td>
     </tr>
     <tr>
       <td><img id="pure-anima-consumable-border" class="item-border" src="assets/images/icons/normal.png"/><img id="pure-anima-consumable-icon" class="consumable" src="assets/images/icons/anima_crit_rating.png"/></td>
-      <td>Anima</td>
       <td>
         <select>
           <option value="none">None</option>
@@ -31,7 +29,7 @@
           <option value="magical-protection">Magical Protection Rating</option>
         </select>
       </td>
-      <td>Adds 200 attack rating.</td>
+      <td id="anima-description" class="item-description">Adds 200 attack rating.</td>
     </tr>
   </table>
 </div>
