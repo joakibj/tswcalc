@@ -2,9 +2,9 @@
   <h4 class="slot">Miscellaneous</h4> <h4 id="misc-name" class="slot-name"></h4>
   <table class="table table-slots">
     <tr>
-      <td><img id="pure-anima-consumable-border" class="item-border" src="assets/images/icons/normal.png"/><img id="pure-anima-consumable-icon" class="consumable" src="assets/images/icons/pure_anima_ar.png"/></td>
+      <td><img id="pure-anima-border" class="item-border" src="assets/images/icons/normal.png"/><img id="pure-anima-icon" class="consumable" src="assets/images/icons/pure_anima_ar.png"/></td>
       <td>
-        <select id="pure-anima-consumable">
+        <select id="pure-anima">
           <option value="none">None</option>
           <option value="health">Max Health</option>
           <option value="attack-rating">Attack Rating</option>
@@ -14,9 +14,9 @@
       <td id="pure-anima-description" class="item-description">Adds 100 attack rating.</td>
     </tr>
     <tr>
-      <td><img id="pure-anima-consumable-border" class="item-border" src="assets/images/icons/normal.png"/><img id="pure-anima-consumable-icon" class="consumable" src="assets/images/icons/anima_crit_rating.png"/></td>
+      <td><img id="pure-anima-border" class="item-border" src="assets/images/icons/normal.png"/><img id="pure-anima-icon" class="consumable" src="assets/images/icons/anima_crit_rating.png"/></td>
       <td>
-        <select id="anima-consumable">
+        <select id="anima">
           <option value="none">None</option>
           <option value="critical-rating">Crit Rating</option>
           <option value="critical-power">Crit Damage Rating</option>
