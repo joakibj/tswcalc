@@ -2,7 +2,7 @@
   <h4 class="slot">Miscellaneous</h4> <h4 id="misc-name" class="slot-name"></h4>
   <table class="table table-slots">
     <tr>
-      <td><img id="pure-anima-border" class="item-border" src="assets/images/icons/normal.png"/><img id="pure-anima-icon" class="consumable" src="assets/images/icons/pure_anima_ar.png"/></td>
+      <td><a href="#" class="consumable-tooltip" data-toggle="tooltip" title="Pure Anima consumable. Selecting the consumable will add the stat you your build."><img id="pure-anima-border" class="item-border" src="assets/images/icons/normal.png"/><img id="pure-anima-icon" class="consumable" src="assets/images/icons/pure_anima_ar.png"/></a></td>
       <td>
         <select id="pure-anima" title="Please select Pure Anima">
           <option value="none">None</option>
@@ -14,7 +14,7 @@
       <td id="pure-anima-description" class="item-description"></td>
     </tr>
     <tr>
-      <td><img id="pure-anima-border" class="item-border" src="assets/images/icons/normal.png"/><img id="pure-anima-icon" class="consumable" src="assets/images/icons/anima_crit_rating.png"/></td>
+      <td><a href="#" class="consumable-tooltip" data-toggle="tooltip" title="Anima consumable. Selecting the consumable will add the stat you your build."><img id="pure-anima-border" class="item-border" src="assets/images/icons/normal.png"/><img id="pure-anima-icon" class="consumable" src="assets/images/icons/anima_crit_rating.png"/></a></td>
       <td>
         <select id="anima" title="Please select Anima">
           <option value="none">None</option>

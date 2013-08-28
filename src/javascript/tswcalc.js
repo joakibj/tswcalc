@@ -24,7 +24,7 @@ tswcalc = function() {
     };
 
     var activateToolTips = function() {
-        $('.glyph-tooltip, .signet-tooltip').tooltip({
+        $('.glyph-tooltip, .signet-tooltip, .consumable-tooltip').tooltip({
             placement: 'left'
         });
         $('.cost-tooltip').tooltip({
@@ -40,7 +40,7 @@ tswcalc = function() {
         $('#raid-stats > label').tooltip({
             placement: 'bottom'
         });
-        $('.cost-tooltip, .glyph-tooltip, .signet-tooltip, .slot-warning, .swap-weapon').on('click', function(event) {
+        $('.cost-tooltip, .glyph-tooltip, .signet-tooltip, .slot-warning, .swap-weapon, .consumable-tooltip').on('click', function(event) {
             event.preventDefault();
             event.stopPropagation();
         });
