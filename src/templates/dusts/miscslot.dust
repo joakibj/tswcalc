@@ -4,19 +4,19 @@
     <tr>
       <td><img id="pure-anima-border" class="item-border" src="assets/images/icons/normal.png"/><img id="pure-anima-icon" class="consumable" src="assets/images/icons/pure_anima_ar.png"/></td>
       <td>
-        <select id="pure-anima">
+        <select id="pure-anima" title="Please select Pure Anima">
           <option value="none">None</option>
           <option value="health">Max Health</option>
           <option value="attack-rating">Attack Rating</option>
           <option value="heal-rating">Heal Rating</option>
         </select>
       </td>
-      <td id="pure-anima-description" class="item-description">Adds 100 attack rating.</td>
+      <td id="pure-anima-description" class="item-description"></td>
     </tr>
     <tr>
       <td><img id="pure-anima-border" class="item-border" src="assets/images/icons/normal.png"/><img id="pure-anima-icon" class="consumable" src="assets/images/icons/anima_crit_rating.png"/></td>
       <td>
-        <select id="anima">
+        <select id="anima" title="Please select Anima">
           <option value="none">None</option>
           <option value="critical-rating">Crit Rating</option>
           <option value="critical-power">Crit Damage Rating</option>
@@ -29,7 +29,7 @@
           <option value="magical-protection">Magical Protection Rating</option>
         </select>
       </td>
-      <td id="anima-description" class="item-description">Adds 200 attack rating.</td>
+      <td id="anima-description" class="item-description"></td>
     </tr>
   </table>
 </div>
