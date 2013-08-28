@@ -4,7 +4,7 @@
     <tr>
       <td><img id="pure-anima-consumable-border" class="item-border" src="assets/images/icons/normal.png"/><img id="pure-anima-consumable-icon" class="consumable" src="assets/images/icons/pure_anima_ar.png"/></td>
       <td>
-        <select>
+        <select id="pure-anima-consumable">
           <option value="none">None</option>
           <option value="health">Max Health</option>
           <option value="attack-rating">Attack Rating</option>
@@ -16,7 +16,7 @@
     <tr>
       <td><img id="pure-anima-consumable-border" class="item-border" src="assets/images/icons/normal.png"/><img id="pure-anima-consumable-icon" class="consumable" src="assets/images/icons/anima_crit_rating.png"/></td>
       <td>
-        <select>
+        <select id="anima-consumable">
           <option value="none">None</option>
           <option value="critical-rating">Crit Rating</option>
           <option value="critical-power">Crit Damage Rating</option>
