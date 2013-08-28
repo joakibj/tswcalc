@@ -6,7 +6,10 @@ tswcalc.data.consumables = {
         'none': {
             name: 'None',
             description: '',
-            bonus: {}
+            bonus: {
+                stat: 'none',
+                add: 0
+            }
         },
         'health': {
             name: 'Max Health',
@@ -38,7 +41,10 @@ tswcalc.data.consumables = {
         'none': {
             name: 'None',
             description: '',
-            bonus: {}
+            bonus: {
+                stat: 'none',
+                add: 0
+            }
         },
         'critical-rating': {
             name: 'Crit Rating',

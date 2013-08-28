@@ -27,23 +27,41 @@ tswcalc.miscslot = function() {
 
     var pureAnimaChange = function(event) {
         changeDescription('pure_anima', el.pure_anima.select.val());
+        tswcalc.summary.updatePrimaryStats();
     };
 
     var animaChange = function(event) {
         changeDescription('anima', el.anima.select.val());
+        tswcalc.summary.updateOffensiveDefensiveStats();
     };
 
     var changeDescription = function(anima, selected) {
         var consumable = tswcalc.data.consumables[anima][selected];
         if (consumable !== undefined) {
             el[anima].description.html(consumable.description);
-            updatePrimaryStats();
-            updateOffensiveDefensiveStats();
+        }
+    };
+
+    var pureAnima = function() {
+        if (arguments.length == 1) {
+            el.pure_anima.select.val(arguments[0]);
+        } else {
+            return tswcalc.data.consumables.pure_anima[el.pure_anima.select.val()];
+        }
+    };
+
+    var anima = function() {
+        if (arguments.length == 1) {
+            el.anima.select.val(arguments[0]);
+        } else {
+            return tswcalc.data.consumables.anima[el.anima.select.val()];
         }
     };
 
     var oPublic = {
         init: init,
+        pureAnima: pureAnima,
+        anima: anima
     };
 
     return oPublic;
