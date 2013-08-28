@@ -15,6 +15,7 @@
 <div class="row-fluid">
   <div class="span8">
     {>slots/}
+    {>miscslot/}
   </div>
   <div class="span4">
     {>summary/}

@@ -122,7 +122,8 @@ test('should collect all stats and return two objects', 2, function() {
         'weapon-power': 457,
         'hitpoints': 10688,
         'attack-rating': 1565,
-        'heal-rating': 0
+        'heal-rating': 0,
+        'none': NaN
     };
     var expectedOffensiveDefensiveStats = {
         'none': NaN,
@@ -203,4 +204,40 @@ test('should collect offensive and defensive stats for NY raid DPS build with ra
     equal(sums['evade-rating'], 0);
     equal(sums['physical-protection'], 792);
     equal(sums['magical-protection'], 324);
+});
+
+test('should have pure anima bonus', 10, function() {
+    createTankBuild();
+
+    tswcalc.miscslot.pureAnima('health');
+    tswcalc.summary.updateAllStats();
+    equal($('#stat-hitpoints').html(), '11628');
+    equal($('#stat-attack-rating').html(), '1565');
+    equal($('#stat-heal-rating').html(), '0');
+
+    tswcalc.miscslot.pureAnima('attack-rating');
+    tswcalc.summary.updateAllStats();
+    equal($('#stat-hitpoints').html(), '10688');
+    equal($('#stat-attack-rating').html(), '1805');
+    equal($('#stat-combat-power').html(), '544');
+    equal($('#stat-heal-rating').html(), '0');
+
+    tswcalc.miscslot.pureAnima('heal-rating');
+    tswcalc.summary.updateAllStats();
+    equal($('#stat-hitpoints').html(), '10688');
+    equal($('#stat-attack-rating').html(), '1565');
+    equal($('#stat-heal-rating').html(), '240');
+});
+
+test('should have anima bonus', 3, function() {
+    createTankBuild();
+
+    tswcalc.miscslot.anima('block-rating');
+    tswcalc.summary.updateAllStats();
+    equal($('#stat-block-rating').html(), '+791');
+    
+    tswcalc.miscslot.anima('critical-rating');
+    tswcalc.summary.updateAllStats();
+    equal($('#stat-critical-rating').html(), '+119');
+    equal($('#stat-critical-chance').html(), '7.56 %');
 });

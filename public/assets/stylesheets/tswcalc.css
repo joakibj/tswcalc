@@ -37,18 +37,18 @@ body {
 }
 
 .table td {
+    min-width: 32px;
+    min-height: 32px;
     font-size: 12px;
     padding: 0px;   
     padding-top: 2px;
     padding-bottom: 2px;
+    padding-right: 2px;
     vertical-align: middle;
 }
 
 .table-signets td {
-    min-width: 32px;
-    min-height: 32px;
     height: 60px;
-    padding-right: 2px;
 }
 
 td.role-label, .wtype-label {
@@ -71,6 +71,15 @@ td.filler {
     width: auto;
 }
 
+img.consumable {
+    background-image:url('../images/icons/consumable_background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 32px;
+    height:32px;
+    z-index: 0;
+}
+
 img.signet {
     background-image:url('../images/icons/signet_background.png');
     background-size: cover;
@@ -80,14 +89,14 @@ img.signet {
     z-index: 0;
 }
 
-img.signet-quality {
+img.item-border {
     width: 32px;
     height:32px;
     position: absolute;
     z-index: 1;
 }
 
-td.signet-description {
+td.item-description {
     padding-left: 5px;
     width: 100%;
 }

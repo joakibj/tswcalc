@@ -114,6 +114,8 @@ tswcalc.summary = function() {
                 }
             }
         }
+        var pureAnima = tswcalc.miscslot.pureAnima();
+        sums[pureAnima.bonus.stat] += pureAnima.bonus.add;
         sums['combat-power'] = calculateCombatPower(sums['attack-rating'], sums['weapon-power']);
         return sums;
     };
@@ -155,6 +157,8 @@ tswcalc.summary = function() {
             }
         }
 
+        var anima = tswcalc.miscslot.anima();
+        sums[anima.bonus.stat] += anima.bonus.add;
         sums['critical-power-percentage'] = calculateCriticalPowerPercentage(sums['critical-power']);
 
         //TODO: refactor

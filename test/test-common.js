@@ -4,6 +4,12 @@ function renderSlots() {
         signets: tswcalc.data.signet_data
     });
     tswcalc.slots.init();
+    renderMiscSlot();
+}
+
+function renderMiscSlot() {
+    renderTemplate('miscslot', {});
+    tswcalc.miscslot.init();
 }
 
 function renderSummary() {
