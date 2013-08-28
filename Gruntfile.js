@@ -45,7 +45,8 @@ module.exports = function(grunt) {
             '<%= dirs.src %>/<%= pkg.name %>-import.js',
             '<%= dirs.src %>/<%= pkg.name %>-util.js',
             '<%= dirs.src %>/<%= pkg.name %>-slots.js',
-            '<%= dirs.src %>/<%= pkg.name %>-checkbox.js'
+            '<%= dirs.src %>/<%= pkg.name %>-checkbox.js',
+            '<%= dirs.src %>/<%= pkg.name %>-miscslot.js'
         ],
         dest: '<%= dirs.build %>/assets/javascripts/<%= pkg.name %>.js'
       },

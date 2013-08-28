@@ -74,6 +74,7 @@ tswcalc = function() {
 
     var startSubModules = function() {
         tswcalc.slots.init();
+        tswcalc.miscslot.init();
         for (var i = 0; i < tswcalc.data.template_data.slots.length; i++) {
             startSelectHandler(tswcalc.data.template_data.slots[i]);
             startRaidCheckboxes(tswcalc.data.template_data.slots[i].id_prefix);
