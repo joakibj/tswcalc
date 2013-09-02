@@ -45,6 +45,11 @@ Build tswcalc by running:
 
     grunt
 
+Run tests:
+    grunt test
+
+Tests can be found in the `test` folder. Open the html file to run tests in the browser. Open the js file to view the test logic.
+
 When developing, use:
     
     grunt watch
@@ -60,6 +65,14 @@ To create a distribution in the `dist` folder:
     grunt dist
 
 Open `dist/index.html` to view.
+
+Contributing
+------------
+Pull requests are welcome! They should be done against the `develop` branch.
+
+There are many things to do. Some suggestions can be found in [issues](https://github.com/joakibj/tswcalc/issues). Otherwise, things like refactoring, decoupling and better tests to make tswcalc easier to maintain is also welcome.
+
+Contributions can also be bug reports, feature requests and other feedback.
 
 License
 -------
