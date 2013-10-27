@@ -687,5 +687,37 @@ tswcalc.data.signet_data = {
             icon: 'major_heal',
             requires: 'issue-7'
         }
+    ],
+    'waist': [{
+            id: 59,
+            name: 'Venice',
+            description: 'Increases damage dealt by %d%.',
+            cooldown: '0',
+            quality: {
+                epic: 1.5
+            },
+            icon: 'minor_dps',
+            requires: 'issue-8'
+        }, {
+            id: 60,
+            name: 'Undying Roar',
+            description: 'Increases evade chance by %d%.',
+            cooldown: '0',
+            quality: {
+                epic: 1.5
+            },
+            icon: 'minor_tank',
+            requires: 'issue-8'
+        }, {
+            id: 61,
+            name: 'Saint Mark',
+            description: 'Increases the effectiveness of your barrier, leech and healing abilities by %d%.',
+            cooldown: '0',
+            quality: {
+                epic: 1.5
+            },
+            icon: 'minor_heal',
+            requires: 'issue-8'
+        }
     ]
 };
