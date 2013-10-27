@@ -7,7 +7,7 @@ tswcalc features:
 
 * All Nightwatch custom gear and glyphs from QL 10.0 to 10.5. 
 * Custom gear able to be attached with all signets in normal, elite and epic variations.
-* Issue 6 and 7 signets.
+* Issue 6, 7 and 8 signets.
 * NY Raid items.
 
 tswcalc can be found at: http://joakibj.github.io/tswcalc
