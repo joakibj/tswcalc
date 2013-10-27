@@ -41,5 +41,25 @@ tswcalc.data.cadoro_items = {
                 ql: '10.1'
             }
         }
+    },
+    'issue-8': {
+        'warning_text': "This Signet can only be attached to Winged Lion Buckle, Castigating Chain or Sandon's Mettle. These items can be purchased from the Ca' d'Oro merchant in The Sunken Library.",
+        'waist': {
+            'none': {
+                name: ''
+            },
+            'dps': {
+                name: "Castigating Chain",
+                ql: '10.1'
+            },
+            'healer': {
+                name: "Winged Lion Buckle",
+                ql: '10.1'
+            },
+            'tank': {
+                name: "Sandon's Mettle",
+                ql: '10.1'
+            }
+        }
     }
 };
