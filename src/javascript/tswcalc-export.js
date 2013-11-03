@@ -80,7 +80,7 @@ tswcalc.export = function() {
 
     var startExportBBCode = function() {
         collectAllSlotStates();
-        dust.render('export\bbcode', {
+        dust.render('export@@pathsepbbcode', {
             slotState: dustSlotState(),
             summary: tswcalc.summary.collectAllStats()
         },

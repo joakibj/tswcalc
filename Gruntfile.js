@@ -1,3 +1,5 @@
+path = require('path');
+
 module.exports = function(grunt) {
 
   // Project configuration.
@@ -72,7 +74,8 @@ module.exports = function(grunt) {
             'mainscript': '<%= pkg.name %>.js',
             'datascript': '<%= pkg.name %>-data.js',
             'maincss': '<%= pkg.name %>.css',
-            'version': '<%= pkg.version %>'
+            'version': '<%= pkg.version %>',
+            'pathsep': path.sep
           }
         },
         files: [{
