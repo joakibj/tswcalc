@@ -93,7 +93,8 @@ module.exports = function(grunt) {
             'mainscript': '<%= pkg.name %>.min.js',
             'datascript': '<%= pkg.name %>-data.min.js',
             'maincss': '<%= pkg.name %>.min.css',
-            'version': '<%= pkg.version %>'
+            'version': '<%= pkg.version %>',
+            'pathsep': path.sep
           }
         },
         files: [{
@@ -206,6 +207,6 @@ module.exports = function(grunt) {
   grunt.registerTask('build', ['dust', 'concat', 'replace:develop', 'copy:develop']);
   grunt.registerTask('default', ['build', 'qunit']);
   grunt.registerTask('test', ['default']);
-  grunt.registerTask('dist', ['dust', 'concat', 'uglify', 'cssmin', 'replace:dist', 'copy:develop', 'copy:dist', 'qunit']);
+  grunt.registerTask('dist', ['dust', 'concat', 'uglify', 'cssmin', 'replace:develop', 'replace:dist', 'copy:develop', 'copy:dist', 'qunit']);
   grunt.registerTask('package', ['dist', 'compress']);
 };
