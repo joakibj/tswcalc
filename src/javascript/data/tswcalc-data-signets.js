@@ -728,6 +728,7 @@ tswcalc.data.signet_data = {
             quality: {
                 epic: 117
             },
+            stat: 'attack-rating',
             icon: 'major_dps',
             requires: 'issue-9'
         }, {
@@ -738,6 +739,7 @@ tswcalc.data.signet_data = {
             quality: {
                 epic: 410
             },
+            stat: 'hitpoints',
             icon: 'major_tank',
             requires: 'issue-9'
         }, {
@@ -748,6 +750,7 @@ tswcalc.data.signet_data = {
             quality: {
                 epic: 117
             },
+            stat: 'heal-rating',
             icon: 'major_heal',
             requires: 'issue-9'
         }
