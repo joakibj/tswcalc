@@ -61,5 +61,25 @@ tswcalc.data.cadoro_items = {
                 ql: '10.1'
             }
         }
+    },
+    'issue-9': {
+        'warning_text': "This Signet can only be attached to Susanoo's Ring, Amaterasu's Band or Tsukuyomi's Knot. These items can be purchased from the Ca' d'Oro merchant in Ginpachi Park.",
+        'ring': {
+            'none': {
+                name: ''
+            },
+            'dps': {
+                name: "Susanoo's Ring",
+                ql: '10.1'
+            },
+            'healer': {
+                name: "Amaterasu's Band",
+                ql: '10.1'
+            },
+            'tank': {
+                name: "Tsukuyomi's Knot",
+                ql: '10.1'
+            }
+        }
     }
 };
