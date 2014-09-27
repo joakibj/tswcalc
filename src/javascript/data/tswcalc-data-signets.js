@@ -719,5 +719,37 @@ tswcalc.data.signet_data = {
             icon: 'minor_heal',
             requires: 'issue-8'
         }
+    ],
+    'ring': [{
+            id: 62,
+            name: 'Howling Oni',
+            description: 'Your attack rating is increased by %d.',
+            cooldown: '0',
+            quality: {
+                epic: 117
+            },
+            icon: 'major_dps',
+            requires: 'issue-9'
+        }, {
+            id: 63,
+            name: 'Laughing Shisa',
+            description: 'Your health is increased by %d.',
+            cooldown: '0',
+            quality: {
+                epic: 410
+            },
+            icon: 'major_tank',
+            requires: 'issue-9'
+        }, {
+            id: 64,
+            name: 'Singing Tengu',
+            description: 'Your Heal rating is increased by %d.',
+            cooldown: '0',
+            quality: {
+                epic: 117
+            },
+            icon: 'major_heal',
+            requires: 'issue-9'
+        }
     ]
 };
