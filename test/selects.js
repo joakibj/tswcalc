@@ -59,10 +59,10 @@ test('should have added signets to correct group', 8, function() {
     equal($('#head-pick-signet option').size(), 8 + 16 + 1); //weapon signets also fit in the head
     equal($('#ring-pick-signet option').size(), 3 + 3 + 1);
     equal($('#neck-pick-signet option').size(), 3 + 3 + 1);
-    equal($('#wrist-pick-signet option').size(), 3 + 1);
+    equal($('#wrist-pick-signet option').size(), 3 + 3 + 1);
     equal($('#luck-pick-signet option').size(), 28 + 1);
     equal($('#waist-pick-signet option').size(), 28 + 3 + 1);
-    equal($('#occult-pick-signet option').size(), 28 + 1);
+    equal($('#occult-pick-signet option').size(), 28 + 3 + 1);
 });
 
 test('should get signets for head', 1, function() {
