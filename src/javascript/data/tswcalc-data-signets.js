@@ -754,5 +754,72 @@ tswcalc.data.signet_data = {
             icon: 'major_heal',
             requires: 'issue-9'
         }
+    ],
+    'occult': [{
+            id: 65,
+            name: 'Nure-onna\'s Coils',
+            description: 'Increases damage dealt by %d%.',
+            cooldown: '0',
+            quality: {
+                epic: 1.5
+            },
+            icon: 'minor_dps',
+            requires: 'issue-10'
+        }, {
+            id: 66,
+            name: 'Sarutahiko\'s Mettle',
+            description: 'Increases block chance by %d%.',
+            cooldown: '0',
+            quality: {
+                epic: 1.5
+            },
+            icon: 'minor_tank',
+            requires: 'issue-10'
+        }, {
+            id: 67,
+            name: 'Yakushi\'s Balm',
+            description: 'Increases the effectiveness of your barrier, leech and healing abilities by %d%.',
+            cooldown: '0',
+            quality: {
+                epic: 1.5
+            },
+            icon: 'minor_heal',
+            requires: 'issue-10'
+        }
+    ],
+    'wrist': [{
+            id: 68,
+            name: 'Repulsor Technology',
+            description: 'Your attack rating is increased by %d.',
+            cooldown: '0',
+            quality: {
+                epic: 117
+            },
+            stat: 'attack-rating',
+            icon: 'major_dps',
+            requires: 'issue-11'
+        }, {
+            id: 69,
+            name: 'Personal Shielding',
+            description: 'Your health is increased by %d.',
+            cooldown: '0',
+            quality: {
+                epic: 410
+            },
+            stat: 'hitpoints',
+            icon: 'major_tank',
+            requires: 'issue-11'
+        }, {
+            id: 70,
+            name: 'Biotechnology',
+            description: 'Your Heal rating is increased by %d.',
+            cooldown: '0',
+            quality: {
+                epic: 117
+            },
+            stat: 'heal-rating',
+            icon: 'major_heal',
+            requires: 'issue-11'
+        }
     ]
 };

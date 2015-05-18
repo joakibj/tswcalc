@@ -81,5 +81,45 @@ tswcalc.data.cadoro_items = {
                 ql: '10.1'
             }
         }
+    },
+    'issue-10': {
+        'warning_text': "This Signet can only be attached to Kuchisake-onna's Scissors, Aka Manto's Red Thread or Gasadokuro's Tooth. These items can be purchased from the Ca' d'Oro merchant in Ginpachi Park.",
+        'occult': {
+            'none': {
+                name: ''
+            },
+            'dps': {
+                name: "Kuchisake-onna's Scissors",
+                ql: '10.1'
+            },
+            'healer': {
+                name: "Aka Manto's Red Thread",
+                ql: '10.1'
+            },
+            'tank': {
+                name: "Gasadokuro's Tooth",
+                ql: '10.1'
+            }
+        }
+    },
+    'issue-11': {
+        'warning_text': "This Signet can only be attached to Anansi Bracelet, Vali Med-Timepiece or Manticore Bracer. These items can be purchased from the Ca' d'Oro merchant in Ginpachi Park.",
+        'wrist': {
+            'none': {
+                name: ''
+            },
+            'dps': {
+                name: "Anansi Bracelet",
+                ql: '10.1'
+            },
+            'healer': {
+                name: "Vali Med-Timepiece",
+                ql: '10.1'
+            },
+            'tank': {
+                name: "Manticore Bracer",
+                ql: '10.1'
+            }
+        }
     }
 };
