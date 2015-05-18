@@ -63,5 +63,5 @@ test('should not change slot to raid item when there is no raid item for the slo
     equal($('#wrist-pick-signet').val(), 'none');
     equal($('#wrist-signet-quality').val(), 'none');
     equal($('#wrist-signet-description').html(), '');
-    equal($('#wrist-pick-signet option').size(), 3 + 1);
+    equal($('#wrist-pick-signet option').size(), 3 + 3 + 1);
 });
