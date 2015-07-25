@@ -122,8 +122,7 @@ test('should collect all stats and return two objects', 2, function() {
         'weapon-power': 457,
         'hitpoints': 10688,
         'attack-rating': 1565,
-        'heal-rating': 0,
-        'none': NaN
+        'heal-rating': 0
     };
     var expectedOffensiveDefensiveStats = {
         'none': NaN,
@@ -206,7 +205,7 @@ test('should collect offensive and defensive stats for NY raid DPS build with ra
     equal(sums['magical-protection'], 324);
 });
 
-test('should have pure anima bonus', 10, function() {
+test('should have pure anima bonus', 14, function() {
     createTankBuild();
 
     tswcalc.miscslot.pureAnima('health');
@@ -227,6 +226,13 @@ test('should have pure anima bonus', 10, function() {
     equal($('#stat-hitpoints').html(), '10688');
     equal($('#stat-attack-rating').html(), '1565');
     equal($('#stat-heal-rating').html(), '240');
+	
+    tswcalc.miscslot.pureAnima('benefaction-tonic');
+    tswcalc.summary.updateAllStats();
+    equal($('#stat-hitpoints').html(), '11158');
+    equal($('#stat-attack-rating').html(), '1685');
+    equal($('#stat-combat-power').html(), '525');
+    equal($('#stat-heal-rating').html(), '120');
 });
 
 test('should have anima bonus', 3, function() {

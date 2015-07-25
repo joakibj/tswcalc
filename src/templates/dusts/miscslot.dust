@@ -9,6 +9,7 @@
           <option value="health">Max Health</option>
           <option value="attack-rating">Attack Rating</option>
           <option value="heal-rating">Heal Rating</option>
+          <option value="benefaction-tonic">Benefaction Tonic</option>
         </select>
       </td>
       <td id="pure-anima-description" class="item-description"></td>
