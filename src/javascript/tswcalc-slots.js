@@ -210,25 +210,31 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
         }
     };
 
+    this.itemCost = function () {
+        return tswcalc.data.costs[this.isWeapon() ? 'weapon' : 'talisman'][this.ql()];
+    };
+
+    this.glyphCost = function () {
+        return tswcalc.data.costs['glyph'][this.glyphQl()];
+    }
+
     this.blackBullionCost = function() {
         var blackBullions = 0;
-        blackBullions += tswcalc.data.bb_costs['glyph'][this.glyphQl()].cost;
-        blackBullions += tswcalc.data.bb_costs[this.isWeapon() ? 'weapon' : 'talisman'][this.ql()].cost;
+        blackBullions += this.glyphCost().bullion;
+        blackBullions += this.itemCost().bullion;
         return blackBullions;
     };
 
-    this.astralFuseCost = function() {
-        if (this.glyphQl() == '10.5') {
-            return 1;
-        }
-        return 0;
+    this.markOfThePantheonCost = function () {
+        return this.itemCost().pantheon || 0;
     };
 
-    this.criterionUpgradeCost = function() {
-        if (this.ql() == '10.5') {
-            return 1;
-        }
-        return 0;
+    this.astralFuseCost = function() {
+        return this.glyphCost().astral_fuse ? 1 : 0;
+    };
+
+    this.criterionUpgradeCost = function () {
+        return this.itemCost().criterion_upgrade ? 1 : 0;
     };
 
     this.signetId = function() {

@@ -6,6 +6,7 @@ tswcalc.summary = function() {
     var elInit = function() {
         return {
             black_bullion_cost: $('#bb-cost'),
+            pantheon_cost: $('#pantheon-cost'),
             criterion_upgrade_cost: $('#cu-cost'),
             astral_fuse_cost: $('#af-cost'),
             activateRaid: $('#summary-activate-raid')
@@ -40,17 +41,20 @@ tswcalc.summary = function() {
 
     var updateCosts = function() {
         var blackBullions = 0;
+        var pantheons = 0;
         var criterionUpgrades = 0;
         var astralFuses = 0;
         for (var slotId in tswcalc.slots) {
             if (tswcalc.slots.hasSlot(slotId)) {
                 var slot = tswcalc.slots[slotId];
                 blackBullions += slot.blackBullionCost();
+                pantheons += slot.markOfThePantheonCost();
                 criterionUpgrades += slot.criterionUpgradeCost();
                 astralFuses += slot.astralFuseCost();
             }
         }
         el.black_bullion_cost.html(blackBullions);
+        el.pantheon_cost.html(pantheons);
         el.criterion_upgrade_cost.html(criterionUpgrades);
         el.astral_fuse_cost.html(astralFuses);
     };

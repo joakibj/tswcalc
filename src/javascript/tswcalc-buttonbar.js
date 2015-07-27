@@ -10,6 +10,7 @@ tswcalc.buttonBar = function() {
             btn_all_tank: $('#btn-all-tank'),
             btn_all_10_4: $('#btn-all-10-4'),
             btn_all_10_5: $('#btn-all-10-5'),
+            btn_all_10_7: $('#btn-all-10-7'),
             btn_reset: $('#btn-reset')
         };
     };
@@ -25,6 +26,7 @@ tswcalc.buttonBar = function() {
         el.btn_all_tank.on('click', setRoleOnAllSlots);
         el.btn_all_10_4.on('click', setQlOnAllSlots);
         el.btn_all_10_5.on('click', setQlOnAllSlots);
+        el.btn_all_10_7.on('click', setQlOnAllSlots);
         el.btn_reset.on('click', resetAllSlots);
     };
 
@@ -46,15 +48,17 @@ tswcalc.buttonBar = function() {
         tswcalc.summary.updateAllStats();
     };
 
-    var setQlOnAllSlots = function(event) {
-        var newQl = extractQl(event);
+    var setQlOnAllSlots = function (event) {
+        var newItemQl = extractItemQl(event);
+        var newGlyphQl = extractGlyphQl(event);
+        
         for (var slotId in tswcalc.slots) {
             if (tswcalc.slots.hasSlot(slotId)) {
                 var slot = tswcalc.slots[slotId];
                 if (!slot.el.btn.nyraid.is(':checked')) {
-                    slot.ql(newQl);
+                    slot.ql(newItemQl);
                 }
-                slot.glyphQl(newQl);
+                slot.glyphQl(newGlyphQl);
             }
         }
         tswcalc.summary.updateAllStats();
@@ -65,8 +69,17 @@ tswcalc.buttonBar = function() {
         tswcalc.summary.updateAllStats();
     };
 
-    var extractQl = function(event) {
-        return '10.' + event.target.id.split('-')[3];
+    var extractItemQl = function (event) {
+        return event.target.id.split('-')[2] + '.' + event.target.id.split('-')[3];
+    };
+
+    var extractGlyphQl = function (event) {
+        var majorLevel = parseInt(event.target.id.split('-')[2]);
+        var minorLevel = parseInt(event.target.id.split('-')[3]);
+        if (majorLevel > 10 || minorLevel > 5) {
+            return '10.5';
+        }
+        return '10.' + minorLevel;
     };
 
     var extractRole = function(event) {

@@ -31,7 +31,7 @@
                 </select>
               </td>
             {/is_weapon}
-              <td class="ql-label"><strong>QL:</strong></td><td class="ql-select">{>qlselect id_suffix=""/}</td>
+              <td class="ql-label"><strong>QL:</strong></td><td class="ql-select">{>qlselect id_suffix="" is_item="true"/}</td>
               {^is_weapon}
                 <td><label class="checkbox inline"><input type="checkbox" id="{id_prefix}-nyraid" value="nyraid" disabled="disabled">NY Raid</label></td>
               {:else}
