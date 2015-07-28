@@ -4,6 +4,8 @@
             <div class="row-fluid">
               <span class="span4"><a href="#" class="cost-tooltip" data-toggle="tooltip" title="Black Bullions are rewards for all content."><img src="assets/images/icons/black_bullion.png" alt="Black Bullion"/></a> <span id="bb-cost">0</span></span>
               <span class="span4"><a href="#" class="cost-tooltip" data-toggle="tooltip" title="Marks of the Pantheon are rewards for doing Nightmare content."><img src="assets/images/icons/pantheon.png" alt="Mark of the Pantheon"/></a> <span id="pantheon-cost">0</span></span>
+            </div>
+            <div class="row-fluid">
               <span class="span4"><a href="#" class="cost-tooltip" data-toggle="tooltip" title="Criterion Upgrades drop from Raid Bosses or can be purchased at the Nightwatch vendors. Use with a nightwatch weapon/talisman toolkit to create 10.5 gear."><img src="assets/images/icons/criterion_upgrade.png" alt="Criterion Upgrade"/></a> <span id="cu-cost">0</span></span>
               <span class="span4"><a href="#" class="cost-tooltip" data-toggle="tooltip" title="Astral Fuses drop from Raid Bosses or can be purchased at the Nightwatch vendors.Use with a nightwatch glyph toolkit to create 10.5 glyphs."><img src="assets/images/icons/astral_fuse.png" alt="Astral Fuse"/></a> <span id="af-cost">0</span></span>
             </div>
