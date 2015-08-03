@@ -115,7 +115,9 @@ tswcalc.summary = function() {
             }
         }
         var pureAnima = tswcalc.miscslot.pureAnima();
-        sums[pureAnima.bonus.stat] += pureAnima.bonus.add;
+        pureAnima.bonus.forEach(function(bonus){
+            sums[bonus.stat] += bonus.add;
+        });
         sums['combat-power'] = calculateCombatPower(sums['attack-rating'], sums['weapon-power']);
         return sums;
     };

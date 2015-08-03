@@ -6,35 +6,50 @@ tswcalc.data.consumables = {
         'none': {
             name: 'None',
             description: '',
-            bonus: {
-                stat: 'none',
-                add: 0
-            }
+            bonus: []
         },
         'health': {
             name: 'Max Health',
             description: 'Grants 940 Max Health for 60 minutes. Persists through death.',
-            bonus: {
+            bonus: [{
                 stat: 'hitpoints',
                 add: 940
-            }
+            }]
 
         },
         'attack-rating': {
             name: 'Attack Rating',
             description: 'Grants 240 Attack Rating for 60 minutes. Persists through death.',
-            bonus: {
+            bonus: [{
                 stat: 'attack-rating',
                 add: 240
-            }
+            }]
         },
         'heal-rating': {
             name: 'Heal Rating',
             description: 'Grants 240 Heal Rating for 60 minutes. Persists through death.',
-            bonus: {
+            bonus: [{
                 stat: 'heal-rating',
                 add: 240
-            }
+            }]
+        },
+        'benefaction-tonic': {
+            name: 'Benefaction Tonic',
+            description: 'Grants 120 Attack Rating, 120 Heal Rating, and 470 Max Health for 60 minutes.',
+            bonus: [
+                {
+                    stat: 'attack-rating',
+                    add: 120
+                },
+                {
+                    stat: 'heal-rating',
+                    add: 120
+                },
+                {
+                    stat: 'hitpoints',
+                    add: 470
+                }
+            ]
         }
     },
     anima: {
