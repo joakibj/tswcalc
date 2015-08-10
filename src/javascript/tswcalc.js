@@ -37,6 +37,9 @@ tswcalc = function() {
                 }
             }
         });
+        $('#table-primary > label').tooltip({
+            placement: 'left'
+        });
         $('#raid-stats > label').tooltip({
             placement: 'bottom'
         });

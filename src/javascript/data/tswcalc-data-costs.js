@@ -85,5 +85,23 @@ tswcalc.data.costs = {
             bullion: 1000,
             astral_fuse: true
         }
+    },
+    'item': {
+        'superior_talisman_kit': {
+            bullion: 200,
+            pantheon: 70
+        },
+        'superior_weapon_kit': {
+            bullion: 300,
+            pantheon: 80
+        },
+        'astral': {
+            bullion: 250,
+            pantheon: 40
+        },
+        'criterion': {
+            bullion: 250,
+            pantheon: 40
+        }
     }
 };

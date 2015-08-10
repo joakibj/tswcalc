@@ -276,3 +276,15 @@ test('should calculate costs for 10.6+ QL build', 4, function() {
     equal($('#cu-cost').html(), '8');
     equal($('#af-cost').html(), '0');
 });
+
+test('should include currency costs when includeItemCosts checked', 4, function() {
+    create10_6And10_7MixBuild();
+
+    tswcalc.summary.updateCosts();
+    tswcalc.summary.checkIncludeItemCosts();
+
+    equal($('#bb-cost').html(), '16300');
+    equal($('#pantheon-cost').html(), '1250');
+    equal($('#cu-cost').html(), '8');
+    equal($('#af-cost').html(), '0');
+});
