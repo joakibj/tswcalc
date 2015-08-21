@@ -2,68 +2,106 @@
 var tswcalc = tswcalc || {};
 tswcalc.data = tswcalc.data || {};
 
-tswcalc.data.bb_costs = {
+tswcalc.data.costs = {
     'weapon': {
         '10.0': {
-            cost: 30
+            bullion: 300
         },
         '10.1': {
-            cost: 70
+            bullion: 700
         },
         '10.2': {
-            cost: 110
+            bullion: 1100
         },
         '10.3': {
-            cost: 150
+            bullion: 1500
         },
         '10.4': {
-            cost: 190
+            bullion: 1900
         },
         '10.5': {
-            cost: 230,
+            bullion: 2300,
+            criterion_upgrade: true
+        },
+        '10.6': {
+            bullion: 2500,
+            pantheon: 80,
+            criterion_upgrade: true
+        },
+        '10.7': {
+            bullion: 2700,
+            pantheon: 160,
             criterion_upgrade: true
         }
     },
     'talisman': {
         '10.0': {
-            cost: 30
+            bullion: 300
         },
         '10.1': {
-            cost: 50
+            bullion: 500
         },
         '10.2': {
-            cost: 70
+            bullion: 700
         },
         '10.3': {
-            cost: 90
+            bullion: 900
         },
         '10.4': {
-            cost: 110
+            bullion: 1100
         },
         '10.5': {
-            cost: 130,
+            bullion: 1300,
+            criterion_upgrade: true
+        },
+        '10.6': {
+            bullion: 1500,
+            pantheon: 70,
+            criterion_upgrade: true
+        },
+        '10.7': {
+            bullion: 1700,
+            pantheon: 140,
             criterion_upgrade: true
         }
     },
     'glyph': {
         '10.0': {
-            cost: 0
+            bullion: 0
         },
         '10.1': {
-            cost: 20
+            bullion: 200
         },
         '10.2': {
-            cost: 40
+            bullion: 400
         },
         '10.3': {
-            cost: 60
+            bullion: 600
         },
         '10.4': {
-            cost: 80
+            bullion: 800
         },
         '10.5': {
-            cost: 100,
+            bullion: 1000,
             astral_fuse: true
+        }
+    },
+    'item': {
+        'superior_talisman_kit': {
+            bullion: 200,
+            pantheon: 70
+        },
+        'superior_weapon_kit': {
+            bullion: 300,
+            pantheon: 80
+        },
+        'astral': {
+            bullion: 250,
+            pantheon: 40
+        },
+        'criterion': {
+            bullion: 250,
+            pantheon: 40
         }
     }
 };

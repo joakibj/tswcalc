@@ -6,9 +6,11 @@ tswcalc.summary = function() {
     var elInit = function() {
         return {
             black_bullion_cost: $('#bb-cost'),
+            pantheon_cost: $('#pantheon-cost'),
             criterion_upgrade_cost: $('#cu-cost'),
             astral_fuse_cost: $('#af-cost'),
-            activateRaid: $('#summary-activate-raid')
+            activateRaid: $('#summary-activate-raid'),
+            includeItemCosts: $('#summary-include-item-costs')
         };
     };
 
@@ -19,6 +21,7 @@ tswcalc.summary = function() {
 
     var bindEvents = function() {
         el.activateRaid.on('change', activateRaidItems);
+        el.includeItemCosts.on('change', updateCosts);
     };
 
     var activateRaidItems = function(event) {
@@ -40,17 +43,26 @@ tswcalc.summary = function() {
 
     var updateCosts = function() {
         var blackBullions = 0;
+        var pantheons = 0;
         var criterionUpgrades = 0;
         var astralFuses = 0;
         for (var slotId in tswcalc.slots) {
             if (tswcalc.slots.hasSlot(slotId)) {
                 var slot = tswcalc.slots[slotId];
                 blackBullions += slot.blackBullionCost();
+                pantheons += slot.markOfThePantheonCost();
                 criterionUpgrades += slot.criterionUpgradeCost();
                 astralFuses += slot.astralFuseCost();
             }
         }
+        if(el.includeItemCosts.is(':checked')) {
+            blackBullions += tswcalc.data.costs.item.criterion.bullion * criterionUpgrades;
+            pantheons += tswcalc.data.costs.item.criterion.pantheon * criterionUpgrades;
+            blackBullions += tswcalc.data.costs.item.astral.bullion * astralFuses;
+            pantheons += tswcalc.data.costs.item.astral.pantheon * astralFuses;
+        }
         el.black_bullion_cost.html(blackBullions);
+        el.pantheon_cost.html(pantheons);
         el.criterion_upgrade_cost.html(criterionUpgrades);
         el.astral_fuse_cost.html(astralFuses);
     };
@@ -233,6 +245,11 @@ tswcalc.summary = function() {
         el.activateRaid.prop('checked', true);
         el.activateRaid.change();
     };
+    
+    var checkIncludeItemCosts = function() {
+        el.includeItemCosts.prop('checked', true);
+        el.includeItemCosts.change();
+    };
 
     var oPublic = {
         init: init,
@@ -246,7 +263,8 @@ tswcalc.summary = function() {
         updateOffensiveDefensiveStats: updateOffensiveDefensiveStats,
         updatePrimaryStats: updatePrimaryStats,
         updateAllStats: updateAllStats,
-        checkActivateRaid: checkActivateRaid
+        checkActivateRaid: checkActivateRaid,
+        checkIncludeItemCosts : checkIncludeItemCosts
     };
 
     return oPublic;

@@ -168,20 +168,22 @@ test('should update all stats', 16, function() {
     equal($('#stat-magical-protection').html(), '+249');
 });
 
-test('should have initial costs at 10.0 price, including secondary weapon', 3, function() {
+test('should have initial costs at 10.0 price, including secondary weapon', 4, function() {
     tswcalc.summary.updateCosts();
 
-    equal($('#bb-cost').html(), '270');
+    equal($('#bb-cost').html(), '2700');
+    equal($('#pantheon-cost').html(), '0');
     equal($('#cu-cost').html(), '0');
     equal($('#af-cost').html(), '0');
 });
 
-test('should update costs for tank build, including secondary weapon', 3, function() {
+test('should update costs for tank build, including secondary weapon', 4, function() {
     createTankBuild();
 
     tswcalc.summary.updateCosts();
 
-    equal($('#bb-cost').html(), '1990');
+    equal($('#bb-cost').html(), '19900');
+    equal($('#pantheon-cost').html(), '0');
     equal($('#cu-cost').html(), '2');
     equal($('#af-cost').html(), '2');
 });
@@ -246,4 +248,43 @@ test('should have anima bonus', 3, function() {
     tswcalc.summary.updateAllStats();
     equal($('#stat-critical-rating').html(), '+119');
     equal($('#stat-critical-chance').html(), '7.56 %');
+});
+
+test('should calculate primary stats for 10.6+ QLs', 1, function() {
+    create10_6And10_7MixBuild();
+    
+    var expectedPrimaryStats = {
+        'combat-power': 752,
+        'weapon-power': 475,
+        'hitpoints': 5919,
+        'attack-rating': 3579,
+        'heal-rating': 0
+    };
+
+    var allSums = tswcalc.summary.collectAllStats();
+
+    deepEqual(allSums.primary, expectedPrimaryStats);
+});
+
+test('should calculate costs for 10.6+ QL build', 4, function() {
+    create10_6And10_7MixBuild();
+
+    tswcalc.summary.updateCosts();
+
+    equal($('#bb-cost').html(), '14300');
+    equal($('#pantheon-cost').html(), '930');
+    equal($('#cu-cost').html(), '8');
+    equal($('#af-cost').html(), '0');
+});
+
+test('should include currency costs when includeItemCosts checked', 4, function() {
+    create10_6And10_7MixBuild();
+
+    tswcalc.summary.updateCosts();
+    tswcalc.summary.checkIncludeItemCosts();
+
+    equal($('#bb-cost').html(), '16300');
+    equal($('#pantheon-cost').html(), '1250');
+    equal($('#cu-cost').html(), '8');
+    equal($('#af-cost').html(), '0');
 });

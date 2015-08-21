@@ -163,3 +163,28 @@ function createDPSNYRaidBuild() {
     $('#occult-signet-quality').val('epic');
     $('#occult-pick-signet').val('41');
 }
+
+function create10_6And10_7MixBuild() {
+    $('#weapon-ql').val('10.7');
+
+    $('#head-ql').val('10.7');
+    $('#head-role').val('dps');
+
+    $('#ring-ql').val('10.6');
+    $('#ring-role').val('dps');
+
+    $('#neck-ql').val('10.6');
+    $('#neck-role').val('tank');
+
+    $('#wrist-ql').val('10.7');
+    $('#wrist-role').val('dps');
+
+    $('#luck-ql').val('10.6');
+    $('#luck-role').val('dps');
+
+    $('#waist-ql').val('10.7');
+    $('#waist-role').val('dps');
+
+    $('#occult-ql').val('10.7');
+    $('#occult-role').val('tank');
+}

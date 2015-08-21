@@ -20,6 +20,12 @@ tswcalc.data.custom_gear_data = {
         },
         '10.5': {
             weapon_power: 457
+        },
+        '10.6': {
+            weapon_power: 464
+        },
+        '10.7': {
+            weapon_power: 475
         }
     },
     'head': {
@@ -41,6 +47,12 @@ tswcalc.data.custom_gear_data = {
             },
             'ql10.5': {
                 rating: 788
+            },
+            'ql10.6': {
+                rating: 846
+            },
+            'ql10.7': {
+                rating: 936
             }
         },
         tank: {
@@ -61,6 +73,12 @@ tswcalc.data.custom_gear_data = {
             },
             'ql10.5': {
                 hitpoints: 2570
+            },
+            'ql10.6': {
+                hitpoints: 2627
+            },
+            'ql10.7': {
+                hitpoints: 2714
             }
         }
     },
@@ -83,6 +101,12 @@ tswcalc.data.custom_gear_data = {
             },
             'ql10.5': {
                 rating: 712
+            },
+            'ql10.6': {
+                rating: 764
+            },
+            'ql10.7': {
+                rating: 845
             }
         },
         tank: {
@@ -103,6 +127,12 @@ tswcalc.data.custom_gear_data = {
             },
             'ql10.5': {
                 hitpoints: 2322
+            },
+            'ql10.6': {
+                hitpoints: 2373
+            },
+            'ql10.7': {
+                hitpoints: 2452
             }
         }
     },
@@ -125,6 +155,12 @@ tswcalc.data.custom_gear_data = {
             },
             'ql10.5': {
                 rating: 458
+            },
+            'ql10.6': {
+                rating: 491
+            },
+            'ql10.7': {
+                rating: 543
             }
         },
         tank: {
@@ -145,6 +181,12 @@ tswcalc.data.custom_gear_data = {
             },
             'ql10.5': {
                 hitpoints: 1492
+            },
+            'ql10.6': {
+                hitpoints: 1526
+            },
+            'ql10.7': {
+                hitpoints: 1576
             }
         }
     }
