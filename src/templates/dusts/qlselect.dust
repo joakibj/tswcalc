@@ -8,5 +8,7 @@
     {?is_item}
     <option value="10.6">10.6</option>
     <option value="10.7">10.7</option>
+    <option value="10.8">10.8</option>
+    <option value="10.9">10.9</option>
     {/is_item}
 </select>
