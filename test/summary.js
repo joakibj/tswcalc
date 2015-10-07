@@ -251,14 +251,14 @@ test('should have anima bonus', 3, function() {
 });
 
 test('should calculate primary stats for 10.6+ QLs', 1, function() {
-    create10_6And10_7MixBuild();
+    create10_6To10_9MixBuild();
     
     var expectedPrimaryStats = {
-        'combat-power': 752,
-        'weapon-power': 475,
-        'hitpoints': 5919,
-        'attack-rating': 3579,
-        'heal-rating': 0
+        'combat-power': 677,
+        'weapon-power': 510,
+        'hitpoints': 6133,
+        'attack-rating': 2466,
+        'heal-rating': 1515
     };
 
     var allSums = tswcalc.summary.collectAllStats();
@@ -267,24 +267,24 @@ test('should calculate primary stats for 10.6+ QLs', 1, function() {
 });
 
 test('should calculate costs for 10.6+ QL build', 4, function() {
-    create10_6And10_7MixBuild();
+    create10_6To10_9MixBuild();
 
     tswcalc.summary.updateCosts();
 
-    equal($('#bb-cost').html(), '14300');
-    equal($('#pantheon-cost').html(), '930');
-    equal($('#cu-cost').html(), '8');
+    equal($('#bb-cost').html(), '19600');
+    equal($('#pantheon-cost').html(), '1930');
+    equal($('#cu-cost').html(), '9');
     equal($('#af-cost').html(), '0');
 });
 
 test('should include currency costs when includeItemCosts checked', 4, function() {
-    create10_6And10_7MixBuild();
+    create10_6To10_9MixBuild();
 
     tswcalc.summary.updateCosts();
     tswcalc.summary.checkIncludeItemCosts();
 
-    equal($('#bb-cost').html(), '16300');
-    equal($('#pantheon-cost').html(), '1250');
-    equal($('#cu-cost').html(), '8');
+    equal($('#bb-cost').html(), '21850');
+    equal($('#pantheon-cost').html(), '2290');
+    equal($('#cu-cost').html(), '9');
     equal($('#af-cost').html(), '0');
 });

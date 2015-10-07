@@ -164,27 +164,28 @@ function createDPSNYRaidBuild() {
     $('#occult-pick-signet').val('41');
 }
 
-function create10_6And10_7MixBuild() {
-    $('#weapon-ql').val('10.7');
+function create10_6To10_9MixBuild() {
+    $('#weapon-ql').val('10.9');
+    $('#weapon2-ql').val('10.6');
 
-    $('#head-ql').val('10.7');
+    $('#head-ql').val('10.9');
     $('#head-role').val('dps');
 
     $('#ring-ql').val('10.6');
     $('#ring-role').val('dps');
 
-    $('#neck-ql').val('10.6');
+    $('#neck-ql').val('10.8');
     $('#neck-role').val('tank');
 
-    $('#wrist-ql').val('10.7');
-    $('#wrist-role').val('dps');
+    $('#wrist-ql').val('10.9');
+    $('#wrist-role').val('healer');
 
-    $('#luck-ql').val('10.6');
-    $('#luck-role').val('dps');
+    $('#luck-ql').val('10.7');
+    $('#luck-role').val('tank');
 
     $('#waist-ql').val('10.7');
-    $('#waist-role').val('dps');
+    $('#waist-role').val('healer');
 
-    $('#occult-ql').val('10.7');
-    $('#occult-role').val('tank');
+    $('#occult-ql').val('10.9');
+    $('#occult-role').val('dps');
 }
