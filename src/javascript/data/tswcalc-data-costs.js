@@ -35,12 +35,12 @@ tswcalc.data.costs = {
         },
         '10.8': {
             bullion: 3000,
-            pantheon: 280,
+            pantheon: 270,
             criterion_upgrade: true
         },
         '10.9': {
             bullion: 3300,
-            pantheon: 400,
+            pantheon: 380,
             criterion_upgrade: true
         }
     },
@@ -76,12 +76,12 @@ tswcalc.data.costs = {
         },
         '10.8': {
             bullion: 2000,
-            pantheon: 250,
+            pantheon: 220,
             criterion_upgrade: true
         },
         '10.9': {
             bullion: 2300,
-            pantheon: 360,
+            pantheon: 300,
             criterion_upgrade: true
         }
     },
@@ -117,11 +117,11 @@ tswcalc.data.costs = {
         },
         'supernal_talisman_kit': {
             bullion: 300,
-            pantheon: 110
+            pantheon: 80
         },
         'supernal_weapon_kit': {
             bullion: 300,
-            pantheon: 120
+            pantheon: 110
         },
         'astral': {
             bullion: 250,
