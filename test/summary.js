@@ -288,3 +288,55 @@ test('should include currency costs when includeItemCosts checked', 4, function(
     equal($('#cu-cost').html(), '9');
     equal($('#af-cost').html(), '0');
 });
+
+
+test('combat power above 5200 check', 3, function() {
+    create10_9DPSBuild();
+
+    var expectedPrimaryStats = {
+        'combat-power': 899,
+        'weapon-power': 510,
+        'hitpoints': 1970,
+        'attack-rating': 5868,
+        'heal-rating': 0
+    };
+
+    var allSums = tswcalc.summary.collectAllStats();
+
+    deepEqual(allSums.primary, expectedPrimaryStats);
+    
+    //Add epic violences
+    $('#ring-signet-quality').val('epic');
+    $('#ring-pick-signet').val('21');
+    $('#neck-signet-quality').val('epic');
+    $('#neck-pick-signet').val('21');
+    $('#wrist-signet-quality').val('epic');
+    $('#wrist-pick-signet').val('21');
+    
+    expectedPrimaryStats = {
+        'combat-power': 929,
+        'weapon-power': 510,
+        'hitpoints': 1970,
+        'attack-rating': 6291,
+        'heal-rating': 0
+    };
+
+    var allSums = tswcalc.summary.collectAllStats();
+
+    deepEqual(allSums.primary, expectedPrimaryStats);
+    
+    //Now with a 10.5 weapon
+    $('#weapon-ql').val('10.5');
+    
+    expectedPrimaryStats = {
+        'combat-power': 874,
+        'weapon-power': 457,
+        'hitpoints': 1970,
+        'attack-rating': 6291,
+        'heal-rating': 0
+    };
+
+    var allSums = tswcalc.summary.collectAllStats();
+
+    deepEqual(allSums.primary, expectedPrimaryStats);
+});

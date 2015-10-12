@@ -135,7 +135,12 @@ tswcalc.summary = function() {
     };
 
     var calculateCombatPower = function(attack_rating, weapon_power) {
-        return Math.round((375 - (600 / (Math.pow(Math.E, (attack_rating / 1400)) + 1))) * (1 + (weapon_power / 375)));
+        if (attack_rating < 5200){
+            return Math.round((375 - (600 / (Math.pow(Math.E, (attack_rating / 1400)) + 1))) * (1 + (weapon_power / 375)));
+        } else {
+            var arMultiplier = .00008 * weapon_power + .0301;
+            return Math.round(204.38 + .5471 * weapon_power + arMultiplier * attack_rating);
+        }
     };
 
     var updateOffensiveDefensiveStats = function() {
