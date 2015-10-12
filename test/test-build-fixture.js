@@ -189,3 +189,29 @@ function create10_6To10_9MixBuild() {
     $('#occult-ql').val('10.9');
     $('#occult-role').val('dps');
 }
+
+function create10_9DPSBuild() {
+    $('#weapon-ql').val('10.9');
+    $('#weapon2-ql').val('10.9');
+
+    $('#head-ql').val('10.9');
+    $('#head-role').val('dps');
+
+    $('#ring-ql').val('10.9');
+    $('#ring-role').val('dps');
+
+    $('#neck-ql').val('10.9');
+    $('#neck-role').val('dps');
+
+    $('#wrist-ql').val('10.9');
+    $('#wrist-role').val('dps');
+
+    $('#luck-ql').val('10.9');
+    $('#luck-role').val('dps');
+
+    $('#waist-ql').val('10.9');
+    $('#waist-role').val('dps');
+
+    $('#occult-ql').val('10.9');
+    $('#occult-role').val('dps');
+}
