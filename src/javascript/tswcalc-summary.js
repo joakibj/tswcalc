@@ -85,7 +85,7 @@ tswcalc.summary = function() {
         var sums = {
             'combat-power': 0,
             'weapon-power': 75,
-            'hitpoints': 1970,
+            'hitpoints': 2070,
             'attack-rating': 0,
             'heal-rating': 0
         };
@@ -162,8 +162,8 @@ tswcalc.summary = function() {
             'block-rating': 0,
             'defense-rating': 0,
             'evade-rating': 0,
-            'physical-protection': 249,
-            'magical-protection': 249
+            'physical-protection': 300,
+            'magical-protection': 300
         };
         for (var slotId in tswcalc.slots) {
             if (tswcalc.slots.hasSlot(slotId)) {

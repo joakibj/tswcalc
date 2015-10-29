@@ -18,7 +18,7 @@ test('should import pre-1.3 build from hash', 125, function() {
     tswcalc.init();
 
     // Summary
-    equal($('#stat-hitpoints').html(), '10358');
+    equal($('#stat-hitpoints').html(), '10458');
     equal($('#stat-combat-power').html(), '278');
     equal($('#stat-attack-rating').html(), '474');
     equal($('#stat-weapon-power').html(), '457');
@@ -32,8 +32,8 @@ test('should import pre-1.3 build from hash', 125, function() {
     equal($('#stat-block-rating').html(), '+691');
     equal($('#stat-defense-rating').html(), '+288');
     equal($('#stat-evade-rating').html(), '0');
-    equal($('#stat-physical-protection').html(), '+609');
-    equal($('#stat-magical-protection').html(), '+249');
+    equal($('#stat-physical-protection').html(), '+660');
+    equal($('#stat-magical-protection').html(), '+300');
 
     ok($('#weapon-slot').is(':visible'));
     equal($('#weapon-name').html(), ': Chaos');
@@ -162,7 +162,7 @@ test('should import post-1.3 build from hash', 125, function() {
     tswcalc.init();
 
     // Summary
-    equal($('#stat-hitpoints').html(), '10358');
+    equal($('#stat-hitpoints').html(), '10458');
     equal($('#stat-combat-power').html(), '278');
     equal($('#stat-attack-rating').html(), '474');
     equal($('#stat-weapon-power').html(), '457');
@@ -176,8 +176,8 @@ test('should import post-1.3 build from hash', 125, function() {
     equal($('#stat-block-rating').html(), '+691');
     equal($('#stat-defense-rating').html(), '+288');
     equal($('#stat-evade-rating').html(), '0');
-    equal($('#stat-physical-protection').html(), '+609');
-    equal($('#stat-magical-protection').html(), '+249');
+    equal($('#stat-physical-protection').html(), '+660');
+    equal($('#stat-magical-protection').html(), '+300');
 
     ok($('#weapon-slot').is(':visible'));
     equal($('#weapon-name').html(), ': Chaos');
