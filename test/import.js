@@ -26,7 +26,7 @@ test('should import URL and set summary and slots for 0.4.0 links', 95, function
     tswcalc.import.start(vars);
 
     // Summary
-    equal($('#stat-hitpoints').html(), '10358');
+    equal($('#stat-hitpoints').html(), '10458');
     equal($('#stat-combat-power').html(), '496');
     equal($('#stat-attack-rating').html(), '1518');
     equal($('#stat-weapon-power').html(), '457');
@@ -40,8 +40,8 @@ test('should import URL and set summary and slots for 0.4.0 links', 95, function
     equal($('#stat-block-rating').html(), '+691');
     equal($('#stat-defense-rating').html(), '+576');
     equal($('#stat-evade-rating').html(), '0');
-    equal($('#stat-physical-protection').html(), '+609');
-    equal($('#stat-magical-protection').html(), '+249');
+    equal($('#stat-physical-protection').html(), '+660');
+    equal($('#stat-magical-protection').html(), '+300');
 
     equal($('#weapon-ql').val(), '10.5');
     equal($('#weapon-glyph-ql').val(), '10.4');
@@ -148,7 +148,7 @@ test('should import URL and set summary and slots for pre-1.3 links', 99, functi
     tswcalc.import.start(vars);
 
     // Summary
-    equal($('#stat-hitpoints').html(), '10688');
+    equal($('#stat-hitpoints').html(), '10788');
     equal($('#stat-combat-power').html(), '504');
     equal($('#stat-attack-rating').html(), '1565');
     equal($('#stat-weapon-power').html(), '457');
@@ -162,8 +162,8 @@ test('should import URL and set summary and slots for pre-1.3 links', 99, functi
     equal($('#stat-block-rating').html(), '+691');
     equal($('#stat-defense-rating').html(), '+576');
     equal($('#stat-evade-rating').html(), '0');
-    equal($('#stat-physical-protection').html(), '+609');
-    equal($('#stat-magical-protection').html(), '+249');
+    equal($('#stat-physical-protection').html(), '+660');
+    equal($('#stat-magical-protection').html(), '+300');
 
     equal($('#weapon-name').html(), ': Blade');
     equal($('#weapon-wtype').val(), 'blade');
@@ -275,7 +275,7 @@ test('should import URL and set summary and slots for 1.3 links (secondary weapo
     tswcalc.import.start(vars);
 
     // Summary
-    equal($('#stat-hitpoints').html(), '10688');
+    equal($('#stat-hitpoints').html(), '10788');
     equal($('#stat-combat-power').html(), '504');
     equal($('#stat-attack-rating').html(), '1565');
     equal($('#stat-weapon-power').html(), '457');
@@ -289,8 +289,8 @@ test('should import URL and set summary and slots for 1.3 links (secondary weapo
     equal($('#stat-block-rating').html(), '+691');
     equal($('#stat-defense-rating').html(), '+576');
     equal($('#stat-evade-rating').html(), '0');
-    equal($('#stat-physical-protection').html(), '+609');
-    equal($('#stat-magical-protection').html(), '+249');
+    equal($('#stat-physical-protection').html(), '+660');
+    equal($('#stat-magical-protection').html(), '+300');
 
     ok($('#weapon-slot').is(':visible'));
     equal($('#weapon-name').html(), ': Blade');

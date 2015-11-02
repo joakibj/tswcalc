@@ -64,7 +64,7 @@ test('should collect primary stats at initial state', 5, function() {
 
     equal(sums['combat-power'], 155);
     equal(sums['weapon-power'], 398);
-    equal(sums['hitpoints'], 1970);
+    equal(sums['hitpoints'], 2070);
     equal(sums['attack-rating'], 0);
     equal(sums['heal-rating'], 0);
 });
@@ -76,7 +76,7 @@ test('should collect primary stats for tank build', 5, function() {
 
     equal(sums['combat-power'], 504);
     equal(sums['weapon-power'], 457);
-    equal(sums['hitpoints'], 10688);
+    equal(sums['hitpoints'], 10788);
     equal(sums['attack-rating'], 1565);
     equal(sums['heal-rating'], 0);
 });
@@ -93,8 +93,8 @@ test('should collect offensive and defensive stats for initial state', 11, funct
     equal(sums['block-rating'], 0);
     equal(sums['defense-rating'], 0);
     equal(sums['evade-rating'], 0);
-    equal(sums['physical-protection'], 249);
-    equal(sums['magical-protection'], 249);
+    equal(sums['physical-protection'], 300);
+    equal(sums['magical-protection'], 300);
 });
 
 test('should collect offensive and defensive stats for tank build', 11, function() {
@@ -111,8 +111,8 @@ test('should collect offensive and defensive stats for tank build', 11, function
     equal(sums['block-rating'], 691);
     equal(sums['defense-rating'], 576);
     equal(sums['evade-rating'], 0);
-    equal(sums['physical-protection'], 609);
-    equal(sums['magical-protection'], 249);
+    equal(sums['physical-protection'], 660);
+    equal(sums['magical-protection'], 300);
 });
 
 test('should collect all stats and return two objects', 2, function() {
@@ -120,7 +120,7 @@ test('should collect all stats and return two objects', 2, function() {
     var expectedPrimaryStats = {
         'combat-power': 504,
         'weapon-power': 457,
-        'hitpoints': 10688,
+        'hitpoints': 10788,
         'attack-rating': 1565,
         'heal-rating': 0
     };
@@ -135,8 +135,8 @@ test('should collect all stats and return two objects', 2, function() {
         'block-rating': 691,
         'defense-rating': 576,
         'evade-rating': 0,
-        'physical-protection': 609,
-        'magical-protection': 249
+        'physical-protection': 660,
+        'magical-protection': 300
     };
 
     var allSums = tswcalc.summary.collectAllStats();
@@ -150,7 +150,7 @@ test('should update all stats', 16, function() {
 
     tswcalc.summary.updateAllStats();
 
-    equal($('#stat-hitpoints').html(), '10688');
+    equal($('#stat-hitpoints').html(), '10788');
     equal($('#stat-combat-power').html(), '504');
     equal($('#stat-attack-rating').html(), '1565');
     equal($('#stat-weapon-power').html(), '457');
@@ -164,8 +164,8 @@ test('should update all stats', 16, function() {
     equal($('#stat-block-rating').html(), '+691');
     equal($('#stat-defense-rating').html(), '+576');
     equal($('#stat-evade-rating').html(), '0');
-    equal($('#stat-physical-protection').html(), '+609');
-    equal($('#stat-magical-protection').html(), '+249');
+    equal($('#stat-physical-protection').html(), '+660');
+    equal($('#stat-magical-protection').html(), '+300');
 });
 
 test('should have initial costs at 10.0 price, including secondary weapon', 4, function() {
@@ -203,8 +203,8 @@ test('should collect offensive and defensive stats for NY raid DPS build with ra
     equal(sums['block-rating'], 0);
     equal(sums['defense-rating'], 288);
     equal(sums['evade-rating'], 0);
-    equal(sums['physical-protection'], 792);
-    equal(sums['magical-protection'], 324);
+    equal(sums['physical-protection'], 858);
+    equal(sums['magical-protection'], 390);
 });
 
 test('should have pure anima bonus', 14, function() {
@@ -212,26 +212,26 @@ test('should have pure anima bonus', 14, function() {
 
     tswcalc.miscslot.pureAnima('health');
     tswcalc.summary.updateAllStats();
-    equal($('#stat-hitpoints').html(), '11628');
+    equal($('#stat-hitpoints').html(), '11728');
     equal($('#stat-attack-rating').html(), '1565');
     equal($('#stat-heal-rating').html(), '0');
 
     tswcalc.miscslot.pureAnima('attack-rating');
     tswcalc.summary.updateAllStats();
-    equal($('#stat-hitpoints').html(), '10688');
+    equal($('#stat-hitpoints').html(), '10788');
     equal($('#stat-attack-rating').html(), '1805');
     equal($('#stat-combat-power').html(), '544');
     equal($('#stat-heal-rating').html(), '0');
 
     tswcalc.miscslot.pureAnima('heal-rating');
     tswcalc.summary.updateAllStats();
-    equal($('#stat-hitpoints').html(), '10688');
+    equal($('#stat-hitpoints').html(), '10788');
     equal($('#stat-attack-rating').html(), '1565');
     equal($('#stat-heal-rating').html(), '240');
 	
     tswcalc.miscslot.pureAnima('benefaction-tonic');
     tswcalc.summary.updateAllStats();
-    equal($('#stat-hitpoints').html(), '11158');
+    equal($('#stat-hitpoints').html(), '11258');
     equal($('#stat-attack-rating').html(), '1685');
     equal($('#stat-combat-power').html(), '525');
     equal($('#stat-heal-rating').html(), '120');
@@ -256,7 +256,7 @@ test('should calculate primary stats for 10.6+ QLs', 1, function() {
     var expectedPrimaryStats = {
         'combat-power': 677,
         'weapon-power': 510,
-        'hitpoints': 6133,
+        'hitpoints': 6233,
         'attack-rating': 2466,
         'heal-rating': 1515
     };
@@ -296,7 +296,7 @@ test('combat power above 5200 check', 3, function() {
     var expectedPrimaryStats = {
         'combat-power': 899,
         'weapon-power': 510,
-        'hitpoints': 1970,
+        'hitpoints': 2070,
         'attack-rating': 5868,
         'heal-rating': 0
     };
@@ -316,7 +316,7 @@ test('combat power above 5200 check', 3, function() {
     expectedPrimaryStats = {
         'combat-power': 929,
         'weapon-power': 510,
-        'hitpoints': 1970,
+        'hitpoints': 2070,
         'attack-rating': 6291,
         'heal-rating': 0
     };
@@ -331,7 +331,7 @@ test('combat power above 5200 check', 3, function() {
     expectedPrimaryStats = {
         'combat-power': 874,
         'weapon-power': 457,
-        'hitpoints': 1970,
+        'hitpoints': 2070,
         'attack-rating': 6291,
         'heal-rating': 0
     };
