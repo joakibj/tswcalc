@@ -32,7 +32,7 @@ test('should import URL and set summary and slots for 0.4.0 links', 95, function
     equal($('#stat-weapon-power').html(), '457');
     equal($('#stat-heal-rating').html(), '0');
     equal($('#stat-critical-rating').html(), '0');
-    equal($('#stat-critical-chance').html(), '5.00 %');
+    equal($('#stat-critical-chance').html(), '4.99 %');
     equal($('#stat-critical-power').html(), '0');
     equal($('#stat-critical-power-percentage').html(), '25.0 %');
     equal($('#stat-penetration-rating').html(), '0');
@@ -154,7 +154,7 @@ test('should import URL and set summary and slots for pre-1.3 links', 99, functi
     equal($('#stat-weapon-power').html(), '457');
     equal($('#stat-heal-rating').html(), '0');
     equal($('#stat-critical-rating').html(), '0');
-    equal($('#stat-critical-chance').html(), '5.00 %');
+    equal($('#stat-critical-chance').html(), '4.99 %');
     equal($('#stat-critical-power').html(), '0');
     equal($('#stat-critical-power-percentage').html(), '25.0 %');
     equal($('#stat-penetration-rating').html(), '0');
@@ -281,7 +281,7 @@ test('should import URL and set summary and slots for 1.3 links (secondary weapo
     equal($('#stat-weapon-power').html(), '457');
     equal($('#stat-heal-rating').html(), '0');
     equal($('#stat-critical-rating').html(), '0');
-    equal($('#stat-critical-chance').html(), '5.00 %');
+    equal($('#stat-critical-chance').html(), '4.99 %');
     equal($('#stat-critical-power').html(), '0');
     equal($('#stat-critical-power-percentage').html(), '25.0 %');
     equal($('#stat-penetration-rating').html(), '0');

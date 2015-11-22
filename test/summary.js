@@ -31,8 +31,8 @@ module('summary-unit-tests', {
 });
 
 test('should calculate critical chance', 2, function() {
-    equal(tswcalc.summary.calculateCriticalChance(0), 5);
-    equal(tswcalc.summary.calculateCriticalChance(309), 11.585374715895394);
+    equal(tswcalc.summary.calculateCriticalChance(0), 4.990000000000002);
+    equal(tswcalc.summary.calculateCriticalChance(309), 14.671074609766634);
 });
 
 test('should calculate critical power', 2, function() {
@@ -85,7 +85,7 @@ test('should collect offensive and defensive stats for initial state', 11, funct
     var sums = tswcalc.summary.collectOffensiveDefensiveStats();
 
     equal(sums['critical-rating'], 0);
-    equal(sums['critical-chance'], 5);
+    equal(sums['critical-chance'], 4.99);
     equal(sums['critical-power'], 0);
     equal(sums['critical-power-percentage'], 25);
     equal(sums['penetration-rating'], 0);
@@ -103,7 +103,7 @@ test('should collect offensive and defensive stats for tank build', 11, function
     var sums = tswcalc.summary.collectOffensiveDefensiveStats();
 
     equal(sums['critical-rating'], 0);
-    equal(sums['critical-chance'], 5);
+    equal(sums['critical-chance'], 4.99);
     equal(sums['critical-power'], 0);
     equal(sums['critical-power-percentage'], 25);
     equal(sums['penetration-rating'], 0);
@@ -127,7 +127,7 @@ test('should collect all stats and return two objects', 2, function() {
     var expectedOffensiveDefensiveStats = {
         'none': NaN,
         'critical-rating': 0,
-        'critical-chance': '5.00',
+        'critical-chance': '4.99',
         'critical-power': 0,
         'critical-power-percentage': '25.00',
         'penetration-rating': 0,
@@ -156,7 +156,7 @@ test('should update all stats', 16, function() {
     equal($('#stat-weapon-power').html(), '457');
     equal($('#stat-heal-rating').html(), '0');
     equal($('#stat-critical-rating').html(), '0');
-    equal($('#stat-critical-chance').html(), '5.00 %');
+    equal($('#stat-critical-chance').html(), '4.99 %');
     equal($('#stat-critical-power').html(), '0');
     equal($('#stat-critical-power-percentage').html(), '25.0 %');
     equal($('#stat-penetration-rating').html(), '0');
@@ -195,7 +195,7 @@ test('should collect offensive and defensive stats for NY raid DPS build with ra
     var sums = tswcalc.summary.collectOffensiveDefensiveStats();
 
     equal(sums['critical-rating'], 379);
-    equal(sums['critical-chance'], 13.02);
+    equal(sums['critical-chance'], 16.78);
     equal(sums['critical-power'], 0);
     equal(sums['critical-power-percentage'], 50);
     equal(sums['penetration-rating'], 814);
@@ -247,7 +247,7 @@ test('should have anima bonus', 3, function() {
     tswcalc.miscslot.anima('critical-rating');
     tswcalc.summary.updateAllStats();
     equal($('#stat-critical-rating').html(), '+119');
-    equal($('#stat-critical-chance').html(), '7.56 %');
+    equal($('#stat-critical-chance').html(), '8.76 %');
 });
 
 test('should calculate primary stats for 10.6+ QLs', 1, function() {

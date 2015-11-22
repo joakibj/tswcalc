@@ -223,7 +223,7 @@ tswcalc.summary = function() {
     };
 
     var calculateCriticalChance = function(critical_rating) {
-        return 39 - (68 / (Math.pow(Math.E, (critical_rating / 787.6)) + 1));
+        return 55.14 - (100.3 / (Math.pow(Math.E, (critical_rating / 790.3)) + 1));
     };
 
     var calculateCriticalPowerPercentage = function(critical_power) {
