@@ -5,7 +5,7 @@ tswcalc is a fan-made living talisman and glyph calculator for The Secret World 
 
 tswcalc features:
 
-* All Nightwatch custom gear from QL 10.0 to 10.7.
+* All Nightwatch custom gear from QL 10.0 to 10.9.
 * All glyphs from QL 10.0 to 10.5.
 * Custom gear able to be attached with all signets in normal, elite and epic variations.
 * Issue 6, 7, 8, 9, 10 and 11 signets.
@@ -19,9 +19,9 @@ tswcalc can be found at: http://joakibj.github.io/tswcalc
 Prerequisites
 --------
 The tools needed to build tswcalc are:
-* [node.js](http://nodejs.org/) (v0.10.5+)
-* npm (v1.2.18+)
-* [grunt](http://gruntjs.com/) (v0.4.0+)
+* [node.js](http://nodejs.org/) (v0.10.x)
+* npm (v1.2.x)
+* [grunt](http://gruntjs.com/) (v0.4.x)
 
 node.js comes included with `npm`, the node package manager.
 
