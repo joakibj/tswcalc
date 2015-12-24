@@ -23,6 +23,7 @@
     [indent]Block Rating: [b][color=green]{block-rating}[/color][/b][/indent]{~n}
     [indent]Defense Rating: [b][color=green]{defense-rating}[/color][/b][/indent]{~n}
     [indent]Evade Rating: [b][color=green]{evade-rating}[/color][/b][/indent]{~n}
+    [indent]Evade Chance: [b][color=green]{evade-chance} %[/color][/b][/indent]{~n}
     [indent]Physical Protection: [b][color=green]{physical-protection}[/color][/b][/indent]{~n}
     [indent]Magical Protection: [b][color=green]{magical-protection}[/color][/b][/indent]{~n}
     {/offensive_defensive}

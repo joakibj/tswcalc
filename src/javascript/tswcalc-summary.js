@@ -162,6 +162,7 @@ tswcalc.summary = function() {
             'block-rating': 0,
             'defense-rating': 0,
             'evade-rating': 0,
+            'evade-chance': 0,
             'physical-protection': 300,
             'magical-protection': 300
         };
@@ -203,11 +204,13 @@ tswcalc.summary = function() {
             }
         }
         sums['critical-chance'] = calculateCriticalChance(sums['critical-rating']);
+        sums['evade-chance'] = calculateEvadeChance(sums['evade-rating']);
 
         sums['critical-rating'] = parseInt(sums['critical-rating'].toFixed(0), 10);
         sums['critical-chance'] = sums['critical-chance'].toFixed(2);
         sums['critical-power-percentage'] = sums['critical-power-percentage'].toFixed(2);
         sums['penetration-rating'] = parseInt(sums['penetration-rating'].toFixed(0), 10);
+        sums['evade-chance'] = sums['evade-chance'].toFixed(1);
         sums['magical-protection'] = parseInt(sums['magical-protection'].toFixed(0), 10);
         sums['physical-protection'] = parseInt(sums['physical-protection'].toFixed(0), 10);
         return sums;
@@ -230,6 +233,10 @@ tswcalc.summary = function() {
         return Math.sqrt(5 * critical_power + 625);
     };
 
+    var calculateEvadeChance = function(evade_rating) {
+        return 26.3 - (42.64 / (Math.pow(Math.E, (evade_rating / 694.3)) + 1));
+    };
+
     var updateStats = function(sums) {
         for (var stat in sums) {
             if (sums.hasOwnProperty(stat)) {
@@ -243,7 +250,7 @@ tswcalc.summary = function() {
     };
 
     var isStatPercentageBased = function(statName) {
-        return statName == 'critical-power-percentage' || statName == 'critical-chance';
+        return statName == 'critical-power-percentage' || statName == 'critical-chance' || statName == 'evade-chance';
     };
 
     var checkActivateRaid = function() {
@@ -260,6 +267,7 @@ tswcalc.summary = function() {
         init: init,
         calculateCriticalChance: calculateCriticalChance,
         calculateCriticalPowerPercentage: calculateCriticalPowerPercentage,
+        calculateEvadeChance: calculateEvadeChance,
         calculateCombatPower: calculateCombatPower,
         collectPrimaryStats: collectPrimaryStats,
         collectOffensiveDefensiveStats: collectOffensiveDefensiveStats,
