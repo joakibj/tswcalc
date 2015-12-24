@@ -5,7 +5,7 @@ module('summary-dom', {
     }
 });
 
-test('should have required summary in DOM', 16, function() {
+test('should have required summary in DOM', 17, function() {
     ok($('#stat-hitpoints').length !== 0, 'stat-hitpoints exists');
     ok($('#stat-combat-power').length !== 0, 'stat-combat-power exists');
     ok($('#stat-attack-rating').length !== 0, 'stat-attack-rating exists');
@@ -20,6 +20,7 @@ test('should have required summary in DOM', 16, function() {
     ok($('#stat-block-rating').length !== 0, 'stat-block-rating exists');
     ok($('#stat-defense-rating').length !== 0, 'stat-defense-rating exists');
     ok($('#stat-evade-rating').length !== 0, 'stat-evade-rating exists');
+    ok($('#stat-evade-chance').length !== 0, 'stat-evade-chance exists');
     ok($('#stat-physical-protection').length !== 0, 'stat-physical-protection exists');
     ok($('#stat-magical-protection').length !== 0, 'stat-magical-protection exists');
 });
@@ -43,6 +44,11 @@ test('should calculate critical power', 2, function() {
 test('should calculate combat power', 2, function() {
     equal(tswcalc.summary.calculateCombatPower(0, 0), 75);
     equal(tswcalc.summary.calculateCombatPower(3049, 398), 647);
+});
+
+test('should calculate evade chance', 2, function() {
+    equal(tswcalc.summary.calculateEvadeChance(0), 4.98);
+    equal(tswcalc.summary.calculateEvadeChance(2174), 24.51602672866029);
 });
 
 module('summary-integration-tests', {
@@ -81,7 +87,7 @@ test('should collect primary stats for tank build', 5, function() {
     equal(sums['heal-rating'], 0);
 });
 
-test('should collect offensive and defensive stats for initial state', 11, function() {
+test('should collect offensive and defensive stats for initial state', 12, function() {
     var sums = tswcalc.summary.collectOffensiveDefensiveStats();
 
     equal(sums['critical-rating'], 0);
@@ -93,11 +99,12 @@ test('should collect offensive and defensive stats for initial state', 11, funct
     equal(sums['block-rating'], 0);
     equal(sums['defense-rating'], 0);
     equal(sums['evade-rating'], 0);
+    equal(sums['evade-chance'], 5.0);
     equal(sums['physical-protection'], 300);
     equal(sums['magical-protection'], 300);
 });
 
-test('should collect offensive and defensive stats for tank build', 11, function() {
+test('should collect offensive and defensive stats for tank build', 12, function() {
     createTankBuild();
 
     var sums = tswcalc.summary.collectOffensiveDefensiveStats();
@@ -111,6 +118,7 @@ test('should collect offensive and defensive stats for tank build', 11, function
     equal(sums['block-rating'], 691);
     equal(sums['defense-rating'], 576);
     equal(sums['evade-rating'], 0);
+    equal(sums['evade-chance'], 5.0);
     equal(sums['physical-protection'], 660);
     equal(sums['magical-protection'], 300);
 });
@@ -135,6 +143,7 @@ test('should collect all stats and return two objects', 2, function() {
         'block-rating': 691,
         'defense-rating': 576,
         'evade-rating': 0,
+        'evade-chance': '5.0',
         'physical-protection': 660,
         'magical-protection': 300
     };
@@ -145,7 +154,7 @@ test('should collect all stats and return two objects', 2, function() {
     deepEqual(allSums.offensive_defensive, expectedOffensiveDefensiveStats);
 });
 
-test('should update all stats', 16, function() {
+test('should update all stats', 17, function() {
     createTankBuild();
 
     tswcalc.summary.updateAllStats();
@@ -164,6 +173,7 @@ test('should update all stats', 16, function() {
     equal($('#stat-block-rating').html(), '+691');
     equal($('#stat-defense-rating').html(), '+576');
     equal($('#stat-evade-rating').html(), '0');
+    equal($('#stat-evade-chance').html(), '5.0 %');
     equal($('#stat-physical-protection').html(), '+660');
     equal($('#stat-magical-protection').html(), '+300');
 });
@@ -188,7 +198,7 @@ test('should update costs for tank build, including secondary weapon', 4, functi
     equal($('#af-cost').html(), '2');
 });
 
-test('should collect offensive and defensive stats for NY raid DPS build with raid items that modify stats when activate raid button is checked', 11, function() {
+test('should collect offensive and defensive stats for NY raid DPS build with raid items that modify stats when activate raid button is checked', 12, function() {
     createDPSNYRaidBuild();
     tswcalc.summary.checkActivateRaid();
 
@@ -203,6 +213,7 @@ test('should collect offensive and defensive stats for NY raid DPS build with ra
     equal(sums['block-rating'], 0);
     equal(sums['defense-rating'], 288);
     equal(sums['evade-rating'], 0);
+    equal(sums['evade-chance'], 5.0);
     equal(sums['physical-protection'], 858);
     equal(sums['magical-protection'], 390);
 });
@@ -237,7 +248,7 @@ test('should have pure anima bonus', 14, function() {
     equal($('#stat-heal-rating').html(), '120');
 });
 
-test('should have anima bonus', 3, function() {
+test('should have anima bonus', 5, function() {
     createTankBuild();
 
     tswcalc.miscslot.anima('block-rating');
@@ -248,6 +259,11 @@ test('should have anima bonus', 3, function() {
     tswcalc.summary.updateAllStats();
     equal($('#stat-critical-rating').html(), '+119');
     equal($('#stat-critical-chance').html(), '8.76 %');
+
+    tswcalc.miscslot.anima('evade-rating');
+    tswcalc.summary.updateAllStats();
+    equal($('#stat-evade-rating').html(), '+110');
+    equal($('#stat-evade-chance').html(), '6.7 %');
 });
 
 test('should calculate primary stats for 10.6+ QLs', 1, function() {

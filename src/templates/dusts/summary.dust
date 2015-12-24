@@ -50,6 +50,7 @@
                 <tr><td class="statname">Block Rating</td><td id="stat-block-rating" class="statvalue">0</td></tr>
                 <tr><td class="statname">Defense Rating</td><td id="stat-defense-rating" class="statvalue">0</td></tr>
                 <tr><td class="statname">Evade Rating</td><td id="stat-evade-rating" class="statvalue">0</td></tr>
+                <tr><td class="statname">Evade Chance %</td><td id="stat-evade-chance" class="statvalue">0 %</td></tr>
                 <tr><td class="statname">Physical Protection</td><td id="stat-physical-protection" class="statvalue">249</td></tr>
                 <tr><td class="statname">Magical Protection</td><td id="stat-magical-protection" class="statvalue">249</td></tr>
               </tbody>
