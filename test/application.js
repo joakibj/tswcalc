@@ -24,7 +24,7 @@ test('should import pre-1.3 build from hash', 125, function() {
     equal($('#stat-weapon-power').html(), '457');
     equal($('#stat-heal-rating').html(), '1091');
     equal($('#stat-critical-rating').html(), '+459');
-    equal($('#stat-critical-chance').html(), '19.1 %');
+    equal($('#stat-critical-chance').html(), '19.2 %');
     equal($('#stat-critical-power').html(), '0');
     equal($('#stat-critical-power-percentage').html(), '25.0 %');
     equal($('#stat-penetration-rating').html(), '0');
@@ -168,7 +168,7 @@ test('should import post-1.3 build from hash', 125, function() {
     equal($('#stat-weapon-power').html(), '457');
     equal($('#stat-heal-rating').html(), '1091');
     equal($('#stat-critical-rating').html(), '+459');
-    equal($('#stat-critical-chance').html(), '19.1 %');
+    equal($('#stat-critical-chance').html(), '19.2 %');
     equal($('#stat-critical-power').html(), '0');
     equal($('#stat-critical-power-percentage').html(), '25.0 %');
     equal($('#stat-penetration-rating').html(), '0');

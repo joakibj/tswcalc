@@ -91,7 +91,7 @@ test('should collect offensive and defensive stats for initial state', 12, funct
     var sums = tswcalc.summary.collectOffensiveDefensiveStats();
 
     equal(sums['critical-rating'], 0);
-    equal(sums['critical-chance'], 4.99);
+    equal(sums['critical-chance'], 5.0);
     equal(sums['critical-power'], 0);
     equal(sums['critical-power-percentage'], 25);
     equal(sums['penetration-rating'], 0);
@@ -110,7 +110,7 @@ test('should collect offensive and defensive stats for tank build', 12, function
     var sums = tswcalc.summary.collectOffensiveDefensiveStats();
 
     equal(sums['critical-rating'], 0);
-    equal(sums['critical-chance'], 4.99);
+    equal(sums['critical-chance'], 5.0);
     equal(sums['critical-power'], 0);
     equal(sums['critical-power-percentage'], 25);
     equal(sums['penetration-rating'], 0);
@@ -135,7 +135,7 @@ test('should collect all stats and return two objects', 2, function() {
     var expectedOffensiveDefensiveStats = {
         'none': NaN,
         'critical-rating': 0,
-        'critical-chance': '4.99',
+        'critical-chance': '5.0',
         'critical-power': 0,
         'critical-power-percentage': '25.00',
         'penetration-rating': 0,
@@ -165,7 +165,7 @@ test('should update all stats', 17, function() {
     equal($('#stat-weapon-power').html(), '457');
     equal($('#stat-heal-rating').html(), '0');
     equal($('#stat-critical-rating').html(), '0');
-    equal($('#stat-critical-chance').html(), '4.99 %');
+    equal($('#stat-critical-chance').html(), '5.0 %');
     equal($('#stat-critical-power').html(), '0');
     equal($('#stat-critical-power-percentage').html(), '25.0 %');
     equal($('#stat-penetration-rating').html(), '0');
@@ -205,7 +205,7 @@ test('should collect offensive and defensive stats for NY raid DPS build with ra
     var sums = tswcalc.summary.collectOffensiveDefensiveStats();
 
     equal(sums['critical-rating'], 379);
-    equal(sums['critical-chance'], 16.78);
+    equal(sums['critical-chance'], 16.8);
     equal(sums['critical-power'], 0);
     equal(sums['critical-power-percentage'], 50);
     equal(sums['penetration-rating'], 814);
@@ -258,7 +258,7 @@ test('should have anima bonus', 5, function() {
     tswcalc.miscslot.anima('critical-rating');
     tswcalc.summary.updateAllStats();
     equal($('#stat-critical-rating').html(), '+119');
-    equal($('#stat-critical-chance').html(), '8.76 %');
+    equal($('#stat-critical-chance').html(), '8.8 %');
 
     tswcalc.miscslot.anima('evade-rating');
     tswcalc.summary.updateAllStats();
