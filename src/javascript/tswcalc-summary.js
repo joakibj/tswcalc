@@ -207,7 +207,7 @@ tswcalc.summary = function() {
         sums['evade-chance'] = calculateEvadeChance(sums['evade-rating']);
 
         sums['critical-rating'] = parseInt(sums['critical-rating'].toFixed(0), 10);
-        sums['critical-chance'] = sums['critical-chance'].toFixed(2);
+        sums['critical-chance'] = sums['critical-chance'].toFixed(1);
         sums['critical-power-percentage'] = sums['critical-power-percentage'].toFixed(2);
         sums['penetration-rating'] = parseInt(sums['penetration-rating'].toFixed(0), 10);
         sums['evade-chance'] = sums['evade-chance'].toFixed(1);
