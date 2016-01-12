@@ -28,26 +28,37 @@ tswcalc.import = function() {
         slotObj.el.btn.secondary[values[6]].click();
         // support signets
         if (typeof values[7] !== 'undefined' && typeof values[8] !== 'undefined') {
-            if (values[8] >= 80) {
+            if(values[8] >= 90) {
+                slotObj.el.btn.woodcutters.prop('disabled', false);
+                slotObj.el.btn.woodcutters.prop('checked', true);
+                slotObj.el.btn.woodcutters.change();
+            } else if (values[8] >= 80 && values[8] < 90) {
                 slotObj.el.btn.nyraid.prop('disabled', false);
                 slotObj.el.btn.nyraid.prop('checked', true);
                 slotObj.el.btn.nyraid.change();
             } else {
                 var signetQuality = tswcalc.data.signet_quality_mapping.to_name[values[7]];
                 var signetId = values[8] != '0' ? values[8] : 'none';
-                checkIfNyRaidItemAndEnableCheckButton(slotId);
                 changeSignet(slotId, signetQuality, signetId);
             }
         } else {
-            checkIfNyRaidItemAndEnableCheckButton(slotId);
             changeSignet(slotId, 'none', 'none');
         }
+        checkIfNyRaidItemAndEnableCheckButton(slotId);
+        checkIfWoodcutterNecklaceAndEnableCheckbutton(slotId);
     };
 
     var checkIfNyRaidItemAndEnableCheckButton = function(slotId) {
         var slotObj = tswcalc.slots[slotId];
         if (isAllowedNyRaidItem(slotId)) {
             slotObj.el.btn.nyraid.prop('disabled', false);
+        }
+    };
+
+    var checkIfWoodcutterNecklaceAndEnableCheckbutton = function(slotId) {
+        if(slotId == "neck") {
+            var slotObj = tswcalc.slots[slotId];
+            slotObj.el.btn.woodcutters.prop('disabled', false);
         }
     };
 
