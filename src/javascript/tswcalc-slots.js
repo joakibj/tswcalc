@@ -110,7 +110,8 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
                 3: $('#' + this.id + '-secondary-glyph-dist-btn3'),
                 4: $('#' + this.id + '-secondary-glyph-dist-btn4')
             },
-            nyraid: $('#' + this.id + '-nyraid')
+            nyraid: $('#' + this.id + '-nyraid'),
+            woodcutters: $('#' + this.id + '-woodcutters')
         }
     };
 
@@ -211,10 +212,24 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
     };
 
     this.itemCost = function () {
+        // woodcutters items do not cost bullion/pantheon
+        if(this.signetId() >= 90 && this.signetId() <= 93) {
+            return {
+                bullion: 0,
+                pantheon: 0
+            };
+        }
         return tswcalc.data.costs[this.isWeapon() ? 'weapon' : 'talisman'][this.ql()];
     };
 
     this.glyphCost = function () {
+        // woodcutters items do not cost bullion/pantheon
+        if(this.signetId() >= 90 && this.signetId() <= 93) {
+            return {
+                bullion: 0,
+                pantheon: 0
+            };
+        }
         return tswcalc.data.costs['glyph'][this.glyphQl()];
     }
 
@@ -249,15 +264,22 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
         if (arguments.length == 1) {
             this.el.signetQuality.val(arguments[0]);
         } else {
+             if(this.el.signetQuality.val() === null) {
+                return "heroic";
+            }
             return this.el.signetQuality.val();
         }
     };
 
     this.signet = function() {
         var foundSignet = 0;
-        // check if this signet is a raid item, if so, look it up
-        if (this.signetId() >= 80) {
+        // check if this signet is a raid item, if so, look it up.
+        // NY raid items are assigned signetId 80 - 88
+        // Woodcutters are 90,91,92
+        if (this.signetId() >= 80 && this.signetId() < 90) {
             foundSignet = tswcalc.data.ny_raid_items[this.id][this.role()].signet;
+        } else if(this.signetId() >= 90) {
+            foundSignet = tswcalc.data.woodcutters[this.id][this.role()].signet;
         } else {
             foundSignet = tswcalc.data.signet_data.find(this.group, this.signetId());
             if (foundSignet.id == 0 && tswcalc.data.signet_data[this.id] !== undefined) {
@@ -299,6 +321,8 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
                 return quality_index == -1 ? signet.quality.elite : signet.quality[quality_index].elite;
             case 'epic':
                 return quality_index == -1 ? signet.quality.epic : signet.quality[quality_index].epic;
+            case 'heroic':
+                return quality_index == -1 ? signet.quality.heroic : signet.quality[quality_index].heroic;
             default:
                 return 0;
         }
@@ -373,6 +397,10 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
         if (this.el.btn.nyraid.is(':checked')) {
             this.el.btn.nyraid.prop('checked', false);
             this.el.btn.nyraid.change();
+        }
+        if (this.el.btn.woodcutters.is(':checked')) {
+            this.el.btn.woodcutters.prop('checked', false);
+            this.el.btn.woodcutters.change();
         }
     };
 

@@ -34,6 +34,9 @@
               <td class="ql-label"><strong>QL:</strong></td><td class="ql-select">{>qlselect id_suffix="" is_item="true"/}</td>
               {^is_weapon}
                 <td><label class="checkbox inline"><input type="checkbox" id="{id_prefix}-nyraid" value="nyraid" disabled="disabled">NY Raid</label></td>
+                {?is_neck}
+                <td><label class="checkbox inline"><input type="checkbox" id="{id_prefix}-woodcutters" value="woodcutters" disabled="disabled">Woodcutter's</label></td>
+                {/is_neck}
               {:else}
                 <td><a id="{id_prefix}-swap-weapon" class="btn btn-info swap-weapon" href="#"><i class="icon-retweet icon-white icon-align-left"></i> Swap weapon</a></td>
               {/is_weapon}
@@ -67,6 +70,9 @@
                       <option value="normal">Normal</option>
                       <option value="elite">Elite</option>
                       <option value="epic">Epic</option>
+                      {?is_neck}
+                      <option value="heroic" disabled>Heroic</option>
+                      {/is_neck}
                     </select>
                   </td>
                   <td>
