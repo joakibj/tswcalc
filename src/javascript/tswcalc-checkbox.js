@@ -12,12 +12,23 @@ tswcalc.checkbox.RaidCheckbox = function RaidCheckbox(slot) {
     };
 
     this.bindEvents = function() {
-        slotObj.el.btn.nyraid.on('change', this.checkboxClicked);
+        slotObj.el.btn.nyraid.on('change', this.nyRaidCheckboxClicked);
+        slotObj.el.btn.woodcutters.on('change', this.woodcuttersCheckboxClicked);
     };
 
-    this.checkboxClicked = function(event) {
+    this.nyRaidCheckboxClicked = function(event) {
         if ($(this).is(':checked')) {
+            slotObj.el.btn.woodcutters.attr('checked', false);
             self.changeToRaidItem();
+        } else {
+            self.changeToCustomItem();
+        }
+    };
+
+    this.woodcuttersCheckboxClicked = function(event) {
+        if ($(this).is(':checked')) {
+            slotObj.el.btn.nyraid.attr('checked', false);
+            self.changeToWoodcutters();
         } else {
             self.changeToCustomItem();
         }
@@ -29,6 +40,25 @@ tswcalc.checkbox.RaidCheckbox = function RaidCheckbox(slot) {
             slotObj.name(': ' + item.name);
             slotObj.ql('10.4');
             slotObj.signetQuality('epic');
+            slotObj.el.signetId.append($('<option>', {
+                value: item.signet.id,
+                text: item.signet.name,
+                selected: true
+            }));
+            slotObj.updateSignet();
+            slotObj.el.ql.attr('disabled', 'disabled');
+            slotObj.el.signetId.attr('disabled', 'disabled');
+            slotObj.el.signetQuality.attr('disabled', 'disabled');
+            tswcalc.summary.updateAllStats();
+        }
+    };
+
+    this.changeToWoodcutters = function() {
+        var item = tswcalc.data.woodcutters[slot][slotObj.role()];
+        if (item !== undefined) {
+            slotObj.name(': ' + item.name);
+            slotObj.ql('10.9');
+            slotObj.signetQuality('heroic');
             slotObj.el.signetId.append($('<option>', {
                 value: item.signet.id,
                 text: item.signet.name,

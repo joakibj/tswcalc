@@ -25,7 +25,8 @@ tswcalc.data.template_data = {
         }, {
             id_prefix: 'neck',
             name: 'Neck Talisman',
-            group: 'major'
+            group: 'major',
+            is_neck: true
         }, {
             id_prefix: 'wrist',
             name: 'Wrist Talisman',

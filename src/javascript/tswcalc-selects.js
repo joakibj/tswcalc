@@ -111,11 +111,28 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
         } else {
             slotObj.el.btn.nyraid.removeAttr('disabled');
         }
+
+        if(slot.id_prefix == "neck") {
+            if (tswcalc.data.woodcutters[slot.id_prefix][role] === undefined) {
+                slotObj.el.btn.woodcutters.attr('checked', false);
+                slotObj.el.btn.woodcutters.attr('disabled', 'disabled');
+            } else {
+                slotObj.el.btn.woodcutters.removeAttr('disabled');
+            }
+
+            if (slotObj.el.btn.woodcutters.is(':checked')) {
+                tswcalc.checkbox[slot.id_prefix].changeToWoodcutters();
+            } else {
+                tswcalc.checkbox[slot.id_prefix].changeToCustomItem();
+            }
+        }
+
         if (slotObj.el.btn.nyraid.is(':checked')) {
             tswcalc.checkbox[slot.id_prefix].changeToRaidItem();
         } else {
             tswcalc.checkbox[slot.id_prefix].changeToCustomItem();
         }
+
         tswcalc.summary.updatePrimaryStats();
         tswcalc.summary.updateCosts();
     };
