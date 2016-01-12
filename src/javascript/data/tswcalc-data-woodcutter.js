@@ -5,6 +5,17 @@ tswcalc.data.woodcutters = {
     'neck': {
         healer: {
             name: 'The Woodcutter\'s Sorrow',
+            glyph: {
+                ql: '10.5',
+                primary: {
+                    stat: 'critical-power',
+                    dist: 4
+                },
+                secondary: {
+                    stat: 'none',
+                    dist: 0
+                }
+            },
             signet: {
                 id: 90,
                 fixed: true,
@@ -19,6 +30,17 @@ tswcalc.data.woodcutters = {
         },
         tank: {
             name: 'The Woodcutter\'s Regret',
+            glyph: {
+                ql: '10.5',
+                primary: {
+                    stat: 'magical-protection',
+                    dist: 2
+                },
+                secondary: {
+                    stat: 'physical-protection',
+                    dist: 2
+                }
+            },
             signet: {
                 id: 91,
                 fixed: true,
@@ -33,6 +55,17 @@ tswcalc.data.woodcutters = {
         },
         dps: {
             name: 'The Woodcutter\'s Wrath',
+            glyph: {
+                ql: '10.5',
+                primary: {
+                    stat: 'critical-power',
+                    dist: 4
+                },
+                secondary: {
+                    stat: 'none',
+                    dist: 0
+                }
+            },
             signet: {
                 id: 92,
                 fixed: true,
