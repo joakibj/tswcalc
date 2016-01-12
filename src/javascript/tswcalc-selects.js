@@ -112,6 +112,10 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
             slotObj.el.btn.nyraid.removeAttr('disabled');
         }
 
+        if (slotObj.el.btn.nyraid.is(':checked')) {
+            tswcalc.checkbox[slot.id_prefix].changeToRaidItem();
+        }
+
         if(slot.id_prefix == "neck") {
             if (tswcalc.data.woodcutters[slot.id_prefix][role] === undefined) {
                 slotObj.el.btn.woodcutters.attr('checked', false);
@@ -122,14 +126,10 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
 
             if (slotObj.el.btn.woodcutters.is(':checked')) {
                 tswcalc.checkbox[slot.id_prefix].changeToWoodcutters();
-            } else {
-                tswcalc.checkbox[slot.id_prefix].changeToCustomItem();
             }
         }
 
-        if (slotObj.el.btn.nyraid.is(':checked')) {
-            tswcalc.checkbox[slot.id_prefix].changeToRaidItem();
-        } else {
+        if(!slotObj.el.btn.woodcutters.is(':checked') && !slotObj.el.btn.nyraid.is(':checked')) {
             tswcalc.checkbox[slot.id_prefix].changeToCustomItem();
         }
 
