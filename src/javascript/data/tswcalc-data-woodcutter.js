@@ -5,6 +5,7 @@ tswcalc.data.woodcutters = {
     'neck': {
         healer: {
             name: 'The Woodcutter\'s Sorrow',
+            fixed: true,
             glyph: {
                 ql: '10.5',
                 primary: {
@@ -30,6 +31,7 @@ tswcalc.data.woodcutters = {
         },
         tank: {
             name: 'The Woodcutter\'s Regret',
+            fixed: true,
             glyph: {
                 ql: '10.5',
                 primary: {
@@ -43,7 +45,6 @@ tswcalc.data.woodcutters = {
             },
             signet: {
                 id: 91,
-                fixed: true,
                 name: 'The Woodcutter\'s Regret',
                 description: 'Whenever you are hit, you have a 33% chance to trigger <strong>Guardian Spirit</strong>: Increases the lowest of your Evade, Defence and Block Rating by 300 for 5 seconds. This effect will not trigger if two or more of these stats are of equal value.',
                 cooldown: 0,
@@ -55,6 +56,7 @@ tswcalc.data.woodcutters = {
         },
         dps: {
             name: 'The Woodcutter\'s Wrath',
+            fixed: true,
             glyph: {
                 ql: '10.5',
                 primary: {
@@ -68,7 +70,6 @@ tswcalc.data.woodcutters = {
             },
             signet: {
                 id: 92,
-                fixed: true,
                 name: 'The Woodcutter\'s Wrath',
                 description: 'Whenever an attack fails to penetrate, you gain a <strong>Mother\'s Wrath</strong> counter. When you reach 5 counters, they are removed and you gain a beneficial effect which increases your Penetration Chance by 50% for 3 seconds. Whenever you penetrate, all Mother\'s Wrath counters are removed.',
                 cooldown: 0,

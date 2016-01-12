@@ -212,10 +212,24 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
     };
 
     this.itemCost = function () {
+        // woodcutters items do not cost bullion/pantheon
+        if(this.signetId() >= 90 && this.signetId() <= 93) {
+            return {
+                bullion: 0,
+                pantheon: 0
+            };
+        }
         return tswcalc.data.costs[this.isWeapon() ? 'weapon' : 'talisman'][this.ql()];
     };
 
     this.glyphCost = function () {
+        // woodcutters items do not cost bullion/pantheon
+        if(this.signetId() >= 90 && this.signetId() <= 93) {
+            return {
+                bullion: 0,
+                pantheon: 0
+            };
+        }
         return tswcalc.data.costs['glyph'][this.glyphQl()];
     }
 
