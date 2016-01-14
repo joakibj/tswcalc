@@ -71,7 +71,7 @@ tswcalc.data.woodcutters = {
             signet: {
                 id: 92,
                 name: 'The Woodcutter\'s Wrath',
-                description: 'Whenever an attack fails to penetrate, you gain a <strong>Mother\'s Wrath</strong> counter. When you reach 5 counters, they are removed and you gain a beneficial effect which increases your Penetration Chance by 50% for 3 seconds. Whenever you penetrate, all Mother\'s Wrath counters are removed.',
+                description: 'Whenever an attack fails to penetrate, you gain a <strong>Mother\'s Wrath</strong> counter. When you reach 5 counters, they are removed and you gain a beneficial effect which increases your Penetration Chance by 40% for 3 seconds. This effect can only occur once every 6 seconds. Whenever you penetrate, all Mother\'s Wrath counters are removed.',
                 cooldown: 0,
                 quality: {
                     heroic: 0
