@@ -32,6 +32,11 @@ tswcalc.summary = function() {
         updateCosts();
         updatePrimaryStats();
         updateOffensiveDefensiveStats();
+        updateURL();
+    };
+    
+   var updateURL = function(event) {
+        window.location.hash = tswcalc.export.createExportUrl();
     };
 
     var collectAllStats = function() {
@@ -65,6 +70,7 @@ tswcalc.summary = function() {
         el.pantheon_cost.html(pantheons);
         el.criterion_upgrade_cost.html(criterionUpgrades);
         el.astral_fuse_cost.html(astralFuses);
+        updateURL();
     };
 
     var updatePrimaryStats = function() {
@@ -75,6 +81,7 @@ tswcalc.summary = function() {
                 updateOnePrimaryStat(stat, sums[stat]);
             }
         }
+        updateURL();
     };
 
     var updateOnePrimaryStat = function(stat, value) {
@@ -149,6 +156,7 @@ tswcalc.summary = function() {
         updateGlyphValues();
         updateStats(sums);
         updateCosts();
+        updateURL();
     };
 
     var collectOffensiveDefensiveStats = function() {

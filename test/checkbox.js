@@ -1,8 +1,11 @@
 
 module('checkbox-integration-tests', {
     setup: function() {
+        renderButtonbar();
         renderSlots();
+        initiateButtonHandlers();
         initiateSelectHandlers();
+        initiateRaidCheckboxes();
         initiateSummary();
         tswcalc.checkbox['head'] = new tswcalc.checkbox.RaidCheckbox('head');
         tswcalc.checkbox['head'].initiate();
