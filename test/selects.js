@@ -48,8 +48,11 @@ test('should have required event listeners for change on selects in the DOM', 61
 
 module('selects-unit-tests', {
     setup: function() {
+        renderButtonbar();
         renderSlots();
         initiateSelectHandlers();
+        initiateRaidCheckboxes();
+        initiateSummary();
     }
 });
 
@@ -71,11 +74,12 @@ test('should get signets for head', 1, function() {
 
 module('selects-integration-tests', {
     setup: function() {
+        renderButtonbar();
         renderSlots();
-        tswcalc.slots.init();
+        initiateButtonHandlers();
         initiateSelectHandlers();
         initiateRaidCheckboxes();
-        initiateSummary();
+        tswcalc.slots.init();
     }
 });
 
