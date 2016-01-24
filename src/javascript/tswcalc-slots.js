@@ -251,6 +251,10 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
     this.criterionUpgradeCost = function () {
         return this.itemCost().criterion_upgrade ? 1 : 0;
     };
+    
+    this.supernalUpgradeCost = function () {
+        return this.itemCost().supernal_upgrade ? 1 : 0;
+    };
 
     this.signetId = function() {
         if (arguments.length == 1) {
@@ -440,6 +444,9 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
 
         var qlpattern = /\d+\.\d/;
         if (val != 0 && val.match(qlpattern)) {
+            if (val.match(/11\./)) {
+                return '11';
+            }
             return val.split('.')[1];
         } else if ($.inArray(val, Object.keys(tswcalc.data.wtype_mapping.to_num)) != -1) {
             return tswcalc.data.wtype_mapping.to_num[val];

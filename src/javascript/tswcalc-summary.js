@@ -9,6 +9,7 @@ tswcalc.summary = function() {
             pantheon_cost: $('#pantheon-cost'),
             criterion_upgrade_cost: $('#cu-cost'),
             astral_fuse_cost: $('#af-cost'),
+            supernal_upgrade_cost: $('#su-cost'),
             activateRaid: $('#summary-activate-raid'),
             includeItemCosts: $('#summary-include-item-costs')
         };
@@ -51,6 +52,7 @@ tswcalc.summary = function() {
         var blackBullions = 0;
         var pantheons = 0;
         var criterionUpgrades = 0;
+        var supernalUpgrades = 0;
         var astralFuses = 0;
         for (var slotId in tswcalc.slots) {
             if (tswcalc.slots.hasSlot(slotId)) {
@@ -58,6 +60,7 @@ tswcalc.summary = function() {
                 blackBullions += slot.blackBullionCost();
                 pantheons += slot.markOfThePantheonCost();
                 criterionUpgrades += slot.criterionUpgradeCost();
+                supernalUpgrades += slot.supernalUpgradeCost();
                 astralFuses += slot.astralFuseCost();
             }
         }
@@ -70,6 +73,7 @@ tswcalc.summary = function() {
         el.black_bullion_cost.html(blackBullions);
         el.pantheon_cost.html(pantheons);
         el.criterion_upgrade_cost.html(criterionUpgrades);
+        el.supernal_upgrade_cost.html(supernalUpgrades);
         el.astral_fuse_cost.html(astralFuses);
     };
 

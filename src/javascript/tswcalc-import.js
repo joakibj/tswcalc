@@ -14,7 +14,12 @@ tswcalc.import = function() {
 
     var updateSlot = function(slotId, values) {
         var slotObj = tswcalc.slots[slotId];
-        slotObj.ql('10.' + values[0]);
+        if(values[0] > 10){
+            slotObj.ql('11.0');
+        }
+        else {
+            slotObj.ql('10.' + values[0]);
+        }
         if(slotObj.isWeapon()) {
             slotObj.wtype(tswcalc.data.wtype_mapping.to_name[values[1]]);
             slotObj.el.wtype.change();

@@ -32,6 +32,9 @@ tswcalc.data.custom_gear_data = {
         },
         '10.9': {
             weapon_power: 510
+        },
+        '11.0': {
+            weapon_power: 528
         }
     },
     'head': {
@@ -65,6 +68,9 @@ tswcalc.data.custom_gear_data = {
             },
             'ql10.9': {
                 rating: 1077
+            },
+            'ql11.0': {
+                rating: 1144
             }
         },
         tank: {
@@ -97,6 +103,9 @@ tswcalc.data.custom_gear_data = {
             },
             'ql10.9': {
                 hitpoints: 3021
+            },
+            'ql11.0': {
+                hitpoints: 3186
             }
         }
     },
@@ -131,6 +140,9 @@ tswcalc.data.custom_gear_data = {
             },
             'ql10.9': {
                 rating: 972
+            },
+            'ql11.0': {
+                rating: 1033
             }
         },
         tank: {
@@ -163,6 +175,9 @@ tswcalc.data.custom_gear_data = {
             },
             'ql10.9': {
                 hitpoints: 2728
+            },
+            'ql11.0': {
+                hitpoints: 2877
             }
         }
     },
@@ -197,6 +212,9 @@ tswcalc.data.custom_gear_data = {
             },
             'ql10.9': {
                 rating: 625
+            },
+            'ql11.0': {
+                rating: 664
             }
         },
         tank: {
@@ -229,6 +247,9 @@ tswcalc.data.custom_gear_data = {
             },
             'ql10.9': {
                 hitpoints: 1754
+            },
+            'ql11.0': {
+                hitpoints: 1850
             }
         }
     }
