@@ -179,7 +179,7 @@ test('should update all stats', 17, function() {
 });
 
 test('should have initial costs at 10.0 price, including secondary weapon', 4, function() {
-    tswcalc.summary.updateCosts();
+    tswcalc.summary.updateAllStats();
 
     equal($('#bb-cost').html(), '2700');
     equal($('#pantheon-cost').html(), '0');
@@ -190,7 +190,7 @@ test('should have initial costs at 10.0 price, including secondary weapon', 4, f
 test('should update costs for tank build, including secondary weapon', 4, function() {
     createTankBuild();
 
-    tswcalc.summary.updateCosts();
+    tswcalc.summary.updateAllStats();
 
     equal($('#bb-cost').html(), '19900');
     equal($('#pantheon-cost').html(), '0');
@@ -285,7 +285,7 @@ test('should calculate primary stats for 10.6+ QLs', 1, function() {
 test('should calculate costs for 10.6+ QL build', 4, function() {
     create10_6To10_9MixBuild();
 
-    tswcalc.summary.updateCosts();
+    tswcalc.summary.updateAllStats();
 
     equal($('#bb-cost').html(), '19600');
     equal($('#pantheon-cost').html(), '1930');
@@ -296,7 +296,7 @@ test('should calculate costs for 10.6+ QL build', 4, function() {
 test('should include currency costs when includeItemCosts checked', 4, function() {
     create10_6To10_9MixBuild();
 
-    tswcalc.summary.updateCosts();
+    tswcalc.summary.updateAllStats();
     tswcalc.summary.checkIncludeItemCosts();
 
     equal($('#bb-cost').html(), '21850');

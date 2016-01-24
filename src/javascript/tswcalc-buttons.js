@@ -67,7 +67,7 @@ tswcalc.button.DistributionButtonHandler = function DistributionButtonHandler(sl
                 var btnId = event.target.id;
                 self.activate(btnId.split('-')[1], btnId.substring(btnId.length - 1, btnId.length));
                 self.balance(btnId.split('-')[1]);
-                tswcalc.summary.updateOffensiveDefensiveStats();
+                tswcalc.summary.updateAllStats();
             });
         });
     };

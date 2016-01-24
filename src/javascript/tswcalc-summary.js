@@ -21,7 +21,7 @@ tswcalc.summary = function() {
 
     var bindEvents = function() {
         el.activateRaid.on('change', activateRaidItems);
-        el.includeItemCosts.on('change', updateCosts);
+        el.includeItemCosts.on('change', updateAllStats);
     };
 
     var activateRaidItems = function(event) {
@@ -32,6 +32,7 @@ tswcalc.summary = function() {
         updateCosts();
         updatePrimaryStats();
         updateOffensiveDefensiveStats();
+        updateGlyphValues();
         updateURL();
     };
     
@@ -70,7 +71,6 @@ tswcalc.summary = function() {
         el.pantheon_cost.html(pantheons);
         el.criterion_upgrade_cost.html(criterionUpgrades);
         el.astral_fuse_cost.html(astralFuses);
-        updateURL();
     };
 
     var updatePrimaryStats = function() {
@@ -81,7 +81,6 @@ tswcalc.summary = function() {
                 updateOnePrimaryStat(stat, sums[stat]);
             }
         }
-        updateURL();
     };
 
     var updateOnePrimaryStat = function(stat, value) {
@@ -152,11 +151,7 @@ tswcalc.summary = function() {
 
     var updateOffensiveDefensiveStats = function() {
         var sums = collectOffensiveDefensiveStats();
-
-        updateGlyphValues();
         updateStats(sums);
-        updateCosts();
-        updateURL();
     };
 
     var collectOffensiveDefensiveStats = function() {
@@ -280,9 +275,6 @@ tswcalc.summary = function() {
         collectPrimaryStats: collectPrimaryStats,
         collectOffensiveDefensiveStats: collectOffensiveDefensiveStats,
         collectAllStats: collectAllStats,
-        updateCosts: updateCosts,
-        updateOffensiveDefensiveStats: updateOffensiveDefensiveStats,
-        updatePrimaryStats: updatePrimaryStats,
         updateAllStats: updateAllStats,
         checkActivateRaid: checkActivateRaid,
         checkIncludeItemCosts : checkIncludeItemCosts

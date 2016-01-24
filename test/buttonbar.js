@@ -15,6 +15,7 @@ test('should have required buttonbar buttons in DOM', 6, function() {
 
 module('buttonbar-integration-tests', {
     setup: function() {
+        renderSummary();
         renderButtonbar();
         renderSlots();
         initiateButtonHandlers();

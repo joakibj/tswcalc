@@ -99,8 +99,7 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
             slotObj.el.nameWarning.hide();
         }
         slotObj.updateSignet();
-        tswcalc.summary.updatePrimaryStats();
-        tswcalc.summary.updateCosts();
+        tswcalc.summary.updateAllStats();
     };
 
     this.roleChange = function(event) {
@@ -133,8 +132,7 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
             tswcalc.checkbox[slot.id_prefix].changeToCustomItem();
         }
 
-        tswcalc.summary.updatePrimaryStats();
-        tswcalc.summary.updateCosts();
+        tswcalc.summary.updateAllStats();
     };
 
     this.wtypeChange = function(event) {
@@ -148,11 +146,10 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
     };
 
     this.qlChange = function(event) {
-        tswcalc.summary.updatePrimaryStats();
-        tswcalc.summary.updateCosts();
+        tswcalc.summary.updateAllStats();
     };
 
     this.glyphChange = function(id_suffix) {
-        tswcalc.summary.updateOffensiveDefensiveStats();
+        tswcalc.summary.updateAllStats();
     };
 };
