@@ -5,12 +5,13 @@ tswcalc is a fan-made living talisman and glyph calculator for The Secret World 
 
 tswcalc features:
 
-* All Nightwatch custom gear from QL 10.0 to 10.9.
+* All custom gear from QL 10.0 to 11.0.
 * All glyphs from QL 10.0 to 10.5.
 * Custom gear able to be attached with all signets in normal, elite and epic variations.
 * Issue 6, 7, 8, 9, 10 and 11 signets.
 * Issue 12 currency calculation.
 * NY Raid items.
+* Woodcutter's talismans.
 
 tswcalc can be found at: http://joakibj.github.io/tswcalc
 
