@@ -179,7 +179,7 @@ test('should update all stats', 17, function() {
 });
 
 test('should have initial costs at 10.0 price, including secondary weapon', 4, function() {
-    tswcalc.summary.updateCosts();
+    tswcalc.summary.updateAllStats();
 
     equal($('#bb-cost').html(), '2700');
     equal($('#pantheon-cost').html(), '0');
@@ -190,7 +190,7 @@ test('should have initial costs at 10.0 price, including secondary weapon', 4, f
 test('should update costs for tank build, including secondary weapon', 4, function() {
     createTankBuild();
 
-    tswcalc.summary.updateCosts();
+    tswcalc.summary.updateAllStats();
 
     equal($('#bb-cost').html(), '19900');
     equal($('#pantheon-cost').html(), '0');
@@ -282,29 +282,58 @@ test('should calculate primary stats for 10.6+ QLs', 1, function() {
     deepEqual(allSums.primary, expectedPrimaryStats);
 });
 
-test('should calculate costs for 10.6+ QL build', 4, function() {
+test('should calculate primary stats for 11.0 QL', 1, function() {
+    create11_0MixBuild();
+    
+    var expectedPrimaryStats = {
+        'combat-power': 735,
+        'weapon-power': 528,
+        'hitpoints': 6797,
+        'attack-rating': 2841,
+        'heal-rating': 1697
+    };
+
+    var allSums = tswcalc.summary.collectAllStats();
+
+    deepEqual(allSums.primary, expectedPrimaryStats);
+});
+
+test('should calculate costs for 10.6+ QL build', 5, function() {
     create10_6To10_9MixBuild();
 
-    tswcalc.summary.updateCosts();
+    tswcalc.summary.updateAllStats();
 
     equal($('#bb-cost').html(), '19600');
     equal($('#pantheon-cost').html(), '1930');
     equal($('#cu-cost').html(), '9');
     equal($('#af-cost').html(), '0');
+    equal($('#su-cost').html(), '0');
 });
 
-test('should include currency costs when includeItemCosts checked', 4, function() {
+test('should include currency costs when includeItemCosts checked', 5, function() {
     create10_6To10_9MixBuild();
 
-    tswcalc.summary.updateCosts();
+    tswcalc.summary.updateAllStats();
     tswcalc.summary.checkIncludeItemCosts();
 
     equal($('#bb-cost').html(), '21850');
     equal($('#pantheon-cost').html(), '2290');
     equal($('#cu-cost').html(), '9');
     equal($('#af-cost').html(), '0');
+    equal($('#su-cost').html(), '0');
 });
 
+test('should calculate costs for 11.0 QL build', 5, function() {
+    create11_0MixBuild();
+
+    tswcalc.summary.updateAllStats();
+
+    equal($('#bb-cost').html(), '25400');
+    equal($('#pantheon-cost').html(), '3640');
+    equal($('#cu-cost').html(), '9');
+    equal($('#af-cost').html(), '0');
+    equal($('#su-cost').html(), '9');
+});
 
 test('combat power above 5200 check', 3, function() {
     create10_9DPSBuild();

@@ -27,12 +27,12 @@ tswcalc.miscslot = function() {
 
     var pureAnimaChange = function(event) {
         changeDescription('pure_anima', el.pure_anima.select.val());
-        tswcalc.summary.updatePrimaryStats();
+        tswcalc.summary.updateAllStats();
     };
 
     var animaChange = function(event) {
         changeDescription('anima', el.anima.select.val());
-        tswcalc.summary.updateOffensiveDefensiveStats();
+        tswcalc.summary.updateAllStats();
     };
 
     var changeDescription = function(anima, selected) {

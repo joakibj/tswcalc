@@ -10,8 +10,8 @@ tswcalc.buttonBar = function() {
             btn_all_tank: $('#btn-all-tank'),
             btn_all_10_4: $('#btn-all-10-4'),
             btn_all_10_5: $('#btn-all-10-5'),
-            btn_all_10_7: $('#btn-all-10-7'),
             btn_all_10_9: $('#btn-all-10-9'),
+            btn_all_11_0: $('#btn-all-11-0'),
             btn_reset: $('#btn-reset')
         };
     };
@@ -27,8 +27,8 @@ tswcalc.buttonBar = function() {
         el.btn_all_tank.on('click', setRoleOnAllSlots);
         el.btn_all_10_4.on('click', setQlOnAllSlots);
         el.btn_all_10_5.on('click', setQlOnAllSlots);
-        el.btn_all_10_7.on('click', setQlOnAllSlots);
         el.btn_all_10_9.on('click', setQlOnAllSlots);
+        el.btn_all_11_0.on('click', setQlOnAllSlots);
         el.btn_reset.on('click', resetAllSlots);
     };
 

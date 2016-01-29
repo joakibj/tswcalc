@@ -251,6 +251,10 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
     this.criterionUpgradeCost = function () {
         return this.itemCost().criterion_upgrade ? 1 : 0;
     };
+    
+    this.supernalUpgradeCost = function () {
+        return this.itemCost().supernal_upgrade ? 1 : 0;
+    };
 
     this.signetId = function() {
         if (arguments.length == 1) {
@@ -389,8 +393,6 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
         this.glyphQl('10.0');
         this.primaryGlyph('none');
         this.secondaryGlyph('none');
-        this.el.btn.primary[4].trigger('click');
-        this.el.btn.secondary[0].trigger('click');
         this.signetId('none');
         this.signetQuality('none');
         this.updateSignet();
@@ -402,6 +404,8 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
             this.el.btn.woodcutters.prop('checked', false);
             this.el.btn.woodcutters.change();
         }
+        this.el.btn.primary[4].trigger('click');
+        this.el.btn.secondary[0].trigger('click');
     };
 
     this.state = function() {
@@ -440,6 +444,9 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
 
         var qlpattern = /\d+\.\d/;
         if (val != 0 && val.match(qlpattern)) {
+            if (val.match(/11\./)) {
+                return '11';
+            }
             return val.split('.')[1];
         } else if ($.inArray(val, Object.keys(tswcalc.data.wtype_mapping.to_num)) != -1) {
             return tswcalc.data.wtype_mapping.to_num[val];

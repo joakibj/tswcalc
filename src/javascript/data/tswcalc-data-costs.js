@@ -42,6 +42,12 @@ tswcalc.data.costs = {
             bullion: 3300,
             pantheon: 380,
             criterion_upgrade: true
+        },
+        '11.0': {
+            bullion: 3600,
+            pantheon: 490,
+            criterion_upgrade: true,
+            supernal_upgrade: true
         }
     },
     'talisman': {
@@ -83,6 +89,12 @@ tswcalc.data.costs = {
             bullion: 2300,
             pantheon: 300,
             criterion_upgrade: true
+        },
+        '11.0': {
+            bullion: 2600,
+            pantheon: 380,
+            criterion_upgrade: true,
+            supernal_upgrade: true
         }
     },
     'glyph': {
