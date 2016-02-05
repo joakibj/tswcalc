@@ -255,6 +255,10 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
     this.supernalUpgradeCost = function () {
         return this.itemCost().supernal_upgrade ? 1 : 0;
     };
+    
+    this.eleventhHourCost = function () {
+        return this.glyphCost().eleventh_hour_kit ? 1 : 0;
+    };
 
     this.signetId = function() {
         if (arguments.length == 1) {
@@ -406,6 +410,7 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
         }
         this.el.btn.primary[4].trigger('click');
         this.el.btn.secondary[0].trigger('click');
+        this.el.glyphQl.change();
     };
 
     this.state = function() {

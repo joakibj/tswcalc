@@ -26,7 +26,13 @@ tswcalc.import = function() {
         } else {
             slotObj.role(tswcalc.data.role_mapping.to_stat[values[1]]);
         }
-        slotObj.glyphQl('10.' + values[2]);
+        if(values[2] > 10) {
+            slotObj.glyphQl('11.0');
+            slotObj.el.glyphQl.change();
+        }
+        else {
+            slotObj.glyphQl('10.' + values[2]);
+        }
         slotObj.primaryGlyph(tswcalc.data.stat_mapping.to_stat[values[3]]);
         slotObj.secondaryGlyph(tswcalc.data.stat_mapping.to_stat[values[4]]);
         slotObj.el.btn.primary[values[5]].click();

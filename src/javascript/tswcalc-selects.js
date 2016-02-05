@@ -150,6 +150,26 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
     };
 
     this.glyphChange = function(id_suffix) {
+        self.updateGlyphDistributionButtons();
         tswcalc.summary.updateAllStats();
+    };
+    
+    this.updateGlyphDistributionButtons = function() {
+        if(slotObj.el.glyphQl.val() === "11.0") {
+            slotObj.el.btn.primary[1].attr('disabled', 'disabled');
+            slotObj.el.btn.primary[3].attr('disabled', 'disabled');
+            slotObj.el.btn.secondary[1].attr('disabled', 'disabled');       
+            slotObj.el.btn.secondary[3].attr('disabled', 'disabled');
+            
+            if(slotObj.primaryDist() == 1 || slotObj.primaryDist() == 3) {
+                slotObj.el.btn.primary[4].trigger('click');
+                slotObj.el.btn.secondary[0].trigger('click');
+            }
+        } else {
+            slotObj.el.btn.primary[1].removeAttr('disabled');
+            slotObj.el.btn.primary[3].removeAttr('disabled');
+            slotObj.el.btn.secondary[1].removeAttr('disabled');
+            slotObj.el.btn.secondary[3].removeAttr('disabled');
+        }
     };
 };

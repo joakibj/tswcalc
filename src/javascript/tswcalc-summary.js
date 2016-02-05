@@ -10,6 +10,7 @@ tswcalc.summary = function() {
             criterion_upgrade_cost: $('#cu-cost'),
             astral_fuse_cost: $('#af-cost'),
             supernal_upgrade_cost: $('#su-cost'),
+            eleventh_hour_cost: $('#11th-cost'),
             activateRaid: $('#summary-activate-raid'),
             includeItemCosts: $('#summary-include-item-costs')
         };
@@ -54,6 +55,7 @@ tswcalc.summary = function() {
         var criterionUpgrades = 0;
         var supernalUpgrades = 0;
         var astralFuses = 0;
+        var eleventhHourKits = 0;
         for (var slotId in tswcalc.slots) {
             if (tswcalc.slots.hasSlot(slotId)) {
                 var slot = tswcalc.slots[slotId];
@@ -62,6 +64,7 @@ tswcalc.summary = function() {
                 criterionUpgrades += slot.criterionUpgradeCost();
                 supernalUpgrades += slot.supernalUpgradeCost();
                 astralFuses += slot.astralFuseCost();
+                eleventhHourKits += slot.eleventhHourCost();
             }
         }
         if(el.includeItemCosts.is(':checked')) {
@@ -75,6 +78,7 @@ tswcalc.summary = function() {
         el.criterion_upgrade_cost.html(criterionUpgrades);
         el.supernal_upgrade_cost.html(supernalUpgrades);
         el.astral_fuse_cost.html(astralFuses);
+        el.eleventh_hour_cost.html(eleventhHourKits);
     };
 
     var updatePrimaryStats = function() {
