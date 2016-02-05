@@ -156,20 +156,41 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
     
     this.updateGlyphDistributionButtons = function() {
         if(slotObj.el.glyphQl.val() === "11.0") {
-            slotObj.el.btn.primary[1].attr('disabled', 'disabled');
-            slotObj.el.btn.primary[3].attr('disabled', 'disabled');
-            slotObj.el.btn.secondary[1].attr('disabled', 'disabled');       
-            slotObj.el.btn.secondary[3].attr('disabled', 'disabled');
+            this.updateGlyphDistributionButton(slotObj.el.btn.primary[1], false, 'top');
+            this.updateGlyphDistributionButton(slotObj.el.btn.primary[3], false, 'top');
+            this.updateGlyphDistributionButton(slotObj.el.btn.secondary[1], false, 'bottom');
+            this.updateGlyphDistributionButton(slotObj.el.btn.secondary[3], false, 'bottom');
             
             if(slotObj.primaryDist() == 1 || slotObj.primaryDist() == 3) {
                 slotObj.el.btn.primary[4].trigger('click');
                 slotObj.el.btn.secondary[0].trigger('click');
             }
         } else {
-            slotObj.el.btn.primary[1].removeAttr('disabled');
-            slotObj.el.btn.primary[3].removeAttr('disabled');
-            slotObj.el.btn.secondary[1].removeAttr('disabled');
-            slotObj.el.btn.secondary[3].removeAttr('disabled');
+            this.updateGlyphDistributionButton(slotObj.el.btn.primary[1], true, 'top');
+            this.updateGlyphDistributionButton(slotObj.el.btn.primary[3], true, 'top');
+            this.updateGlyphDistributionButton(slotObj.el.btn.secondary[1], true, 'bottom');
+            this.updateGlyphDistributionButton(slotObj.el.btn.secondary[3], true, 'bottom');
+        }
+    };
+    
+    this.updateGlyphDistributionButton = function(button, enable, tooltipPlacement) {
+        if(enable) {
+            button.removeAttr('disabled');
+            button.next('div').remove();
+        } else {
+            button.attr('disabled', 'disabled');
+            button.after(function (e) {
+                d = $("<div>");
+                d.css({
+                    height: button.outerHeight(),
+                    width: button.outerWidth(),
+                    position: 'absolute',
+                })
+                d.css(button.position());
+                d.attr('title', 'QL11 glyphs do not support 1/3 splits.');
+                d.tooltip({placement: tooltipPlacement});
+                return d;
+            });
         }
     };
 };
