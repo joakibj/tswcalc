@@ -61,6 +61,7 @@ tswcalc.buttonBar = function() {
                     slot.ql(newItemQl);
                 }
                 slot.glyphQl(newGlyphQl);
+                slot.el.glyphQl.change();
             }
         }
         tswcalc.summary.updateAllStats();
@@ -78,10 +79,10 @@ tswcalc.buttonBar = function() {
     var extractGlyphQl = function (event) {
         var majorLevel = parseInt(event.target.id.split('-')[2]);
         var minorLevel = parseInt(event.target.id.split('-')[3]);
-        if (majorLevel > 10 || minorLevel > 5) {
+        if (majorLevel === 10 && minorLevel > 5) {
             return '10.5';
         }
-        return '10.' + minorLevel;
+        return majorLevel + '.' + minorLevel;
     };
 
     var extractRole = function(event) {

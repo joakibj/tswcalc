@@ -116,6 +116,10 @@ tswcalc.data.costs = {
         '10.5': {
             bullion: 1000,
             astral_fuse: true
+        },
+        '11.0': {
+            bullion: 0,
+            eleventh_hour_kit: true
         }
     },
     'item': {
