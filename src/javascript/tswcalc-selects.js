@@ -8,13 +8,14 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
     this.initiate = function() {
         this.bindEvents();
         this.addSignetsToSelect();
+        this.addItemsToSelect();
     };
 
     this.bindEvents = function() {
         if (slotObj.isWeapon()) {
             slotObj.el.wtype.change(this.wtypeChange);
         } else {
-            slotObj.el.role.change(this.roleChange);
+            slotObj.el.itemId.change(this.itemChange);
         }
         slotObj.el.ql.change(this.qlChange);
         slotObj.el.glyphQl.change(this.glyphChange);
@@ -22,6 +23,20 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
         slotObj.el.secondaryGlyph.change(this.glyphChange);
         slotObj.el.signetId.change(this.signetChange);
         slotObj.el.signetQuality.change(this.signetChange);
+    };
+    
+    this.addItemsToSelect = function() {
+        var items = tswcalc.data.findItems(slot.group);
+        if(slot.id_prefix != 'head'){
+            items = items.concat(tswcalc.data.findItems(slot.id_prefix));
+        }
+        
+        items.forEach(function(item) {
+            slotObj.el.itemId.append($('<option>', {
+                value: item.id,
+                text: item.name
+            }));
+        });
     };
 
     this.addSignetsToSelect = function() {
@@ -80,7 +95,7 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
 
         if (typeof signet.requires !== 'undefined') {
             var cadoro = tswcalc.data.cadoro_items[signet.requires];
-            var cadoroItem = cadoro[slot.id_prefix][slotObj.role()];
+            var cadoroItem = cadoro[slot.id_prefix][slotObj.item().role];
             if (cadoroItem !== undefined && cadoroItem.name !== '') {
                 slotObj.name(': ' + cadoroItem.name);
             }
@@ -91,10 +106,7 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
                 placement: 'top'
             });
             slotObj.el.nameWarning.show();
-        } else {
-            if(!slotObj.isWeapon()) {
-                slotObj.name('');
-            }
+        } else if(!slotObj.item().signet) {
             slotObj.el.signetQuality.removeAttr('disabled');
             slotObj.el.nameWarning.hide();
         }
@@ -102,36 +114,9 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
         tswcalc.summary.updateAllStats();
     };
 
-    this.roleChange = function(event) {
-        var role = $(this).val();
-        if (tswcalc.data.ny_raid_items[slot.id_prefix][role] === undefined) {
-            slotObj.el.btn.nyraid.attr('checked', false);
-            slotObj.el.btn.nyraid.attr('disabled', 'disabled');
-        } else {
-            slotObj.el.btn.nyraid.removeAttr('disabled');
-        }
-
-        if (slotObj.el.btn.nyraid.is(':checked')) {
-            tswcalc.checkbox[slot.id_prefix].changeToRaidItem();
-        }
-
-        if(slot.id_prefix == "neck") {
-            if (tswcalc.data.woodcutters[slot.id_prefix][role] === undefined) {
-                slotObj.el.btn.woodcutters.attr('checked', false);
-                slotObj.el.btn.woodcutters.attr('disabled', 'disabled');
-            } else {
-                slotObj.el.btn.woodcutters.removeAttr('disabled');
-            }
-
-            if (slotObj.el.btn.woodcutters.is(':checked')) {
-                tswcalc.checkbox[slot.id_prefix].changeToWoodcutters();
-            }
-        }
-
-        if(!slotObj.el.btn.woodcutters.is(':checked') && !slotObj.el.btn.nyraid.is(':checked')) {
-            tswcalc.checkbox[slot.id_prefix].changeToCustomItem();
-        }
-
+    this.itemChange = function(event) {
+        self.enableControls();
+        self.updateControlsForItem();
         tswcalc.summary.updateAllStats();
     };
 
@@ -192,5 +177,72 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
                 return d;
             });
         }
+    };
+
+    this.updateControlsForItem = function() {
+        var item = slotObj.item();
+        slotObj.name(': ' + item.name);
+        if(item.ql) { 
+            slotObj.ql(item.ql);
+            slotObj.el.ql.attr('disabled', 'disabled');
+        }
+        if(item.glyph) {
+            slotObj.glyphQl(item.glyph.ql);
+            slotObj.primaryGlyph(item.glyph.primary.stat);
+            slotObj.secondaryGlyph(item.glyph.secondary.stat);
+            slotObj.el.btn.primary[item.glyph.primary.dist].trigger('click');
+            slotObj.el.btn.secondary[item.glyph.secondary.dist].trigger('click');
+            slotObj.el.ql.attr('disabled', 'disabled');
+            slotObj.el.glyphQl.attr('disabled', 'disabled');
+            slotObj.el.primaryGlyph.attr('disabled', 'disabled');
+            slotObj.el.secondaryGlyph.attr('disabled', 'disabled');
+            self.disableAllGlyphDistButtonsExcept(slotObj.el.btn.primary, item.glyph.primary.dist);
+            self.disableAllGlyphDistButtonsExcept(slotObj.el.btn.secondary, item.glyph.secondary.dist);
+        }
+        if(item.signet) {
+            slotObj.updateSignet();
+            slotObj.signetQuality(item.signet.quality);
+            slotObj.el.signetId.attr('disabled', 'disabled');
+            slotObj.el.signetQuality.attr('disabled', 'disabled');
+            
+            slotObj.el.signetId.append($('<option>', {
+                value: 999,
+                text: item.signet.name,
+                selected: true
+            }));
+        }
+        slotObj.el.signetId.change();
+    };
+
+    this.disableAllGlyphDistButtonsExcept = function(glyphtype, dist) {
+        for (var i = 0; i <= 4; i++) {
+            if(i !== dist) {
+                glyphtype[i].attr('disabled', 'disabled');
+            }
+        }
+    };
+
+    this.enableAllGlyphDistButtons = function(glyphtype) {
+        for (var i = 0; i <= 4; i++) {
+            glyphtype[i].removeAttr('disabled');
+        }
+    };
+
+    this.enableControls = function() {
+        self.enableAllGlyphDistButtons(slotObj.el.btn.primary);
+        self.enableAllGlyphDistButtons(slotObj.el.btn.secondary);
+        slotObj.el.glyphQl.removeAttr('disabled');
+        slotObj.el.primaryGlyph.removeAttr('disabled');
+        slotObj.el.secondaryGlyph.removeAttr('disabled');
+        slotObj.el.ql.removeAttr('disabled');
+        slotObj.el.signetId.removeAttr('disabled');
+        if(slotObj.signetQuality() === 'heroic') {
+            slotObj.signetQuality('none');
+        }
+        slotObj.el.signetQuality.removeAttr('disabled');
+        slotObj.el.signetId.find('option[value=999]').remove();
+        slotObj.updateSignet();
+        slotObj.el.signetId.change();
+        tswcalc.summary.updateAllStats();
     };
 };

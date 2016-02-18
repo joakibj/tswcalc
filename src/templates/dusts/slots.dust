@@ -5,13 +5,9 @@
             <table class="table table-slots">
               <tr>
             {^is_weapon}
-              <td class="role-label"><strong>Role: </strong></td>
-              <td class="role-select">
-                <select id="{id_prefix}-role" class="select-role" title="Please select role">
-                  <option value="none" selected="true">None</option>
-                  <option value="dps">DPS</option>
-                  <option value="tank">Tank</option>
-                  <option value="healer">Healer</option>
+              <td class="item-label"><strong>Item: </strong></td>
+              <td class="item-select">
+                <select id="{id_prefix}-itemId" class="select-item" title="Please select item">
                 </select>
               </td>
             {:else}
@@ -32,12 +28,7 @@
               </td>
             {/is_weapon}
               <td class="ql-label"><strong>QL:</strong></td><td class="ql-select">{>qlselect id_suffix="" is_item="true"/}</td>
-              {^is_weapon}
-                <td><label class="checkbox inline"><input type="checkbox" id="{id_prefix}-nyraid" value="nyraid" disabled="disabled">NY Raid</label></td>
-                {?is_neck}
-                <td><label class="checkbox inline"><input type="checkbox" id="{id_prefix}-woodcutters" value="woodcutters" disabled="disabled">Woodcutter's</label></td>
-                {/is_neck}
-              {:else}
+              {?is_weapon}
                 <td><a id="{id_prefix}-swap-weapon" class="btn btn-info swap-weapon" href="#"><i class="icon-retweet icon-white icon-align-left"></i> Swap weapon</a></td>
               {/is_weapon}
               <td class="filler"></td></tr>

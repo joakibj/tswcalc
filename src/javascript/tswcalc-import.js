@@ -24,7 +24,8 @@ tswcalc.import = function() {
             slotObj.wtype(tswcalc.data.wtype_mapping.to_name[values[1]]);
             slotObj.el.wtype.change();
         } else {
-            slotObj.role(tswcalc.data.role_mapping.to_stat[values[1]]);
+            slotObj.itemId(values[1]);
+            slotObj.el.itemId.change();
         }
         if(values[2] > 10) {
             slotObj.glyphQl('11.0');
@@ -38,38 +39,17 @@ tswcalc.import = function() {
         slotObj.el.btn.primary[values[5]].click();
         slotObj.el.btn.secondary[values[6]].click();
         // support signets
-        if (typeof values[7] !== 'undefined' && typeof values[8] !== 'undefined') {
-            if(values[8] >= 90) {
-                slotObj.el.btn.woodcutters.prop('disabled', false);
-                slotObj.el.btn.woodcutters.prop('checked', true);
-                slotObj.el.btn.woodcutters.change();
-            } else if (values[8] >= 80 && values[8] < 90) {
-                slotObj.el.btn.nyraid.prop('disabled', false);
-                slotObj.el.btn.nyraid.prop('checked', true);
-                slotObj.el.btn.nyraid.change();
-            } else {
+        if (typeof values[7] !== 'undefined' && typeof values[8] !== 'undefined' && values[8] !== "999") {
+            if(values[8] >= 80 && values[8] <= 92) {
+                //Legacy import support for NY/WC items, the old signet IDs 80-92 became the new Item IDs for those items
+                slotObj.itemId(values[8]);
+                slotObj.el.itemId.change();
+            }
+            else {
                 var signetQuality = tswcalc.data.signet_quality_mapping.to_name[values[7]];
                 var signetId = values[8] != '0' ? values[8] : 'none';
                 changeSignet(slotId, signetQuality, signetId);
             }
-        } else {
-            changeSignet(slotId, 'none', 'none');
-        }
-        checkIfNyRaidItemAndEnableCheckButton(slotId);
-        checkIfWoodcutterNecklaceAndEnableCheckbutton(slotId);
-    };
-
-    var checkIfNyRaidItemAndEnableCheckButton = function(slotId) {
-        var slotObj = tswcalc.slots[slotId];
-        if (isAllowedNyRaidItem(slotId)) {
-            slotObj.el.btn.nyraid.prop('disabled', false);
-        }
-    };
-
-    var checkIfWoodcutterNecklaceAndEnableCheckbutton = function(slotId) {
-        if(slotId == "neck") {
-            var slotObj = tswcalc.slots[slotId];
-            slotObj.el.btn.woodcutters.prop('disabled', false);
         }
     };
 
@@ -78,11 +58,6 @@ tswcalc.import = function() {
         slotObj.signetQuality(quality);
         slotObj.signetId(id);
         slotObj.el.signetId.change();
-    };
-
-    var isAllowedNyRaidItem = function(slotId) {
-        var slotObj = tswcalc.slots[slotId];
-        return !slotObj.isWeapon() && typeof tswcalc.data.ny_raid_items[slotId][slotObj.role()] !== 'undefined';
     };
 
     var oPublic = {
