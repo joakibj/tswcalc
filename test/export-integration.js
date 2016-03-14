@@ -4,7 +4,6 @@ module('export-integration-tests', {
         renderButtonbar();
         initiateSelectHandlers();
         initiateButtonHandlers();
-        initiateRaidCheckboxes();
         initiateSummary();
         tswcalc.export.init();
     }

@@ -7,11 +7,10 @@ module('import-integration-tests', {
         initiateSummary();
         initiateSelectHandlers();
         initiateButtonHandlers();
-        initiateRaidCheckboxes();
     }
 });
 
-test('should import URL and set summary and slots for 0.4.0 links', 95, function() {
+test('should import URL and set summary and slots for 0.4.0 links', 91, function() {
     var vars = {
         head: '4,1,5,5,0,4,0',
         luck: '4,3,4,8,0,4,0',
@@ -53,7 +52,7 @@ test('should import URL and set summary and slots for 0.4.0 links', 95, function
     equal($('#weapon-pick-signet').val(), 'none');
 
     equal($('#head-ql').val(), '10.4');
-    equal($('#head-role').val(), 'tank');
+    equal($('#head-itemId').val(), '1');
     equal($('#head-glyph-ql').val(), '10.5');
     equal($('#head-primary-glyph').val(), 'block-rating');
     equal($('#head-secondary-glyph').val(), 'none');
@@ -63,7 +62,7 @@ test('should import URL and set summary and slots for 0.4.0 links', 95, function
     equal($('#head-pick-signet').val(), 'none');
 
     equal($('#ring-ql').val(), '10.4');
-    equal($('#ring-role').val(), 'dps');
+    equal($('#ring-itemId').val(), '3');
     equal($('#ring-glyph-ql').val(), '10.4');
     equal($('#ring-primary-glyph').val(), 'defense-rating');
     equal($('#ring-secondary-glyph').val(), 'none');
@@ -73,7 +72,7 @@ test('should import URL and set summary and slots for 0.4.0 links', 95, function
     equal($('#ring-pick-signet').val(), 'none');
 
     equal($('#neck-ql').val(), '10.4');
-    equal($('#neck-role').val(), 'tank');
+    equal($('#neck-itemId').val(), '1');
     equal($('#neck-glyph-ql').val(), '10.5');
     equal($('#neck-primary-glyph').val(), 'block-rating');
     equal($('#neck-secondary-glyph').val(), 'none');
@@ -84,21 +83,19 @@ test('should import URL and set summary and slots for 0.4.0 links', 95, function
 
     //Brooklyn Bracer
     equal($('#wrist-ql').val(), '10.4');
-    equal($('#wrist-role').val(), 'tank');
+    equal($('#wrist-itemId').val(), '85');
     equal($('#wrist-glyph-ql').val(), '10.4');
     equal($('#wrist-primary-glyph').val(), 'defense-rating');
     equal($('#wrist-secondary-glyph').val(), 'none');
     ok($('#wrist-primary-glyph-dist-btn4').hasClass('active'));
     ok($('#wrist-secondary-glyph-dist-btn0').hasClass('active'));
     equal($('#wrist-signet-quality').val(), 'epic');
-    equal($('#wrist-pick-signet').val(), '85');
     ok($('#wrist-signet-quality').attr('disabled'));
     ok($('#wrist-pick-signet').attr('disabled'));
     ok($('#wrist-ql').attr('disabled'));
-    ok(!$('#wrist-nyraid').attr('disabled'));
 
     equal($('#luck-ql').val(), '10.4');
-    equal($('#luck-role').val(), 'dps');
+    equal($('#luck-itemId').val(), '3');
     equal($('#luck-glyph-ql').val(), '10.4');
     equal($('#luck-primary-glyph').val(), 'physical-protection');
     equal($('#luck-secondary-glyph').val(), 'none');
@@ -109,21 +106,19 @@ test('should import URL and set summary and slots for 0.4.0 links', 95, function
 
     //NY Buckle
     equal($('#waist-ql').val(), '10.4');
-    equal($('#waist-role').val(), 'tank');
+    equal($('#waist-itemId').val(), '87');
     equal($('#waist-glyph-ql').val(), '10.4');
     equal($('#waist-primary-glyph').val(), 'physical-protection');
     equal($('#waist-secondary-glyph').val(), 'none');
     ok($('#waist-primary-glyph-dist-btn4').hasClass('active'));
     ok($('#waist-secondary-glyph-dist-btn0').hasClass('active'));
     equal($('#waist-signet-quality').val(), 'epic');
-    equal($('#waist-pick-signet').val(), '87');
     ok($('#waist-signet-quality').attr('disabled'));
     ok($('#waist-pick-signet').attr('disabled'));
     ok($('#waist-ql').attr('disabled'));
-    ok(!$('#waist-nyraid').attr('disabled'));
 
     equal($('#occult-ql').val(), '10.4');
-    equal($('#occult-role').val(), 'dps');
+    equal($('#occult-itemId').val(), '3');
     equal($('#occult-glyph-ql').val(), '10.4');
     equal($('#occult-primary-glyph').val(), 'hit-rating');
     equal($('#occult-secondary-glyph').val(), 'none');
@@ -133,7 +128,7 @@ test('should import URL and set summary and slots for 0.4.0 links', 95, function
     equal($('#occult-pick-signet').val(), 'none');
 });
 
-test('should import URL and set summary and slots for pre-1.3 links', 99, function() {
+test('should import URL and set summary and slots for pre-1.3 links', 95, function() {
     var vars = {
         head: '4,1,5,5,0,4,0,3,18',
         luck: '4,3,4,8,0,4,0,3,39',
@@ -177,7 +172,7 @@ test('should import URL and set summary and slots for pre-1.3 links', 99, functi
     equal($('#weapon-pick-signet').val(), '5');
 
     equal($('#head-ql').val(), '10.4');
-    equal($('#head-role').val(), 'tank');
+    equal($('#head-itemId').val(), '1');
     equal($('#head-glyph-ql').val(), '10.5');
     equal($('#head-primary-glyph').val(), 'block-rating');
     equal($('#head-secondary-glyph').val(), 'none');
@@ -187,7 +182,7 @@ test('should import URL and set summary and slots for pre-1.3 links', 99, functi
     equal($('#head-pick-signet').val(), '18');
 
     equal($('#ring-ql').val(), '10.4');
-    equal($('#ring-role').val(), 'dps');
+    equal($('#ring-itemId').val(), '3');
     equal($('#ring-glyph-ql').val(), '10.4');
     equal($('#ring-primary-glyph').val(), 'defense-rating');
     equal($('#ring-secondary-glyph').val(), 'none');
@@ -197,7 +192,7 @@ test('should import URL and set summary and slots for pre-1.3 links', 99, functi
     equal($('#ring-pick-signet').val(), '22');
 
     equal($('#neck-ql').val(), '10.4');
-    equal($('#neck-role').val(), 'tank');
+    equal($('#neck-itemId').val(), '1');
     equal($('#neck-glyph-ql').val(), '10.5');
     equal($('#neck-primary-glyph').val(), 'block-rating');
     equal($('#neck-secondary-glyph').val(), 'none');
@@ -209,21 +204,19 @@ test('should import URL and set summary and slots for pre-1.3 links', 99, functi
     //Brooklyn Bracer
     equal($('#wrist-name').html(), ': Brooklyn Bracer');
     equal($('#wrist-ql').val(), '10.4');
-    equal($('#wrist-role').val(), 'tank');
+    equal($('#wrist-itemId').val(), '85');
     equal($('#wrist-glyph-ql').val(), '10.4');
     equal($('#wrist-primary-glyph').val(), 'defense-rating');
     equal($('#wrist-secondary-glyph').val(), 'none');
     ok($('#wrist-primary-glyph-dist-btn4').hasClass('active'));
     ok($('#wrist-secondary-glyph-dist-btn0').hasClass('active'));
     equal($('#wrist-signet-quality').val(), 'epic');
-    equal($('#wrist-pick-signet').val(), '85');
     ok($('#wrist-signet-quality').attr('disabled'));
     ok($('#wrist-pick-signet').attr('disabled'));
     ok($('#wrist-ql').attr('disabled'));
-    ok(!$('#wrist-nyraid').attr('disabled'));
 
     equal($('#luck-ql').val(), '10.4');
-    equal($('#luck-role').val(), 'dps');
+    equal($('#luck-itemId').val(), '3');
     equal($('#luck-glyph-ql').val(), '10.4');
     equal($('#luck-primary-glyph').val(), 'physical-protection');
     equal($('#luck-secondary-glyph').val(), 'none');
@@ -235,21 +228,19 @@ test('should import URL and set summary and slots for pre-1.3 links', 99, functi
     //NY Buckle
     equal($('#waist-name').html(), ': NY Buckle');
     equal($('#waist-ql').val(), '10.4');
-    equal($('#waist-role').val(), 'tank');
+    equal($('#waist-itemId').val(), '87');
     equal($('#waist-glyph-ql').val(), '10.4');
     equal($('#waist-primary-glyph').val(), 'physical-protection');
     equal($('#waist-secondary-glyph').val(), 'none');
     ok($('#waist-primary-glyph-dist-btn4').hasClass('active'));
     ok($('#waist-secondary-glyph-dist-btn0').hasClass('active'));
     equal($('#waist-signet-quality').val(), 'epic');
-    equal($('#waist-pick-signet').val(), '87');
     ok($('#waist-signet-quality').attr('disabled'));
     ok($('#waist-pick-signet').attr('disabled'));
     ok($('#waist-ql').attr('disabled'));
-    ok(!$('#waist-nyraid').attr('disabled'));
 
     equal($('#occult-ql').val(), '10.4');
-    equal($('#occult-role').val(), 'dps');
+    equal($('#occult-itemId').val(), '3');
     equal($('#occult-glyph-ql').val(), '10.4');
     equal($('#occult-primary-glyph').val(), 'hit-rating');
     equal($('#occult-secondary-glyph').val(), 'none');
@@ -259,7 +250,7 @@ test('should import URL and set summary and slots for pre-1.3 links', 99, functi
     equal($('#occult-pick-signet').val(), '41');
 });
 
-test('should import URL and set summary and slots for 1.3 links (secondary weapon added)', 111, function() {
+test('should import URL and set summary and slots for 1.3 links (secondary weapon added)', 107, function() {
     var vars = {
         head: '4,1,5,5,0,4,0,3,18',
         luck: '4,3,4,8,0,4,0,3,39',
@@ -317,7 +308,7 @@ test('should import URL and set summary and slots for 1.3 links (secondary weapo
     equal($('#weapon2-pick-signet').val(), '6');
 
     equal($('#head-ql').val(), '10.4');
-    equal($('#head-role').val(), 'tank');
+    equal($('#head-itemId').val(), '1');
     equal($('#head-glyph-ql').val(), '10.5');
     equal($('#head-primary-glyph').val(), 'block-rating');
     equal($('#head-secondary-glyph').val(), 'none');
@@ -327,7 +318,7 @@ test('should import URL and set summary and slots for 1.3 links (secondary weapo
     equal($('#head-pick-signet').val(), '18');
 
     equal($('#ring-ql').val(), '10.4');
-    equal($('#ring-role').val(), 'dps');
+    equal($('#ring-itemId').val(), '3');
     equal($('#ring-glyph-ql').val(), '10.4');
     equal($('#ring-primary-glyph').val(), 'defense-rating');
     equal($('#ring-secondary-glyph').val(), 'none');
@@ -337,7 +328,7 @@ test('should import URL and set summary and slots for 1.3 links (secondary weapo
     equal($('#ring-pick-signet').val(), '22');
 
     equal($('#neck-ql').val(), '10.4');
-    equal($('#neck-role').val(), 'tank');
+    equal($('#neck-itemId').val(), '1');
     equal($('#neck-glyph-ql').val(), '10.5');
     equal($('#neck-primary-glyph').val(), 'block-rating');
     equal($('#neck-secondary-glyph').val(), 'none');
@@ -349,21 +340,19 @@ test('should import URL and set summary and slots for 1.3 links (secondary weapo
     //Brooklyn Bracer
     equal($('#wrist-name').html(), ': Brooklyn Bracer');
     equal($('#wrist-ql').val(), '10.4');
-    equal($('#wrist-role').val(), 'tank');
+    equal($('#wrist-itemId').val(), '85');
     equal($('#wrist-glyph-ql').val(), '10.4');
     equal($('#wrist-primary-glyph').val(), 'defense-rating');
     equal($('#wrist-secondary-glyph').val(), 'none');
     ok($('#wrist-primary-glyph-dist-btn4').hasClass('active'));
     ok($('#wrist-secondary-glyph-dist-btn0').hasClass('active'));
     equal($('#wrist-signet-quality').val(), 'epic');
-    equal($('#wrist-pick-signet').val(), '85');
     ok($('#wrist-signet-quality').attr('disabled'));
     ok($('#wrist-pick-signet').attr('disabled'));
     ok($('#wrist-ql').attr('disabled'));
-    ok(!$('#wrist-nyraid').attr('disabled'));
 
     equal($('#luck-ql').val(), '10.4');
-    equal($('#luck-role').val(), 'dps');
+    equal($('#luck-itemId').val(), '3');
     equal($('#luck-glyph-ql').val(), '10.4');
     equal($('#luck-primary-glyph').val(), 'physical-protection');
     equal($('#luck-secondary-glyph').val(), 'none');
@@ -375,21 +364,19 @@ test('should import URL and set summary and slots for 1.3 links (secondary weapo
     //NY Buckle
     equal($('#waist-name').html(), ': NY Buckle');
     equal($('#waist-ql').val(), '10.4');
-    equal($('#waist-role').val(), 'tank');
+    equal($('#waist-itemId').val(), '87');
     equal($('#waist-glyph-ql').val(), '10.4');
     equal($('#waist-primary-glyph').val(), 'physical-protection');
     equal($('#waist-secondary-glyph').val(), 'none');
     ok($('#waist-primary-glyph-dist-btn4').hasClass('active'));
     ok($('#waist-secondary-glyph-dist-btn0').hasClass('active'));
     equal($('#waist-signet-quality').val(), 'epic');
-    equal($('#waist-pick-signet').val(), '87');
     ok($('#waist-signet-quality').attr('disabled'));
     ok($('#waist-pick-signet').attr('disabled'));
     ok($('#waist-ql').attr('disabled'));
-    ok(!$('#waist-nyraid').attr('disabled'));
 
     equal($('#occult-ql').val(), '10.4');
-    equal($('#occult-role').val(), 'dps');
+    equal($('#occult-itemId').val(), '3');
     equal($('#occult-glyph-ql').val(), '10.4');
     equal($('#occult-primary-glyph').val(), 'hit-rating');
     equal($('#occult-secondary-glyph').val(), 'none');

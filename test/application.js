@@ -1,11 +1,10 @@
 module('tswcalc');
 
-test('should initate tswcalc submodules', 9, function() {
+test('should initate tswcalc submodules', 8, function() {
     tswcalc.init();
     ok(tswcalc);
     ok(tswcalc.data);
     ok(tswcalc.button);
-    ok(tswcalc.checkbox);
     ok(tswcalc.select);
     ok(tswcalc.buttonBar);
     ok(tswcalc.summary);
@@ -13,7 +12,7 @@ test('should initate tswcalc submodules', 9, function() {
     ok(tswcalc.import);
 });
 
-test('should import pre-1.3 build from hash', 125, function() {
+test('should import pre-1.3 build from hash', 113, function() {
     location.hash = 'weapon=5,5,4,4,0,4,0,2,5&head=4,1,5,5,0,4,0,3,18&ring=4,2,4,1,0,4,0,3,83&neck=4,1,5,5,0,4,0,1,21&wrist=4,1,4,6,0,4,0,3,85&luck=4,3,4,8,0,4,0,3,39&waist=4,1,4,8,0,4,0,3,87&occult=4,2,4,1,0,4,0,3,88';
     tswcalc.init();
 
@@ -60,7 +59,7 @@ test('should import pre-1.3 build from hash', 125, function() {
     equal($('#weapon2-pick-signet').val(), 'none');
 
     equal($('#head-ql').val(), '10.4');
-    equal($('#head-role').val(), 'tank');
+    equal($('#head-itemId').val(), '1');
     equal($('#head-glyph-ql').val(), '10.5');
     equal($('#head-primary-glyph').val(), 'block-rating');
     equal($('#head-secondary-glyph').val(), 'none');
@@ -71,22 +70,19 @@ test('should import pre-1.3 build from hash', 125, function() {
 
     equal($('#ring-name').html(), ': Coney Island Band');
     equal($('#ring-ql').val(), '10.4');
-    equal($('#ring-role').val(), 'healer');
+    equal($('#ring-itemId').val(), '83');
     equal($('#ring-glyph-ql').val(), '10.4');
     equal($('#ring-primary-glyph').val(), 'critical-rating');
     equal($('#ring-secondary-glyph').val(), 'none');
     ok($('#ring-primary-glyph-dist-btn4').hasClass('active'));
     ok($('#ring-secondary-glyph-dist-btn0').hasClass('active'));
     equal($('#ring-signet-quality').val(), 'epic');
-    equal($('#ring-pick-signet').val(), '83');
     ok($('#ring-signet-quality').attr('disabled'));
     ok($('#ring-pick-signet').attr('disabled'));
     ok($('#ring-ql').attr('disabled'));
-    ok($('#ring-nyraid').is(':checked'));
-    ok(!$('#ring-nyraid').attr('disabled'));
 
     equal($('#neck-ql').val(), '10.4');
-    equal($('#neck-role').val(), 'tank');
+    equal($('#neck-itemId').val(), '1');
     equal($('#neck-glyph-ql').val(), '10.5');
     equal($('#neck-primary-glyph').val(), 'block-rating');
     equal($('#neck-secondary-glyph').val(), 'none');
@@ -98,22 +94,19 @@ test('should import pre-1.3 build from hash', 125, function() {
     //Brooklyn Bracer
     equal($('#wrist-name').html(), ': Brooklyn Bracer');
     equal($('#wrist-ql').val(), '10.4');
-    equal($('#wrist-role').val(), 'tank');
+    equal($('#wrist-itemId').val(), '85');
     equal($('#wrist-glyph-ql').val(), '10.4');
     equal($('#wrist-primary-glyph').val(), 'defense-rating');
     equal($('#wrist-secondary-glyph').val(), 'none');
     ok($('#wrist-primary-glyph-dist-btn4').hasClass('active'));
     ok($('#wrist-secondary-glyph-dist-btn0').hasClass('active'));
     equal($('#wrist-signet-quality').val(), 'epic');
-    equal($('#wrist-pick-signet').val(), '85');
     ok($('#wrist-signet-quality').attr('disabled'));
     ok($('#wrist-pick-signet').attr('disabled'));
     ok($('#wrist-ql').attr('disabled'));
-    ok($('#wrist-nyraid').is(':checked'));
-    ok(!$('#wrist-nyraid').attr('disabled'));
 
     equal($('#luck-ql').val(), '10.4');
-    equal($('#luck-role').val(), 'dps');
+    equal($('#luck-itemId').val(), '3');
     equal($('#luck-glyph-ql').val(), '10.4');
     equal($('#luck-primary-glyph').val(), 'physical-protection');
     equal($('#luck-secondary-glyph').val(), 'none');
@@ -125,39 +118,32 @@ test('should import pre-1.3 build from hash', 125, function() {
     //NY Buckle
     equal($('#waist-name').html(), ': NY Buckle');
     equal($('#waist-ql').val(), '10.4');
-    equal($('#waist-role').val(), 'tank');
+    equal($('#waist-itemId').val(), '87');
     equal($('#waist-glyph-ql').val(), '10.4');
     equal($('#waist-primary-glyph').val(), 'physical-protection');
     equal($('#waist-secondary-glyph').val(), 'none');
     ok($('#waist-primary-glyph-dist-btn4').hasClass('active'));
     ok($('#waist-secondary-glyph-dist-btn0').hasClass('active'));
     equal($('#waist-signet-quality').val(), 'epic');
-    equal($('#waist-pick-signet').val(), '87');
     ok($('#waist-signet-quality').attr('disabled'));
     ok($('#waist-pick-signet').attr('disabled'));
     ok($('#waist-ql').attr('disabled'));
-    ok($('#waist-nyraid').is(':checked'));
-    ok(!$('#waist-nyraid').attr('disabled'));
 
     equal($('#occult-name').html(), ': Broadway Charm');
     equal($('#occult-ql').val(), '10.4');
-    equal($('#occult-role').val(), 'healer');
+    equal($('#occult-itemId').val(), '88');
     equal($('#occult-glyph-ql').val(), '10.4');
     equal($('#occult-primary-glyph').val(), 'critical-rating');
     equal($('#occult-secondary-glyph').val(), 'none');
     ok($('#occult-primary-glyph-dist-btn4').hasClass('active'));
     ok($('#occult-secondary-glyph-dist-btn0').hasClass('active'));
     equal($('#occult-signet-quality').val(), 'epic');
-    equal($('#occult-pick-signet').val(), '88');
     ok($('#occult-signet-quality').attr('disabled'));
     ok($('#occult-pick-signet').attr('disabled'));
     ok($('#occult-ql').attr('disabled'));
-    ok($('#occult-nyraid').is(':checked'));
-    ok(!$('#occult-nyraid').attr('disabled'));
-
 });
 
-test('should import post-1.3 build from hash', 125, function() {
+test('should import post-1.3 build from hash', 113, function() {
     location.hash = 'weapon=5,5,4,4,0,4,0,2,5&weapon2=5,3,4,1,2,2,2,3,15&head=4,1,5,5,0,4,0,3,18&ring=4,2,4,1,0,4,0,3,83&neck=4,1,5,5,0,4,0,1,21&wrist=4,1,4,6,0,4,0,3,85&luck=4,3,4,8,0,4,0,3,39&waist=4,1,4,8,0,4,0,3,87&occult=4,2,4,1,0,4,0,3,88';
     tswcalc.init();
 
@@ -204,7 +190,7 @@ test('should import post-1.3 build from hash', 125, function() {
     equal($('#weapon2-pick-signet').val(), '15');
 
     equal($('#head-ql').val(), '10.4');
-    equal($('#head-role').val(), 'tank');
+    equal($('#head-itemId').val(), '1');
     equal($('#head-glyph-ql').val(), '10.5');
     equal($('#head-primary-glyph').val(), 'block-rating');
     equal($('#head-secondary-glyph').val(), 'none');
@@ -215,22 +201,19 @@ test('should import post-1.3 build from hash', 125, function() {
 
     equal($('#ring-name').html(), ': Coney Island Band');
     equal($('#ring-ql').val(), '10.4');
-    equal($('#ring-role').val(), 'healer');
+    equal($('#ring-itemId').val(), '83');
     equal($('#ring-glyph-ql').val(), '10.4');
     equal($('#ring-primary-glyph').val(), 'critical-rating');
     equal($('#ring-secondary-glyph').val(), 'none');
     ok($('#ring-primary-glyph-dist-btn4').hasClass('active'));
     ok($('#ring-secondary-glyph-dist-btn0').hasClass('active'));
     equal($('#ring-signet-quality').val(), 'epic');
-    equal($('#ring-pick-signet').val(), '83');
     ok($('#ring-signet-quality').attr('disabled'));
     ok($('#ring-pick-signet').attr('disabled'));
     ok($('#ring-ql').attr('disabled'));
-    ok($('#ring-nyraid').is(':checked'));
-    ok(!$('#ring-nyraid').attr('disabled'));
 
     equal($('#neck-ql').val(), '10.4');
-    equal($('#neck-role').val(), 'tank');
+    equal($('#neck-itemId').val(), '1');
     equal($('#neck-glyph-ql').val(), '10.5');
     equal($('#neck-primary-glyph').val(), 'block-rating');
     equal($('#neck-secondary-glyph').val(), 'none');
@@ -242,22 +225,19 @@ test('should import post-1.3 build from hash', 125, function() {
     //Brooklyn Bracer
     equal($('#wrist-name').html(), ': Brooklyn Bracer');
     equal($('#wrist-ql').val(), '10.4');
-    equal($('#wrist-role').val(), 'tank');
+    equal($('#wrist-itemId').val(), '85');
     equal($('#wrist-glyph-ql').val(), '10.4');
     equal($('#wrist-primary-glyph').val(), 'defense-rating');
     equal($('#wrist-secondary-glyph').val(), 'none');
     ok($('#wrist-primary-glyph-dist-btn4').hasClass('active'));
     ok($('#wrist-secondary-glyph-dist-btn0').hasClass('active'));
     equal($('#wrist-signet-quality').val(), 'epic');
-    equal($('#wrist-pick-signet').val(), '85');
     ok($('#wrist-signet-quality').attr('disabled'));
     ok($('#wrist-pick-signet').attr('disabled'));
     ok($('#wrist-ql').attr('disabled'));
-    ok($('#wrist-nyraid').is(':checked'));
-    ok(!$('#wrist-nyraid').attr('disabled'));
 
     equal($('#luck-ql').val(), '10.4');
-    equal($('#luck-role').val(), 'dps');
+    equal($('#luck-itemId').val(), '3');
     equal($('#luck-glyph-ql').val(), '10.4');
     equal($('#luck-primary-glyph').val(), 'physical-protection');
     equal($('#luck-secondary-glyph').val(), 'none');
@@ -269,33 +249,27 @@ test('should import post-1.3 build from hash', 125, function() {
     //NY Buckle
     equal($('#waist-name').html(), ': NY Buckle');
     equal($('#waist-ql').val(), '10.4');
-    equal($('#waist-role').val(), 'tank');
+    equal($('#waist-itemId').val(), '87');
     equal($('#waist-glyph-ql').val(), '10.4');
     equal($('#waist-primary-glyph').val(), 'physical-protection');
     equal($('#waist-secondary-glyph').val(), 'none');
     ok($('#waist-primary-glyph-dist-btn4').hasClass('active'));
     ok($('#waist-secondary-glyph-dist-btn0').hasClass('active'));
     equal($('#waist-signet-quality').val(), 'epic');
-    equal($('#waist-pick-signet').val(), '87');
     ok($('#waist-signet-quality').attr('disabled'));
     ok($('#waist-pick-signet').attr('disabled'));
     ok($('#waist-ql').attr('disabled'));
-    ok($('#waist-nyraid').is(':checked'));
-    ok(!$('#waist-nyraid').attr('disabled'));
 
     equal($('#occult-name').html(), ': Broadway Charm');
     equal($('#occult-ql').val(), '10.4');
-    equal($('#occult-role').val(), 'healer');
+    equal($('#occult-itemId').val(), '88');
     equal($('#occult-glyph-ql').val(), '10.4');
     equal($('#occult-primary-glyph').val(), 'critical-rating');
     equal($('#occult-secondary-glyph').val(), 'none');
     ok($('#occult-primary-glyph-dist-btn4').hasClass('active'));
     ok($('#occult-secondary-glyph-dist-btn0').hasClass('active'));
     equal($('#occult-signet-quality').val(), 'epic');
-    equal($('#occult-pick-signet').val(), '88');
     ok($('#occult-signet-quality').attr('disabled'));
     ok($('#occult-pick-signet').attr('disabled'));
     ok($('#occult-ql').attr('disabled'));
-    ok($('#occult-nyraid').is(':checked'));
-    ok(!$('#occult-nyraid').attr('disabled'));
 });

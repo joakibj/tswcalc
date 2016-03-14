@@ -5,9 +5,9 @@ module('buttonbar-dom', {
 });
 
 test('should have required buttonbar buttons in DOM', 6, function() {
-    ok($('#btn-all-dps').length !== 0, 'all-dps button exists');
-    ok($('#btn-all-healer').length !== 0, 'all-healer button exists');
-    ok($('#btn-all-tank').length !== 0, 'all-tank button exists');
+    ok($('#btn-all-3').length !== 0, 'all-dps button exists');
+    ok($('#btn-all-2').length !== 0, 'all-healer button exists');
+    ok($('#btn-all-1').length !== 0, 'all-tank button exists');
     ok($('#btn-all-10-4').length !== 0, 'all-10-4 button exists');
     ok($('#btn-all-10-5').length !== 0, 'all-10-5 button exists');
     ok($('#btn-reset').length !== 0, 'reset button exists');
@@ -20,7 +20,6 @@ module('buttonbar-integration-tests', {
         renderSlots();
         initiateButtonHandlers();
         initiateSelectHandlers();
-        initiateRaidCheckboxes();
         tswcalc.buttonBar.init();
         initiateSummary();
         createTankBuild();
@@ -34,13 +33,13 @@ test('should set role on all slots to dps', 7, function() {
         }
     });
 
-    equal(tswcalc.slots.head.role(), 'dps');
-    equal(tswcalc.slots.ring.role(), 'dps');
-    equal(tswcalc.slots.neck.role(), 'dps');
-    equal(tswcalc.slots.wrist.role(), 'dps');
-    equal(tswcalc.slots.luck.role(), 'dps');
-    equal(tswcalc.slots.waist.role(), 'dps');
-    equal(tswcalc.slots.occult.role(), 'dps');
+    equal(tswcalc.slots.head.item().role, 'dps');
+    equal(tswcalc.slots.ring.item().role, 'dps');
+    equal(tswcalc.slots.neck.item().role, 'dps');
+    equal(tswcalc.slots.wrist.item().role, 'dps');
+    equal(tswcalc.slots.luck.item().role, 'dps');
+    equal(tswcalc.slots.waist.item().role, 'dps');
+    equal(tswcalc.slots.occult.item().role, 'dps');
 });
 
 test('should set ql and glyph ql on all slots to 10.5 with the exception of ql on raid items', 16, function() {
@@ -76,7 +75,7 @@ test('should set ql and glyph ql on all slots to 10.4 with the exception of ql o
     });
     tswcalc.buttonBar.setRoleOnAllSlots({
         target: {
-            id: '#btn-all-tank'
+            id: '#btn-all-1'
         }
     });
 
@@ -96,16 +95,16 @@ test('should set ql and glyph ql on all slots to 10.4 with the exception of ql o
     equal(tswcalc.slots.waist.glyphQl(), '10.4');
     equal(tswcalc.slots.occult.ql(), '10.4');
     equal(tswcalc.slots.occult.glyphQl(), '10.4');
-    equal(tswcalc.slots.head.role(), 'tank');
-    equal(tswcalc.slots.ring.role(), 'tank');
-    equal(tswcalc.slots.neck.role(), 'tank');
-    equal(tswcalc.slots.wrist.role(), 'tank');
-    equal(tswcalc.slots.luck.role(), 'tank');
-    equal(tswcalc.slots.waist.role(), 'tank');
-    equal(tswcalc.slots.occult.role(), 'tank');
+    equal(tswcalc.slots.head.item().role, 'tank');
+    equal(tswcalc.slots.ring.item().role, 'tank');
+    equal(tswcalc.slots.neck.item().role, 'tank');
+    equal(tswcalc.slots.wrist.item().role, 'tank');
+    equal(tswcalc.slots.luck.item().role, 'tank');
+    equal(tswcalc.slots.waist.item().role, 'tank');
+    equal(tswcalc.slots.occult.item().role, 'tank');
 });
 
-test('should reset all slots', 80, function() {
+test('should reset all slots', 72, function() {
     tswcalc.buttonBar.resetAllSlots();
 
     assertReset(tswcalc.slots.weapon);
@@ -119,14 +118,13 @@ test('should reset all slots', 80, function() {
 });
 
 function assertReset(slot) {
-    equal(slot.role(), 'none');
+    equal(slot.item().role, 'dps');
     equal(slot.ql(), '10.0');
     equal(slot.glyphQl(), '10.0');
     equal(slot.primaryGlyph(), 'none');
     equal(slot.secondaryGlyph(), 'none');
     ok(slot.el.btn.primary[4].hasClass('active'));
     ok(slot.el.btn.secondary[0].hasClass('active'));
-    ok(!slot.el.btn.nyraid.is(':checked'));
     equal(slot.signetId(), 'none');
     equal(slot.signetQuality(), 'none');
 }

@@ -1,10 +1,11 @@
 
 module('slots-unit-tests', {
     setup: function() {
-        initiateSummary();
         renderSlots();
+        renderSummary();        
         initiateSelectHandlers();
         initiateButtonHandlers();
+        initiateSummary();
         createTankBuild();
     }
 });
@@ -20,16 +21,12 @@ test('should set and get talisman name', 1, function() {
 });
 
 test('should set talisman role', 1, function() {
-    tswcalc.slots.head.role('healer');
-    equal(tswcalc.slots.head.role(), 'healer');
+    tswcalc.slots.head.itemId('2');
+    equal(tswcalc.slots.head.item().role, 'healer');
 });
 
 test('should get talisman role', 1, function() {
-    equal(tswcalc.slots.head.role(), 'tank');
-});
-
-test('should not get weapon role', 1, function() {
-    equal(tswcalc.slots.weapon.role(), 'none');
+    equal(tswcalc.slots.head.item().role, 'tank');
 });
 
 test('should get talisman ql', 1, function() {
@@ -106,10 +103,6 @@ test('should get talisman signet object', 1, function() {
     deepEqual(tswcalc.slots.head.signet(), tswcalc.data.signet_data.find('head', '18'));
 });
 
-test('should get talisman signet None object if signet Id cannot be found', 1, function() {
-    deepEqual(tswcalc.slots.wrist.signet(), tswcalc.data.signet_data.noneSignet());
-});
-
 test('should update signet icon and border', 2, function() {
     tswcalc.slots.head.updateSignetIcon();
 
@@ -138,12 +131,6 @@ test('should update signet description', 1, function() {
     tswcalc.slots.head.updateSignetDescription();
 
     equal($('#head-signet-description').html(), 'When you block you gain 45% block chance for 4 seconds. 10 seconds cooldown.');
-});
-
-test('should update signet description to blank if no signet is picked', 1, function() {
-    tswcalc.slots.wrist.updateSignetDescription();
-
-    equal($('#wrist-signet-description').html(), '');
 });
 
 test('should get single signet value based on quality', 1, function() {
@@ -183,7 +170,7 @@ test('should reset slot state', 7, function() {
     tswcalc.slots.head.reset();
 
     equal(tswcalc.slots.head.ql(), '10.0');
-    equal(tswcalc.slots.head.role(), 'none');
+    equal(tswcalc.slots.head.item().role, 'dps');
     equal(tswcalc.slots.head.glyphQl(), '10.0');
     equal(tswcalc.slots.head.primaryGlyph(), 'none');
     equal(tswcalc.slots.head.secondaryGlyph(), 'none');
@@ -209,7 +196,7 @@ test('should collect current mapped slot state', 9, function() {
     var slotState = tswcalc.slots.head.mappedState();
 
     deepEqual(slotState.ql, '4');
-    deepEqual(slotState.role, 1);
+    deepEqual(slotState.role, 'tank');
     deepEqual(slotState.glyph_ql, '5');
     deepEqual(slotState.primary_glyph, 5);
     deepEqual(slotState.secondary_glyph, 0);
@@ -255,7 +242,7 @@ test('should collect all mapped slot states', 17, function() {
     deepEqual(slotStates.weapon.signet_id, '5');
 
     deepEqual(slotStates.head.ql, '4');
-    deepEqual(slotStates.head.role, 1);
+    deepEqual(slotStates.head.role, 'tank');
     deepEqual(slotStates.head.glyph_ql, '5');
     deepEqual(slotStates.head.primary_glyph, 5);
     deepEqual(slotStates.head.secondary_glyph, 0);

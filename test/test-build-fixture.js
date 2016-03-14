@@ -20,7 +20,8 @@ function createTankBuild() {
     $('#weapon2-pick-signet').val('6');
 
     $('#head-ql').val('10.4');
-    $('#head-role').val('tank');
+    $('#head-itemId').val('1');
+    $('#head-itemId').change();
     $('#head-glyph-ql').val('10.5');
     $('#head-primary-glyph').val('block-rating');
     $('#head-secondary-glyph').val('none');
@@ -30,7 +31,8 @@ function createTankBuild() {
     $('#head-pick-signet').val('18');
 
     $('#ring-ql').val('10.4');
-    $('#ring-role').val('dps');
+    $('#ring-itemId').val('3');
+    $('#ring-itemId').change();
     $('#ring-glyph-ql').val('10.4');
     $('#ring-primary-glyph').val('defense-rating');
     $('#ring-secondary-glyph').val('none');
@@ -40,7 +42,8 @@ function createTankBuild() {
     $('#ring-pick-signet').val('22');
 
     $('#neck-ql').val('10.4');
-    $('#neck-role').val('tank');
+    $('#neck-itemId').val('1');
+    $('#neck-itemId').change();
     $('#neck-glyph-ql').val('10.5');
     $('#neck-primary-glyph').val('block-rating');
     $('#neck-secondary-glyph').val('none');
@@ -49,17 +52,17 @@ function createTankBuild() {
     $('#neck-signet-quality').val('normal');
     $('#neck-pick-signet').val('21');
 
-    $('#wrist-role').val('tank');
+    $('#wrist-itemId').val('85');
+    $('#wrist-itemId').change();
     $('#wrist-glyph-ql').val('10.4');
     $('#wrist-primary-glyph').val('defense-rating');
     $('#wrist-secondary-glyph').val('none');
     $('#wrist-primary-glyph-dist-btn4').trigger('click');
     $('#wrist-secondary-glyph-dist-btn0').trigger('click');
-    $('#wrist-nyraid').prop('checked', true);
-    $('#wrist-nyraid').change(); //Brooklyn Bracer
 
     $('#luck-ql').val('10.4');
-    $('#luck-role').val('dps');
+    $('#luck-itemId').val('3');
+    $('#luck-itemId').change();
     $('#luck-glyph-ql').val('10.4');
     $('#luck-primary-glyph').val('physical-protection');
     $('#luck-secondary-glyph').val('none');
@@ -68,17 +71,17 @@ function createTankBuild() {
     $('#luck-signet-quality').val('epic');
     $('#luck-pick-signet').val('39');
 
-    $('#waist-role').val('tank');
+    $('#waist-itemId').val('87');
+    $('#waist-itemId').change();
     $('#waist-glyph-ql').val('10.4');
     $('#waist-primary-glyph').val('physical-protection');
     $('#waist-secondary-glyph').val('none');
     $('#waist-primary-glyph-dist-btn4').trigger('click');
     $('#waist-secondary-glyph-dist-btn0').trigger('click');
-    $('#waist-nyraid').prop('checked', true);
-    $('#waist-nyraid').change(); //NY Buckle
 
     $('#occult-ql').val('10.4');
-    $('#occult-role').val('dps');
+    $('#occult-itemId').val('3');
+    $('#occult-itemId').change();
     $('#occult-glyph-ql').val('10.4');
     $('#occult-primary-glyph').val('hit-rating');
     $('#occult-secondary-glyph').val('none');
@@ -98,44 +101,41 @@ function createDPSNYRaidBuild() {
     $('#weapon-signet-quality').val('elite');
     $('#weapon-pick-signet').val('5');
 
-    $('#head-role').val('dps');
+    $('#head-itemId').val('82');
+    $('#head-itemId').change();
     $('#head-glyph-ql').val('10.5');
     $('#head-primary-glyph').val('penetration-rating');
     $('#head-secondary-glyph').val('none');
     $('#head-primary-glyph-dist-btn4').trigger('click');
     $('#head-secondary-glyph-dist-btn0').trigger('click');
-    $('#head-nyraid').prop('checked', true);
-    $('#head-nyraid').change(); // Ashes of Elder Things
 
-    $('#ring-role').val('healer');
+    $('#ring-itemId').val('83');
+    $('#ring-itemId').change();
     $('#ring-glyph-ql').val('10.4');
     $('#ring-primary-glyph').val('penetration-rating');
     $('#ring-secondary-glyph').val('none');
     $('#ring-primary-glyph-dist-btn4').trigger('click');
     $('#ring-secondary-glyph-dist-btn0').trigger('click');
-    $('#ring-nyraid').prop('checked', true);
-    $('#ring-nyraid').change(); // Coney Island Band
 
-    $('#neck-role').val('dps');
+    $('#neck-itemId').val('84');
+    $('#neck-itemId').change();
     $('#neck-glyph-ql').val('10.5');
     $('#neck-primary-glyph').val('critical-rating');
     $('#neck-secondary-glyph').val('none');
     $('#neck-primary-glyph-dist-btn4').trigger('click');
     $('#neck-secondary-glyph-dist-btn0').trigger('click');
-    $('#neck-nyraid').prop('checked', true);
-    $('#neck-nyraid').change(); //Egon Pendant
 
-    $('#wrist-role').val('tank');
+    $('#wrist-itemId').val('85');
+    $('#wrist-itemId').change();
     $('#wrist-glyph-ql').val('10.4');
     $('#wrist-primary-glyph').val('defense-rating');
     $('#wrist-secondary-glyph').val('none');
     $('#wrist-primary-glyph-dist-btn4').trigger('click');
     $('#wrist-secondary-glyph-dist-btn0').trigger('click');
-    $('#wrist-nyraid').prop('checked', true);
-    $('#wrist-nyraid').change(); //Brooklyn Bracer
 
     $('#luck-ql').val('10.4');
-    $('#luck-role').val('dps');
+    $('#luck-itemId').val('3');
+    $('#luck-itemId').change();
     $('#luck-glyph-ql').val('10.4');
     $('#luck-primary-glyph').val('physical-protection');
     $('#luck-secondary-glyph').val('none');
@@ -144,17 +144,17 @@ function createDPSNYRaidBuild() {
     $('#luck-signet-quality').val('epic');
     $('#luck-pick-signet').val('39');
 
-    $('#waist-role').val('tank');
+    $('#waist-itemId').val('87');
+    $('#waist-itemId').change();
     $('#waist-glyph-ql').val('10.4');
     $('#waist-primary-glyph').val('physical-protection');
     $('#waist-secondary-glyph').val('none');
     $('#waist-primary-glyph-dist-btn4').trigger('click');
     $('#waist-secondary-glyph-dist-btn0').trigger('click');
-    $('#waist-nyraid').prop('checked', true);
-    $('#waist-nyraid').change(); //NY Buckle
 
     $('#occult-ql').val('10.4');
-    $('#occult-role').val('dps');
+    $('#occult-itemId').val('3');
+    $('#occult-itemId').change();
     $('#occult-glyph-ql').val('10.4');
     $('#occult-primary-glyph').val('hit-rating');
     $('#occult-secondary-glyph').val('none');
@@ -169,25 +169,25 @@ function create10_6To10_9MixBuild() {
     $('#weapon2-ql').val('10.6');
 
     $('#head-ql').val('10.9');
-    $('#head-role').val('dps');
+    $('#head-itemId').val('3');
 
     $('#ring-ql').val('10.6');
-    $('#ring-role').val('dps');
+    $('#ring-itemId').val('3');
 
     $('#neck-ql').val('10.8');
-    $('#neck-role').val('tank');
+    $('#neck-itemId').val('1');
 
     $('#wrist-ql').val('10.9');
-    $('#wrist-role').val('healer');
+    $('#wrist-itemId').val('2');
 
     $('#luck-ql').val('10.7');
-    $('#luck-role').val('tank');
+    $('#luck-itemId').val('1');
 
     $('#waist-ql').val('10.7');
-    $('#waist-role').val('healer');
+    $('#waist-itemId').val('2');
 
     $('#occult-ql').val('10.9');
-    $('#occult-role').val('dps');
+    $('#occult-itemId').val('3');
 }
 
 function create10_9DPSBuild() {
@@ -195,25 +195,25 @@ function create10_9DPSBuild() {
     $('#weapon2-ql').val('10.9');
 
     $('#head-ql').val('10.9');
-    $('#head-role').val('dps');
+    $('#head-itemId').val('3');
 
     $('#ring-ql').val('10.9');
-    $('#ring-role').val('dps');
+    $('#ring-itemId').val('3');
 
     $('#neck-ql').val('10.9');
-    $('#neck-role').val('dps');
+    $('#neck-itemId').val('3');
 
     $('#wrist-ql').val('10.9');
-    $('#wrist-role').val('dps');
+    $('#wrist-itemId').val('3');
 
     $('#luck-ql').val('10.9');
-    $('#luck-role').val('dps');
+    $('#luck-itemId').val('3');
 
     $('#waist-ql').val('10.9');
-    $('#waist-role').val('dps');
+    $('#waist-itemId').val('3');
 
     $('#occult-ql').val('10.9');
-    $('#occult-role').val('dps');
+    $('#occult-itemId').val('3');
 }
 
 function create11_0MixBuild() {
@@ -221,23 +221,23 @@ function create11_0MixBuild() {
     $('#weapon2-ql').val('11.0');
 
     $('#head-ql').val('11.0');
-    $('#head-role').val('dps');
+    $('#head-itemId').val('3');
 
     $('#ring-ql').val('11.0');
-    $('#ring-role').val('tank');
+    $('#ring-itemId').val('1');
 
     $('#neck-ql').val('11.0');
-    $('#neck-role').val('healer');
+    $('#neck-itemId').val('2');
 
     $('#wrist-ql').val('11.0');
-    $('#wrist-role').val('dps');
+    $('#wrist-itemId').val('3');
 
     $('#luck-ql').val('11.0');
-    $('#luck-role').val('tank');
+    $('#luck-itemId').val('1');
 
     $('#waist-ql').val('11.0');
-    $('#waist-role').val('dps');
+    $('#waist-itemId').val('3');
 
     $('#occult-ql').val('11.0');
-    $('#occult-role').val('healer');
+    $('#occult-itemId').val('2');
 }

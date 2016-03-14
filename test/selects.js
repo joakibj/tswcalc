@@ -9,7 +9,7 @@ test('should have required selects in the DOM', 61, function() {
     for (var i = 0; i < tswcalc.data.template_data.slots.length; i++) {
         var slotId = tswcalc.data.template_data.slots[i].id_prefix;
         if (slotId != 'weapon' && slotId != 'weapon2') {
-            ok($('#' + slotId + '-role').length !== 0, slotId + '-role exists');
+            ok($('#' + slotId + '-itemId').length !== 0, slotId + '-itemId exists');
         }
         ok($('#' + slotId + '-ql').length !== 0, slotId + '-ql exists');
         ok($('#' + slotId + '-glyph-ql').length !== 0, slotId + '-glyph-ql exists');
@@ -36,7 +36,7 @@ test('should have required event listeners for change on selects in the DOM', 61
         var slotId = tswcalc.data.template_data.slots[i].id_prefix;
         ok($._data($('#' + slotId + '-ql').get(0), 'events').change instanceof Array);
         if (slotId != 'weapon' && slotId != 'weapon2') {
-            ok($._data($('#' + slotId + '-role').get(0), 'events').change instanceof Array);
+            ok($._data($('#' + slotId + '-itemId').get(0), 'events').change instanceof Array);
         }
         ok($._data($('#' + slotId + '-glyph-ql').get(0), 'events').change instanceof Array);
         ok($._data($('#' + slotId + '-primary-glyph').get(0), 'events').change instanceof Array);
@@ -51,7 +51,6 @@ module('selects-unit-tests', {
         renderButtonbar();
         renderSlots();
         initiateSelectHandlers();
-        initiateRaidCheckboxes();
         initiateSummary();
     }
 });
@@ -78,29 +77,12 @@ module('selects-integration-tests', {
         renderSlots();
         initiateButtonHandlers();
         initiateSelectHandlers();
-        initiateRaidCheckboxes();
         tswcalc.slots.init();
     }
 });
 
-test('should change role and have enabled checkbutton if NY raid item is found', 2, function() {
-    tswcalc.slots['head'].el.role.val('healer');
-    tswcalc.slots['head'].el.role.change();
-
-    equal($('#head-role').val(), "healer");
-    deepEqual($('#head-nyraid').attr('disabled'), undefined, 'ny raid checkbtn not disabled');
-});
-
-test('should change role and have disabled checkbutton if NY raid item is not found', 2, function() {
-    tswcalc.slots['wrist'].el.role.val('dps');
-    tswcalc.slots['wrist'].el.role.change();
-
-    equal($('#wrist-role').val(), "dps");
-    deepEqual($('#wrist-nyraid').attr('disabled'), 'disabled', 'ny raid checkbtn is disabled');
-});
-
 test('should only allow epic version of signet when cadoro signets are selected', 5, function() {
-    tswcalc.slots['head'].role('dps');
+    tswcalc.slots['head'].itemId('3');
     tswcalc.slots['head'].signetId('53');
     tswcalc.slots['head'].el.signetId.change();
 
