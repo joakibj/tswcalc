@@ -74,8 +74,14 @@ tswcalc.export = function() {
         if(slot.isWeapon()) {
             idOrWtype = state.wtype;
         }
-        return slot.id + '=' + state.ql + ',' + idOrWtype + ',' + state.glyph_ql + ',' + state.primary_glyph + ',' + state.secondary_glyph +
-            ',' + state.primary_dist + ',' + state.secondary_dist + ',' + state.signet_quality + ',' + state.signet_id;
+        var slotUrl = slot.id + '=' + state.ql + ',' + idOrWtype + ',' + state.glyph_ql + ',' + state.primary_glyph + ',' +
+            state.secondary_glyph + ',' + state.primary_dist + ',' + state.secondary_dist;
+
+        if(state.signet_id !== 0 && state.signet_id !== '999') {
+            slotUrl += ',' + state.signet_quality + ',' + state.signet_id;
+        }
+                
+        return slotUrl;
     };
 
     var startExportBBCode = function() {
