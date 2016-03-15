@@ -127,7 +127,14 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
     };
 
     this.item = function(){
-        return tswcalc.data.items.find(item => item.id == this.itemId()) || tswcalc.data.items[0];
+        var itemId = this.itemId()
+        var item = tswcalc.data.items.find(function(item) {
+            return item.id == itemId; 
+        });
+        if (item) {
+            return item;
+        }
+        return tswcalc.data.items[0];
     }
 
     this.itemId = function() {
