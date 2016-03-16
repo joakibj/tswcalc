@@ -12,7 +12,7 @@ test('should initate tswcalc submodules', 8, function() {
     ok(tswcalc.import);
 });
 
-test('should import pre-1.3 build from hash', 113, function() {
+test('should import pre-1.3 build from hash', 119, function() {
     location.hash = 'weapon=5,5,4,4,0,4,0,2,5&head=4,1,5,5,0,4,0,3,18&ring=4,2,4,1,0,4,0,3,83&neck=4,1,5,5,0,4,0,1,21&wrist=4,1,4,6,0,4,0,3,85&luck=4,3,4,8,0,4,0,3,39&waist=4,1,4,8,0,4,0,3,87&occult=4,2,4,1,0,4,0,3,88';
     tswcalc.init();
 
@@ -127,7 +127,10 @@ test('should import pre-1.3 build from hash', 113, function() {
     equal($('#waist-signet-quality').val(), 'epic');
     ok($('#waist-signet-quality').attr('disabled'));
     ok($('#waist-pick-signet').attr('disabled'));
-    ok($('#waist-ql').attr('disabled'));
+    ok($('#waist-ql option[value="10.1"]').attr('disabled'));
+    ok($('#waist-ql option[value="10.7"]').attr('disabled'));
+    ok(!$('#waist-ql option[value="10.4"]').attr('disabled'));
+    ok(!$('#waist-ql option[value="10.9"]').attr('disabled'));
 
     equal($('#occult-name').html(), ': Broadway Charm');
     equal($('#occult-ql').val(), '10.4');
@@ -140,10 +143,13 @@ test('should import pre-1.3 build from hash', 113, function() {
     equal($('#occult-signet-quality').val(), 'epic');
     ok($('#occult-signet-quality').attr('disabled'));
     ok($('#occult-pick-signet').attr('disabled'));
-    ok($('#occult-ql').attr('disabled'));
+    ok($('#occult-ql option[value="10.1"]').attr('disabled'));
+    ok($('#occult-ql option[value="10.7"]').attr('disabled'));
+    ok(!$('#occult-ql option[value="10.4"]').attr('disabled'));
+    ok(!$('#occult-ql option[value="10.9"]').attr('disabled'));
 });
 
-test('should import post-1.3 build from hash', 113, function() {
+test('should import post-1.3 build from hash', 119, function() {
     location.hash = 'weapon=5,5,4,4,0,4,0,2,5&weapon2=5,3,4,1,2,2,2,3,15&head=4,1,5,5,0,4,0,3,18&ring=4,2,4,1,0,4,0,3,83&neck=4,1,5,5,0,4,0,1,21&wrist=4,1,4,6,0,4,0,3,85&luck=4,3,4,8,0,4,0,3,39&waist=4,1,4,8,0,4,0,3,87&occult=4,2,4,1,0,4,0,3,88';
     tswcalc.init();
 
@@ -258,7 +264,10 @@ test('should import post-1.3 build from hash', 113, function() {
     equal($('#waist-signet-quality').val(), 'epic');
     ok($('#waist-signet-quality').attr('disabled'));
     ok($('#waist-pick-signet').attr('disabled'));
-    ok($('#waist-ql').attr('disabled'));
+    ok($('#waist-ql option[value="10.1"]').attr('disabled'));
+    ok($('#waist-ql option[value="10.7"]').attr('disabled'));
+    ok(!$('#waist-ql option[value="10.4"]').attr('disabled'));
+    ok(!$('#waist-ql option[value="10.9"]').attr('disabled'));
 
     equal($('#occult-name').html(), ': Broadway Charm');
     equal($('#occult-ql').val(), '10.4');
@@ -271,5 +280,8 @@ test('should import post-1.3 build from hash', 113, function() {
     equal($('#occult-signet-quality').val(), 'epic');
     ok($('#occult-signet-quality').attr('disabled'));
     ok($('#occult-pick-signet').attr('disabled'));
-    ok($('#occult-ql').attr('disabled'));
+    ok($('#occult-ql option[value="10.1"]').attr('disabled'));
+    ok($('#occult-ql option[value="10.7"]').attr('disabled'));
+    ok(!$('#occult-ql option[value="10.4"]').attr('disabled'));
+    ok(!$('#occult-ql option[value="10.9"]').attr('disabled'));
 });
