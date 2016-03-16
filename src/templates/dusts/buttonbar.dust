@@ -2,9 +2,9 @@
   <button id="btn-reset" class="btn btn-danger">Reset</button>
 </div>
 <div class="btn-group">
-  <button id="btn-all-dps" class="btn">All DPS</button>
-  <button id="btn-all-healer" class="btn">All Healer</button>
-  <button id="btn-all-tank" class="btn">All Tank</button>
+  <button id="btn-all-3" class="btn">All DPS</button>
+  <button id="btn-all-2" class="btn">All Healer</button>
+  <button id="btn-all-1" class="btn">All Tank</button>
 </div>
 <div class="btn-group">
   <button id="btn-all-10-4" class="btn">All 10.4</button>

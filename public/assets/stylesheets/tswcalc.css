@@ -51,12 +51,12 @@ body {
     height: 60px;
 }
 
-td.role-label, .wtype-label {
+td.item-label, .wtype-label {
     width: 34px;
 }
 
-td.role-select, .wtype-select {
-    width: 136px;
+td.item-select, .wtype-select {
+    width: 210px;
 }
 
 td.ql-label {
@@ -64,7 +64,7 @@ td.ql-label {
 }
 
 td.ql-select {
-    width: 157px;
+    width: 130px;
 }
 
 td.filler {

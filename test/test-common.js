@@ -57,11 +57,3 @@ function initiateSelectHandlers() {
         tswcalc.select[slot.id_prefix].initiate();
     }
 }
-
-function initiateRaidCheckboxes() {
-    for (var i = 0; i < tswcalc.data.template_data.slots.length; i++) {
-        var slot = tswcalc.data.template_data.slots[i];
-        tswcalc.checkbox[slot.id_prefix] = new tswcalc.checkbox.RaidCheckbox(slot.id_prefix);
-        tswcalc.checkbox[slot.id_prefix].initiate();
-    }
-}

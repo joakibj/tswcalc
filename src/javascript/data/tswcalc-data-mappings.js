@@ -29,21 +29,6 @@ tswcalc.data.stat_mapping = {
     }
 };
 
-tswcalc.data.role_mapping = {
-    to_num: {
-        'tank': 1,
-        'healer': 2,
-        'dps': 3
-    },
-
-    to_stat: {
-        0: 'none',
-        1: 'tank',
-        2: 'healer',
-        3: 'dps'
-    }
-};
-
 tswcalc.data.signet_quality_mapping = {
     to_num: {
         'none': 0,

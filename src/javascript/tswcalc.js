@@ -80,7 +80,6 @@ tswcalc = function() {
         tswcalc.miscslot.init();
         for (var i = 0; i < tswcalc.data.template_data.slots.length; i++) {
             startSelectHandler(tswcalc.data.template_data.slots[i]);
-            startRaidCheckboxes(tswcalc.data.template_data.slots[i].id_prefix);
         }
         tswcalc.button.init();
         tswcalc.buttonBar.init();
@@ -97,11 +96,6 @@ tswcalc = function() {
     var startSelectHandler = function(slot) {
         tswcalc.select[slot.id_prefix] = new tswcalc.select.SelectHandler(slot);
         tswcalc.select[slot.id_prefix].initiate();
-    };
-
-    var startRaidCheckboxes = function(slotId) {
-        tswcalc.checkbox[slotId] = new tswcalc.checkbox.RaidCheckbox(slotId);
-        tswcalc.checkbox[slotId].initiate();
     };
 
     var oPublic = {

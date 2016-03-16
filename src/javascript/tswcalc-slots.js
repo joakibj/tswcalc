@@ -79,7 +79,7 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
     this.el = {
         div: $('#' + this.id + '-slot'),
         name: $('#' + this.id + '-name'),
-        role: $('#' + this.id + '-role'),
+        itemId: $('#' + this.id + '-itemId'),
         wtype: $('#' + this.id + '-wtype'),
         ql: $('#' + this.id + '-ql'),
         glyphQl: $('#' + this.id + '-glyph-ql'),
@@ -110,8 +110,7 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
                 3: $('#' + this.id + '-secondary-glyph-dist-btn3'),
                 4: $('#' + this.id + '-secondary-glyph-dist-btn4')
             },
-            nyraid: $('#' + this.id + '-nyraid'),
-            woodcutters: $('#' + this.id + '-woodcutters')
+            itemSelect: $('#' + this.id + 'item-select')
         }
     };
 
@@ -127,11 +126,22 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
         return this.group == 'weapon';
     };
 
-    this.role = function() {
+    this.item = function(){
+        var itemId = this.itemId()
+        var item = tswcalc.data.items.find(function(item) {
+            return item.id == itemId; 
+        });
+        if (item) {
+            return item;
+        }
+        return tswcalc.data.items[0];
+    }
+
+    this.itemId = function() {
         if (arguments.length == 1) {
-            this.el.role.val(arguments[0]);
+            this.el.itemId.val(arguments[0]);
         } else {
-            return this.group != 'weapon' ? this.el.role.val() : 'none';
+            return this.group != 'weapon' ? this.el.itemId.val() : 'none';
         }
     };
 
@@ -212,8 +222,8 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
     };
 
     this.itemCost = function () {
-        // woodcutters items do not cost bullion/pantheon
-        if(this.signetId() >= 90 && this.signetId() <= 93) {
+        // non-custom items do not cost bullion/pantheon
+        if(this.item().id > 3) {
             return {
                 bullion: 0,
                 pantheon: 0
@@ -223,8 +233,8 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
     };
 
     this.glyphCost = function () {
-        // woodcutters items do not cost bullion/pantheon
-        if(this.signetId() >= 90 && this.signetId() <= 93) {
+        // items with built in glyphs to not cost bullion/pantheon
+        if(this.item().glyph) {
             return {
                 bullion: 0,
                 pantheon: 0
@@ -280,19 +290,13 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
     };
 
     this.signet = function() {
-        var foundSignet = 0;
-        // check if this signet is a raid item, if so, look it up.
-        // NY raid items are assigned signetId 80 - 88
-        // Woodcutters are 90,91,92
-        if (this.signetId() >= 80 && this.signetId() < 90) {
-            foundSignet = tswcalc.data.ny_raid_items[this.id][this.role()].signet;
-        } else if(this.signetId() >= 90) {
-            foundSignet = tswcalc.data.woodcutters[this.id][this.role()].signet;
-        } else {
-            foundSignet = tswcalc.data.signet_data.find(this.group, this.signetId());
-            if (foundSignet.id == 0 && tswcalc.data.signet_data[this.id] !== undefined) {
-                foundSignet = tswcalc.data.signet_data.find(this.id, this.signetId());
-            }
+        if(this.item() && this.item().signet) {
+            return this.item().signet;
+        }
+
+        foundSignet = tswcalc.data.signet_data.find(this.group, this.signetId());
+        if (foundSignet.id == 0 && tswcalc.data.signet_data[this.id] !== undefined) {
+            return foundSignet = tswcalc.data.signet_data.find(this.id, this.signetId());
         }
         return foundSignet !== 0 || foundSignet !== undefined ? foundSignet : null;
     };
@@ -302,15 +306,16 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
         if (signet === null) {
             return '';
         }
-        var description = '';
-        description = signet.description.replace('%s', this.determineSignetQualityValue(signet));
-        description = description.replace('%d', this.determineSignetQualityValue(signet));
-        if (Object.prototype.toString.call(signet.quality) === '[object Array]') {
-            description = description.replace('%0', this.determineSignetQualityValue(signet, 0));
-            description = description.replace('%1', this.determineSignetQualityValue(signet, 1));
+        var description = signet.description;
+        if(signet.quality) {
+            description = description.replace('%s', this.determineSignetQualityValue(signet));
+            description = description.replace('%d', this.determineSignetQualityValue(signet));
+            if (Object.prototype.toString.call(signet.quality) === '[object Array]') {
+                description = description.replace('%0', this.determineSignetQualityValue(signet, 0));
+                description = description.replace('%1', this.determineSignetQualityValue(signet, 1));
+            }
         }
-
-        if (signet.cooldown != '0') {
+        if (signet.cooldown && signet.cooldown != '0') {
             description += ' ' + signet.cooldown + ' seconds cooldown.';
         }
 
@@ -390,33 +395,25 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
     };
 
     this.reset = function() {
-        this.name('');
         this.wtype('none');
         this.ql('10.0');
-        this.role('none');
+        this.itemId('3');
         this.glyphQl('10.0');
         this.primaryGlyph('none');
         this.secondaryGlyph('none');
         this.signetId('none');
         this.signetQuality('none');
         this.updateSignet();
-        if (this.el.btn.nyraid.is(':checked')) {
-            this.el.btn.nyraid.prop('checked', false);
-            this.el.btn.nyraid.change();
-        }
-        if (this.el.btn.woodcutters.is(':checked')) {
-            this.el.btn.woodcutters.prop('checked', false);
-            this.el.btn.woodcutters.change();
-        }
         this.el.btn.primary[4].trigger('click');
         this.el.btn.secondary[0].trigger('click');
         this.el.glyphQl.change();
+        this.el.itemId.change();
     };
 
     this.state = function() {
         return {
-            role: this.role(),
             ql: this.ql(),
+            role: this.item().role,
             glyph_ql: this.glyphQl(),
             primary_glyph: this.primaryGlyph(),
             secondary_glyph: this.secondaryGlyph(),
@@ -429,8 +426,9 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
 
     this.mappedState = function() {
         return {
+            itemId: this.item().id,
             wtype: this.stripContent(this.wtype()),
-            role: this.stripContent(this.role()),
+            role: this.isWeapon() ? '' : this.stripContent(this.item().role),
             ql: this.stripContent(this.ql()),
             glyph_ql: this.stripContent(this.glyphQl()),
             primary_glyph: this.stripContent(this.primaryGlyph()),
@@ -457,8 +455,6 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
             return tswcalc.data.wtype_mapping.to_num[val];
         } else if ($.inArray(val, Object.keys(tswcalc.data.stat_mapping.to_num)) != -1) {
             return tswcalc.data.stat_mapping.to_num[val];
-        } else if ($.inArray(val, Object.keys(tswcalc.data.role_mapping.to_num)) != -1) {
-            return tswcalc.data.role_mapping.to_num[val];
         } else if ($.inArray(val, Object.keys(tswcalc.data.signet_quality_mapping.to_num)) != -1) {
             return tswcalc.data.signet_quality_mapping.to_num[val];
         } else {

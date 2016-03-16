@@ -5,9 +5,9 @@ tswcalc.buttonBar = function() {
     var el = {};
     var elInit = function() {
         return {
-            btn_all_dps: $('#btn-all-dps'),
-            btn_all_healer: $('#btn-all-healer'),
-            btn_all_tank: $('#btn-all-tank'),
+            btn_all_dps: $('#btn-all-3'),
+            btn_all_healer: $('#btn-all-2'),
+            btn_all_tank: $('#btn-all-1'),
             btn_all_10_4: $('#btn-all-10-4'),
             btn_all_10_5: $('#btn-all-10-5'),
             btn_all_10_9: $('#btn-all-10-9'),
@@ -33,18 +33,12 @@ tswcalc.buttonBar = function() {
     };
 
     var setRoleOnAllSlots = function(event) {
-        var newRole = extractRole(event);
+        var newItem = extractRole(event);
         for (var slotId in tswcalc.slots) {
             if (tswcalc.slots.hasSlot(slotId)) {
                 var slot = tswcalc.slots[slotId];
-                slot.role(newRole);
-                if (!slot.isWeapon() && tswcalc.data.ny_raid_items[slotId][newRole] === undefined) {
-                    slot.el.btn.nyraid.prop('checked', false);
-                    slot.el.btn.nyraid.change();
-                    slot.el.btn.nyraid.attr('disabled', 'disabled');
-                } else {
-                    slot.el.btn.nyraid.removeAttr('disabled');
-                }
+                slot.itemId(newItem);
+                slot.el.itemId.change();
             }
         }
         tswcalc.summary.updateAllStats();
@@ -57,11 +51,13 @@ tswcalc.buttonBar = function() {
         for (var slotId in tswcalc.slots) {
             if (tswcalc.slots.hasSlot(slotId)) {
                 var slot = tswcalc.slots[slotId];
-                if (!slot.el.btn.nyraid.is(':checked')) {
+                if(!slot.item().ql) {
                     slot.ql(newItemQl);
                 }
-                slot.glyphQl(newGlyphQl);
-                slot.el.glyphQl.change();
+                if(!slot.item().glyph) {
+                    slot.glyphQl(newGlyphQl);
+                    slot.el.glyphQl.change();
+                }
             }
         }
         tswcalc.summary.updateAllStats();

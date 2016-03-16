@@ -58,7 +58,6 @@ module('summary-integration-tests', {
         initiateSummary();
         initiateSelectHandlers();
         initiateButtonHandlers();
-        initiateRaidCheckboxes();
     },
     teardown: function() {
 
@@ -68,10 +67,10 @@ module('summary-integration-tests', {
 test('should collect primary stats at initial state', 5, function() {
     var sums = tswcalc.summary.collectPrimaryStats();
 
-    equal(sums['combat-power'], 155);
+    equal(sums['combat-power'], 647);
     equal(sums['weapon-power'], 398);
     equal(sums['hitpoints'], 2070);
-    equal(sums['attack-rating'], 0);
+    equal(sums['attack-rating'], 3049);
     equal(sums['heal-rating'], 0);
 });
 
@@ -192,7 +191,7 @@ test('should update costs for tank build, including secondary weapon', 4, functi
 
     tswcalc.summary.updateAllStats();
 
-    equal($('#bb-cost').html(), '19900');
+    equal($('#bb-cost').html(), '17700');
     equal($('#pantheon-cost').html(), '0');
     equal($('#cu-cost').html(), '2');
     equal($('#af-cost').html(), '2');

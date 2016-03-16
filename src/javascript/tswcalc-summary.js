@@ -110,7 +110,6 @@ tswcalc.summary = function() {
                 if(slot.isWeapon() && !slot.weaponDrawn) {
                     continue;
                 }
-                var role = slot.role();
                 var ql = slot.ql();
                 if (slot.group == 'major') {
                     var signet = slot.signet();
@@ -119,24 +118,24 @@ tswcalc.summary = function() {
                     }
                 }
                 //TODO: refactor
-                switch (role) {
-                    case 'dps':
-                        sums['attack-rating'] += tswcalc.data.custom_gear_data[slot.group].heal_dps['ql' + (ql)].rating;
-                        break;
-                    case 'healer':
-                        sums['heal-rating'] += tswcalc.data.custom_gear_data[slot.group].heal_dps['ql' + (ql)].rating;
-                        break;
-                    case 'tank':
-                        sums['hitpoints'] += tswcalc.data.custom_gear_data[slot.group].tank['ql' + (ql)].hitpoints;
-                        break;
-                    case 'none':
-                        if (slot.isWeapon()) {
-                            sums['weapon-power'] = tswcalc.data.custom_gear_data[slot.group][ql].weapon_power;
-                        }
-                        break;
-                    default:
-                        console.log('Illegal role value when collecting primary stats');
-                        break;
+                if (slot.isWeapon()) {
+                    sums['weapon-power'] = tswcalc.data.custom_gear_data[slot.group][ql].weapon_power;
+                }
+                else {
+                    switch (slot.item().role) {
+                        case 'dps':
+                            sums['attack-rating'] += tswcalc.data.custom_gear_data[slot.group].heal_dps['ql' + (ql)].rating;
+                            break;
+                        case 'healer':
+                            sums['heal-rating'] += tswcalc.data.custom_gear_data[slot.group].heal_dps['ql' + (ql)].rating;
+                            break;
+                        case 'tank':
+                            sums['hitpoints'] += tswcalc.data.custom_gear_data[slot.group].tank['ql' + (ql)].hitpoints;
+                            break;
+                        default:
+                            console.log('Illegal role value when collecting primary stats');
+                            break;
+                    }
                 }
             }
         }
@@ -193,21 +192,16 @@ tswcalc.summary = function() {
         sums['critical-power-percentage'] = calculateCriticalPowerPercentage(sums['critical-power']);
 
         //TODO: refactor
-        for (var slotId in tswcalc.slots) {
-            if (tswcalc.slots.hasSlot(slotId)) {
-                var slot = tswcalc.slots[slotId];
-                if (el.activateRaid.is(':checked') && slot.signetId() >= 80) {
-                    var signet = slot.signet();
+        if (el.activateRaid.is(':checked')) {
+            for (var slotId in tswcalc.slots) {
+                if (tswcalc.slots.hasSlot(slotId)) {
+                    var signet = tswcalc.slots[slotId].signet();
                     if (signet.bonus !== undefined) {
                         for (var statIdx = 0; statIdx < signet.bonus.stat.length; statIdx++) {
                             if (signet.bonus.add !== undefined) {
                                 sums[signet.bonus.stat[statIdx]] += signet.bonus.add;
                             } else if (signet.bonus.multiply !== undefined) {
-                                if (signet.stack_max !== undefined) {
-                                    sums[signet.bonus.stat[statIdx]] = (1 + (signet.bonus.multiply * signet.stack_max)) * sums[signet.bonus.stat[statIdx]];
-                                } else {
-                                    sums[signet.bonus.stat[statIdx]] = signet.bonus.multiply * sums[signet.bonus.stat[statIdx]];
-                                }
+                                sums[signet.bonus.stat[statIdx]] = signet.bonus.multiply * sums[signet.bonus.stat[statIdx]];
                             }
                         }
                     }
