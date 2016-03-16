@@ -171,3 +171,7 @@ div .slot {
 #table-primary .tooltip.left{
     margin-left: -12px
 }
+
+option:disabled {
+    display:none;
+}
