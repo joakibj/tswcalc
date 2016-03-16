@@ -219,7 +219,7 @@ tswcalc.data.signet_data = {
 			normal: 4
 			}, 
 		icon: 'weapon-tank', 
-		requires: 'issue-13'
+		shambala: true
 	}, { 
 		id:107, 
 		name: 'Signet of Divine Inspiration', 
@@ -230,7 +230,7 @@ tswcalc.data.signet_data = {
 		elite: 8, 
 		normal: 4}, 
 		icon: 'weapon-dps', 
-		requires: 'issue-13'
+		shambala: true
 	}, { 
 		id:108, 
 		name: 'Signet of Death\'s Note', 
@@ -242,7 +242,7 @@ tswcalc.data.signet_data = {
 			normal: 150
 			}, 
 		icon: 'weapon-dps', 
-		requires: 'issue-13'
+		shambala: true
 	}, { 
 		id:109, 
 		name: 'Signet of Healer\'s Zeal', 
@@ -254,7 +254,7 @@ tswcalc.data.signet_data = {
 			normal: 10
 			}, 
 		icon: 'weapon-heal', 
-		requires: 'issue-13'
+		shambala: true
 	}, { 
 		id:110, 
 		name: 'Signet of Karma', 
@@ -266,7 +266,7 @@ tswcalc.data.signet_data = {
 			normal: 15
 			}, 
 		icon: 'weapon-heal', 
-		requires: 'issue-13'
+		shambala: true
 	}, { 
 		id:111, 
 		name: 'Signet of Insurance', 
@@ -278,7 +278,7 @@ tswcalc.data.signet_data = {
 			normal: 10
 			}, 
 		icon: 'weapon-dps', 
-		requires: 'issue-13'
+		shambala: true
 	}
     ],
     'head': [{
@@ -380,7 +380,7 @@ tswcalc.data.signet_data = {
 				normal: 3
 			}, 
 		icon: 'head-tank', 
-		requires: 'issue-13'
+		shambala: true
 	}, {
 		id:101, 
 		name: 'Signet of Perpetual Motion', 
@@ -392,7 +392,7 @@ tswcalc.data.signet_data = {
 			normal: 4
 			}, 
 		icon: 'head-dps', 
-		requires: 'issue-13'
+		shambala: true
 	}, { 
 		id:102, 
 		name: 'Signet of Riposte', 
@@ -404,7 +404,7 @@ tswcalc.data.signet_data = {
 			normal: 9
 			}, 
 		icon: 'head-tank', 
-		requires: 'issue-13'
+		shambala: true
 	}, { 
 		id:103, 
 		name: 'Signet of Soul Eating', 
@@ -416,7 +416,7 @@ tswcalc.data.signet_data = {
 			normal: 20
 		}, 
 		icon: 'head-dps', 
-		requires: 'issue-13'
+		shambala: true
 	}, { 
 		id:104, 
 		name: 'Signet of the Time Thief', 
@@ -428,7 +428,7 @@ tswcalc.data.signet_data = {
 			normal: 60
 			},
 		icon: 'head-dps', 
-		requires: 'issue-13'
+		shambala: true
 	}, { 
 		id:105, 
 		name: 'Signet of Autonomy', 
@@ -440,7 +440,7 @@ tswcalc.data.signet_data = {
 			normal: 0.75
 			}, 
 		icon: 'head-util', 
-		requires: 'issue-13'
+		shambala: true
         }
     ],
     'minor': [{
@@ -767,7 +767,7 @@ tswcalc.data.signet_data = {
 				normal: 125
 				},  
 			icon: 'minor-dps', 
-			requires: 'issue-13'
+			shambala: true
 			}, { 
 			id:122, 
 			name: 'Signet of Displacement', 
@@ -779,7 +779,7 @@ tswcalc.data.signet_data = {
 				normal: 20
 				},  
 			icon: 'minor-tank', 
-			requires: 'issue-13'
+			shambala: true
 		}, { 
 			id:123, 
 			name: 'Signet of Defiance', 
@@ -791,7 +791,7 @@ tswcalc.data.signet_data = {
 				normal: 5
 				},  
 			icon: 'minor-tank', 
-			requires: 'issue-13'
+			shambala: true
 		}, { 
 			id:124, 
 			name: 'Signet of Deflection', 
@@ -803,7 +803,7 @@ tswcalc.data.signet_data = {
 				normal: 3
 				},  
 			icon: 'minor-tank', 
-			requires: 'issue-13'
+			shambala: true
 		}, { 
 			id:125, 
 			name: 'Signet of Desperation', 
@@ -815,7 +815,7 @@ tswcalc.data.signet_data = {
 				normal: '200 - 800'
 				},  
 			icon: 'minor-heal', 
-			requires: 'issue-13'
+			shambala: true
 		}, {
 			id:126, 
 			name: 'Signet of Recuperation', 
@@ -831,7 +831,7 @@ tswcalc.data.signet_data = {
 					normal: 7.5
 				}],  
 			icon: 'minor-heal', 
-			requires: 'issue-13'
+			shambala: true
 		}, { 
 			id:127, 
 			name: 'Signet of the Physician', 
@@ -843,7 +843,7 @@ tswcalc.data.signet_data = {
 				normal: 50
 				},  
 			icon: 'minor-heal', 
-			requires: 'issue-13'
+			shambala: true
 		}, { 
 			id:128, 
 			name: 'Signet of the Protected', 
@@ -855,7 +855,7 @@ tswcalc.data.signet_data = {
 				normal: 50
 				},  
 			icon: 'minor-heal', 
-			requires: 'issue-13'
+			shambala: true
 		}, { 
 			id:129, 
 			name: 'Signet of Unceasing', 
@@ -867,7 +867,7 @@ tswcalc.data.signet_data = {
 				normal: 5
 			},  
 			icon: 'minor-tank', 
-			requires: 'issue-13'
+			shambala: true
 		}
     ],
     'major': [{
@@ -917,7 +917,7 @@ tswcalc.data.signet_data = {
 				normal: '150 - 300'
 				}, 
 			icon: 'major-dps', 
-			requires: 'issue-13'
+			shambala: true
 		}, { 
 			id:113, 
 			name: 'Signet of Agony Shared', 
@@ -929,7 +929,7 @@ tswcalc.data.signet_data = {
 				normal: 100
 				},  
 			icon: 'major-tank', 
-			requires: 'issue-13'
+			shambala: true
 		}, { 
 			id:114, 
 			name: 'Signet of Nergal\'s Ire', 
@@ -941,7 +941,7 @@ tswcalc.data.signet_data = {
 				normal: 5
 				}, 
 			icon: 'major-tank', 
-			requires: 'issue-13'
+			shambala: true
 			}, { /*!!*/
 			id:115, name: 'Signet of Protector\'s Wrath', 
 			description: 'Whenever you heal an ally, you have a %d% chance to also deal %d damage to enemies within 5 metres of that ally. The damage dealt increases with your Heal Rating.', 
@@ -952,7 +952,7 @@ tswcalc.data.signet_data = {
 				normal: 7
 				},  
 			icon: 'major-heal', 
-			requires: 'issue-13'
+			shambala: true
 		}, { 
 			id:116, name: 'Signet of Hermes\' Feet', 
 			description: 'Whenever you activate a movement ability, your movement speed is increased by %d% for 5 seconds.', 
@@ -963,7 +963,7 @@ tswcalc.data.signet_data = {
 				normal: 5
 				},  
 			icon: 'major-util', 
-			requires: 'issue-13'
+			shambala: true
 		}, { 
 			id:117, 
 			name: 'Signet of Renewed Vigil', 
@@ -975,7 +975,7 @@ tswcalc.data.signet_data = {
 				normal: 5
 				},  
 			icon: 'major-heal', 
-			requires: 'issue-13'
+			shambala: true
 		}, { /*!!*/
 			id:118, 
 			name: 'Signet of Martyr\'s Miracle', 
@@ -987,7 +987,7 @@ tswcalc.data.signet_data = {
 				normal: 32
 				},  
 			icon: 'major-heal', 
-			requires: 'issue-13'
+			shambala: true
 		}, { 
 			id:119, 
 			name: 'Signet of Persistent Malice', 
@@ -999,7 +999,7 @@ tswcalc.data.signet_data = {
 				normal: 3
 				}, 
 			icon: 'major-dps', 
-			requires: 'issue-13'
+			shambala: true
 		}, { 
 			id:120, 
 			name: 'Signet of the Death Curse', 
@@ -1011,7 +1011,7 @@ tswcalc.data.signet_data = {
 				normal: 1000
 				},  
 			icon: 'major-dps', 
-			requires: 'issue-13'
+			shambala: true
 		}
     ],
     'neck': [{
