@@ -210,7 +210,7 @@ tswcalc.data.signet_data = {
             icon: 'weapon_heal'
         }, { 
 		id:106, 
-		name: 'Signet of Blessed Steps', 
+		name: 'Blessed Steps', 
 		description: 'Whenever you apply a barrier effect to an ally, that ally gains a beneficial effect which increases Evade Chance by %d% for 10 seconds. This effect is removed when the barrier effect is removed from that ally.', 
 		cooldown: '0', 
 		quality: { 
@@ -218,34 +218,34 @@ tswcalc.data.signet_data = {
 			elite: 8, 
 			normal: 4
 			}, 
-		icon: 'weapon-tank', 
+		icon: 'weapon_tank', 
 		shambala: true
 	}, { 
 		id:107, 
-		name: 'Signet of Divine Inspiration', 
+		name: 'Divine Inspiration', 
 		description: 'Whenever you apply a barrier effect to an ally, that ally gains a beneficial effect which increases damage dealt by %d% for 10 seconds. This effect is removed when the barrier effect is removed from that ally.', 
 		cooldown: '0', 
 		quality: { 
 		epic: 12, 
 		elite: 8, 
 		normal: 4}, 
-		icon: 'weapon-dps', 
+		icon: 'weapon_dps', 
 		shambala: true
 	}, { 
 		id:108, 
-		name: 'Signet of Death\'s Note', 
+		name: 'Death\'s Note', 
 		description: 'When you hit a target apply a detrimental effect for 5 seconds which causes them to take an additional %d physical damage every time you or anyone else with this signet hits them. This effect can only be applied once every 20 seconds.', 
-		cooldown: '20', 
+		cooldown: '0', 
 		quality: { 
 			epic: 450, 
 			elite: 300, 
 			normal: 150
 			}, 
-		icon: 'weapon-dps', 
+		icon: 'weapon_dps', 
 		shambala: true
 	}, { 
 		id:109, 
-		name: 'Signet of Healer\'s Zeal', 
+		name: 'Healer\'s Zeal', 
 		description: 'Whenever you directly heal an ally who is below 50% health, you have a %d% chance to gain a resource for both weapons.', 
 		cooldown: '0', 
 		quality: { 
@@ -253,11 +253,11 @@ tswcalc.data.signet_data = {
 			elite: 20, 
 			normal: 10
 			}, 
-		icon: 'weapon-heal', 
+		icon: 'weapon_heal', 
 		shambala: true
 	}, { 
 		id:110, 
-		name: 'Signet of Karma', 
+		name: 'Karma', 
 		description: 'Whenever you directly heal an ally, you have a 25% chance to heal yourself for %d% of the heal amount.', 
 		cooldown: '0', 
 		quality: { 
@@ -265,11 +265,11 @@ tswcalc.data.signet_data = {
 			elite: 30, 
 			normal: 15
 			}, 
-		icon: 'weapon-heal', 
+		icon: 'weapon_heal', 
 		shambala: true
 	}, { 
 		id:111, 
-		name: 'Signet of Insurance', 
+		name: 'Insurance', 
 		description: 'Whenever you hit or heal, you gain a beneficial effect which lasts 10 seconds. This effect can only be gained once every 15 seconds. If this effect is purged, you gain a beneficial effect which increases your Evade Chance and the chance for attacks to glance you by %d% for 10 seconds. This effect cannot be purged.', 
 		cooldown: '0', 
 		quality: { 
@@ -277,7 +277,7 @@ tswcalc.data.signet_data = {
 			elite: 20, 
 			normal: 10
 			}, 
-		icon: 'weapon-dps', 
+		icon: 'weapon_dps', 
 		shambala: true
 	}
     ],
@@ -371,7 +371,7 @@ tswcalc.data.signet_data = {
             requires: 'issue-6'
 		}, {
 			id:100, 
-			name: 'Signet of Houdini\'s Guile', 
+			name: 'Houdini\'s Guile', 
 			description: 'Whenever you are Impaired or Hindered, the currently running recharge timers on your crowd control breaking abilities are reduced by %d seconds.', 
 			cooldown: '0', 
 			quality: { 
@@ -379,23 +379,23 @@ tswcalc.data.signet_data = {
 				elite: 6, 
 				normal: 3
 			}, 
-		icon: 'head-tank', 
+		icon: 'head_tank', 
 		shambala: true
 	}, {
 		id:101, 
-		name: 'Signet of Perpetual Motion', 
+		name: 'Perpetual Motion', 
 		description: 'While you are moving, you gain a beneficial effect which increases your damage by %d%. Standing still removes this effect. If this effect is removed it cannot be regained for 4 seconds.', 
-		cooldown: '4', 
+		cooldown: '0', 
 		quality: { 
 			epic: 12, 
 			elite: 8, 
 			normal: 4
 			}, 
-		icon: 'head-dps', 
+		icon: 'head_dps', 
 		shambala: true
 	}, { 
 		id:102, 
-		name: 'Signet of Riposte', 
+		name: 'Riposte', 
 		description: 'When you block, evade or are glanced, you gain a beneficial effect which increases your Critical Chance and Penetration Chance by %d% for 2 seconds.', 
 		cooldown: '0', 
 		quality: { 
@@ -403,11 +403,11 @@ tswcalc.data.signet_data = {
 			elite: 12, 
 			normal: 9
 			}, 
-		icon: 'head-tank', 
+		icon: 'head_tank', 
 		shambala: true
 	}, { 
 		id:103, 
-		name: 'Signet of Soul Eating', 
+		name: 'Soul Eating', 
 		description: 'When you score the killing blow on an enemy player, you regain %d% of your health.', 
 		cooldown: '0',
 		quality: { 
@@ -415,11 +415,11 @@ tswcalc.data.signet_data = {
 			elite: 40, 
 			normal: 20
 		}, 
-		icon: 'head-dps', 
+		icon: 'head_dps', 
 		shambala: true
 	}, { 
 		id:104, 
-		name: 'Signet of the Time Thief', 
+		name: 'the Time Thief', 
 		description: 'When you score the killing blow on an enemy player, the duration of your currently running recharge timers is reduced by %d%.', 
 		cooldown: '0', 
 		quality: { 
@@ -427,11 +427,11 @@ tswcalc.data.signet_data = {
 			elite: 40, 
 			normal: 60
 			},
-		icon: 'head-dps', 
+		icon: 'head_dps', 
 		shambala: true
 	}, { 
 		id:105, 
-		name: 'Signet of Autonomy', 
+		name: 'Autonomy', 
 		description: 'Whenever a Hinder or Impair effect ends, gain immunity to Hinder and Impair effects for %d seconds.', 
 		cooldown: '0', 
 		quality: { 
@@ -439,7 +439,7 @@ tswcalc.data.signet_data = {
 			elite: 1.5, 
 			normal: 0.75
 			}, 
-		icon: 'head-util', 
+		icon: 'head_util', 
 		shambala: true
         }
     ],
@@ -758,7 +758,7 @@ tswcalc.data.signet_data = {
             icon: 'minor_dps'
         }, {
 		id:121, 
-			name: 'Signet of Backbite', 
+			name: 'Backbite', 
 			description: 'Whenever you hit a target from behind who is less than 5 metres away from you, you deal an additional %d physical damage. This additional damage cannot be blocked and it cannot glance.', 
 			cooldown: '0', 
 			quality: { 
@@ -766,11 +766,11 @@ tswcalc.data.signet_data = {
 				elite: 250, 
 				normal: 125
 				},  
-			icon: 'minor-dps', 
+			icon: 'minor_dps', 
 			shambala: true
 			}, { 
 			id:122, 
-			name: 'Signet of Displacement', 
+			name: 'Displacement', 
 			description: 'Whenever you use your Active Dodge, your Evade Chance is increased by %d% for 1.5 seconds.', 
 			cooldown: '0', 
 			quality: { 
@@ -778,23 +778,23 @@ tswcalc.data.signet_data = {
 				elite: 40, 
 				normal: 20
 				},  
-			icon: 'minor-tank', 
+			icon: 'minor_tank', 
 			shambala: true
 		}, { 
 			id:123, 
-			name: 'Signet of Defiance', 
+			name: 'Defiance', 
 			description: 'Whenever you receive damage greater than 10% of your maximum health in a single hit, you gain a barrier which absorbs 100% of incoming damage. The barrier\'s strength is equal to %d% of your maximum health. This effect cannot occur more than once every 20 seconds.', 
-			cooldown: '20', 
+			cooldown: '0', 
 			quality: { 
 				epic: 15, 
 				elite: 10, 
 				normal: 5
 				},  
-			icon: 'minor-tank', 
+			icon: 'minor_tank', 
 			shambala: true
 		}, { 
 			id:124, 
-			name: 'Signet of Deflection', 
+			name: 'Deflection', 
 			description: 'Whenever you are hit by a target who is more than 12 metres away from you, you gain a beneficial effect which reduces the damage you take by %d% for 3 seconds.', 
 			cooldown: '0', 
 			quality: { 
@@ -802,23 +802,23 @@ tswcalc.data.signet_data = {
 				elite: 6, 
 				normal: 3
 				},  
-			icon: 'minor-tank', 
+			icon: 'minor_tank', 
 			shambala: true
 		}, { 
 			id:125, 
-			name: 'Signet of Desperation', 
+			name: 'Desperation', 
 			description: 'Whenever you directly heal an ally whose health is below 50%, you heal them for an additional %s. The amount healed is increased the closer your ally is to death. This effect cannot occur more than once every 20 seconds.', 
-			cooldown: '20', 
+			cooldown: '0', 
 			quality: { 
 				epic: '600 - 2400', 
 				elite: '400 - 1600', 
 				normal: '200 - 800'
 				},  
-			icon: 'minor-heal', 
+			icon: 'minor_heal', 
 			shambala: true
 		}, {
 			id:126, 
-			name: 'Signet of Recuperation', 
+			name: 'Recuperation', 
 			description: 'Whenever you apply a heal over time effect to an ally, you have a %0% chance to apply a beneficial effect to that ally which lasts for 4 seconds. When this effect expires, that ally regains health equal to %2% of the damage they received while the effect was active. This effect cannot be applied more than once every 15 seconds.', 
 			cooldown: '0', 
 			quality: [{ 
@@ -830,11 +830,11 @@ tswcalc.data.signet_data = {
 					elite: 15, 
 					normal: 7.5
 				}],  
-			icon: 'minor-heal', 
+			icon: 'minor_heal', 
 			shambala: true
 		}, { 
 			id:127, 
-			name: 'Signet of the Physician', 
+			name: 'the Physician', 
 			description: 'Whenever you directly heal an ally who is within 5 metres, you heal them for an additional %d.', 
 			cooldown: '0', 
 			quality: { 
@@ -842,11 +842,11 @@ tswcalc.data.signet_data = {
 				elite: 100, 
 				normal: 50
 				},  
-			icon: 'minor-heal', 
+			icon: 'minor_heal', 
 			shambala: true
 		}, { 
 			id:128, 
-			name: 'Signet of the Protected', 
+			name: 'the Protected', 
 			description: 'Whenever you apply a barrier effect to an ally who already has a barrier, you heal them for %d.', 
 			cooldown: '0', 
 			quality: { 
@@ -854,11 +854,11 @@ tswcalc.data.signet_data = {
 				elite: 100, 
 				normal: 50
 				},  
-			icon: 'minor-heal', 
+			icon: 'minor_heal', 
 			shambala: true
 		}, { 
 			id:129, 
-			name: 'Signet of Unceasing', 
+			name: 'Unceasing', 
 			description: 'Whenever an attack penetrates or critically hits you for more than 700 damage, you are instantly healed for %d% of that damage.', 
 			cooldown: '0', 
 				quality: { 
@@ -866,7 +866,7 @@ tswcalc.data.signet_data = {
 				elite: 10, 
 				normal: 5
 			},  
-			icon: 'minor-tank', 
+			icon: 'minor_tank', 
 			shambala: true
 		}
     ],
@@ -908,7 +908,7 @@ tswcalc.data.signet_data = {
             icon: 'major_heal'
         },{
 			id:112, 
-			name: 'Signet of Coup De Gr\u00E2ce', 
+			name: 'Coup De Gr\u00E2ce', 
 			description: 'Whenever you hit a target who is below 35% health, you have a 33% chance to deal an additional %s physical damage to that target. Damage dealt increases the closer the target gets to death.', 
 			cooldown: '0', 
 			quality: { 
@@ -916,11 +916,11 @@ tswcalc.data.signet_data = {
 				elite: '300 - 600', 
 				normal: '150 - 300'
 				}, 
-			icon: 'major-dps', 
+			icon: 'major_dps', 
 			shambala: true
 		}, { 
 			id:113, 
-			name: 'Signet of Agony Shared', 
+			name: 'Agony Shared', 
 			description: 'Whenever you receive 300 or more damage in a single hit, you deal %d physical damage to enemies near you.', 
 			cooldown: '0', 
 				quality: { 
@@ -928,11 +928,11 @@ tswcalc.data.signet_data = {
 				elite: 200, 
 				normal: 100
 				},  
-			icon: 'major-tank', 
+			icon: 'major_tank', 
 			shambala: true
 		}, { 
 			id:114, 
-			name: 'Signet of Nergal\'s Ire', 
+			name: 'Nergal\'s Ire', 
 			description: 'Whenever you are hit, you have a %d% chance to apply one stack of Corrupt, Debilitated, or Exposed to your attacker. If the attack was blocked, evaded, or if it glanced you, there is an additional %d% chance to apply one stack of Corrupt, Debilitated, or Exposed to your attacker.', 
 			cooldown: '0', 
 			quality: { 
@@ -940,10 +940,10 @@ tswcalc.data.signet_data = {
 				elite: 10, 
 				normal: 5
 				}, 
-			icon: 'major-tank', 
+			icon: 'major_tank', 
 			shambala: true
 			}, { /*!!*/
-			id:115, name: 'Signet of Protector\'s Wrath', 
+			id:115, name: 'Protector\'s Wrath', 
 			description: 'Whenever you heal an ally, you have a %d% chance to also deal %d damage to enemies within 5 metres of that ally. The damage dealt increases with your Heal Rating.', 
 			cooldown: '0', 
 			quality: { 
@@ -951,10 +951,10 @@ tswcalc.data.signet_data = {
 				elite: 14, 
 				normal: 7
 				},  
-			icon: 'major-heal', 
+			icon: 'major_heal', 
 			shambala: true
 		}, { 
-			id:116, name: 'Signet of Hermes\' Feet', 
+			id:116, name: 'Hermes\' Feet', 
 			description: 'Whenever you activate a movement ability, your movement speed is increased by %d% for 5 seconds.', 
 			cooldown: '0', 
 			quality: { 
@@ -962,11 +962,11 @@ tswcalc.data.signet_data = {
 				elite: 10, 
 				normal: 5
 				},  
-			icon: 'major-util', 
+			icon: 'major_util', 
 			shambala: true
 		}, { 
 			id:117, 
-			name: 'Signet of Renewed Vigil', 
+			name: 'Renewed Vigil', 
 			description: 'Whenever your barrier effects expire for any reason, you gain a beneficial effect which increases the strength of the next barrier you apply by %d%.', 
 			cooldown: '0', 
 			quality: { 
@@ -974,11 +974,11 @@ tswcalc.data.signet_data = {
 				elite: 10, 
 				normal: 5
 				},  
-			icon: 'major-heal', 
+			icon: 'major_heal', 
 			shambala: true
 		}, { /*!!*/
 			id:118, 
-			name: 'Signet of Martyr\'s Miracle', 
+			name: 'Martyr\'s Miracle', 
 			description: 'Whenever you die, you create a healing area near where you died which lasts 10 seconds. Allies standing in the area are healed for %d every second. The amount healed increases with your heal rating.', 
 			cooldown: '0', 
 			quality: { 
@@ -986,11 +986,11 @@ tswcalc.data.signet_data = {
 				elite: 64, 
 				normal: 32
 				},  
-			icon: 'major-heal', 
+			icon: 'major_heal', 
 			shambala: true
 		}, { 
 			id:119, 
-			name: 'Signet of Persistent Malice', 
+			name: 'Persistent Malice', 
 			description: 'Reduces the chance of your attacks being evaded by %d%.', 
 			cooldown: '0', 
 			quality: { 
@@ -998,11 +998,11 @@ tswcalc.data.signet_data = {
 				elite: 6, 
 				normal: 3
 				}, 
-			icon: 'major-dps', 
+			icon: 'major_dps', 
 			shambala: true
 		}, { 
 			id:120, 
-			name: 'Signet of the Death Curse', 
+			name: 'the Death Curse', 
 			description: 'Whenever your health drops below 10% you are unable to activate abilities and unable to be defeated for 3 seconds. When this effect expires, you are defeated and you deal %d physical damage to enemies near you.', 
 			cooldown: '0', 
 			quality: { 
@@ -1010,7 +1010,7 @@ tswcalc.data.signet_data = {
 				elite: 2000, 
 				normal: 1000
 				},  
-			icon: 'major-dps', 
+			icon: 'major_dps', 
 			shambala: true
 		}
     ],
