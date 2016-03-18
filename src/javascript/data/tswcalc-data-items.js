@@ -369,7 +369,7 @@ tswcalc.data.items = [
 		role:'dps', 
 		slots:['luck'], 
 		glyph: { 
-		ql:'10.5', 
+		ql:'11.0', 
 		primary:{ 
 			stat: 'Penetration Raiting', 
 			dist: 4 
@@ -416,7 +416,7 @@ tswcalc.data.items = [
 		role:'healer', 
 		slots:['luck'], 
 		glyph: { 
-		ql:'10.5', 
+		ql:'11.0', 
 		primary:{ 
 			stat: 'Crititical Raiting', 
 			dist: 4 }, 
@@ -462,7 +462,7 @@ tswcalc.data.items = [
 		role:'weapon', 
 		slots:['weapon'], 
 		glyph: { 
-		ql:'10.5', 
+		ql:'11.0', 
 		primary:{ 
 			stat: 'Hit Raiting', 
 			dist: 4 }, 
@@ -485,7 +485,7 @@ tswcalc.data.items = [
 		role:'weapon', 
 		slots:['weapon'], 
 		glyph: { 
-		ql:'10.5', 
+		ql:'11.0', 
 		primary:{ 
 			stat: 'Hit Raiting', 
 			dist: 4 }, 
@@ -531,7 +531,7 @@ tswcalc.data.items = [
 		role:'healer', 
 		slots:['occult'], 
 		glyph: { 
-		ql:'10.5', 
+		ql:'11.0', 
 		primary:{ 
 			stat: 'Critical Power Raiting', 
 			dist: 2 }, 
@@ -578,7 +578,7 @@ tswcalc.data.items = [
 		role:'healer', 
 		slots:['neck'], 
 		glyph: { 
-		ql:'10.5', 
+		ql:'11.0', 
 		primary:{ 
 			stat: 'Critical Power Raiting', 
 			dist: 4 }, 
@@ -625,7 +625,7 @@ tswcalc.data.items = [
 		role:'healer', 
 		slots:['finger'], 
 		glyph: { 
-		ql:'10.5', 
+		ql:'11.0', 
 		primary:{ 
 			stat: 'Crititical Raiting', 
 			dist: 4 }, 
@@ -672,7 +672,7 @@ tswcalc.data.items = [
 		role:'tank', 
 		slots:['finger'], 
 		glyph: { 
-		ql:'10.5', 
+		ql:'11.0', 
 		primary:{ 
 			stat: 'Hit Raiting', 
 			dist: 4 }, 
@@ -719,7 +719,7 @@ tswcalc.data.items = [
 		role:'healer', 
 		slots:['head'], 
 		glyph: { 
-		ql:'10.5', 
+		ql:'11.0', 
 		primary:{ 
 			stat: 'Critical Power Raiting', 
 			dist: 2 }, 
@@ -745,10 +745,10 @@ tswcalc.data.items = [
 		ql:'10.5', 
 		primary:{ 
 			stat: 'Evade Raiting', 
-			dist: 2 }, 
+			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
-			dist: 2
+			dist: 0
 			}
 		}, 
 		signet: { 
@@ -766,13 +766,13 @@ tswcalc.data.items = [
 		role:'tank', 
 		slots:['neck'], 
 		glyph: { 
-		ql:'10.5', 
+		ql:'11.0', 
 		primary:{ 
 			stat: 'Evade Raiting', 
-			dist: 2 }, 
+			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
-			dist: 2
+			dist: 0
 			}
 		}, 
 		signet: { 
@@ -813,7 +813,7 @@ tswcalc.data.items = [
 		role:'tank', 
 		slots:['wrist'], 
 		glyph: { 
-		ql:'10.5', 
+		ql: '11.0', 
 		primary:{ 
 			stat: 'Block Raiting', 
 			dist: 4 }, 
@@ -859,7 +859,7 @@ tswcalc.data.items = [
 		role:'tank', 
 		slots:['waist'], 
 		glyph: { 
-		ql:'10.5', 
+		ql:'11.0', 
 		primary:{ 
 			stat: 'Hit Raiting', 
 			dist: 4 }, 
@@ -905,7 +905,7 @@ tswcalc.data.items = [
 		role:'dps', 
 		slots:['head'], 
 		glyph: { 
-		ql:'10.5', 
+		ql:'11.0', 
 		primary:{ 
 			stat: 'Penetration Raiting', 
 			dist: 4 }, 
@@ -951,7 +951,7 @@ tswcalc.data.items = [
 		role:'weapon', 
 		slots:['weapon'], 
 		glyph: { 
-		ql:'10.5', 
+		ql:'11.0', 
 		primary:{ 
 			stat: 'Hit Raiting', 
 			dist: 4 }, 
@@ -997,7 +997,7 @@ tswcalc.data.items = [
 		role:'weapon', 
 		slots:['weapon'], 
 		glyph: { 
-		ql:'10.5', 
+		ql:'11.0', 
 		primary:{ 
 			stat: 'Hit Raiting', 
 			dist: 4 }, 
@@ -1043,7 +1043,7 @@ tswcalc.data.items = [
 		role:'weapon', 
 		slots:['weapon'], 
 		glyph: { 
-		ql:'10.5', 
+		ql:'11.0', 
 		primary:{ 
 			stat: 'Hit Raiting', 
 			dist: 4 }, 
@@ -1089,7 +1089,7 @@ tswcalc.data.items = [
 		role:'dps', 
 		slots:['waist'], 
 		glyph: { 
-		ql:'10.5', 
+		ql:'11.0', 
 		primary:{ 
 			stat: 'Hit Raiting', 
 			dist: 4 }, 
@@ -1135,7 +1135,7 @@ tswcalc.data.items = [
 		role:'dps', 
 		slots:['occult'], 
 		glyph: { 
-		ql:'10.5', 
+		ql:'11.0', 
 		primary:{ 
 			stat: 'Crititical Raiting', 
 			dist: 4 }, 
@@ -1182,7 +1182,7 @@ tswcalc.data.items = [
 		role:'dps', 
 		slots:['finger'], 
 		glyph: { 
-		ql:'10.5', 
+		ql:'11.0', 
 		primary:{ 
 			stat: 'Penetration', 
 			dist: 4 }, 
@@ -1230,7 +1230,7 @@ tswcalc.data.items = [
 		role:'dps', 
 		slots:['neck'], 
 		glyph: { 
-		ql:'10.5', 
+		ql:'11.0', 
 		primary:{ 
 			stat: 'Crititical Raiting', 
 			dist: 2 }, 
@@ -1278,7 +1278,7 @@ tswcalc.data.items = [
 		role:'dps', 
 		slots:['wrist'], 
 		glyph: { 
-		ql:'10.5', 
+		ql:'11.0', 
 		primary:{ 
 			stat: 'Critical Power Raiting', 
 			dist: 4 }, 
@@ -1325,7 +1325,7 @@ tswcalc.data.items = [
 		role:'weapon', 
 		slots:['weapon'], 
 		glyph: { 
-		ql:'10.5', 
+		ql:'11.0', 
 		primary:{ 
 			stat: 'Hit Raiting', 
 			dist: 4 }, 
@@ -1371,7 +1371,7 @@ tswcalc.data.items = [
 		role:'weapon', 
 		slots:['weapon'], 
 		glyph: { 
-		ql:'10.5', 
+		ql:'11.0', 
 		primary:{ 
 			stat: 'Hit Raiting', 
 			dist: 4 }, 
@@ -1394,7 +1394,7 @@ tswcalc.data.items = [
 		role:'weapon', 
 		slots:['weapon'], 
 		glyph: { 
-		ql:'10.5', 
+		ql:'11.0', 
 		primary:{ 
 			stat: 'Hit Raiting', 
 			dist: 4 }, 
@@ -1440,7 +1440,7 @@ tswcalc.data.items = [
 		role:'weapon', 
 		slots:['weapon'], 
 		glyph: { 
-		ql:'10.5', 
+		ql:'11.0', 
 		primary:{ 
 			stat: 'Hit Raiting', 
 			dist: 4 }, 
@@ -1463,7 +1463,7 @@ tswcalc.data.items = [
 		role:'weapon', 
 		slots:['weapon'], 
 		glyph: { 
-		ql:'10.5', 
+		ql:'11.0', 
 		primary:{ 
 			stat: 'Hit Raiting', 
 			dist: 4 }, 
@@ -1509,7 +1509,7 @@ tswcalc.data.items = [
 		role:'tank', 
 		slots:['occult'], 
 		glyph: { 
-		ql:'10.5', 
+		ql:'11.0', 
 		primary:{ 
 			stat: 'Defensive Raiting', 
 			dist: 4 }, 
@@ -1555,7 +1555,7 @@ tswcalc.data.items = [
 		role:'weapon', 
 		slots:['weapon'], 
 		glyph: { 
-		ql:'10.5', 
+		ql:'11.0', 
 		primary:{ 
 			stat: 'Hit Raiting', 
 			dist: 4 }, 
@@ -1601,7 +1601,7 @@ tswcalc.data.items = [
 		role:'tank', 
 		slots:['head'], 
 		glyph: { 
-		ql:'10.5', 
+		ql:'11.0', 
 		primary:{ 
 			stat: 'Block Raiting', 
 			dist: 2 }, 
@@ -1651,7 +1651,7 @@ tswcalc.data.items = [
 		role:'healer', 
 		slots:['waist'], 
 		glyph: { 
-		ql:'10.5', 
+		ql:'11.0', 
 		primary:{ 
 			stat: 'Critical Power Raiting', 
 			dist: 4 }, 
@@ -1697,7 +1697,7 @@ tswcalc.data.items = [
 		role:'healer', 
 		slots:['wrist'], 
 		glyph: { 
-			ql:'10.5', 
+			ql:'11.0', 
 			primary:{ 
 				stat: 'Critical Power Raiting', 
 				dist: 4 }, 
