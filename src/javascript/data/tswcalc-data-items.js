@@ -255,7 +255,7 @@ tswcalc.data.items = [
 		glyph: { 
 			ql:'10.5', 
 			primary:{ 
-				stat: 'Hit Raiting', 
+				stat: 'hit-raiting', 
 				dist: 4 
 				}, 
 				secondary: {
@@ -279,7 +279,7 @@ tswcalc.data.items = [
 		glyph: { 
 			ql:'10.5', 
 			primary:{ 
-				stat: 'Hit Raiting', 
+				stat: 'hit-raiting', 
 				dist: 4 
 				}, 
 			secondary: {
@@ -302,7 +302,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'10.5', 
 		primary:{ 
-			stat: 'Block Raiting', 
+			stat: 'block-raiting', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -325,7 +325,7 @@ tswcalc.data.items = [
 		glyph: { 
 			ql:'10.5', 
 			primary:{ 
-				stat: 'Block Raiting', 
+				stat: 'block-raiting', 
 				dist: 4 
 				}, 
 			secondary: {
@@ -349,7 +349,7 @@ tswcalc.data.items = [
 		glyph: { 
 			ql:'10.5', 
 			primary:{ 
-			stat: 'Penetration', 
+			stat: 'penetration-rating', 
 			dist: 4 
 			}, 
 		secondary: {
@@ -371,7 +371,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'11.0', 
 		primary:{ 
-			stat: 'Penetration Raiting', 
+			stat: 'penetration-rating', 
 			dist: 4 
 			}, 
 		secondary: { 
@@ -441,7 +441,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'10.5', 
 		primary:{ 
-			stat: 'Hit Raiting', 
+			stat: 'hit-raiting', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -464,7 +464,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'11.0', 
 		primary:{ 
-			stat: 'Hit Raiting', 
+			stat: 'hit-raiting', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -487,7 +487,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'11.0', 
 		primary:{ 
-			stat: 'Hit Raiting', 
+			stat: 'hit-raiting', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -510,7 +510,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'10.5', 
 		primary:{ 
-			stat: 'Critical Power Raiting', 
+			stat: 'critical-power', 
 			dist: 2 }, 
 		secondary: { 
 			stat: 'Crititical Raiting' , 
@@ -533,7 +533,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'11.0', 
 		primary:{ 
-			stat: 'Critical Power Raiting', 
+			stat: 'critical-power', 
 			dist: 2 }, 
 		secondary: { 
 			stat: 'Crititical Raiting' , 
@@ -556,7 +556,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'10.5', 
 		primary:{ 
-			stat: 'Critical Power Raiting', 
+			stat: 'critical-power', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -580,7 +580,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'11.0', 
 		primary:{ 
-			stat: 'Critical Power Raiting', 
+			stat: 'critical-power', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -600,7 +600,7 @@ tswcalc.data.items = [
 		name: 'Biotech Band', 
 		ql: '10.8', 
 		role:'healer', 
-		slots:['finger'], 
+		slots:['ring'], 
 		glyph: { 
 		ql:'10.5', 
 		primary:{ 
@@ -623,7 +623,7 @@ tswcalc.data.items = [
 		name: 'Biotech Band', 
 		ql: '10.9', 
 		role:'healer', 
-		slots:['finger'], 
+		slots:['ring'], 
 		glyph: { 
 		ql:'11.0', 
 		primary:{ 
@@ -646,11 +646,11 @@ tswcalc.data.items = [
 		name: 'Chemical Enhancement Knot', 
 		ql: '10.8', 
 		role:'tank', 
-		slots:['finger'], 
+		slots:['ring'], 
 		glyph: { 
 		ql:'10.5', 
 		primary:{ 
-			stat: 'Hit Raiting', 
+			stat: 'hit-raiting', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -670,11 +670,11 @@ tswcalc.data.items = [
 		name: 'Chemical Enhancement Knot', 
 		ql: '10.9', 
 		role:'tank', 
-		slots:['finger'], 
+		slots:['ring'], 
 		glyph: { 
 		ql:'11.0', 
 		primary:{ 
-			stat: 'Hit Raiting', 
+			stat: 'hit-raiting', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -698,7 +698,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'10.5', 
 		primary:{ 
-			stat: 'Critical Power Raiting', 
+			stat: 'critical-power', 
 			dist: 2 }, 
 		secondary: { 
 			stat: 'Crititical Raiting' , 
@@ -721,7 +721,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'11.0', 
 		primary:{ 
-			stat: 'Critical Power Raiting', 
+			stat: 'critical-power', 
 			dist: 2 }, 
 		secondary: { 
 			stat: 'Crititical Raiting' , 
@@ -744,7 +744,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'10.5', 
 		primary:{ 
-			stat: 'Evade Raiting', 
+			stat: 'evade-raiting', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -768,7 +768,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'11.0', 
 		primary:{ 
-			stat: 'Evade Raiting', 
+			stat: 'evade-raiting', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -792,10 +792,10 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'10.5', 
 		primary:{ 
-			stat: 'Block Raiting', 
+			stat: 'block-raiting', 
 			dist: 4 }, 
 		secondary: { 
-			stat: 'Defensive Raiting' , 
+			stat: 'defense-rating' , 
 			dist: 0
 			}
 		}, 
@@ -815,10 +815,10 @@ tswcalc.data.items = [
 		glyph: { 
 		ql: '11.0', 
 		primary:{ 
-			stat: 'Block Raiting', 
+			stat: 'block-raiting', 
 			dist: 4 }, 
 		secondary: { 
-			stat: 'Defensive Raiting' , 
+			stat: 'defense-rating' , 
 			dist: 0
 			}
 		}, 
@@ -838,7 +838,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'10.5', 
 		primary:{ 
-			stat: 'Hit Raiting', 
+			stat: 'hit-raiting', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -861,7 +861,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'11.0', 
 		primary:{ 
-			stat: 'Hit Raiting', 
+			stat: 'hit-raiting', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -884,10 +884,10 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'10.5', 
 		primary:{ 
-			stat: 'Hit Raiting', 
+			stat: 'hit-raiting', 
 			dist: 2 }, 
 		secondary: { 
-			stat: 'Penetration Raiting' , 
+			stat: 'penetration-rating' , 
 			dist: 2
 			}
 		}, 
@@ -907,7 +907,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'11.0', 
 		primary:{ 
-			stat: 'Penetration Raiting', 
+			stat: 'penetration-rating', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -930,7 +930,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'10.5', 
 		primary:{ 
-			stat: 'Hit Raiting', 
+			stat: 'hit-raiting', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -953,7 +953,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'11.0', 
 		primary:{ 
-			stat: 'Hit Raiting', 
+			stat: 'hit-raiting', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -976,7 +976,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'10.5', 
 		primary:{ 
-			stat: 'Hit Raiting', 
+			stat: 'hit-raiting', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -999,7 +999,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'11.0', 
 		primary:{ 
-			stat: 'Hit Raiting', 
+			stat: 'hit-raiting', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -1022,7 +1022,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'10.5', 
 		primary:{ 
-			stat: 'Hit Raiting', 
+			stat: 'hit-raiting', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -1045,7 +1045,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'11.0', 
 		primary:{ 
-			stat: 'Hit Raiting', 
+			stat: 'hit-raiting', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -1068,7 +1068,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'10.5', 
 		primary:{ 
-			stat: 'Hit Raiting', 
+			stat: 'hit-raiting', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -1091,7 +1091,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'11.0', 
 		primary:{ 
-			stat: 'Hit Raiting', 
+			stat: 'hit-raiting', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -1156,11 +1156,11 @@ tswcalc.data.items = [
 		name: 'Manticore Elite Ring', 
 		ql: '10.8', 
 		role:'dps', 
-		slots:['finger'], 
+		slots:['ring'], 
 		glyph: { 
 		ql:'10.5', 
 		primary:{ 
-			stat: 'Hit Raiting', 
+			stat: 'hit-raiting', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -1180,11 +1180,11 @@ tswcalc.data.items = [
 		name: 'Manticore Elite Ring', 
 		ql: '10.9', 
 		role:'dps', 
-		slots:['finger'], 
+		slots:['ring'], 
 		glyph: { 
 		ql:'11.0', 
 		primary:{ 
-			stat: 'Penetration', 
+			stat: 'penetration-rating', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -1211,7 +1211,7 @@ tswcalc.data.items = [
 			stat: 'Crititical Raiting', 
 			dist: 2 }, 
 		secondary: { 
-			stat: 'Penetration' , 
+			stat: 'penetration-rating' , 
 			dist: 2
 			}
 		}, 
@@ -1235,7 +1235,7 @@ tswcalc.data.items = [
 			stat: 'Crititical Raiting', 
 			dist: 2 }, 
 		secondary: { 
-			stat: 'Penetration' , 
+			stat: 'penetration-rating' , 
 			dist: 2
 			}
 		}, 
@@ -1256,7 +1256,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'10.5', 
 		primary:{ 
-			stat: 'Critical Power Raiting', 
+			stat: 'critical-power', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -1280,7 +1280,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'11.0', 
 		primary:{ 
-			stat: 'Critical Power Raiting', 
+			stat: 'critical-power', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -1304,7 +1304,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'10.5', 
 		primary:{ 
-			stat: 'Hit Raiting', 
+			stat: 'hit-raiting', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -1327,7 +1327,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'11.0', 
 		primary:{ 
-			stat: 'Hit Raiting', 
+			stat: 'hit-raiting', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -1350,7 +1350,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'10.5', 
 		primary:{ 
-			stat: 'Hit Raiting', 
+			stat: 'hit-raiting', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -1373,7 +1373,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'11.0', 
 		primary:{ 
-			stat: 'Hit Raiting', 
+			stat: 'hit-raiting', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -1396,7 +1396,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'11.0', 
 		primary:{ 
-			stat: 'Hit Raiting', 
+			stat: 'hit-raiting', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -1419,7 +1419,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'10.5', 
 		primary:{ 
-			stat: 'Hit Raiting', 
+			stat: 'hit-raiting', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -1442,7 +1442,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'11.0', 
 		primary:{ 
-			stat: 'Hit Raiting', 
+			stat: 'hit-raiting', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -1465,7 +1465,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'11.0', 
 		primary:{ 
-			stat: 'Hit Raiting', 
+			stat: 'hit-raiting', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -1488,7 +1488,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'10.5', 
 		primary:{ 
-			stat: 'Defensive Raiting', 
+			stat: 'defense-rating', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -1511,7 +1511,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'11.0', 
 		primary:{ 
-			stat: 'Defensive Raiting', 
+			stat: 'defense-rating', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -1534,7 +1534,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'10.5', 
 		primary:{ 
-			stat: 'Hit Raiting', 
+			stat: 'hit-raiting', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -1557,7 +1557,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'11.0', 
 		primary:{ 
-			stat: 'Hit Raiting', 
+			stat: 'hit-raiting', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -1580,7 +1580,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'10.5', 
 		primary:{ 
-			stat: 'Block Raiting', 
+			stat: 'block-raiting', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -1603,10 +1603,10 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'11.0', 
 		primary:{ 
-			stat: 'Block Raiting', 
+			stat: 'block-raiting', 
 			dist: 2 }, 
 		secondary: { 
-			stat: 'Evade Raiting' , 
+			stat: 'evade-raiting' , 
 			dist: 2
 			}
 		}, 
@@ -1628,7 +1628,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'10.5', 
 		primary:{ 
-			stat: 'Critical Power Raiting', 
+			stat: 'critical-power', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -1653,7 +1653,7 @@ tswcalc.data.items = [
 		glyph: { 
 		ql:'11.0', 
 		primary:{ 
-			stat: 'Critical Power Raiting', 
+			stat: 'critical-power', 
 			dist: 4 }, 
 		secondary: { 
 			stat: 'none' , 
@@ -1676,7 +1676,7 @@ tswcalc.data.items = [
 		glyph: { 
 			ql:'10.5', 
 			primary:{ 
-				stat: 'Critical Power Raiting', 
+				stat: 'critical-power', 
 				dist: 4 }, 
 			secondary: {
 				stat: 'none' , 
@@ -1699,7 +1699,7 @@ tswcalc.data.items = [
 		glyph: { 
 			ql:'11.0', 
 			primary:{ 
-				stat: 'Critical Power Raiting', 
+				stat: 'critical-power', 
 				dist: 4 }, 
 			secondary: {
 				stat: 'none' , 
