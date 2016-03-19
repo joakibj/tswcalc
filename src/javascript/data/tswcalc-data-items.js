@@ -202,6 +202,7 @@ tswcalc.data.items = [
     {
         id: '91',
         name: 'The Woodcutter\'s Regret',
+        ql: '10.9',
         role: 'tank',
         slots: ['neck'],
         glyph: {
@@ -225,6 +226,7 @@ tswcalc.data.items = [
     {
         id: '92',
         name: 'The Woodcutter\'s Wrath',
+        ql: '10.9',
         role: 'dps',
         slots: ['neck'],
         glyph: {
