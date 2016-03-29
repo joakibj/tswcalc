@@ -182,9 +182,20 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
     this.updateControlsForItem = function() {
         var item = slotObj.item();
         slotObj.name(': ' + item.name);
-        if(item.ql) { 
-            slotObj.ql(item.ql);
-            slotObj.el.ql.attr('disabled', 'disabled');
+        if(item.ql) {
+            if(Array.isArray(item.ql)) {
+                slotObj.el.ql.find('option').each(function(idx, qlOption) {
+                    if(item.ql.indexOf(qlOption.value) == -1) {
+                        if(slotObj.ql() == qlOption.value) {
+                            slotObj.ql(item.ql[0]);
+                        }
+                        $(this).attr('disabled', 'disabled');
+                    }
+                });
+            } else {
+                slotObj.ql(item.ql);
+                slotObj.el.ql.attr('disabled', 'disabled');
+            }
         }
         if(item.glyph) {
             slotObj.glyphQl(item.glyph.ql);
@@ -235,6 +246,7 @@ tswcalc.select.SelectHandler = function SelectHandler(slot) {
         slotObj.el.primaryGlyph.removeAttr('disabled');
         slotObj.el.secondaryGlyph.removeAttr('disabled');
         slotObj.el.ql.removeAttr('disabled');
+        slotObj.el.ql.find('option[disabled]').removeAttr('disabled');
         slotObj.el.signetId.removeAttr('disabled');
         if(slotObj.signetQuality() === 'heroic') {
             slotObj.signetQuality('none');

@@ -123,7 +123,7 @@ tswcalc.data.items = [
     {
         id: '86',
         name: 'Subway Tokens',
-        ql: '10.4',
+        ql: ['10.4', '10.9'],
         slots: ['luck'],
         role: 'dps',
         signet: {
@@ -136,7 +136,7 @@ tswcalc.data.items = [
     {
         id: '87',
         name: 'NY Buckle',
-        ql: '10.4',
+        ql: ['10.4', '10.9'],
         slots: ['waist'],
         role: 'tank',
         signet: {
@@ -153,7 +153,7 @@ tswcalc.data.items = [
     {
         id: '88',
         name: 'Broadway Charm',
-        ql: '10.4',
+        ql: ['10.4', '10.9'],
         slots: ['occult'],
         role: 'healer',
         signet: {
