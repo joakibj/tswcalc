@@ -50,7 +50,7 @@ tswcalc.data.signet_data = {
             name: 'Aggression',
             icon: 'weapon_util'
         }, {
-            description: 'When you penetrate a target you make that target take %d more damage from further penetrating hits for 7 seconds.',
+            description: 'When you penetrate a target you make that target take %d% more damage from further penetrating hits for 7 seconds.',
             cooldown: '7',
             quality: {
                 epic: 24,
@@ -315,18 +315,18 @@ tswcalc.data.signet_data = {
             name: 'Order',
             icon: 'head_tank'
         }, {
-            description: 'When you are glanced or evade an attack, you gain magical and physical protection of %d per stack for 4 seconds, up to 3 stacks.',
+            description: 'When you are hit you gain a stacking buff that increases healing received by %d% per stack for 3 seconds, up to 10 stacks.',
             cooldown: '0',
             quality: {
-                epic: 93,
-                elite: 62,
-                normal: 31
+                epic: 0.9,
+                elite: 0.6,
+                normal: 0.3
             },
             id: 19,
             name: 'Reinforcement',
             icon: 'head_tank'
         }, {
-            description: 'When you block you gain %d physical and magical protection per stack for 4 seconds, up to 3 stacks.',
+            description: 'When you block, evade or are glanced, you gain %d physical and magical protection per stack for 4 seconds, up to 3 stacks.',
             cooldown: '0',
             quality: {
                 epic: 150,
@@ -724,7 +724,7 @@ tswcalc.data.signet_data = {
             name: 'Thirst',
             icon: 'minor_heal'
         }, {
-            description: 'When you block, evade, or are glanced you generate a %s amount of hate on your offensive target.',
+            description: 'When you block, evade or are glanced you generate a %s amount of hate on your offensive target.',
             cooldown: '6',
             quality: {
                 epic: 'large',
