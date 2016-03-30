@@ -57,18 +57,18 @@ module('selects-unit-tests', {
 
 test('should have added signets to correct group', 8, function() {
     // None option must be taken into account
-    equal($('#weapon-pick-signet option').size(), 16 + 1);
-    equal($('#head-pick-signet option').size(), 8 + 16 + 1); //weapon signets also fit in the head
-    equal($('#ring-pick-signet option').size(), 3 + 3 + 1);
-    equal($('#neck-pick-signet option').size(), 3 + 3 + 1);
-    equal($('#wrist-pick-signet option').size(), 3 + 3 + 1);
-    equal($('#luck-pick-signet option').size(), 28 + 1);
-    equal($('#waist-pick-signet option').size(), 28 + 3 + 1);
-    equal($('#occult-pick-signet option').size(), 28 + 3 + 1);
+    equal($('#weapon-pick-signet option').size(), 23);
+    equal($('#head-pick-signet option').size(), 37); //weapon signets also fit in the head
+    equal($('#ring-pick-signet option').size(), 16);
+    equal($('#neck-pick-signet option').size(), 16);
+    equal($('#wrist-pick-signet option').size(), 16);
+    equal($('#luck-pick-signet option').size(), 38);
+    equal($('#waist-pick-signet option').size(), 41);
+    equal($('#occult-pick-signet option').size(), 41);
 });
 
 test('should get signets for head', 1, function() {
-    equal(tswcalc.select['head'].getSignetsForHead('head').length, 16);
+    equal(tswcalc.select['head'].getSignetsForHead('head').length, 22);
 });
 
 module('selects-integration-tests', {
