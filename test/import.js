@@ -10,7 +10,7 @@ module('import-integration-tests', {
     }
 });
 
-test('should import URL and set summary and slots for 0.4.0 links', 94, function() {
+test('should import URL and set summary and slots for 0.4.0 links', 91, function() {
     var vars = {
         head: '4,1,5,5,0,4,0',
         luck: '4,3,4,8,0,4,0',
@@ -115,10 +115,7 @@ test('should import URL and set summary and slots for 0.4.0 links', 94, function
     equal($('#waist-signet-quality').val(), 'epic');
     ok($('#waist-signet-quality').attr('disabled'));
     ok($('#waist-pick-signet').attr('disabled'));
-    ok($('#waist-ql option[value="10.1"]').attr('disabled'));
-    ok($('#waist-ql option[value="10.7"]').attr('disabled'));
-    ok(!$('#waist-ql option[value="10.4"]').attr('disabled'));
-    ok(!$('#waist-ql option[value="10.9"]').attr('disabled'));
+    ok($('#waist-ql').attr('disabled'));
 
     equal($('#occult-ql').val(), '10.4');
     equal($('#occult-itemId').val(), '3');
@@ -131,7 +128,7 @@ test('should import URL and set summary and slots for 0.4.0 links', 94, function
     equal($('#occult-pick-signet').val(), 'none');
 });
 
-test('should import URL and set summary and slots for pre-1.3 links', 98, function() {
+test('should import URL and set summary and slots for pre-1.3 links', 95, function() {
     var vars = {
         head: '4,1,5,5,0,4,0,3,18',
         luck: '4,3,4,8,0,4,0,3,39',
@@ -240,10 +237,7 @@ test('should import URL and set summary and slots for pre-1.3 links', 98, functi
     equal($('#waist-signet-quality').val(), 'epic');
     ok($('#waist-signet-quality').attr('disabled'));
     ok($('#waist-pick-signet').attr('disabled'));
-    ok($('#waist-ql option[value="10.1"]').attr('disabled'));
-    ok($('#waist-ql option[value="10.7"]').attr('disabled'));
-    ok(!$('#waist-ql option[value="10.4"]').attr('disabled'));
-    ok(!$('#waist-ql option[value="10.9"]').attr('disabled'));
+    ok($('#waist-ql').attr('disabled'));
 
     equal($('#occult-ql').val(), '10.4');
     equal($('#occult-itemId').val(), '3');
@@ -256,14 +250,14 @@ test('should import URL and set summary and slots for pre-1.3 links', 98, functi
     equal($('#occult-pick-signet').val(), '41');
 });
 
-test('should import URL and set summary and slots for 1.3 links (secondary weapon added)', 110, function() {
+test('should import URL and set summary and slots for 1.3 links (secondary weapon added)', 107, function() {
     var vars = {
         head: '4,1,5,5,0,4,0,3,18',
         luck: '4,3,4,8,0,4,0,3,39',
         neck: '4,1,5,5,0,4,0,1,21',
         occult: '4,3,4,4,0,4,0,3,41',
         ring: '4,3,4,6,0,4,0,2,22',
-        waist: '9,1,4,8,0,4,0,3,87',
+        waist: '4,1,4,8,0,4,0,3,87',
         weapon: '5,1,4,4,0,4,0,2,5',
         weapon2: '5,2,4,4,0,4,0,2,6',
         wrist: '4,1,4,6,0,4,0,3,85'
@@ -272,7 +266,7 @@ test('should import URL and set summary and slots for 1.3 links (secondary weapo
     tswcalc.import.start(vars);
 
     // Summary
-    equal($('#stat-hitpoints').html(), '11104');
+    equal($('#stat-hitpoints').html(), '10788');
     equal($('#stat-combat-power').html(), '504');
     equal($('#stat-attack-rating').html(), '1565');
     equal($('#stat-weapon-power').html(), '457');
@@ -369,7 +363,7 @@ test('should import URL and set summary and slots for 1.3 links (secondary weapo
 
     //NY Buckle
     equal($('#waist-name').html(), ': NY Buckle');
-    equal($('#waist-ql').val(), '10.9');
+    equal($('#waist-ql').val(), '10.4');
     equal($('#waist-itemId').val(), '87');
     equal($('#waist-glyph-ql').val(), '10.4');
     equal($('#waist-primary-glyph').val(), 'physical-protection');
@@ -379,10 +373,7 @@ test('should import URL and set summary and slots for 1.3 links (secondary weapo
     equal($('#waist-signet-quality').val(), 'epic');
     ok($('#waist-signet-quality').attr('disabled'));
     ok($('#waist-pick-signet').attr('disabled'));
-    ok($('#waist-ql option[value="10.1"]').attr('disabled'));
-    ok($('#waist-ql option[value="10.7"]').attr('disabled'));
-    ok(!$('#waist-ql option[value="10.4"]').attr('disabled'));
-    ok(!$('#waist-ql option[value="10.9"]').attr('disabled'));
+    ok($('#waist-ql').attr('disabled'));
 
     equal($('#occult-ql').val(), '10.4');
     equal($('#occult-itemId').val(), '3');

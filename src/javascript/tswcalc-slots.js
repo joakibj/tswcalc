@@ -398,7 +398,6 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
         this.wtype('none');
         this.ql('10.0');
         this.itemId('3');
-        this.el.itemId.change();
         this.glyphQl('10.0');
         this.primaryGlyph('none');
         this.secondaryGlyph('none');
@@ -408,6 +407,7 @@ tswcalc.slots.Slot = function Slot(id, name, group) {
         this.el.btn.primary[4].trigger('click');
         this.el.btn.secondary[0].trigger('click');
         this.el.glyphQl.change();
+        this.el.itemId.change();
     };
 
     this.state = function() {
