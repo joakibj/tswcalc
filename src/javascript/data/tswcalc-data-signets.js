@@ -208,7 +208,7 @@ tswcalc.data.signet_data = {
             id: 15,
             name: 'Temperance',
             icon: 'weapon_heal'
-        }, { 
+        }, {
 		id:106, 
 		name: 'Blessed Steps', 
 		description: 'Whenever you apply a barrier effect to an ally, that ally gains a beneficial effect which increases Evade Chance by %d% for 10 seconds. This effect is removed when the barrier effect is removed from that ally.', 
@@ -218,7 +218,7 @@ tswcalc.data.signet_data = {
 			elite: 8, 
 			normal: 4
 			}, 
-		icon: 'weapon_tank', 
+		icon: 'weapon_util', 
 		shambala: true
 	}, { 
 		id:107, 
@@ -962,7 +962,7 @@ tswcalc.data.signet_data = {
 				elite: 10, 
 				normal: 5
 				},  
-			icon: 'major_util', 
+			icon: 'major_dps', 
 			shambala: true
 		}, { 
 			id:117, 
