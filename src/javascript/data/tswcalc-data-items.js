@@ -254,7 +254,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '10.5',
             primary: {
-                stat: 'hit-raiting',
+                stat: 'hit-rating',
                 dist: 4
             },
             secondary: {
@@ -278,7 +278,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '10.5',
             primary: {
-                stat: 'hit-raiting',
+                stat: 'hit-rating',
                 dist: 4
             },
             secondary: {
@@ -302,7 +302,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '10.5',
             primary: {
-                stat: 'block-raiting',
+                stat: 'block-rating',
                 dist: 4
             },
             secondary: {
@@ -326,7 +326,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '10.5',
             primary: {
-                stat: 'block-raiting',
+                stat: 'block-rating',
                 dist: 4
             },
             secondary: {
@@ -398,7 +398,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '10.5',
             primary: {
-                stat: 'Crititical Raiting',
+                stat: 'critical-rating',
                 dist: 4
             },
             secondary: {
@@ -422,7 +422,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '11.0',
             primary: {
-                stat: 'Crititical Raiting',
+                stat: 'critical-rating',
                 dist: 4
             },
             secondary: {
@@ -446,7 +446,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '10.5',
             primary: {
-                stat: 'hit-raiting',
+                stat: 'hit-rating',
                 dist: 4
             },
             secondary: {
@@ -470,7 +470,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '11.0',
             primary: {
-                stat: 'hit-raiting',
+                stat: 'hit-rating',
                 dist: 4
             },
             secondary: {
@@ -494,7 +494,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '11.0',
             primary: {
-                stat: 'hit-raiting',
+                stat: 'hit-rating',
                 dist: 4
             },
             secondary: {
@@ -522,7 +522,7 @@ tswcalc.data.items = [
                 dist: 2
             },
             secondary: {
-                stat: 'Crititical Raiting',
+                stat: 'critical-rating',
                 dist: 2
             }
         },
@@ -546,7 +546,7 @@ tswcalc.data.items = [
                 dist: 2
             },
             secondary: {
-                stat: 'Crititical Raiting',
+                stat: 'critical-rating',
                 dist: 2
             }
         },
@@ -577,8 +577,8 @@ tswcalc.data.items = [
         signet: {
             name: 'Biotech Amulet',
             description: 'Your heal rating is increased by an additional 94.',
-            quality: {elite: 94},
-            stat: 'heal-raiting',
+            quality: 'elite',
+            stat: 'heal-rating',
             icon: 'major_heal'
         }
     },
@@ -602,8 +602,8 @@ tswcalc.data.items = [
         signet: {
             name: 'Biotech Amulet',
             description: 'Your heal rating is increased by an additional 141.',
-            quality: {epic: 141},
-            stat: 'heal-raiting',
+            quality: 'epic',
+            stat: 'heal-rating',
             icon: 'major_heal'
         }
     },
@@ -616,7 +616,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '10.5',
             primary: {
-                stat: 'Crititical Raiting',
+                stat: 'critical-rating',
                 dist: 4
             },
             secondary: {
@@ -640,7 +640,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '11.0',
             primary: {
-                stat: 'Crititical Raiting',
+                stat: 'critical-rating',
                 dist: 4
             },
             secondary: {
@@ -664,7 +664,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '10.5',
             primary: {
-                stat: 'hit-raiting',
+                stat: 'hit-rating',
                 dist: 4
             },
             secondary: {
@@ -675,7 +675,7 @@ tswcalc.data.items = [
         signet: {
             name: 'Chemical Enhancement Knot',
             description: 'Your health is increased by an additional 330.',
-            quality: {elite: 330},
+            quality: 'elite',
             stat: 'hitpoints',
             icon: 'major_tank'
         }
@@ -689,7 +689,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '11.0',
             primary: {
-                stat: 'hit-raiting',
+                stat: 'hit-rating',
                 dist: 4
             },
             secondary: {
@@ -700,7 +700,7 @@ tswcalc.data.items = [
         signet: {
             name: 'Chemical Enhancement Knot',
             description: 'Your health is increased by an additional 494.',
-            quality: {epic: 494},
+            quality: 'epic',
             stat: 'hitpoints',
             icon: 'major_tank'
         }
@@ -718,7 +718,7 @@ tswcalc.data.items = [
                 dist: 2
             },
             secondary: {
-                stat: 'Crititical Raiting',
+                stat: 'critical-rating',
                 dist: 2
             }
         },
@@ -742,7 +742,7 @@ tswcalc.data.items = [
                 dist: 2
             },
             secondary: {
-                stat: 'Crititical Raiting',
+                stat: 'critical-rating',
                 dist: 2
             }
         },
@@ -762,7 +762,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '10.5',
             primary: {
-                stat: 'evade-raiting',
+                stat: 'evade-rating',
                 dist: 4
             },
             secondary: {
@@ -773,7 +773,7 @@ tswcalc.data.items = [
         signet: {
             name: 'Experimental Forcefield Pendant',
             description: 'Your health is increased by an additional 330.',
-            quality: {elite: 330},
+            quality: 'elite',
             stat: 'hitpoints',
             icon: 'major_tank'
         }
@@ -787,7 +787,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '11.0',
             primary: {
-                stat: 'evade-raiting',
+                stat: 'evade-rating',
                 dist: 4
             },
             secondary: {
@@ -798,7 +798,7 @@ tswcalc.data.items = [
         signet: {
             name: 'Experimental Forcefield Pendant',
             description: 'Your health is increased by an additional 494.',
-            quality: {epic: 494},
+            quality: 'epic',
             stat: 'hitpoints',
             icon: 'major_tank'
         }
@@ -812,7 +812,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '10.5',
             primary: {
-                stat: 'block-raiting',
+                stat: 'block-rating',
                 dist: 4
             },
             secondary: {
@@ -836,7 +836,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '11.0',
             primary: {
-                stat: 'block-raiting',
+                stat: 'block-rating',
                 dist: 4
             },
             secondary: {
@@ -860,7 +860,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '10.5',
             primary: {
-                stat: 'hit-raiting',
+                stat: 'hit-rating',
                 dist: 4
             },
             secondary: {
@@ -884,7 +884,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '11.0',
             primary: {
-                stat: 'hit-raiting',
+                stat: 'hit-rating',
                 dist: 4
             },
             secondary: {
@@ -908,7 +908,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '10.5',
             primary: {
-                stat: 'hit-raiting',
+                stat: 'hit-rating',
                 dist: 2
             },
             secondary: {
@@ -956,7 +956,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '10.5',
             primary: {
-                stat: 'hit-raiting',
+                stat: 'hit-rating',
                 dist: 4
             },
             secondary: {
@@ -980,7 +980,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '11.0',
             primary: {
-                stat: 'hit-raiting',
+                stat: 'hit-rating',
                 dist: 4
             },
             secondary: {
@@ -1004,7 +1004,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '10.5',
             primary: {
-                stat: 'hit-raiting',
+                stat: 'hit-rating',
                 dist: 4
             },
             secondary: {
@@ -1028,7 +1028,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '11.0',
             primary: {
-                stat: 'hit-raiting',
+                stat: 'hit-rating',
                 dist: 4
             },
             secondary: {
@@ -1052,7 +1052,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '10.5',
             primary: {
-                stat: 'hit-raiting',
+                stat: 'hit-rating',
                 dist: 4
             },
             secondary: {
@@ -1076,7 +1076,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '11.0',
             primary: {
-                stat: 'hit-raiting',
+                stat: 'hit-rating',
                 dist: 4
             },
             secondary: {
@@ -1100,7 +1100,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '10.5',
             primary: {
-                stat: 'hit-raiting',
+                stat: 'hit-rating',
                 dist: 4
             },
             secondary: {
@@ -1124,7 +1124,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '11.0',
             primary: {
-                stat: 'hit-raiting',
+                stat: 'hit-rating',
                 dist: 4
             },
             secondary: {
@@ -1148,7 +1148,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '10.5',
             primary: {
-                stat: 'Crititical Raiting',
+                stat: 'critical-rating',
                 dist: 4
             },
             secondary: {
@@ -1172,7 +1172,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '11.0',
             primary: {
-                stat: 'Crititical Raiting',
+                stat: 'critical-rating',
                 dist: 4
             },
             secondary: {
@@ -1196,7 +1196,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '10.5',
             primary: {
-                stat: 'hit-raiting',
+                stat: 'hit-rating',
                 dist: 4
             },
             secondary: {
@@ -1207,8 +1207,8 @@ tswcalc.data.items = [
         signet: {
             name: 'Manticore Elite Ring',
             description: 'Your attack rating is increased by an additional 94.',
-            quality: {elite: 94},
-            stat: 'attack-raiting',
+            quality: 'elite',
+            stat: 'attack-rating',
             icon: 'major_dps'
         }
     },
@@ -1232,8 +1232,8 @@ tswcalc.data.items = [
         signet: {
             name: 'Manticore Elite Ring',
             description: 'Your attack rating is increased by an additional 141.',
-            quality: {epic: 141},
-            stat: 'attack-raiting',
+            quality: 'epic',
+            stat: 'attack-rating',
             icon: 'major_dps'
         }
     },
@@ -1246,7 +1246,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '10.5',
             primary: {
-                stat: 'Crititical Raiting',
+                stat: 'critical-rating',
                 dist: 2
             },
             secondary: {
@@ -1257,8 +1257,8 @@ tswcalc.data.items = [
         signet: {
             name: 'Manticore Elite Tags',
             description: 'Your attack rating is increased by an additional 94.',
-            quality: {elite: 94},
-            stat: 'attack-raiting',
+            quality: 'elite',
+            stat: 'attack-rating',
             icon: 'major_dps'
         }
     },
@@ -1271,7 +1271,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '11.0',
             primary: {
-                stat: 'Crititical Raiting',
+                stat: 'critical-rating',
                 dist: 2
             },
             secondary: {
@@ -1282,8 +1282,8 @@ tswcalc.data.items = [
         signet: {
             name: 'Manticore Elite Tags',
             description: 'Your attack rating is increased by an additional 141.',
-            quality: {epic: 141},
-            stat: 'attack-raiting',
+            quality: 'epic',
+            stat: 'attack-rating',
             icon: 'major_dps'
         }
     },
@@ -1307,8 +1307,8 @@ tswcalc.data.items = [
         signet: {
             name: 'Manticore Elite Wristlet',
             description: 'Your attack rating is increased by an additional 94.',
-            quality: {elite: 94},
-            stat: 'attack-raiting',
+            quality: 'elite',
+            stat: 'attack-rating',
             icon: 'major_dps'
         }
     },
@@ -1332,8 +1332,8 @@ tswcalc.data.items = [
         signet: {
             name: 'Manticore Elite Wristlet',
             description: 'Your attack rating is increased by an additional 141.',
-            quality: {epic: 141},
-            stat: 'attack-raiting',
+            quality: 'epic',
+            stat: 'attack-rating',
             icon: 'major_dps'
         }
     },
@@ -1346,7 +1346,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '10.5',
             primary: {
-                stat: 'hit-raiting',
+                stat: 'hit-rating',
                 dist: 4
             },
             secondary: {
@@ -1370,7 +1370,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '11.0',
             primary: {
-                stat: 'hit-raiting',
+                stat: 'hit-rating',
                 dist: 4
             },
             secondary: {
@@ -1394,7 +1394,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '10.5',
             primary: {
-                stat: 'hit-raiting',
+                stat: 'hit-rating',
                 dist: 4
             },
             secondary: {
@@ -1418,7 +1418,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '11.0',
             primary: {
-                stat: 'hit-raiting',
+                stat: 'hit-rating',
                 dist: 4
             },
             secondary: {
@@ -1442,7 +1442,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '11.0',
             primary: {
-                stat: 'hit-raiting',
+                stat: 'hit-rating',
                 dist: 4
             },
             secondary: {
@@ -1466,7 +1466,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '10.5',
             primary: {
-                stat: 'hit-raiting',
+                stat: 'hit-rating',
                 dist: 4
             },
             secondary: {
@@ -1490,7 +1490,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '11.0',
             primary: {
-                stat: 'hit-raiting',
+                stat: 'hit-rating',
                 dist: 4
             },
             secondary: {
@@ -1514,7 +1514,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '11.0',
             primary: {
-                stat: 'hit-raiting',
+                stat: 'hit-rating',
                 dist: 4
             },
             secondary: {
@@ -1586,7 +1586,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '10.5',
             primary: {
-                stat: 'hit-raiting',
+                stat: 'hit-rating',
                 dist: 4
             },
             secondary: {
@@ -1610,7 +1610,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '11.0',
             primary: {
-                stat: 'hit-raiting',
+                stat: 'hit-rating',
                 dist: 4
             },
             secondary: {
@@ -1634,7 +1634,7 @@ tswcalc.data.items = [
         glyph: {
             ql: '10.5',
             primary: {
-                stat: 'block-raiting',
+                stat: 'block-rating',
                 dist: 4
             },
             secondary: {
@@ -1658,11 +1658,11 @@ tswcalc.data.items = [
         glyph: {
             ql: '11.0',
             primary: {
-                stat: 'block-raiting',
+                stat: 'block-rating',
                 dist: 2
             },
             secondary: {
-                stat: 'evade-raiting',
+                stat: 'evade-rating',
                 dist: 2
             }
         },
@@ -1675,9 +1675,7 @@ tswcalc.data.items = [
     },
     {
         id: '148',
-
         name: 'V\u00E1li Resilience Buckle',
-
         ql: '10.8',
         role: 'healer',
         slots: ['waist'],
@@ -1701,9 +1699,7 @@ tswcalc.data.items = [
     },
     {
         id: '188',
-
         name: 'V\u00E1li Resilience Buckle',
-
         ql: '10.9',
         role: 'healer',
         slots: ['waist'],
@@ -1745,8 +1741,8 @@ tswcalc.data.items = [
         signet: {
             name: 'V\u00E1li Smart-Watch',
             description: 'Your heal rating is increased by an additional 94.',
-            quality: {elite: 94},
-            stat: 'heal-raiting',
+            quality: 'elite',
+            stat: 'heal-rating',
             icon: 'major_heal'
         }
     },
@@ -1770,8 +1766,8 @@ tswcalc.data.items = [
         signet: {
             name: 'V\u00E1li Smart-Watch',
             description: 'Your heal rating is increased by an additional 141.',
-            quality: {epic: 141},
-            stat: 'heal-raiting',
+            quality: 'epic',
+            stat: 'heal-rating',
             icon: 'major_heal'
         }
     }
