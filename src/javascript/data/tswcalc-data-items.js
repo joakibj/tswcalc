@@ -442,7 +442,7 @@ tswcalc.data.items = [
         name: 'Anansi Smart-Tome',
         ql: '10.8',
         role: 'weapon',
-        slots: ['luck'],
+        slots: ['weapon'],
         glyph: {
             ql: '10.5',
             primary: {
