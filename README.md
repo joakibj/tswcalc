@@ -20,13 +20,21 @@ tswcalc can be found at: http://joakibj.github.io/tswcalc
 Prerequisites
 --------
 The tools needed to build tswcalc are:
-* [node.js](http://nodejs.org/) (v0.10.x)
-* npm (v1.2.x)
-* [grunt](http://gruntjs.com/) (v0.4.x)
+* [node.js](http://nodejs.org/) (v0.10.45)
+* npm (v2.15.1)
+* [grunt](http://gruntjs.com/) (v0.4.1)
 
-node.js comes included with `npm`, the node package manager.
+Install and use [nvm](https://github.com/creationix/nvm) to manage your node.js and npm installations.
 
-After installing `node.js` and `npm`, install `grunt` globally:
+Installing the correct node.js version:
+
+    nvm install 0.10.45
+
+Switch to the installation:
+
+    nvm use 0.10.45
+
+Install `grunt` globally:
 
     npm install -g grunt-cli
 
