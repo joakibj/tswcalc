@@ -247,7 +247,7 @@ tswcalc.data.items = [
     //MFB id 130 - 192
     {
         id: '153',
-        name: 'Anansi Chance Bender',
+        name: 'Anansi Chance Bender [10.8]',
         ql: '10.8',
         role: 'weapon',
         slots: ['weapon'],
@@ -271,7 +271,7 @@ tswcalc.data.items = [
     },
     {
         id: '163',
-        name: 'Anansi Chance Bender',
+        name: 'Anansi Chance Bender [10.9]',
         ql: '10.9',
         role: 'weapon',
         slots: ['weapon'],
@@ -295,7 +295,7 @@ tswcalc.data.items = [
     },
     {
         id: '150',
-        name: 'Anansi Chance-Enhancement Coins',
+        name: 'Anansi Chance-Enhancement Coins [10.8]',
         ql: '10.8',
         role: 'tank',
         slots: ['luck'],
@@ -319,7 +319,7 @@ tswcalc.data.items = [
     },
     {
         id: '186',
-        name: 'Anansi Chance-Enhancement Coins',
+        name: 'Anansi Chance-Enhancement Coins [10.9]',
         ql: '10.9',
         role: 'tank',
         slots: ['luck'],
@@ -343,7 +343,7 @@ tswcalc.data.items = [
     },
     {
         id: '149',
-        name: 'Anansi Chaos Generators',
+        name: 'Anansi Chaos Generators [10.8]',
         ql: '10.8',
         role: 'dps',
         slots: ['luck'],
@@ -367,7 +367,7 @@ tswcalc.data.items = [
     },
     {
         id: '184',
-        name: 'Anansi Chaos Generators',
+        name: 'Anansi Chaos Generators [10.9]',
         ql: '10.9',
         role: 'dps',
         slots: ['luck'],
@@ -391,7 +391,7 @@ tswcalc.data.items = [
     },
     {
         id: '130',
-        name: 'Anansi Smart-Tarot',
+        name: 'Anansi Smart-Tarot [10.8]',
         ql: '10.8',
         role: 'healer',
         slots: ['luck'],
@@ -415,7 +415,7 @@ tswcalc.data.items = [
     },
     {
         id: '185',
-        name: 'Anansi Smart-Tarot',
+        name: 'Anansi Smart-Tarot [10.9]',
         ql: '10.9',
         role: 'healer',
         slots: ['luck'],
@@ -439,7 +439,7 @@ tswcalc.data.items = [
     },
     {
         id: '154',
-        name: 'Anansi Smart-Tome',
+        name: 'Anansi Smart-Tome [10.8]',
         ql: '10.8',
         role: 'weapon',
         slots: ['weapon'],
@@ -463,7 +463,7 @@ tswcalc.data.items = [
     },
     {
         id: '162',
-        name: 'Anansi Smart-Tome',
+        name: 'Anansi Smart-Tome [10.9]',
         ql: '10.9',
         role: 'weapon',
         slots: ['weapon'],
@@ -511,7 +511,7 @@ tswcalc.data.items = [
     },
     {
         id: '145',
-        name: 'Anima-Calibrated Power Cable',
+        name: 'Anima-Calibrated Power Cable [10.8]',
         ql: '10.8',
         role: 'healer',
         slots: ['occult'],
@@ -535,7 +535,7 @@ tswcalc.data.items = [
     },
     {
         id: '191',
-        name: 'Anima-Calibrated Power Cable',
+        name: 'Anima-Calibrated Power Cable [10.9]',
         ql: '10.9',
         role: 'healer',
         slots: ['occult'],
@@ -559,7 +559,7 @@ tswcalc.data.items = [
     },
     {
         id: '139',
-        name: 'Biotech Amulet',
+        name: 'Biotech Amulet [10.8]',
         ql: '10.8',
         role: 'healer',
         slots: ['neck'],
@@ -584,7 +584,7 @@ tswcalc.data.items = [
     },
     {
         id: '170',
-        name: 'Biotech Amulet',
+        name: 'Biotech Amulet [10.9]',
         ql: '10.9',
         role: 'healer',
         slots: ['neck'],
@@ -609,7 +609,7 @@ tswcalc.data.items = [
     },
     {
         id: '142',
-        name: 'Biotech Band',
+        name: 'Biotech Band [10.8]',
         ql: '10.8',
         role: 'healer',
         slots: ['ring'],
@@ -633,7 +633,7 @@ tswcalc.data.items = [
     },
     {
         id: '176',
-        name: 'Biotech Band',
+        name: 'Biotech Band [10.9]',
         ql: '10.9',
         role: 'healer',
         slots: ['ring'],
@@ -657,7 +657,7 @@ tswcalc.data.items = [
     },
     {
         id: '141',
-        name: 'Chemical Enhancement Knot',
+        name: 'Chemical Enhancement Knot [10.8]',
         ql: '10.8',
         role: 'tank',
         slots: ['ring'],
@@ -682,7 +682,7 @@ tswcalc.data.items = [
     },
     {
         id: '177',
-        name: 'Chemical Enhancement Knot',
+        name: 'Chemical Enhancement Knot [10.9]',
         ql: '10.9',
         role: 'tank',
         slots: ['ring'],
@@ -707,7 +707,7 @@ tswcalc.data.items = [
     },
     {
         id: '134',
-        name: 'Draug Lord Ink',
+        name: 'Draug Lord Ink [10.8]',
         ql: '10.8',
         role: 'healer',
         slots: ['head'],
@@ -731,7 +731,7 @@ tswcalc.data.items = [
     },
     {
         id: '180',
-        name: 'Draug Lord Ink',
+        name: 'Draug Lord Ink [10.9]',
         ql: '10.9',
         role: 'healer',
         slots: ['head'],
@@ -755,7 +755,7 @@ tswcalc.data.items = [
     },
     {
         id: '138',
-        name: 'Experimental Forcefield Pendant',
+        name: 'Experimental Forcefield Pendant [10.8]',
         ql: '10.8',
         role: 'tank',
         slots: ['neck'],
@@ -780,7 +780,7 @@ tswcalc.data.items = [
     },
     {
         id: '171',
-        name: 'Experimental Forcefield Pendant',
+        name: 'Experimental Forcefield Pendant [10.9]',
         ql: '10.9',
         role: 'tank',
         slots: ['neck'],
@@ -805,7 +805,7 @@ tswcalc.data.items = [
     },
     {
         id: '136',
-        name: 'Experimental Repulsor Bracer',
+        name: 'Experimental Repulsor Bracer [10.8]',
         ql: '10.8',
         role: 'tank',
         slots: ['wrist'],
@@ -829,7 +829,7 @@ tswcalc.data.items = [
     },
     {
         id: '173',
-        name: 'Experimental Repulsor Bracer',
+        name: 'Experimental Repulsor Bracer [10.9]',
         ql: '10.9',
         role: 'tank',
         slots: ['wrist'],
@@ -853,7 +853,7 @@ tswcalc.data.items = [
     },
     {
         id: '147',
-        name: 'Invinci-Tech Belt',
+        name: 'Invinci-Tech Belt [10.8]',
         ql: '10.8',
         role: 'tank',
         slots: ['waist'],
@@ -877,7 +877,7 @@ tswcalc.data.items = [
     },
     {
         id: '187',
-        name: 'Invinci-Tech Belt',
+        name: 'Invinci-Tech Belt [10.9]',
         ql: '10.9',
         role: 'tank',
         slots: ['waist'],
@@ -901,7 +901,7 @@ tswcalc.data.items = [
     },
     {
         id: '132',
-        name: 'Lycanthrope Bone Powder',
+        name: 'Lycanthrope Bone Powder [10.8]',
         ql: '10.8',
         role: 'dps',
         slots: ['head'],
@@ -925,7 +925,7 @@ tswcalc.data.items = [
     },
     {
         id: '178',
-        name: 'Lycanthrope Bone Powder',
+        name: 'Lycanthrope Bone Powder [10.9]',
         ql: '10.9',
         role: 'dps',
         slots: ['head'],
@@ -949,7 +949,7 @@ tswcalc.data.items = [
     },
     {
         id: '152',
-        name: 'Manticore Cross-Supremacy',
+        name: 'Manticore Cross-Supremacy [10.8]',
         ql: '10.8',
         role: 'weapon',
         slots: ['weapon'],
@@ -973,7 +973,7 @@ tswcalc.data.items = [
     },
     {
         id: '164',
-        name: 'Manticore Cross-Supremacy',
+        name: 'Manticore Cross-Supremacy [10.9]',
         ql: '10.9',
         role: 'weapon',
         slots: ['weapon'],
@@ -997,7 +997,7 @@ tswcalc.data.items = [
     },
     {
         id: '155',
-        name: 'Manticore Cyber-Slice',
+        name: 'Manticore Cyber-Slice [10.8]',
         ql: '10.8',
         role: 'weapon',
         slots: ['weapon'],
@@ -1021,7 +1021,7 @@ tswcalc.data.items = [
     },
     {
         id: '161',
-        name: 'Manticore Cyber-Slice',
+        name: 'Manticore Cyber-Slice [10.9]',
         ql: '10.9',
         role: 'weapon',
         slots: ['weapon'],
@@ -1045,7 +1045,7 @@ tswcalc.data.items = [
     },
     {
         id: '157',
-        name: 'Manticore Dread-Reaper',
+        name: 'Manticore Dread-Reaper [10.8]',
         ql: '10.8',
         role: 'weapon',
         slots: ['weapon'],
@@ -1069,7 +1069,7 @@ tswcalc.data.items = [
     },
     {
         id: '168',
-        name: 'Manticore Dread-Reaper',
+        name: 'Manticore Dread-Reaper [10.9]',
         ql: '10.9',
         role: 'weapon',
         slots: ['weapon'],
@@ -1093,7 +1093,7 @@ tswcalc.data.items = [
     },
     {
         id: '146',
-        name: 'Manticore Elite Chain',
+        name: 'Manticore Elite Chain [10.8]',
         ql: '10.8',
         role: 'dps',
         slots: ['waist'],
@@ -1117,7 +1117,7 @@ tswcalc.data.items = [
     },
     {
         id: '189',
-        name: 'Manticore Elite Chain',
+        name: 'Manticore Elite Chain [10.9]',
         ql: '10.9',
         role: 'dps',
         slots: ['waist'],
@@ -1141,7 +1141,7 @@ tswcalc.data.items = [
     },
     {
         id: '143',
-        name: 'Manticore Elite Effigy',
+        name: 'Manticore Elite Effigy [10.8]',
         ql: '10.8',
         role: 'dps',
         slots: ['occult'],
@@ -1165,7 +1165,7 @@ tswcalc.data.items = [
     },
     {
         id: '192',
-        name: 'Manticore Elite Effigy',
+        name: 'Manticore Elite Effigy [10.9]',
         ql: '10.9',
         role: 'dps',
         slots: ['occult'],
@@ -1189,7 +1189,7 @@ tswcalc.data.items = [
     },
     {
         id: '140',
-        name: 'Manticore Elite Ring',
+        name: 'Manticore Elite Ring [10.8]',
         ql: '10.8',
         role: 'dps',
         slots: ['ring'],
@@ -1214,7 +1214,7 @@ tswcalc.data.items = [
     },
     {
         id: '169',
-        name: 'Manticore Elite Ring',
+        name: 'Manticore Elite Ring [10.9]',
         ql: '10.9',
         role: 'dps',
         slots: ['ring'],
@@ -1239,7 +1239,7 @@ tswcalc.data.items = [
     },
     {
         id: '137',
-        name: 'Manticore Elite Tags',
+        name: 'Manticore Elite Tags [10.8]',
         ql: '10.8',
         role: 'dps',
         slots: ['neck'],
@@ -1264,7 +1264,7 @@ tswcalc.data.items = [
     },
     {
         id: '172',
-        name: 'Manticore Elite Tags',
+        name: 'Manticore Elite Tags [10.9]',
         ql: '10.9',
         role: 'dps',
         slots: ['neck'],
@@ -1289,7 +1289,7 @@ tswcalc.data.items = [
     },
     {
         id: '135',
-        name: 'Manticore Elite Wristlet',
+        name: 'Manticore Elite Wristlet [10.8]',
         ql: '10.8',
         role: 'dps',
         slots: ['wrist'],
@@ -1314,7 +1314,7 @@ tswcalc.data.items = [
     },
     {
         id: '175',
-        name: 'Manticore Elite Wristlet',
+        name: 'Manticore Elite Wristlet [10.9]',
         ql: '10.9',
         role: 'dps',
         slots: ['wrist'],
@@ -1339,7 +1339,7 @@ tswcalc.data.items = [
     },
     {
         id: '158',
-        name: 'Manticore Obliterator',
+        name: 'Manticore Obliterator [10.8]',
         ql: '10.8',
         role: 'weapon',
         slots: ['weapon'],
@@ -1363,7 +1363,7 @@ tswcalc.data.items = [
     },
     {
         id: '167',
-        name: 'Manticore Obliterator',
+        name: 'Manticore Obliterator [10.9]',
         ql: '10.9',
         role: 'weapon',
         slots: ['weapon'],
@@ -1387,7 +1387,7 @@ tswcalc.data.items = [
     },
     {
         id: '156',
-        name: 'Manticore Subjugator',
+        name: 'Manticore Subjugator [10.8]',
         ql: '10.8',
         role: 'weapon',
         slots: ['weapon'],
@@ -1411,7 +1411,7 @@ tswcalc.data.items = [
     },
     {
         id: '160',
-        name: 'Manticore Subjugator',
+        name: 'Manticore Subjugator [10.9]',
         ql: '10.9',
         role: 'weapon',
         slots: ['weapon'],
@@ -1459,7 +1459,7 @@ tswcalc.data.items = [
     },
     {
         id: '159',
-        name: 'Manticore Talon',
+        name: 'Manticore Talon [10.8]',
         ql: '10.8',
         role: 'weapon',
         slots: ['weapon'],
@@ -1483,7 +1483,7 @@ tswcalc.data.items = [
     },
     {
         id: '166',
-        name: 'Manticore Talon',
+        name: 'Manticore Talon [10.9]',
         ql: '10.9',
         role: 'weapon',
         slots: ['weapon'],
@@ -1531,7 +1531,7 @@ tswcalc.data.items = [
     },
     {
         id: '144',
-        name: 'Preserved Wendigo Bone',
+        name: 'Preserved Wendigo Bone [10.8]',
         ql: '10.8',
         role: 'tank',
         slots: ['occult'],
@@ -1555,7 +1555,7 @@ tswcalc.data.items = [
     },
     {
         id: '190',
-        name: 'Preserved Wendigo Bone',
+        name: 'Preserved Wendigo Bone [10.9]',
         ql: '10.9',
         role: 'tank',
         slots: ['occult'],
@@ -1579,7 +1579,7 @@ tswcalc.data.items = [
     },
     {
         id: '151',
-        name: 'Sycoil Supreme Effigy',
+        name: 'Sycoil Supreme Effigy [10.8]',
         ql: '10.8',
         role: 'weapon',
         slots: ['weapon'],
@@ -1603,7 +1603,7 @@ tswcalc.data.items = [
     },
     {
         id: '165',
-        name: 'Sycoil Supreme Effigy',
+        name: 'Sycoil Supreme Effigy [10.9]',
         ql: '10.9',
         role: 'weapon',
         slots: ['weapon'],
@@ -1627,7 +1627,7 @@ tswcalc.data.items = [
     },
     {
         id: '133',
-        name: 'The Colour Out of Space',
+        name: 'The Colour Out of Space [10.8]',
         ql: '10.8',
         role: 'tank',
         slots: ['head'],
@@ -1651,7 +1651,7 @@ tswcalc.data.items = [
     },
     {
         id: '179',
-        name: 'The Colour Out of Space',
+        name: 'The Colour Out of Space [10.9]',
         ql: '10.9',
         role: 'tank',
         slots: ['head'],
@@ -1675,7 +1675,7 @@ tswcalc.data.items = [
     },
     {
         id: '148',
-        name: 'V\u00E1li Resilience Buckle',
+        name: 'V\u00E1li Resilience Buckle [10.8]',
         ql: '10.8',
         role: 'healer',
         slots: ['waist'],
@@ -1699,7 +1699,7 @@ tswcalc.data.items = [
     },
     {
         id: '188',
-        name: 'V\u00E1li Resilience Buckle',
+        name: 'V\u00E1li Resilience Buckle [10.9]',
         ql: '10.9',
         role: 'healer',
         slots: ['waist'],
@@ -1723,7 +1723,7 @@ tswcalc.data.items = [
     },
     {
         id: '131',
-        name: 'V\u00E1li Smart-Watch',
+        name: 'V\u00E1li Smart-Watch [10.8]',
         ql: '10.8',
         role: 'healer',
         slots: ['wrist'],
@@ -1748,7 +1748,7 @@ tswcalc.data.items = [
     },
     {
         id: '174',
-        name: 'V\u00E1li Smart-Watch',
+        name: 'V\u00E1li Smart-Watch [10.9]',
         ql: '10.9',
         role: 'healer',
         slots: ['wrist'],
