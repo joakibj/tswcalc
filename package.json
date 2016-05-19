@@ -3,6 +3,10 @@
   "version": "1.13.0",
   "author": "Joakim Bjørnstad <joakibj@gmail.com>",
   "description": "A living glyph and gear calculator for The Secret World",
+  "repository": {
+     "type": "git",
+     "url": "git@github.com:joakibj/tswcalc.git"
+  },
   "contributors": [
     {
       "name": "Joakim Bjørnstad",
