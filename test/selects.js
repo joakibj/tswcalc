@@ -62,7 +62,7 @@ test('should have added signets to correct group', 8, function() {
     equal($('#ring-pick-signet option').size(), 16);
     equal($('#neck-pick-signet option').size(), 16);
     equal($('#wrist-pick-signet option').size(), 16);
-    equal($('#luck-pick-signet option').size(), 38);
+    equal($('#luck-pick-signet option').size(), 41);
     equal($('#waist-pick-signet option').size(), 41);
     equal($('#occult-pick-signet option').size(), 41);
 });

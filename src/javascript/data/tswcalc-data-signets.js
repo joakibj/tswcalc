@@ -1116,6 +1116,38 @@ tswcalc.data.signet_data = {
             requires: 'issue-9'
         }
     ],
+    'luck': [{
+            id: 193,
+            name: 'Set',
+            description: 'Increases damage dealt by %d%.',
+            cooldown: '0',
+            quality: {
+                epic: 1.5
+            },
+            icon: 'minor_dps',
+            requires: 'issue-14'
+        }, {
+            id: 194,
+            name: 'Horus',
+            description: 'Increases the chance that attacks against you will glance by %d%.',
+            cooldown: '0',
+            quality: {
+                epic: 1.5
+            },
+            icon: 'minor_tank',
+            requires: 'issue-14'
+        }, {
+            id: 195,
+            name: 'Sekhmet',
+            description: 'Increases the effectiveness of your barrier, leech and healing abilities by %d%.',
+            cooldown: '0',
+            quality: {
+                epic: 1.5
+            },
+            icon: 'minor_heal',
+            requires: 'issue-14'
+        }
+    ],
     'occult': [{
             id: 65,
             name: 'Nure-onna\'s Coils',
@@ -1183,5 +1215,7 @@ tswcalc.data.signet_data = {
             requires: 'issue-11'
         }
 		]
-	//last item-id in this file: 129
+    //last item-id in this file: 195
+    //last item-id in tswcalc-data-items.js: 192
+    //update these item-ids when adding new items/signets either place to avoid conflicts
 };

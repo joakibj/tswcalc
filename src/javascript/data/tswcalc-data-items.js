@@ -1772,4 +1772,7 @@ tswcalc.data.items = [
         }
     }
     //last item-id in this file: 192
+    //last item-id in tswcalc-data-signets.js: 195
+    //update these item-ids when adding new items/signets either place to avoid conflicts
+
 ];

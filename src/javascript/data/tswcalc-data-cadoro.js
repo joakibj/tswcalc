@@ -121,5 +121,25 @@ tswcalc.data.cadoro_items = {
                 ql: '10.1'
             }
         }
+    },
+    'issue-14': {
+        'warning_text': "This Signet can only be attached to Charmed Dice, Black Pharaoh Tarot or Lucky Poker Chips. This item is awarded by completing the mission Beneath You It Eats Its Name.",
+        'luck': {
+            'none': {
+                name: ''
+            },
+            'dps': {
+                name: "Charmed Dice",
+                ql: '10.1'
+            },
+            'healer': {
+                name: "Black Pharaoh Tarot",
+                ql: '10.1'
+            },
+            'tank': {
+                name: "Lucky Poker Chips",
+                ql: '10.1'
+            }
+        }
     }
 };
