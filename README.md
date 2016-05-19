@@ -8,7 +8,7 @@ tswcalc features:
 * All custom gear from QL 10.0 to 11.0.
 * All glyphs from QL 10.0 to 10.5.
 * Custom gear able to be attached with all signets in normal, elite and epic variations.
-* Issue 6, 7, 8, 9, 10 and 11 signets.
+* Issue 6, 7, 8, 9, 10, 11 and 14 signets.
 * Issue 12 currency calculation.
 * NY Raid items.
 * Woodcutter's talismans.
