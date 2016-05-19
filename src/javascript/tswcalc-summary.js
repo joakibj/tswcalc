@@ -239,7 +239,7 @@ tswcalc.summary = function() {
     };
 
     var calculateEvadeChance = function(evade_rating) {
-        return 26.3 - (42.64 / (Math.pow(Math.E, (evade_rating / 694.3)) + 1));
+        return 30.10 - (50.14 / (Math.pow(Math.E, (evade_rating / 704.70)) + 1));
     };
 
     var updateStats = function(sums) {

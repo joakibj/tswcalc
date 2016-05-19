@@ -47,8 +47,8 @@ test('should calculate combat power', 2, function() {
 });
 
 test('should calculate evade chance', 2, function() {
-    equal(tswcalc.summary.calculateEvadeChance(0), 4.98);
-    equal(tswcalc.summary.calculateEvadeChance(2174), 24.51602672866029);
+    equal(tswcalc.summary.calculateEvadeChance(0), 5.030000000000001);
+    equal(tswcalc.summary.calculateEvadeChance(2174), 27.90736684449651);
 });
 
 module('summary-integration-tests', {
@@ -262,7 +262,7 @@ test('should have anima bonus', 5, function() {
     tswcalc.miscslot.anima('evade-rating');
     tswcalc.summary.updateAllStats();
     equal($('#stat-evade-rating').html(), '+110');
-    equal($('#stat-evade-chance').html(), '6.7 %');
+    equal($('#stat-evade-chance').html(), '7.0 %');
 });
 
 test('should calculate primary stats for 10.6+ QLs', 1, function() {
