@@ -1770,8 +1770,178 @@ tswcalc.data.items = [
             stat: 'heal-rating',
             icon: 'major_heal'
         }
-    }
-    //last item-id in this file: 192
+    },
+
+    //Eido NM Items 200-205
+    {
+        id: '200',
+        name: 'Yellow Pigment of Leng',
+        ql: '10.9',
+        role: 'tank',
+        slots: ['head'],
+        signet: {
+            name: 'Yellow Pigment of Leng',
+            description: 'Whenever you are attacked, you have a 5% chance to gain a beneficial effect that reduces damage received from penetrating attacks for 15 seconds. The duration of this effect is not refreshed when reapplied.',
+            quality: 'epic',
+            icon: 'yellow_pigment_of_leng'
+        }
+    },
+    {
+        id: '201', // 8155270.swf
+        name: 'Dust of the Black Pharaoh',
+        ql: '10.9',
+        role: 'dps',
+        slots: ['head'],
+        signet: {
+            name: 'Dust of the Black Pharaoh',
+            description: 'Whenever you critically hit, you have a 20% chance to deal an additional hit for 100% of the damage dealt.',
+            quality: 'epic',
+            icon: 'dust_of_the_black_pharaoh'
+        }
+    },
+    {
+        id: '202',
+        name: 'Architeuthis Vitreous Humor',
+        ql: '10.9',
+        role: 'tank',
+        slots: ['head'],
+        signet: {
+            name: 'Architeuthis Vitreous Humor',
+            description: 'Blocking 3 consecutive attacks inspires your group members, increasing their damages and healing by 10% for 7 seconds. The duration of this effect is not refreshed when reapplied.',
+            quality: 'epic',
+            icon: 'architeuthis_vitreous_humor'
+        }
+    },
+    {
+        id: '203',
+        name: 'Blood of the Deep One King',
+        ql: '10.9',
+        role: 'heal',
+        slots: ['head'],
+        signet: {
+            name: 'Blood of the Deep One King',
+            description: 'Whenever you critically heal a friend, you apply a beneficial effect which increase their Block, Evade and Defence Rating by <i><u>x</u></i> for 7 seconds. The amount added increases with you Critical Rating. The duration of this effect is not refreshed when reapplied.',
+            quality: 'epic',
+            icon: 'blood_of_the_deep_one_king'
+        }
+    },
+    {
+        id: '204',
+        name: 'Essential Salted of Joseph Curwen',
+        ql: '10.9',
+        role: 'dps',
+        slots: ['head'],
+        signet: {
+            name: 'Essential Salted of Joseph Curwen',
+            description: 'Whenever you penetrate, you gain a beneficial effect that increases your Penetration Rating by 25% for 15 seconds. The duration of this effect is not refreshed when reapplied.',
+            quality: 'epic',
+            bonus: {
+                stat: ['penetration-rating'],
+                multiply: 1.25
+            },
+            icon: 'essential_salted_of_joseph_curwen'
+        }
+    },
+    {
+        id: '205',
+        name: 'Ichor of the Outer Gods',
+        ql: '10.9',
+        role: 'dps',
+        slots: ['head'],
+        signet: {
+            name: 'Ichor of the Outer Gods',
+             description: 'Whenever you apply a heal effect to a friend, there is a 10% chance that you will heal the target for an additional 3% of their maximum health.',
+            quality: 'epic',
+            cooldown: 5,
+            icon: 'ichor_of_the_outer_gods'
+        }
+    },
+
+    //Flappy NM Items 206-211
+    {
+        id: '206',
+        name: 'Keziah Manson\'s Ring',
+        ql: '10.9',
+        role: 'dps',
+        slots: ['ring'],
+        signet: {
+            name: 'Keziah Manson\'s Ring',
+            description: 'Whenever you attack bot critically hits and penetrates, the target also becomes <i><u>Afflicted</u></i> with a damage over time effect that deals <i><u>x</u></i> physical damage every seconds.<br/> While afflicted with this effect, the target takes 5% more damage from all sources. The duration of this effect is not refreshed when reapplied.',
+            quality: 'epic',
+            icon: 'keziah_mansons_ring'
+        }
+    },
+    {
+        id: '207',
+        name: 'Band of Dis',
+        ql: '10.9',
+        role: 'heal',
+        slots: ['ring'],
+        signet: {
+            name: 'Band of Dis',
+            description: 'Whenever you critically heal, you gain a beneficial effect that increases your Crit Power by 25% for 15 seconds. The duration of this effect is not refreshed when reapplied.',
+            quality: 'epic',
+            bonus: {
+                stat: ['critical-power-percentage'],
+                add: 25
+            },
+            icon: 'band_of_dis'
+        }
+    },
+    {
+        id: '208',
+        name: 'Amulet of Yuggoth',
+        ql: '10.9',
+        role: 'loadNpmTasks',
+        slots: ['neck'],
+        signet: {
+            name: 'Amulet of Yuggoth',
+            description: 'Whenever you critically hit, you gain a beneficial effect that increase the effectiveness of your Critical Rating for 12 seconds. The duration of this effect is not refreshed when reapplied.',
+            quality: 'epic',
+            icon: 'amulet_of_yuggoth'
+        }
+    },
+    {
+        id: '209',
+        name: 'Brown Jenkins\'s Collar',
+        ql: '10.9',
+        role: 'tank',
+        slots: ['neck'],
+        signet: {
+            name: 'Brown Jenkins\'s Collar',
+            description: 'Whenever you evade an attack, you gain a beneficial effect that increses the Critical Chance of your attacks by 100% for 1.5 seconds. The duration of this effect is not refreshed when reapplied.',
+            quality: 'epic',
+            icon: 'brown_jenkinss_collar'
+        }
+    },
+    {
+        id: '210',
+        name: 'Brace of the Ghoul King',
+        ql: '10.9',
+        role: 'heal',
+        slots: ['wrist'],
+        signet: {
+            name: 'Brace of the Ghoul King',
+            description: 'Whenever you heal an ally, you have 5% chance to create a beneficial area on the ground. Allies who stand in this area gain a beneficial effect which increases damage dealt by 10%.',
+            quality: 'epic',
+            icon: 'brace_of_the_ghoul_king'
+        }
+    },
+    {
+        id: '211',
+        name: 'Bracer of Celephias',
+        ql: '10.9',
+        role: 'tank',
+        slots: ['wrist'],
+        signet: {
+            name: 'Bracer of Celephias',
+             description: 'Whenever you are attacked, you gain a single stack of a beneficial effect that increases your Evade Chance by 5% per stack. This effect is removed after you successfully evade.',
+            quality: 'epic',
+            icon: 'bracer_of_celephias'
+        }
+    },
+
+    //last item-id in this file: 211
     //last item-id in tswcalc-data-signets.js: 195
     //update these item-ids when adding new items/signets either place to avoid conflicts
 
