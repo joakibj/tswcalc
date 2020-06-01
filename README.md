@@ -10,7 +10,7 @@ tswcalc features:
 * Custom gear able to be attached with all signets in normal, elite and epic variations.
 * Issue 6, 7, 8, 9, 10, 11 and 14 signets.
 * Issue 12 currency calculation.
-* NY Raid items.
+* NY, Eidolon & Flappy Raid items for elite and nightmare difficulty.
 * Woodcutter's talismans.
 
 tswcalc can be found at: http://joakibj.github.io/tswcalc
@@ -62,7 +62,7 @@ Run tests:
 Tests can be found in the `test` folder. Open the html file to run tests in the browser. Open the js file to view the test logic.
 
 When developing, use:
-    
+
     grunt watch
 
 The previous command monitors changes to files in the `src` folder. If any changes are detected, the build task is run.
@@ -71,7 +71,7 @@ Open `build/index.html` to view.
 
 Distribution
 ------------
-To create a distribution in the `dist` folder: 
+To create a distribution in the `dist` folder:
 
     grunt dist
 
