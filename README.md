@@ -13,16 +13,16 @@ tswcalc features:
 * NY, Eidolon & Flappy Raid items for elite and nightmare difficulty.
 * Woodcutter's talismans.
 
-tswcalc can be found at: http://joakibj.github.io/tswcalc
+tswcalc can be found at: https://joakibj.github.io/tswcalc
 
 **Note:** all active development of tswcalc takes place in the [`develop`](https://github.com/joakibj/tswcalc/tree/develop) branch. The tip of [`master`](https://github.com/joakibj/tswcalc/tree/master) always points to the latest, stable release. All releases are tagged. The latest release is deployed to the [`gh-pages`](https://github.com/joakibj/tswcalc/tree/gh-pages) branch.
 
 Prerequisites
 --------
 The tools needed to build tswcalc are:
-* [node.js](http://nodejs.org/) (v0.10.45)
+* [node.js](https://nodejs.org/) (v0.10.45)
 * npm (v2.15.1)
-* [grunt](http://gruntjs.com/) (v0.4.1)
+* [grunt](https://gruntjs.com/) (v0.4.1)
 
 Install and use [nvm](https://github.com/creationix/nvm) to manage your node.js and npm installations.
 
@@ -57,6 +57,7 @@ Build tswcalc by running:
     grunt
 
 Run tests:
+
     grunt test
 
 Tests can be found in the `test` folder. Open the html file to run tests in the browser. Open the js file to view the test logic.
@@ -93,4 +94,4 @@ License
 -------
 MIT License for the source code. Please see the LICENSE file.
 
-All art assets included in `public/assets/images/icons/` folder are taken from [The Secret World™ Chronicle](http://chronicle.thesecretworld.com/). The artwork should be considered property of Funcom GmBH unless otherwise noted. A small sample of signet, glyph and item icons are redistributed under fair use.
+All art assets included in `public/assets/images/icons/` folder are taken from [The Secret World™ Chronicle](https://chronicle.thesecretworld.com/). The artwork should be considered property of Funcom GmBH unless otherwise noted. A small sample of signet, glyph and item icons are redistributed under fair use.
